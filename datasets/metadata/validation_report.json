@@ -1,0 +1,253 @@
+{
+  "generated_at": "2026-06-03T17:30:15.883013+00:00",
+  "schema_version": "1.0.0",
+  "summary": {
+    "total_records": 6,
+    "valid_records": 3,
+    "failed_records": 3,
+    "warning_records": 4,
+    "success_rate": 0.5,
+    "quality_score": 0.8598,
+    "processing_time_s": 0.001,
+    "error_breakdown": {
+      "Unsupported image extension '.gif'...'.bmp', '.jpeg', '.jpg', '.png', '.webp']": 1,
+      "Invalid category 'UNKNOWN_CATEGORY'. Must be one of: ['accessories', 'dresses', ": 1,
+      "description too short: 5 chars (minimum 10)": 1,
+      "Invalid gender 'alien'. Must be one of: ['men', 'unisex', 'women']": 1,
+      "Invalid season 'monsoon'. Must be one of: ['all_season', 'autumn', 'spring', 'su": 1,
+      "category field is missing or not a string": 1,
+      "image_id must be a string, got int": 1,
+      "category must be a string, got list": 1,
+      "color must be a list, got str": 1,
+      "Invalid ISO-8601 timestamp: 'NOT-A-DATE'": 1,
+      "is_valid must be bool, got str": 1,
+      "description too short: 8 chars (minimum 10)": 1
+    },
+    "warning_breakdown": {
+      "Gender is not set — consider annotating for downstream filtering": 3,
+      "No color annotation — auto-generation recommended": 3,
+      "Season is not set — defaulting to all_season is acceptable": 2,
+      "Description is absent — auto-generation recommended": 1
+    }
+  },
+  "records": [
+    {
+      "image_id": "FG_0003",
+      "is_valid": false,
+      "quality_score": 0.76,
+      "checks_total": 25,
+      "checks_passed": 19,
+      "error_count": 3,
+      "warning_count": 3,
+      "issues": [
+        {
+          "severity": "ERROR",
+          "layer": "image_file",
+          "field": "image_path",
+          "message": "Unsupported image extension '.gif'. Expected one of: ['.bmp', '.jpeg', '.jpg', '.png', '.webp']",
+          "value": "datasets/test.gif"
+        },
+        {
+          "severity": "ERROR",
+          "layer": "category",
+          "field": "category",
+          "message": "Invalid category 'UNKNOWN_CATEGORY'. Must be one of: ['accessories', 'dresses', 'ethnic_wear', 'footwear', 'hoodies', 'jackets', 'jeans', 'pants', 'shirts', 'shorts', 't_shirts']",
+          "value": "UNKNOWN_CATEGORY"
+        },
+        {
+          "severity": "WARNING",
+          "layer": "metadata_completeness",
+          "field": "gender",
+          "message": "Gender is not set — consider annotating for downstream filtering",
+          "value": null
+        },
+        {
+          "severity": "WARNING",
+          "layer": "metadata_completeness",
+          "field": "color",
+          "message": "No color annotation — auto-generation recommended",
+          "value": null
+        },
+        {
+          "severity": "WARNING",
+          "layer": "metadata_completeness",
+          "field": "season",
+          "message": "Season is not set — defaulting to all_season is acceptable",
+          "value": null
+        },
+        {
+          "severity": "ERROR",
+          "layer": "description",
+          "field": "description",
+          "message": "description too short: 5 chars (minimum 10)",
+          "value": "Short"
+        }
+      ],
+      "validated_at": "2026-06-03T17:30:15.884012+00:00"
+    },
+    {
+      "image_id": "FG_0004",
+      "is_valid": false,
+      "quality_score": 0.8889,
+      "checks_total": 27,
+      "checks_passed": 24,
+      "error_count": 2,
+      "warning_count": 1,
+      "issues": [
+        {
+          "severity": "WARNING",
+          "layer": "metadata_completeness",
+          "field": "color",
+          "message": "No color annotation — auto-generation recommended",
+          "value": null
+        },
+        {
+          "severity": "ERROR",
+          "layer": "attributes",
+          "field": "gender",
+          "message": "Invalid gender 'alien'. Must be one of: ['men', 'unisex', 'women']",
+          "value": "alien"
+        },
+        {
+          "severity": "ERROR",
+          "layer": "attributes",
+          "field": "season",
+          "message": "Invalid season 'monsoon'. Must be one of: ['all_season', 'autumn', 'spring', 'summer', 'winter']",
+          "value": "monsoon"
+        }
+      ],
+      "validated_at": "2026-06-03T17:30:15.884527+00:00"
+    },
+    {
+      "image_id": "99999",
+      "is_valid": false,
+      "quality_score": 0.625,
+      "checks_total": 24,
+      "checks_passed": 15,
+      "error_count": 7,
+      "warning_count": 2,
+      "issues": [
+        {
+          "severity": "ERROR",
+          "layer": "category",
+          "field": "category",
+          "message": "category field is missing or not a string",
+          "value": "['shirts']"
+        },
+        {
+          "severity": "WARNING",
+          "layer": "metadata_completeness",
+          "field": "gender",
+          "message": "Gender is not set — consider annotating for downstream filtering",
+          "value": null
+        },
+        {
+          "severity": "WARNING",
+          "layer": "metadata_completeness",
+          "field": "season",
+          "message": "Season is not set — defaulting to all_season is acceptable",
+          "value": null
+        },
+        {
+          "severity": "ERROR",
+          "layer": "corruption",
+          "field": "image_id",
+          "message": "image_id must be a string, got int",
+          "value": "99999"
+        },
+        {
+          "severity": "ERROR",
+          "layer": "corruption",
+          "field": "category",
+          "message": "category must be a string, got list",
+          "value": "['shirts']"
+        },
+        {
+          "severity": "ERROR",
+          "layer": "corruption",
+          "field": "color",
+          "message": "color must be a list, got str",
+          "value": "White"
+        },
+        {
+          "severity": "ERROR",
+          "layer": "corruption",
+          "field": "processed_at",
+          "message": "Invalid ISO-8601 timestamp: 'NOT-A-DATE'",
+          "value": "NOT-A-DATE"
+        },
+        {
+          "severity": "ERROR",
+          "layer": "corruption",
+          "field": "is_valid",
+          "message": "is_valid must be bool, got str",
+          "value": "yes"
+        },
+        {
+          "severity": "ERROR",
+          "layer": "description",
+          "field": "description",
+          "message": "description too short: 8 chars (minimum 10)",
+          "value": "A shirt."
+        }
+      ],
+      "validated_at": "2026-06-03T17:30:15.884527+00:00"
+    },
+    {
+      "image_id": "DF_0001",
+      "is_valid": true,
+      "quality_score": 0.8846,
+      "checks_total": 26,
+      "checks_passed": 23,
+      "error_count": 0,
+      "warning_count": 3,
+      "issues": [
+        {
+          "severity": "WARNING",
+          "layer": "metadata_completeness",
+          "field": "gender",
+          "message": "Gender is not set — consider annotating for downstream filtering",
+          "value": null
+        },
+        {
+          "severity": "WARNING",
+          "layer": "metadata_completeness",
+          "field": "color",
+          "message": "No color annotation — auto-generation recommended",
+          "value": null
+        },
+        {
+          "severity": "WARNING",
+          "layer": "metadata_completeness",
+          "field": "description",
+          "message": "Description is absent — auto-generation recommended",
+          "value": null
+        }
+      ],
+      "validated_at": "2026-06-03T17:30:15.884527+00:00"
+    }
+  ],
+  "config": {
+    "verify_image_exists": false,
+    "verify_image_readable": false,
+    "min_image_width_px": 32,
+    "min_image_height_px": 32,
+    "max_image_size_mb": 50.0,
+    "valid_extensions": [
+      ".bmp",
+      ".jpeg",
+      ".jpg",
+      ".png",
+      ".webp"
+    ],
+    "min_description_chars": 10,
+    "max_description_chars": 4096,
+    "max_digit_ratio": 0.5,
+    "max_color_count": 20,
+    "max_attribute_count": 100,
+    "max_landmark_count": 6,
+    "warn_missing_gender": true,
+    "warn_missing_color": true,
+    "warn_missing_description": true
+  }
+}

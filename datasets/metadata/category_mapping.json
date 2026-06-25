@@ -1,0 +1,678 @@
+{
+  "_meta": {
+    "generated_at": "2026-06-02T08:35:32.019203+00:00",
+    "source": "fashion_knowledge.json",
+    "description": "Pre-computed category cross-reference mappings",
+    "total_categories": 11
+  },
+  "mappings": {
+    "t_shirts": {
+      "category_code": "TSH",
+      "category_label": "T-Shirts",
+      "genders": [
+        "men",
+        "unisex",
+        "women"
+      ],
+      "styles": [
+        "athleisure",
+        "business_casual",
+        "minimalist",
+        "streetwear",
+        "vintage"
+      ],
+      "occasions": [
+        "business_casual",
+        "casual",
+        "lounge",
+        "party",
+        "sport"
+      ],
+      "recommended_fabrics": [
+        "Corduroy",
+        "Cotton",
+        "Cotton-Spandex Blend",
+        "Denim",
+        "Fleece",
+        "Linen",
+        "Nylon",
+        "Performance Mesh",
+        "Polyester",
+        "Spandex",
+        "Velvet",
+        "Viscose/Rayon",
+        "Wool",
+        "Wool Blend"
+      ],
+      "attributes": [
+        "color",
+        "fabric",
+        "fit",
+        "pattern",
+        "style",
+        "occasion",
+        "season"
+      ],
+      "subcategories": [
+        "graphic_tee",
+        "plain_tee",
+        "polo_tee",
+        "ringer_tee",
+        "henley",
+        "tank_top",
+        "longline_tee"
+      ],
+      "aliases": [
+        "tee",
+        "tees",
+        "t shirt",
+        "tshirt",
+        "crew neck tee",
+        "graphic tee"
+      ]
+    },
+    "shirts": {
+      "category_code": "SHT",
+      "category_label": "Shirts",
+      "genders": [
+        "men",
+        "unisex",
+        "women"
+      ],
+      "styles": [
+        "business_casual",
+        "formal",
+        "luxury",
+        "minimalist",
+        "vintage"
+      ],
+      "occasions": [
+        "business_casual",
+        "casual",
+        "formal",
+        "party",
+        "wedding_festive"
+      ],
+      "recommended_fabrics": [
+        "Cashmere",
+        "Corduroy",
+        "Cotton",
+        "Denim",
+        "Leather",
+        "Linen",
+        "Polyester",
+        "Silk",
+        "Velvet",
+        "Viscose/Rayon",
+        "Wool",
+        "Wool Blend"
+      ],
+      "attributes": [
+        "color",
+        "fabric",
+        "fit",
+        "pattern",
+        "style",
+        "occasion",
+        "season"
+      ],
+      "subcategories": [
+        "formal_shirt",
+        "casual_shirt",
+        "oxford_shirt",
+        "flannel_shirt",
+        "linen_shirt",
+        "chambray_shirt",
+        "blouse",
+        "tunic"
+      ],
+      "aliases": [
+        "button-up",
+        "button-down",
+        "collared shirt",
+        "woven shirt",
+        "blouse"
+      ]
+    },
+    "hoodies": {
+      "category_code": "HDY",
+      "category_label": "Hoodies",
+      "genders": [
+        "men",
+        "unisex",
+        "women"
+      ],
+      "styles": [
+        "athleisure",
+        "streetwear",
+        "techwear"
+      ],
+      "occasions": [
+        "casual",
+        "lounge",
+        "outdoor",
+        "party",
+        "sport"
+      ],
+      "recommended_fabrics": [
+        "Cordura",
+        "Cotton",
+        "Cotton-Spandex Blend",
+        "Fleece",
+        "Gore-Tex",
+        "Nylon",
+        "Performance Mesh",
+        "Polyester",
+        "Ripstop Nylon",
+        "Spandex"
+      ],
+      "attributes": [
+        "color",
+        "fabric",
+        "fit",
+        "pattern",
+        "style",
+        "occasion",
+        "season"
+      ],
+      "subcategories": [
+        "pullover_hoodie",
+        "zip_up_hoodie",
+        "cropped_hoodie",
+        "oversized_hoodie",
+        "tech_hoodie"
+      ],
+      "aliases": [
+        "hoodie",
+        "hooded sweatshirt",
+        "pullover hoodie",
+        "zip hoodie",
+        "sweatshirt"
+      ]
+    },
+    "jackets": {
+      "category_code": "JKT",
+      "category_label": "Jackets",
+      "genders": [
+        "men",
+        "unisex",
+        "women"
+      ],
+      "styles": [
+        "business_casual",
+        "formal",
+        "luxury",
+        "streetwear",
+        "techwear",
+        "vintage"
+      ],
+      "occasions": [
+        "business_casual",
+        "casual",
+        "formal",
+        "outdoor",
+        "party",
+        "sport",
+        "wedding_festive"
+      ],
+      "recommended_fabrics": [
+        "Cashmere",
+        "Cordura",
+        "Corduroy",
+        "Cotton",
+        "Denim",
+        "Fleece",
+        "Gore-Tex",
+        "Leather",
+        "Linen",
+        "Nylon",
+        "Performance Mesh",
+        "Polyester",
+        "Ripstop Nylon",
+        "Silk",
+        "Velvet",
+        "Wool",
+        "Wool Blend"
+      ],
+      "attributes": [
+        "color",
+        "fabric",
+        "fit",
+        "pattern",
+        "style",
+        "occasion",
+        "season"
+      ],
+      "subcategories": [
+        "bomber_jacket",
+        "denim_jacket",
+        "leather_jacket",
+        "blazer",
+        "windbreaker",
+        "puffer_jacket",
+        "trench_coat",
+        "varsity_jacket",
+        "rain_jacket",
+        "fleece_jacket"
+      ],
+      "aliases": [
+        "coat",
+        "outerwear",
+        "outer layer",
+        "jacket"
+      ]
+    },
+    "pants": {
+      "category_code": "PNT",
+      "category_label": "Pants",
+      "genders": [
+        "men",
+        "unisex",
+        "women"
+      ],
+      "styles": [
+        "athleisure",
+        "business_casual",
+        "formal",
+        "luxury",
+        "minimalist",
+        "techwear"
+      ],
+      "occasions": [
+        "business_casual",
+        "casual",
+        "formal",
+        "lounge",
+        "outdoor",
+        "party",
+        "sport",
+        "wedding_festive"
+      ],
+      "recommended_fabrics": [
+        "Cashmere",
+        "Cordura",
+        "Cotton",
+        "Cotton-Spandex Blend",
+        "Fleece",
+        "Gore-Tex",
+        "Leather",
+        "Linen",
+        "Nylon",
+        "Performance Mesh",
+        "Polyester",
+        "Ripstop Nylon",
+        "Silk",
+        "Spandex",
+        "Viscose/Rayon",
+        "Wool",
+        "Wool Blend"
+      ],
+      "attributes": [
+        "color",
+        "fabric",
+        "fit",
+        "pattern",
+        "style",
+        "occasion",
+        "season"
+      ],
+      "subcategories": [
+        "chinos",
+        "dress_pants",
+        "cargo_pants",
+        "joggers",
+        "wide_leg_pants",
+        "linen_pants",
+        "palazzo_pants",
+        "leggings"
+      ],
+      "aliases": [
+        "trousers",
+        "slacks",
+        "bottoms",
+        "pants"
+      ]
+    },
+    "jeans": {
+      "category_code": "JNS",
+      "category_label": "Jeans",
+      "genders": [
+        "men",
+        "unisex",
+        "women"
+      ],
+      "styles": [
+        "business_casual",
+        "streetwear",
+        "vintage"
+      ],
+      "occasions": [
+        "business_casual",
+        "casual",
+        "party"
+      ],
+      "recommended_fabrics": [
+        "Corduroy",
+        "Cotton",
+        "Denim",
+        "Fleece",
+        "Linen",
+        "Nylon",
+        "Velvet",
+        "Wool",
+        "Wool Blend"
+      ],
+      "attributes": [
+        "color",
+        "fabric",
+        "fit",
+        "pattern",
+        "occasion",
+        "season"
+      ],
+      "subcategories": [
+        "slim_fit_jeans",
+        "skinny_jeans",
+        "straight_fit_jeans",
+        "relaxed_fit_jeans",
+        "bootcut_jeans",
+        "wide_leg_jeans",
+        "mom_jeans",
+        "boyfriend_jeans",
+        "distressed_jeans"
+      ],
+      "aliases": [
+        "denim",
+        "denim jeans",
+        "denim pants"
+      ]
+    },
+    "shorts": {
+      "category_code": "SRT",
+      "category_label": "Shorts",
+      "genders": [
+        "men",
+        "unisex",
+        "women"
+      ],
+      "styles": [
+        "athleisure",
+        "streetwear"
+      ],
+      "occasions": [
+        "casual",
+        "lounge",
+        "party",
+        "sport"
+      ],
+      "recommended_fabrics": [
+        "Cotton",
+        "Cotton-Spandex Blend",
+        "Fleece",
+        "Nylon",
+        "Performance Mesh",
+        "Polyester",
+        "Spandex"
+      ],
+      "attributes": [
+        "color",
+        "fabric",
+        "fit",
+        "pattern",
+        "style",
+        "occasion",
+        "season"
+      ],
+      "subcategories": [
+        "chino_shorts",
+        "denim_shorts",
+        "athletic_shorts",
+        "board_shorts",
+        "biker_shorts",
+        "cargo_shorts",
+        "mini_shorts"
+      ],
+      "aliases": [
+        "short pants",
+        "shorts"
+      ]
+    },
+    "dresses": {
+      "category_code": "DRS",
+      "category_label": "Dresses",
+      "genders": [
+        "women"
+      ],
+      "styles": [
+        "formal",
+        "luxury",
+        "minimalist",
+        "vintage"
+      ],
+      "occasions": [
+        "business_casual",
+        "casual",
+        "formal",
+        "party",
+        "wedding_festive"
+      ],
+      "recommended_fabrics": [
+        "Cashmere",
+        "Corduroy",
+        "Cotton",
+        "Denim",
+        "Leather",
+        "Linen",
+        "Polyester",
+        "Silk",
+        "Velvet",
+        "Viscose/Rayon",
+        "Wool"
+      ],
+      "attributes": [
+        "color",
+        "fabric",
+        "fit",
+        "pattern",
+        "style",
+        "occasion",
+        "season"
+      ],
+      "subcategories": [
+        "maxi_dress",
+        "midi_dress",
+        "mini_dress",
+        "wrap_dress",
+        "shirt_dress",
+        "bodycon_dress",
+        "sundress",
+        "evening_gown",
+        "slip_dress",
+        "fit_and_flare"
+      ],
+      "aliases": [
+        "dress",
+        "gown",
+        "frock"
+      ]
+    },
+    "ethnic_wear": {
+      "category_code": "ETH",
+      "category_label": "Ethnic Wear",
+      "genders": [
+        "men",
+        "unisex",
+        "women"
+      ],
+      "styles": [],
+      "occasions": [],
+      "recommended_fabrics": [],
+      "attributes": [
+        "color",
+        "fabric",
+        "fit",
+        "pattern",
+        "occasion"
+      ],
+      "subcategories": [
+        "kurta",
+        "kurta_set",
+        "saree",
+        "lehenga",
+        "sherwani",
+        "salwar_kameez",
+        "anarkali",
+        "dhoti",
+        "kaftan"
+      ],
+      "aliases": [
+        "traditional wear",
+        "cultural wear",
+        "ethnic",
+        "festive wear",
+        "traditional"
+      ]
+    },
+    "footwear": {
+      "category_code": "FTW",
+      "category_label": "Footwear",
+      "genders": [
+        "men",
+        "unisex",
+        "women"
+      ],
+      "styles": [
+        "athleisure",
+        "business_casual",
+        "formal",
+        "luxury",
+        "minimalist",
+        "streetwear",
+        "techwear",
+        "vintage"
+      ],
+      "occasions": [
+        "business_casual",
+        "casual",
+        "formal",
+        "lounge",
+        "outdoor",
+        "party",
+        "sport",
+        "wedding_festive"
+      ],
+      "recommended_fabrics": [
+        "Cashmere",
+        "Cordura",
+        "Corduroy",
+        "Cotton",
+        "Cotton-Spandex Blend",
+        "Denim",
+        "Fleece",
+        "Gore-Tex",
+        "Leather",
+        "Linen",
+        "Nylon",
+        "Performance Mesh",
+        "Polyester",
+        "Ripstop Nylon",
+        "Silk",
+        "Spandex",
+        "Velvet",
+        "Viscose/Rayon",
+        "Wool",
+        "Wool Blend"
+      ],
+      "attributes": [
+        "color",
+        "fabric",
+        "style",
+        "occasion",
+        "season"
+      ],
+      "subcategories": [
+        "sneakers",
+        "running_shoes",
+        "loafers",
+        "oxford_shoes",
+        "boots",
+        "ankle_boots",
+        "chelsea_boots",
+        "sandals",
+        "slides",
+        "heels",
+        "stilettos",
+        "flip_flops",
+        "mules",
+        "platforms"
+      ],
+      "aliases": [
+        "shoes",
+        "boots",
+        "sneakers",
+        "sandals",
+        "footwear"
+      ]
+    },
+    "accessories": {
+      "category_code": "ACC",
+      "category_label": "Accessories",
+      "genders": [
+        "men",
+        "unisex",
+        "women"
+      ],
+      "styles": [
+        "luxury",
+        "streetwear",
+        "techwear"
+      ],
+      "occasions": [
+        "business_casual",
+        "casual",
+        "formal",
+        "outdoor",
+        "party",
+        "sport"
+      ],
+      "recommended_fabrics": [
+        "Cashmere",
+        "Cordura",
+        "Cotton",
+        "Fleece",
+        "Gore-Tex",
+        "Leather",
+        "Nylon",
+        "Performance Mesh",
+        "Ripstop Nylon",
+        "Silk",
+        "Wool"
+      ],
+      "attributes": [
+        "color",
+        "fabric",
+        "style",
+        "occasion"
+      ],
+      "subcategories": [
+        "bags",
+        "belts",
+        "hats",
+        "scarves",
+        "sunglasses",
+        "watches",
+        "jewelry",
+        "ties_bowties",
+        "socks",
+        "gloves",
+        "wallets",
+        "hair_accessories"
+      ],
+      "aliases": [
+        "accessories",
+        "add-ons",
+        "extras"
+      ]
+    }
+  }
+}

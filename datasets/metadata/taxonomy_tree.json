@@ -1,0 +1,460 @@
+{
+  "_meta": {
+    "generated_at": "2026-06-02T08:35:32.023356+00:00",
+    "source": "fashion_knowledge.json",
+    "description": "Full gender → category → subcategory taxonomy tree",
+    "stats": {
+      "knowledge_base_version": "1.0.0",
+      "total_categories": 11,
+      "total_subcategories": 99,
+      "total_styles": 8,
+      "total_genders": 3,
+      "total_attribute_types": 7,
+      "total_color_entries": 23,
+      "total_fabric_entries": 17,
+      "total_alias_color_index": 99,
+      "total_alias_fabric_index": 58,
+      "total_alias_category_index": 54
+    }
+  },
+  "tree": {
+    "men": {
+      "t_shirts": {
+        "label": "T-Shirts",
+        "subcategories": {
+          "graphic_tee": "Graphic Tee",
+          "plain_tee": "Plain Tee",
+          "polo_tee": "Polo Tee",
+          "ringer_tee": "Ringer Tee",
+          "henley": "Henley",
+          "tank_top": "Tank Top",
+          "longline_tee": "Longline Tee"
+        }
+      },
+      "shirts": {
+        "label": "Shirts",
+        "subcategories": {
+          "formal_shirt": "Formal Shirt",
+          "casual_shirt": "Casual Shirt",
+          "oxford_shirt": "Oxford Shirt",
+          "flannel_shirt": "Flannel Shirt",
+          "linen_shirt": "Linen Shirt",
+          "chambray_shirt": "Chambray Shirt",
+          "blouse": "Blouse",
+          "tunic": "Tunic"
+        }
+      },
+      "hoodies": {
+        "label": "Hoodies",
+        "subcategories": {
+          "pullover_hoodie": "Pullover Hoodie",
+          "zip_up_hoodie": "Zip-Up Hoodie",
+          "cropped_hoodie": "Cropped Hoodie",
+          "oversized_hoodie": "Oversized Hoodie",
+          "tech_hoodie": "Tech Hoodie"
+        }
+      },
+      "jackets": {
+        "label": "Jackets",
+        "subcategories": {
+          "bomber_jacket": "Bomber Jacket",
+          "denim_jacket": "Denim Jacket",
+          "leather_jacket": "Leather Jacket",
+          "blazer": "Blazer",
+          "windbreaker": "Windbreaker",
+          "puffer_jacket": "Puffer Jacket",
+          "trench_coat": "Trench Coat",
+          "varsity_jacket": "Varsity Jacket",
+          "rain_jacket": "Rain Jacket",
+          "fleece_jacket": "Fleece Jacket"
+        }
+      },
+      "pants": {
+        "label": "Pants",
+        "subcategories": {
+          "chinos": "Chinos",
+          "dress_pants": "Dress Pants",
+          "cargo_pants": "Cargo Pants",
+          "joggers": "Joggers",
+          "wide_leg_pants": "Wide-Leg Pants",
+          "linen_pants": "Linen Pants",
+          "palazzo_pants": "Palazzo Pants",
+          "leggings": "Leggings"
+        }
+      },
+      "jeans": {
+        "label": "Jeans",
+        "subcategories": {
+          "slim_fit_jeans": "Slim Fit",
+          "skinny_jeans": "Skinny Jeans",
+          "straight_fit_jeans": "Straight Fit",
+          "relaxed_fit_jeans": "Relaxed Fit",
+          "bootcut_jeans": "Bootcut",
+          "wide_leg_jeans": "Wide Leg",
+          "mom_jeans": "Mom Jeans",
+          "boyfriend_jeans": "Boyfriend Jeans",
+          "distressed_jeans": "Distressed Jeans"
+        }
+      },
+      "shorts": {
+        "label": "Shorts",
+        "subcategories": {
+          "chino_shorts": "Chino Shorts",
+          "denim_shorts": "Denim Shorts",
+          "athletic_shorts": "Athletic Shorts",
+          "board_shorts": "Board Shorts",
+          "biker_shorts": "Biker Shorts",
+          "cargo_shorts": "Cargo Shorts",
+          "mini_shorts": "Mini Shorts"
+        }
+      },
+      "ethnic_wear": {
+        "label": "Ethnic Wear",
+        "subcategories": {
+          "kurta": "Kurta",
+          "kurta_set": "Kurta Set",
+          "saree": "Saree",
+          "lehenga": "Lehenga",
+          "sherwani": "Sherwani",
+          "salwar_kameez": "Salwar Kameez",
+          "anarkali": "Anarkali",
+          "dhoti": "Dhoti",
+          "kaftan": "Kaftan"
+        }
+      },
+      "footwear": {
+        "label": "Footwear",
+        "subcategories": {
+          "sneakers": "Sneakers",
+          "running_shoes": "Running Shoes",
+          "loafers": "Loafers",
+          "oxford_shoes": "Oxford Shoes",
+          "boots": "Boots",
+          "ankle_boots": "Ankle Boots",
+          "chelsea_boots": "Chelsea Boots",
+          "sandals": "Sandals",
+          "slides": "Slides",
+          "heels": "Heels",
+          "stilettos": "Stilettos",
+          "flip_flops": "Flip Flops",
+          "mules": "Mules",
+          "platforms": "Platforms"
+        }
+      },
+      "accessories": {
+        "label": "Accessories",
+        "subcategories": {
+          "bags": "Bags",
+          "belts": "Belts",
+          "hats": "Hats",
+          "scarves": "Scarves",
+          "sunglasses": "Sunglasses",
+          "watches": "Watches",
+          "jewelry": "Jewelry",
+          "ties_bowties": "Ties & Bowties",
+          "socks": "Socks",
+          "gloves": "Gloves",
+          "wallets": "Wallets",
+          "hair_accessories": "Hair Accessories"
+        }
+      }
+    },
+    "women": {
+      "t_shirts": {
+        "label": "T-Shirts",
+        "subcategories": {
+          "graphic_tee": "Graphic Tee",
+          "plain_tee": "Plain Tee",
+          "polo_tee": "Polo Tee",
+          "ringer_tee": "Ringer Tee",
+          "henley": "Henley",
+          "tank_top": "Tank Top",
+          "longline_tee": "Longline Tee"
+        }
+      },
+      "shirts": {
+        "label": "Shirts",
+        "subcategories": {
+          "formal_shirt": "Formal Shirt",
+          "casual_shirt": "Casual Shirt",
+          "oxford_shirt": "Oxford Shirt",
+          "flannel_shirt": "Flannel Shirt",
+          "linen_shirt": "Linen Shirt",
+          "chambray_shirt": "Chambray Shirt",
+          "blouse": "Blouse",
+          "tunic": "Tunic"
+        }
+      },
+      "hoodies": {
+        "label": "Hoodies",
+        "subcategories": {
+          "pullover_hoodie": "Pullover Hoodie",
+          "zip_up_hoodie": "Zip-Up Hoodie",
+          "cropped_hoodie": "Cropped Hoodie",
+          "oversized_hoodie": "Oversized Hoodie",
+          "tech_hoodie": "Tech Hoodie"
+        }
+      },
+      "jackets": {
+        "label": "Jackets",
+        "subcategories": {
+          "bomber_jacket": "Bomber Jacket",
+          "denim_jacket": "Denim Jacket",
+          "leather_jacket": "Leather Jacket",
+          "blazer": "Blazer",
+          "windbreaker": "Windbreaker",
+          "puffer_jacket": "Puffer Jacket",
+          "trench_coat": "Trench Coat",
+          "varsity_jacket": "Varsity Jacket",
+          "rain_jacket": "Rain Jacket",
+          "fleece_jacket": "Fleece Jacket"
+        }
+      },
+      "pants": {
+        "label": "Pants",
+        "subcategories": {
+          "chinos": "Chinos",
+          "dress_pants": "Dress Pants",
+          "cargo_pants": "Cargo Pants",
+          "joggers": "Joggers",
+          "wide_leg_pants": "Wide-Leg Pants",
+          "linen_pants": "Linen Pants",
+          "palazzo_pants": "Palazzo Pants",
+          "leggings": "Leggings"
+        }
+      },
+      "jeans": {
+        "label": "Jeans",
+        "subcategories": {
+          "slim_fit_jeans": "Slim Fit",
+          "skinny_jeans": "Skinny Jeans",
+          "straight_fit_jeans": "Straight Fit",
+          "relaxed_fit_jeans": "Relaxed Fit",
+          "bootcut_jeans": "Bootcut",
+          "wide_leg_jeans": "Wide Leg",
+          "mom_jeans": "Mom Jeans",
+          "boyfriend_jeans": "Boyfriend Jeans",
+          "distressed_jeans": "Distressed Jeans"
+        }
+      },
+      "shorts": {
+        "label": "Shorts",
+        "subcategories": {
+          "chino_shorts": "Chino Shorts",
+          "denim_shorts": "Denim Shorts",
+          "athletic_shorts": "Athletic Shorts",
+          "board_shorts": "Board Shorts",
+          "biker_shorts": "Biker Shorts",
+          "cargo_shorts": "Cargo Shorts",
+          "mini_shorts": "Mini Shorts"
+        }
+      },
+      "dresses": {
+        "label": "Dresses",
+        "subcategories": {
+          "maxi_dress": "Maxi Dress",
+          "midi_dress": "Midi Dress",
+          "mini_dress": "Mini Dress",
+          "wrap_dress": "Wrap Dress",
+          "shirt_dress": "Shirt Dress",
+          "bodycon_dress": "Bodycon Dress",
+          "sundress": "Sundress",
+          "evening_gown": "Evening Gown",
+          "slip_dress": "Slip Dress",
+          "fit_and_flare": "Fit and Flare"
+        }
+      },
+      "ethnic_wear": {
+        "label": "Ethnic Wear",
+        "subcategories": {
+          "kurta": "Kurta",
+          "kurta_set": "Kurta Set",
+          "saree": "Saree",
+          "lehenga": "Lehenga",
+          "sherwani": "Sherwani",
+          "salwar_kameez": "Salwar Kameez",
+          "anarkali": "Anarkali",
+          "dhoti": "Dhoti",
+          "kaftan": "Kaftan"
+        }
+      },
+      "footwear": {
+        "label": "Footwear",
+        "subcategories": {
+          "sneakers": "Sneakers",
+          "running_shoes": "Running Shoes",
+          "loafers": "Loafers",
+          "oxford_shoes": "Oxford Shoes",
+          "boots": "Boots",
+          "ankle_boots": "Ankle Boots",
+          "chelsea_boots": "Chelsea Boots",
+          "sandals": "Sandals",
+          "slides": "Slides",
+          "heels": "Heels",
+          "stilettos": "Stilettos",
+          "flip_flops": "Flip Flops",
+          "mules": "Mules",
+          "platforms": "Platforms"
+        }
+      },
+      "accessories": {
+        "label": "Accessories",
+        "subcategories": {
+          "bags": "Bags",
+          "belts": "Belts",
+          "hats": "Hats",
+          "scarves": "Scarves",
+          "sunglasses": "Sunglasses",
+          "watches": "Watches",
+          "jewelry": "Jewelry",
+          "ties_bowties": "Ties & Bowties",
+          "socks": "Socks",
+          "gloves": "Gloves",
+          "wallets": "Wallets",
+          "hair_accessories": "Hair Accessories"
+        }
+      }
+    },
+    "unisex": {
+      "t_shirts": {
+        "label": "T-Shirts",
+        "subcategories": {
+          "graphic_tee": "Graphic Tee",
+          "plain_tee": "Plain Tee",
+          "polo_tee": "Polo Tee",
+          "ringer_tee": "Ringer Tee",
+          "henley": "Henley",
+          "tank_top": "Tank Top",
+          "longline_tee": "Longline Tee"
+        }
+      },
+      "shirts": {
+        "label": "Shirts",
+        "subcategories": {
+          "formal_shirt": "Formal Shirt",
+          "casual_shirt": "Casual Shirt",
+          "oxford_shirt": "Oxford Shirt",
+          "flannel_shirt": "Flannel Shirt",
+          "linen_shirt": "Linen Shirt",
+          "chambray_shirt": "Chambray Shirt",
+          "blouse": "Blouse",
+          "tunic": "Tunic"
+        }
+      },
+      "hoodies": {
+        "label": "Hoodies",
+        "subcategories": {
+          "pullover_hoodie": "Pullover Hoodie",
+          "zip_up_hoodie": "Zip-Up Hoodie",
+          "cropped_hoodie": "Cropped Hoodie",
+          "oversized_hoodie": "Oversized Hoodie",
+          "tech_hoodie": "Tech Hoodie"
+        }
+      },
+      "jackets": {
+        "label": "Jackets",
+        "subcategories": {
+          "bomber_jacket": "Bomber Jacket",
+          "denim_jacket": "Denim Jacket",
+          "leather_jacket": "Leather Jacket",
+          "blazer": "Blazer",
+          "windbreaker": "Windbreaker",
+          "puffer_jacket": "Puffer Jacket",
+          "trench_coat": "Trench Coat",
+          "varsity_jacket": "Varsity Jacket",
+          "rain_jacket": "Rain Jacket",
+          "fleece_jacket": "Fleece Jacket"
+        }
+      },
+      "pants": {
+        "label": "Pants",
+        "subcategories": {
+          "chinos": "Chinos",
+          "dress_pants": "Dress Pants",
+          "cargo_pants": "Cargo Pants",
+          "joggers": "Joggers",
+          "wide_leg_pants": "Wide-Leg Pants",
+          "linen_pants": "Linen Pants",
+          "palazzo_pants": "Palazzo Pants",
+          "leggings": "Leggings"
+        }
+      },
+      "jeans": {
+        "label": "Jeans",
+        "subcategories": {
+          "slim_fit_jeans": "Slim Fit",
+          "skinny_jeans": "Skinny Jeans",
+          "straight_fit_jeans": "Straight Fit",
+          "relaxed_fit_jeans": "Relaxed Fit",
+          "bootcut_jeans": "Bootcut",
+          "wide_leg_jeans": "Wide Leg",
+          "mom_jeans": "Mom Jeans",
+          "boyfriend_jeans": "Boyfriend Jeans",
+          "distressed_jeans": "Distressed Jeans"
+        }
+      },
+      "shorts": {
+        "label": "Shorts",
+        "subcategories": {
+          "chino_shorts": "Chino Shorts",
+          "denim_shorts": "Denim Shorts",
+          "athletic_shorts": "Athletic Shorts",
+          "board_shorts": "Board Shorts",
+          "biker_shorts": "Biker Shorts",
+          "cargo_shorts": "Cargo Shorts",
+          "mini_shorts": "Mini Shorts"
+        }
+      },
+      "ethnic_wear": {
+        "label": "Ethnic Wear",
+        "subcategories": {
+          "kurta": "Kurta",
+          "kurta_set": "Kurta Set",
+          "saree": "Saree",
+          "lehenga": "Lehenga",
+          "sherwani": "Sherwani",
+          "salwar_kameez": "Salwar Kameez",
+          "anarkali": "Anarkali",
+          "dhoti": "Dhoti",
+          "kaftan": "Kaftan"
+        }
+      },
+      "footwear": {
+        "label": "Footwear",
+        "subcategories": {
+          "sneakers": "Sneakers",
+          "running_shoes": "Running Shoes",
+          "loafers": "Loafers",
+          "oxford_shoes": "Oxford Shoes",
+          "boots": "Boots",
+          "ankle_boots": "Ankle Boots",
+          "chelsea_boots": "Chelsea Boots",
+          "sandals": "Sandals",
+          "slides": "Slides",
+          "heels": "Heels",
+          "stilettos": "Stilettos",
+          "flip_flops": "Flip Flops",
+          "mules": "Mules",
+          "platforms": "Platforms"
+        }
+      },
+      "accessories": {
+        "label": "Accessories",
+        "subcategories": {
+          "bags": "Bags",
+          "belts": "Belts",
+          "hats": "Hats",
+          "scarves": "Scarves",
+          "sunglasses": "Sunglasses",
+          "watches": "Watches",
+          "jewelry": "Jewelry",
+          "ties_bowties": "Ties & Bowties",
+          "socks": "Socks",
+          "gloves": "Gloves",
+          "wallets": "Wallets",
+          "hair_accessories": "Hair Accessories"
+        }
+      }
+    }
+  }
+}

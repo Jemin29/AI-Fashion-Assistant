@@ -1,0 +1,1250 @@
+{
+  "_meta": {
+    "name": "Fashion AI Knowledge Base",
+    "version": "1.0.0",
+    "week": 1,
+    "description": "Comprehensive fashion taxonomy, attribute definitions, style hierarchy, category mappings, validation rules, and synonym index for the AI Fashion Design Assistant.",
+    "created_at": "2026-06-02",
+    "authors": ["Fashion AI Team"],
+    "schema_version": "1.0"
+  },
+
+  "genders": {
+    "men": {
+      "label": "Men",
+      "code": "M",
+      "pronouns": ["he", "him"],
+      "aliases": ["male", "mens", "men's", "gents", "guy"]
+    },
+    "women": {
+      "label": "Women",
+      "code": "W",
+      "pronouns": ["she", "her"],
+      "aliases": ["female", "womens", "women's", "ladies", "girls"]
+    },
+    "unisex": {
+      "label": "Unisex",
+      "code": "U",
+      "aliases": ["gender-neutral", "genderless", "gender neutral", "androgynous", "universal"]
+    }
+  },
+
+  "categories": {
+    "t_shirts": {
+      "label": "T-Shirts",
+      "code": "TSH",
+      "genders": ["men", "women", "unisex"],
+      "description": "Short-sleeved, collarless casual tops made from knit fabric.",
+      "aliases": ["tee", "tees", "t shirt", "tshirt", "crew neck tee", "graphic tee"],
+      "subcategories": {
+        "graphic_tee": {
+          "label": "Graphic Tee",
+          "description": "T-shirt with printed artwork, logos, or text."
+        },
+        "plain_tee": {
+          "label": "Plain Tee",
+          "description": "Solid-color tee with no graphics."
+        },
+        "polo_tee": {
+          "label": "Polo Tee",
+          "description": "T-shirt with a collar and 2–3 button placket."
+        },
+        "ringer_tee": {
+          "label": "Ringer Tee",
+          "description": "Tee with contrasting colored collar and sleeve bands."
+        },
+        "henley": {
+          "label": "Henley",
+          "description": "Collarless shirt with a placket beneath the neckline."
+        },
+        "tank_top": {
+          "label": "Tank Top",
+          "description": "Sleeveless, shoulder-strapped top."
+        },
+        "longline_tee": {
+          "label": "Longline Tee",
+          "description": "Extended-length T-shirt falling past the hip."
+        }
+      }
+    },
+
+    "shirts": {
+      "label": "Shirts",
+      "code": "SHT",
+      "genders": ["men", "women", "unisex"],
+      "description": "Woven tops with collars, buttons, and a more structured construction than T-shirts.",
+      "aliases": ["button-up", "button-down", "collared shirt", "woven shirt", "blouse"],
+      "subcategories": {
+        "formal_shirt": {
+          "label": "Formal Shirt",
+          "description": "Crisp woven dress shirt for office or formal occasions."
+        },
+        "casual_shirt": {
+          "label": "Casual Shirt",
+          "description": "Relaxed woven shirt for everyday wear."
+        },
+        "oxford_shirt": {
+          "label": "Oxford Shirt",
+          "description": "Button-down collar shirt in Oxford weave cotton."
+        },
+        "flannel_shirt": {
+          "label": "Flannel Shirt",
+          "description": "Soft, plaid or checked shirt in brushed cotton or wool blend."
+        },
+        "linen_shirt": {
+          "label": "Linen Shirt",
+          "description": "Breathable warm-weather shirt in linen fabric."
+        },
+        "chambray_shirt": {
+          "label": "Chambray Shirt",
+          "description": "Lightweight denim-look shirt in plain-weave fabric."
+        },
+        "blouse": {
+          "label": "Blouse",
+          "description": "Women's loose-fitting, often decorative upper garment."
+        },
+        "tunic": {
+          "label": "Tunic",
+          "description": "Long top extending past the hip, worn by women."
+        }
+      }
+    },
+
+    "hoodies": {
+      "label": "Hoodies",
+      "code": "HDY",
+      "genders": ["men", "women", "unisex"],
+      "description": "Sweatshirts with an attached hood, typically with a front pocket.",
+      "aliases": ["hoodie", "hooded sweatshirt", "pullover hoodie", "zip hoodie", "sweatshirt"],
+      "subcategories": {
+        "pullover_hoodie": {
+          "label": "Pullover Hoodie",
+          "description": "Classic over-the-head hoodie with kangaroo pocket."
+        },
+        "zip_up_hoodie": {
+          "label": "Zip-Up Hoodie",
+          "description": "Full front-zip hoodie with split kangaroo pocket."
+        },
+        "cropped_hoodie": {
+          "label": "Cropped Hoodie",
+          "description": "Shortened hoodie exposing the midriff."
+        },
+        "oversized_hoodie": {
+          "label": "Oversized Hoodie",
+          "description": "Relaxed, intentionally large-fit hoodie."
+        },
+        "tech_hoodie": {
+          "label": "Tech Hoodie",
+          "description": "Performance-oriented hoodie with moisture-wicking fabric."
+        }
+      }
+    },
+
+    "jackets": {
+      "label": "Jackets",
+      "code": "JKT",
+      "genders": ["men", "women", "unisex"],
+      "description": "Outerwear garments that open at the front.",
+      "aliases": ["coat", "outerwear", "outer layer", "jacket"],
+      "subcategories": {
+        "bomber_jacket": {
+          "label": "Bomber Jacket",
+          "description": "Short, waist-length jacket with ribbed cuffs and hem."
+        },
+        "denim_jacket": {
+          "label": "Denim Jacket",
+          "description": "Structured jacket made from denim fabric."
+        },
+        "leather_jacket": {
+          "label": "Leather Jacket",
+          "description": "Jacket in genuine or faux leather, often biker-style."
+        },
+        "blazer": {
+          "label": "Blazer",
+          "description": "Structured jacket with lapels; business or smart casual use."
+        },
+        "windbreaker": {
+          "label": "Windbreaker",
+          "description": "Lightweight, wind-resistant jacket."
+        },
+        "puffer_jacket": {
+          "label": "Puffer Jacket",
+          "description": "Insulated jacket with quilted sections filled with down or synthetic fill."
+        },
+        "trench_coat": {
+          "label": "Trench Coat",
+          "description": "Double-breasted, belted long coat in water-resistant fabric."
+        },
+        "varsity_jacket": {
+          "label": "Varsity Jacket",
+          "description": "Athletic jacket with leather sleeves and wool body."
+        },
+        "rain_jacket": {
+          "label": "Rain Jacket",
+          "description": "Fully waterproof lightweight jacket."
+        },
+        "fleece_jacket": {
+          "label": "Fleece Jacket",
+          "description": "Soft insulating jacket in polar fleece fabric."
+        }
+      }
+    },
+
+    "pants": {
+      "label": "Pants",
+      "code": "PNT",
+      "genders": ["men", "women", "unisex"],
+      "description": "Leg-covering garments extending from waist to ankle.",
+      "aliases": ["trousers", "slacks", "bottoms", "pants"],
+      "subcategories": {
+        "chinos": {
+          "label": "Chinos",
+          "description": "Slim-fit twill cotton trousers; smart casual staple."
+        },
+        "dress_pants": {
+          "label": "Dress Pants",
+          "description": "Formal tailored trousers for office and events."
+        },
+        "cargo_pants": {
+          "label": "Cargo Pants",
+          "description": "Utility pants with multiple side pockets."
+        },
+        "joggers": {
+          "label": "Joggers",
+          "description": "Tapered sweatpants with elasticated cuffs."
+        },
+        "wide_leg_pants": {
+          "label": "Wide-Leg Pants",
+          "description": "Pants with a significantly flared leg opening."
+        },
+        "linen_pants": {
+          "label": "Linen Pants",
+          "description": "Breathable summer trousers in linen."
+        },
+        "palazzo_pants": {
+          "label": "Palazzo Pants",
+          "description": "Women's ultra-wide-leg, floor-length trousers."
+        },
+        "leggings": {
+          "label": "Leggings",
+          "description": "Stretchy, form-fitting leg coverings."
+        }
+      }
+    },
+
+    "jeans": {
+      "label": "Jeans",
+      "code": "JNS",
+      "genders": ["men", "women", "unisex"],
+      "description": "Trousers made from denim fabric in various fits and washes.",
+      "aliases": ["denim", "denim jeans", "denim pants"],
+      "subcategories": {
+        "slim_fit_jeans": {
+          "label": "Slim Fit",
+          "description": "Tapered through thigh and leg, close-fitting."
+        },
+        "skinny_jeans": {
+          "label": "Skinny Jeans",
+          "description": "Extremely close-fitting from hip to ankle."
+        },
+        "straight_fit_jeans": {
+          "label": "Straight Fit",
+          "description": "Even width from thigh to hem."
+        },
+        "relaxed_fit_jeans": {
+          "label": "Relaxed Fit",
+          "description": "Looser through the seat and thigh."
+        },
+        "bootcut_jeans": {
+          "label": "Bootcut",
+          "description": "Slightly flared from knee to accommodate boots."
+        },
+        "wide_leg_jeans": {
+          "label": "Wide Leg",
+          "description": "Exaggerated wide leg opening."
+        },
+        "mom_jeans": {
+          "label": "Mom Jeans",
+          "description": "High-waist, relaxed-fit with tapered leg; vintage styling."
+        },
+        "boyfriend_jeans": {
+          "label": "Boyfriend Jeans",
+          "description": "Loose, borrowed-from-the-boys styling."
+        },
+        "distressed_jeans": {
+          "label": "Distressed Jeans",
+          "description": "Jeans with intentional tears, frays, or fading."
+        }
+      }
+    },
+
+    "shorts": {
+      "label": "Shorts",
+      "code": "SRT",
+      "genders": ["men", "women", "unisex"],
+      "description": "Short leg garments ending above the knee.",
+      "aliases": ["short pants", "shorts"],
+      "subcategories": {
+        "chino_shorts": {
+          "label": "Chino Shorts",
+          "description": "Twill cotton shorts; smart casual."
+        },
+        "denim_shorts": {
+          "label": "Denim Shorts",
+          "description": "Cut-off or manufactured denim shorts."
+        },
+        "athletic_shorts": {
+          "label": "Athletic Shorts",
+          "description": "Performance shorts for sport and gym."
+        },
+        "board_shorts": {
+          "label": "Board Shorts",
+          "description": "Long swim shorts with side pockets."
+        },
+        "biker_shorts": {
+          "label": "Biker Shorts",
+          "description": "Tight lycra shorts; cycling-inspired fashion."
+        },
+        "cargo_shorts": {
+          "label": "Cargo Shorts",
+          "description": "Multi-pocket utility shorts."
+        },
+        "mini_shorts": {
+          "label": "Mini Shorts",
+          "description": "Very short women's shorts."
+        }
+      }
+    },
+
+    "dresses": {
+      "label": "Dresses",
+      "code": "DRS",
+      "genders": ["women"],
+      "description": "One-piece garments covering the body from shoulders to various leg lengths.",
+      "aliases": ["dress", "gown", "frock"],
+      "subcategories": {
+        "maxi_dress": {
+          "label": "Maxi Dress",
+          "description": "Floor-length dress."
+        },
+        "midi_dress": {
+          "label": "Midi Dress",
+          "description": "Below-the-knee to mid-calf length dress."
+        },
+        "mini_dress": {
+          "label": "Mini Dress",
+          "description": "Dress ending well above the knee."
+        },
+        "wrap_dress": {
+          "label": "Wrap Dress",
+          "description": "Dress that wraps and ties at the waist."
+        },
+        "shirt_dress": {
+          "label": "Shirt Dress",
+          "description": "Dress styled like a long button-down shirt."
+        },
+        "bodycon_dress": {
+          "label": "Bodycon Dress",
+          "description": "Form-fitting, stretchy dress."
+        },
+        "sundress": {
+          "label": "Sundress",
+          "description": "Light, sleeveless dress for warm weather."
+        },
+        "evening_gown": {
+          "label": "Evening Gown",
+          "description": "Formal floor-length dress for galas and events."
+        },
+        "slip_dress": {
+          "label": "Slip Dress",
+          "description": "Satin or silk-like lingerie-inspired dress."
+        },
+        "fit_and_flare": {
+          "label": "Fit and Flare",
+          "description": "Fitted bodice with a flared skirt."
+        }
+      }
+    },
+
+    "ethnic_wear": {
+      "label": "Ethnic Wear",
+      "code": "ETH",
+      "genders": ["men", "women", "unisex"],
+      "description": "Traditional and cultural garments from South Asian, East Asian, African, and Middle Eastern traditions.",
+      "aliases": ["traditional wear", "cultural wear", "ethnic", "festive wear", "traditional"],
+      "subcategories": {
+        "kurta": {
+          "label": "Kurta",
+          "description": "Traditional South Asian long tunic shirt for men and women."
+        },
+        "kurta_set": {
+          "label": "Kurta Set",
+          "description": "Matching kurta with salwar or pyjama."
+        },
+        "saree": {
+          "label": "Saree",
+          "description": "Traditional Indian drape garment for women."
+        },
+        "lehenga": {
+          "label": "Lehenga",
+          "description": "Embroidered skirt with blouse and dupatta for women."
+        },
+        "sherwani": {
+          "label": "Sherwani",
+          "description": "Long formal coat for South Asian men, often for weddings."
+        },
+        "salwar_kameez": {
+          "label": "Salwar Kameez",
+          "description": "Tunic with matching trousers; popular across South Asia."
+        },
+        "anarkali": {
+          "label": "Anarkali",
+          "description": "Full-flowing frock-style ethnic dress for women."
+        },
+        "dhoti": {
+          "label": "Dhoti",
+          "description": "Traditional Indian lower garment draped around the waist and legs."
+        },
+        "kaftan": {
+          "label": "Kaftan",
+          "description": "Long, loose garment from Middle Eastern and African origins."
+        }
+      }
+    },
+
+    "footwear": {
+      "label": "Footwear",
+      "code": "FTW",
+      "genders": ["men", "women", "unisex"],
+      "description": "Shoes, boots, sandals, and all items worn on the feet.",
+      "aliases": ["shoes", "boots", "sneakers", "sandals", "footwear"],
+      "subcategories": {
+        "sneakers": {
+          "label": "Sneakers",
+          "description": "Casual athletic shoes for everyday and sport."
+        },
+        "running_shoes": {
+          "label": "Running Shoes",
+          "description": "Performance footwear engineered for running."
+        },
+        "loafers": {
+          "label": "Loafers",
+          "description": "Slip-on shoes without laces; smart casual."
+        },
+        "oxford_shoes": {
+          "label": "Oxford Shoes",
+          "description": "Closed-lacing formal leather shoes."
+        },
+        "boots": {
+          "label": "Boots",
+          "description": "Footwear extending above the ankle."
+        },
+        "ankle_boots": {
+          "label": "Ankle Boots",
+          "description": "Short boots ending at or just above the ankle."
+        },
+        "chelsea_boots": {
+          "label": "Chelsea Boots",
+          "description": "Elastic-sided ankle boots with sleek profile."
+        },
+        "sandals": {
+          "label": "Sandals",
+          "description": "Open footwear with straps."
+        },
+        "slides": {
+          "label": "Slides",
+          "description": "Open-toe slip-on sandals."
+        },
+        "heels": {
+          "label": "Heels",
+          "description": "Women's shoes with an elevated heel."
+        },
+        "stilettos": {
+          "label": "Stilettos",
+          "description": "High, thin-heeled dress shoes."
+        },
+        "flip_flops": {
+          "label": "Flip Flops",
+          "description": "Simple thong-style casual sandals."
+        },
+        "mules": {
+          "label": "Mules",
+          "description": "Backless shoes or heels."
+        },
+        "platforms": {
+          "label": "Platforms",
+          "description": "Shoes with thick, raised soles."
+        }
+      }
+    },
+
+    "accessories": {
+      "label": "Accessories",
+      "code": "ACC",
+      "genders": ["men", "women", "unisex"],
+      "description": "Items worn to complement an outfit but not considered clothing.",
+      "aliases": ["accessories", "add-ons", "extras"],
+      "subcategories": {
+        "bags": {
+          "label": "Bags",
+          "description": "Handbags, backpacks, totes, clutches, and crossbody bags."
+        },
+        "belts": {
+          "label": "Belts",
+          "description": "Strips of leather or fabric worn around the waist."
+        },
+        "hats": {
+          "label": "Hats",
+          "description": "Baseball caps, beanies, fedoras, and sun hats."
+        },
+        "scarves": {
+          "label": "Scarves",
+          "description": "Fabric worn around the neck or head for warmth or style."
+        },
+        "sunglasses": {
+          "label": "Sunglasses",
+          "description": "UV-protective or fashion-forward eyewear."
+        },
+        "watches": {
+          "label": "Watches",
+          "description": "Timepieces worn on the wrist."
+        },
+        "jewelry": {
+          "label": "Jewelry",
+          "description": "Rings, necklaces, bracelets, earrings, and brooches."
+        },
+        "ties_bowties": {
+          "label": "Ties & Bowties",
+          "description": "Formal neckwear for men and women."
+        },
+        "socks": {
+          "label": "Socks",
+          "description": "Knit foot coverings of all heights and styles."
+        },
+        "gloves": {
+          "label": "Gloves",
+          "description": "Hand coverings for warmth or style."
+        },
+        "wallets": {
+          "label": "Wallets",
+          "description": "Compact holders for cards and cash."
+        },
+        "hair_accessories": {
+          "label": "Hair Accessories",
+          "description": "Headbands, clips, scrunchies, and hair pins."
+        }
+      }
+    }
+  },
+
+  "attributes": {
+    "color": {
+      "label": "Color",
+      "code": "CLR",
+      "description": "The primary color(s) of the garment.",
+      "type": "multi_select",
+      "values": {
+        "neutrals": {
+          "label": "Neutrals",
+          "colors": [
+            {"name": "White",       "hex": "#FFFFFF", "aliases": ["ivory", "off-white", "cream"]},
+            {"name": "Black",       "hex": "#000000", "aliases": ["jet black", "onyx"]},
+            {"name": "Grey",        "hex": "#808080", "aliases": ["gray", "charcoal", "slate", "silver"]},
+            {"name": "Beige",       "hex": "#F5F5DC", "aliases": ["sand", "khaki", "stone", "camel", "tan"]},
+            {"name": "Brown",       "hex": "#8B4513", "aliases": ["chocolate", "coffee", "mocha", "walnut", "cognac"]}
+          ]
+        },
+        "blues": {
+          "label": "Blues",
+          "colors": [
+            {"name": "Navy",        "hex": "#001F5B", "aliases": ["navy blue", "dark blue", "midnight blue"]},
+            {"name": "Royal Blue",  "hex": "#4169E1", "aliases": ["cobalt", "sapphire"]},
+            {"name": "Sky Blue",    "hex": "#87CEEB", "aliases": ["light blue", "powder blue", "baby blue"]},
+            {"name": "Teal",        "hex": "#008080", "aliases": ["cyan", "turquoise", "petrol"]}
+          ]
+        },
+        "greens": {
+          "label": "Greens",
+          "colors": [
+            {"name": "Olive",       "hex": "#808000", "aliases": ["military green", "khaki green"]},
+            {"name": "Forest Green","hex": "#228B22", "aliases": ["dark green", "hunter green", "bottle green"]},
+            {"name": "Mint",        "hex": "#98FF98", "aliases": ["sage", "seafoam", "mint green"]},
+            {"name": "Emerald",     "hex": "#50C878", "aliases": ["bright green", "jade"]}
+          ]
+        },
+        "reds_pinks": {
+          "label": "Reds & Pinks",
+          "colors": [
+            {"name": "Red",         "hex": "#FF0000", "aliases": ["crimson", "scarlet", "cherry", "ruby"]},
+            {"name": "Burgundy",    "hex": "#800020", "aliases": ["maroon", "wine", "oxblood", "plum red"]},
+            {"name": "Pink",        "hex": "#FFC0CB", "aliases": ["blush", "rose", "bubblegum", "hot pink", "fuchsia"]},
+            {"name": "Coral",       "hex": "#FF7F50", "aliases": ["salmon", "peach"]}
+          ]
+        },
+        "warm_tones": {
+          "label": "Warm Tones",
+          "colors": [
+            {"name": "Yellow",      "hex": "#FFFF00", "aliases": ["mustard", "golden", "lemon", "butter", "amber"]},
+            {"name": "Orange",      "hex": "#FFA500", "aliases": ["rust", "burnt orange", "tangerine"]},
+            {"name": "Purple",      "hex": "#800080", "aliases": ["violet", "lavender", "mauve", "lilac"]}
+          ]
+        },
+        "special": {
+          "label": "Special",
+          "colors": [
+            {"name": "Multicolor",  "hex": null,      "aliases": ["rainbow", "colorblock", "tie-dye"]},
+            {"name": "Metallic",    "hex": null,      "aliases": ["gold", "silver", "rose gold", "chrome"]},
+            {"name": "Neon",        "hex": null,      "aliases": ["fluorescent", "electric", "bright"]}
+          ]
+        }
+      }
+    },
+
+    "fabric": {
+      "label": "Fabric",
+      "code": "FAB",
+      "description": "The primary material or textile composition of the garment.",
+      "type": "multi_select",
+      "values": {
+        "natural_fibers": {
+          "label": "Natural Fibers",
+          "fabrics": [
+            {
+              "name": "Cotton",
+              "aliases": ["100% cotton", "pure cotton", "cotton jersey", "cotton poplin"],
+              "properties": ["breathable", "soft", "washable", "hypoallergenic"],
+              "care": ["machine wash cold", "tumble dry low"]
+            },
+            {
+              "name": "Linen",
+              "aliases": ["flax", "linen blend"],
+              "properties": ["breathable", "lightweight", "moisture-wicking", "wrinkles easily"],
+              "care": ["machine wash cold", "air dry", "iron damp"]
+            },
+            {
+              "name": "Wool",
+              "aliases": ["merino wool", "lambswool", "cashmere", "angora"],
+              "properties": ["warm", "moisture-wicking", "odor-resistant", "stretchy"],
+              "care": ["hand wash", "dry clean", "lay flat to dry"]
+            },
+            {
+              "name": "Silk",
+              "aliases": ["mulberry silk", "charmeuse", "dupioni"],
+              "properties": ["luxurious", "shiny", "lightweight", "temperature-regulating"],
+              "care": ["dry clean", "hand wash cold"]
+            },
+            {
+              "name": "Denim",
+              "aliases": ["selvedge denim", "raw denim", "stretch denim"],
+              "properties": ["durable", "structured", "fades with wear"],
+              "care": ["wash inside out", "cold wash", "air dry"]
+            }
+          ]
+        },
+        "synthetic_fibers": {
+          "label": "Synthetic Fibers",
+          "fabrics": [
+            {
+              "name": "Polyester",
+              "aliases": ["poly", "PET", "polyester blend"],
+              "properties": ["durable", "wrinkle-resistant", "moisture-wicking", "quick-dry"],
+              "care": ["machine wash warm", "tumble dry low"]
+            },
+            {
+              "name": "Nylon",
+              "aliases": ["polyamide"],
+              "properties": ["strong", "lightweight", "abrasion-resistant", "dries fast"],
+              "care": ["machine wash cold"]
+            },
+            {
+              "name": "Spandex",
+              "aliases": ["elastane", "lycra"],
+              "properties": ["highly stretchable", "form-fitting", "shape retention"],
+              "care": ["hand wash", "air dry", "avoid heat"]
+            },
+            {
+              "name": "Fleece",
+              "aliases": ["polar fleece", "microfleece"],
+              "properties": ["warm", "soft", "lightweight", "pill-prone"],
+              "care": ["machine wash cold", "tumble dry low"]
+            },
+            {
+              "name": "Gore-Tex",
+              "aliases": ["waterproof membrane", "eVent"],
+              "properties": ["waterproof", "windproof", "breathable"],
+              "care": ["machine wash warm", "tumble dry medium"]
+            }
+          ]
+        },
+        "blends": {
+          "label": "Blended Fabrics",
+          "fabrics": [
+            {
+              "name": "Cotton-Polyester Blend",
+              "aliases": ["polycotton", "CVC", "poly-cotton"],
+              "properties": ["durable", "easy care", "affordable"],
+              "care": ["machine wash warm"]
+            },
+            {
+              "name": "Cotton-Spandex Blend",
+              "aliases": ["stretch cotton", "cotton lycra"],
+              "properties": ["stretch", "comfort", "shape retention"],
+              "care": ["machine wash cold"]
+            },
+            {
+              "name": "Wool Blend",
+              "aliases": ["wool mix", "part wool"],
+              "properties": ["warm", "easier care than pure wool"],
+              "care": ["machine wash cold gentle"]
+            },
+            {
+              "name": "Viscose/Rayon",
+              "aliases": ["modal", "bamboo", "viscose", "rayon"],
+              "properties": ["silky feel", "breathable", "drapes well"],
+              "care": ["hand wash", "dry clean"]
+            }
+          ]
+        },
+        "technical_fabrics": {
+          "label": "Technical Fabrics",
+          "fabrics": [
+            {
+              "name": "Performance Mesh",
+              "aliases": ["air mesh", "sport mesh"],
+              "properties": ["breathable", "lightweight", "quick-dry"]
+            },
+            {
+              "name": "Ripstop Nylon",
+              "aliases": ["ripstop"],
+              "properties": ["tear-resistant", "lightweight", "outdoor-grade"]
+            },
+            {
+              "name": "Cordura",
+              "aliases": ["ballistic nylon"],
+              "properties": ["ultra-durable", "abrasion-resistant"]
+            }
+          ]
+        }
+      }
+    },
+
+    "style": {
+      "label": "Style",
+      "code": "STY",
+      "description": "The overarching aesthetic or design direction of the item.",
+      "type": "multi_select",
+      "values": [
+        "Classic", "Modern", "Vintage", "Retro", "Bohemian",
+        "Minimalist", "Maximalist", "Preppy", "Sporty", "Edgy",
+        "Romantic", "Grunge", "Gothic", "Punk", "Western",
+        "Military", "Nautical", "Tropical", "Art Deco", "Futuristic"
+      ]
+    },
+
+    "fit": {
+      "label": "Fit",
+      "code": "FIT",
+      "description": "How the garment sits relative to the body.",
+      "type": "single_select",
+      "values": {
+        "slim_fit": {
+          "label": "Slim Fit",
+          "description": "Close to the body with minimal ease; tailored silhouette.",
+          "aliases": ["fitted", "tailored", "close fit"]
+        },
+        "regular_fit": {
+          "label": "Regular Fit",
+          "description": "Standard cut with comfortable ease; the default fit.",
+          "aliases": ["classic fit", "standard fit", "normal fit"]
+        },
+        "relaxed_fit": {
+          "label": "Relaxed Fit",
+          "description": "More room through chest, waist, and hips; comfortable.",
+          "aliases": ["easy fit", "comfort fit", "loose fit"]
+        },
+        "oversized": {
+          "label": "Oversized",
+          "description": "Intentionally very large; a deliberate fashion choice.",
+          "aliases": ["boxy", "slouchy", "baggy"]
+        },
+        "cropped": {
+          "label": "Cropped",
+          "description": "Shortened length exposing the midriff.",
+          "aliases": ["crop", "cut-off", "belly-baring"]
+        },
+        "skinny": {
+          "label": "Skinny",
+          "description": "Extremely form-fitting, especially for pants.",
+          "aliases": ["super slim", "ultra-slim"]
+        },
+        "straight": {
+          "label": "Straight",
+          "description": "Consistent width from top to bottom; no taper.",
+          "aliases": ["straight cut", "box cut"]
+        },
+        "athletic_fit": {
+          "label": "Athletic Fit",
+          "description": "Broader shoulders and chest with tapered waist.",
+          "aliases": ["muscle fit", "sport fit"]
+        }
+      }
+    },
+
+    "pattern": {
+      "label": "Pattern",
+      "code": "PAT",
+      "description": "The surface design or print applied to the fabric.",
+      "type": "multi_select",
+      "values": {
+        "solid": {
+          "label": "Solid / Plain",
+          "aliases": ["plain", "solid color", "no print", "monochrome"]
+        },
+        "stripes": {
+          "label": "Stripes",
+          "variants": ["horizontal stripes", "vertical stripes", "diagonal stripes", "pinstripe", "awning stripe", "racing stripe"],
+          "aliases": ["striped", "stripy"]
+        },
+        "checks": {
+          "label": "Checks",
+          "variants": ["gingham", "tartan", "plaid", "windowpane", "houndstooth", "glen plaid", "madras"],
+          "aliases": ["checkered", "checked", "plaid"]
+        },
+        "floral": {
+          "label": "Floral",
+          "variants": ["large floral", "ditsy floral", "tropical floral", "watercolor floral"],
+          "aliases": ["flowers", "botanical", "garden print"]
+        },
+        "geometric": {
+          "label": "Geometric",
+          "variants": ["abstract geometric", "triangles", "hexagons", "chevron", "argyle"],
+          "aliases": ["geo print", "shapes"]
+        },
+        "animal_print": {
+          "label": "Animal Print",
+          "variants": ["leopard", "zebra", "snake print", "cheetah", "tiger stripe", "cow print"],
+          "aliases": ["animal pattern", "wildlife print"]
+        },
+        "camouflage": {
+          "label": "Camouflage",
+          "variants": ["military camo", "urban camo", "digital camo", "tropical camo"],
+          "aliases": ["camo", "military print"]
+        },
+        "tie_dye": {
+          "label": "Tie-Dye",
+          "variants": ["spiral tie-dye", "ice dye", "shibori"],
+          "aliases": ["tie dye", "dip-dye", "ombre"]
+        },
+        "paisley": {
+          "label": "Paisley",
+          "aliases": ["paisley print", "boteh", "teardrop pattern"]
+        },
+        "graphic": {
+          "label": "Graphic Print",
+          "variants": ["logo print", "text print", "photographic print", "art print"],
+          "aliases": ["graphic", "printed", "screen print"]
+        },
+        "abstract": {
+          "label": "Abstract",
+          "aliases": ["abstract print", "painterly", "artistic"]
+        },
+        "polka_dot": {
+          "label": "Polka Dot",
+          "variants": ["small dots", "large dots", "scattered dots"],
+          "aliases": ["dots", "spotted", "dotted"]
+        }
+      }
+    },
+
+    "season": {
+      "label": "Season",
+      "code": "SEA",
+      "description": "The weather season(s) for which the garment is best suited.",
+      "type": "multi_select",
+      "values": {
+        "spring": {
+          "label": "Spring",
+          "temperature_range_c": [10, 20],
+          "characteristics": ["light layers", "bright colors", "breathable fabric"],
+          "aliases": ["spring/summer", "SS"]
+        },
+        "summer": {
+          "label": "Summer",
+          "temperature_range_c": [25, 40],
+          "characteristics": ["minimal coverage", "light colors", "moisture-wicking"],
+          "aliases": ["summer", "hot weather", "warm weather"]
+        },
+        "autumn": {
+          "label": "Autumn",
+          "temperature_range_c": [10, 20],
+          "characteristics": ["layers", "warm tones", "transitional weight"],
+          "aliases": ["fall", "autumn/winter", "AW"]
+        },
+        "winter": {
+          "label": "Winter",
+          "temperature_range_c": [-10, 10],
+          "characteristics": ["heavy insulation", "dark colors", "waterproofing"],
+          "aliases": ["cold weather", "winter", "all weather"]
+        },
+        "all_season": {
+          "label": "All Season",
+          "description": "Suitable across multiple seasons with layering.",
+          "aliases": ["year-round", "trans-season", "multi-season"]
+        }
+      }
+    },
+
+    "occasion": {
+      "label": "Occasion",
+      "code": "OCC",
+      "description": "The social context or event for which the garment is appropriate.",
+      "type": "multi_select",
+      "values": {
+        "casual": {
+          "label": "Casual",
+          "description": "Everyday relaxed wear for errands, leisure, weekends.",
+          "dress_code": "No dress code",
+          "aliases": ["everyday", "day-to-day", "weekend", "leisure"]
+        },
+        "business_casual": {
+          "label": "Business Casual",
+          "description": "Smart but not formal; office environments with relaxed dress codes.",
+          "dress_code": "Smart casual",
+          "aliases": ["smart casual", "office casual", "business"]
+        },
+        "formal": {
+          "label": "Formal",
+          "description": "Black tie, white tie events, galas, award ceremonies.",
+          "dress_code": "Black tie / White tie",
+          "aliases": ["black tie", "gala", "formal event", "evening"]
+        },
+        "party": {
+          "label": "Party",
+          "description": "Social gatherings, nights out, celebrations.",
+          "dress_code": "Smart to semi-formal",
+          "aliases": ["night out", "club", "social", "celebration"]
+        },
+        "sport": {
+          "label": "Sport & Active",
+          "description": "Athletic activities, gym, running, training.",
+          "dress_code": "Athletic",
+          "aliases": ["gym", "workout", "athletic", "training", "running", "yoga"]
+        },
+        "outdoor": {
+          "label": "Outdoor & Adventure",
+          "description": "Hiking, camping, travel, outdoor exploration.",
+          "dress_code": "Functional",
+          "aliases": ["hiking", "camping", "travel", "adventure"]
+        },
+        "beach": {
+          "label": "Beach & Resort",
+          "description": "Beach, pool, resort, tropical vacation settings.",
+          "dress_code": "Swimwear / Resort wear",
+          "aliases": ["pool", "resort", "vacation", "holiday", "swim"]
+        },
+        "wedding_festive": {
+          "label": "Wedding & Festive",
+          "description": "Weddings, religious ceremonies, festivals, cultural events.",
+          "dress_code": "Semi-formal to formal",
+          "aliases": ["wedding", "festival", "celebration", "ceremony", "festive"]
+        },
+        "lounge": {
+          "label": "Lounge & Home",
+          "description": "Home wear, lounging, sleepwear, relaxation.",
+          "dress_code": "Comfort",
+          "aliases": ["homewear", "loungewear", "sleepwear", "pyjamas"]
+        }
+      }
+    }
+  },
+
+  "style_hierarchy": {
+    "streetwear": {
+      "label": "Streetwear",
+      "code": "STW",
+      "tier": 1,
+      "description": "Urban-inspired casual fashion rooted in hip-hop, skateboarding, and youth culture. Bold graphics, oversized silhouettes, limited-edition drops.",
+      "key_attributes": {
+        "fits": ["oversized", "relaxed_fit"],
+        "categories": ["t_shirts", "hoodies", "jackets", "jeans", "sneakers", "accessories"],
+        "patterns": ["graphic", "camouflage", "tie_dye"],
+        "fabrics": ["Cotton", "Fleece", "Nylon"],
+        "occasions": ["casual", "party"],
+        "seasons": ["spring", "autumn"]
+      },
+      "brand_archetypes": ["Supreme", "Off-White", "Palace", "Stüssy", "BAPE"],
+      "aesthetic_tags": ["bold", "graphic-heavy", "logo-forward", "limited-edition", "hype"],
+      "color_palette": ["Black", "White", "Red", "Olive", "Neon"],
+      "parent_styles": [],
+      "child_styles": ["techwear"],
+      "incompatible_with": ["formal", "luxury"]
+    },
+
+    "luxury": {
+      "label": "Luxury",
+      "code": "LUX",
+      "tier": 1,
+      "description": "High-end fashion defined by premium materials, craftsmanship, heritage brand identity, and exclusivity. Includes haute couture and ready-to-wear luxury.",
+      "key_attributes": {
+        "fits": ["slim_fit", "regular_fit"],
+        "categories": ["shirts", "jackets", "pants", "dresses", "footwear", "accessories"],
+        "patterns": ["solid", "checks", "paisley"],
+        "fabrics": ["Silk", "Wool", "Cashmere", "Leather"],
+        "occasions": ["formal", "business_casual", "party"],
+        "seasons": ["all_season"]
+      },
+      "brand_archetypes": ["Gucci", "Louis Vuitton", "Prada", "Hermès", "Chanel", "Bottega Veneta"],
+      "aesthetic_tags": ["premium", "crafted", "heritage", "exclusive", "investment piece"],
+      "color_palette": ["Black", "Beige", "Navy", "Brown", "White", "Burgundy"],
+      "parent_styles": [],
+      "child_styles": ["formal"],
+      "incompatible_with": ["streetwear", "athleisure"]
+    },
+
+    "formal": {
+      "label": "Formal",
+      "code": "FML",
+      "tier": 2,
+      "description": "Structured, polished fashion for professional and ceremonial contexts. Tailoring, clean lines, neutral palettes.",
+      "key_attributes": {
+        "fits": ["slim_fit", "regular_fit"],
+        "categories": ["shirts", "jackets", "pants", "dresses", "footwear"],
+        "patterns": ["solid", "stripes", "checks"],
+        "fabrics": ["Wool", "Cotton", "Silk", "Polyester"],
+        "occasions": ["formal", "business_casual", "wedding_festive"],
+        "seasons": ["all_season"]
+      },
+      "brand_archetypes": ["Hugo Boss", "Ralph Lauren", "Armani", "Brooks Brothers"],
+      "aesthetic_tags": ["tailored", "structured", "polished", "professional", "clean-lines"],
+      "color_palette": ["Black", "Navy", "Charcoal", "White", "Grey"],
+      "parent_styles": ["luxury"],
+      "child_styles": ["business_casual"],
+      "incompatible_with": ["streetwear", "athleisure"]
+    },
+
+    "business_casual": {
+      "label": "Business Casual",
+      "code": "BSC",
+      "tier": 3,
+      "description": "Smart but approachable — the intersection of professional and relaxed. Chinos, blazers, clean sneakers, smart dresses.",
+      "key_attributes": {
+        "fits": ["slim_fit", "regular_fit", "relaxed_fit"],
+        "categories": ["shirts", "t_shirts", "jackets", "pants", "jeans", "footwear"],
+        "patterns": ["solid", "stripes", "checks"],
+        "fabrics": ["Cotton", "Wool Blend", "Linen"],
+        "occasions": ["business_casual", "casual"],
+        "seasons": ["all_season"]
+      },
+      "brand_archetypes": ["J.Crew", "Banana Republic", "Uniqlo", "COS"],
+      "aesthetic_tags": ["smart", "approachable", "clean", "versatile", "work-appropriate"],
+      "color_palette": ["Navy", "Grey", "White", "Beige", "Olive"],
+      "parent_styles": ["formal"],
+      "child_styles": [],
+      "incompatible_with": ["athleisure", "punk"]
+    },
+
+    "techwear": {
+      "label": "Techwear",
+      "code": "TCH",
+      "tier": 2,
+      "description": "Function-forward fashion blending technical outdoor performance materials with futuristic urban aesthetics. Utility pockets, waterproof fabrics, modular design.",
+      "key_attributes": {
+        "fits": ["regular_fit", "relaxed_fit"],
+        "categories": ["jackets", "pants", "hoodies", "footwear", "accessories"],
+        "patterns": ["solid", "camouflage"],
+        "fabrics": ["Gore-Tex", "Nylon", "Ripstop Nylon", "Cordura", "Performance Mesh"],
+        "occasions": ["outdoor", "casual", "sport"],
+        "seasons": ["autumn", "winter"]
+      },
+      "brand_archetypes": ["ACRONYM", "Y-3", "Stone Island", "Arc'teryx", "Nike ACG"],
+      "aesthetic_tags": ["utilitarian", "futuristic", "dark", "modular", "waterproof"],
+      "color_palette": ["Black", "Charcoal", "Olive", "Navy"],
+      "parent_styles": ["streetwear"],
+      "child_styles": [],
+      "incompatible_with": ["formal", "luxury", "vintage"]
+    },
+
+    "minimalist": {
+      "label": "Minimalist",
+      "code": "MIN",
+      "tier": 1,
+      "description": "Less-is-more aesthetic: clean silhouettes, monochromatic palettes, quality basics, and the absence of unnecessary detail.",
+      "key_attributes": {
+        "fits": ["slim_fit", "regular_fit", "straight"],
+        "categories": ["t_shirts", "shirts", "pants", "dresses", "footwear"],
+        "patterns": ["solid"],
+        "fabrics": ["Cotton", "Linen", "Wool", "Viscose/Rayon"],
+        "occasions": ["casual", "business_casual"],
+        "seasons": ["all_season"]
+      },
+      "brand_archetypes": ["COS", "Everlane", "Muji", "A.P.C.", "Theory"],
+      "aesthetic_tags": ["clean", "neutral", "capsule-wardrobe", "timeless", "refined"],
+      "color_palette": ["White", "Black", "Grey", "Beige", "Navy"],
+      "parent_styles": [],
+      "child_styles": ["business_casual"],
+      "incompatible_with": ["maximalist", "streetwear", "bohemian"]
+    },
+
+    "vintage": {
+      "label": "Vintage",
+      "code": "VIN",
+      "tier": 1,
+      "description": "Nostalgic styling inspired by or sourced from past decades (1920s–1990s). Authentic second-hand or reproduction pieces with retro character.",
+      "key_attributes": {
+        "fits": ["regular_fit", "relaxed_fit", "straight"],
+        "categories": ["t_shirts", "shirts", "jackets", "jeans", "dresses", "footwear"],
+        "patterns": ["floral", "checks", "stripes", "paisley", "graphic", "tie_dye"],
+        "fabrics": ["Denim", "Cotton", "Wool", "Corduroy", "Velvet"],
+        "occasions": ["casual", "party"],
+        "seasons": ["spring", "autumn"]
+      },
+      "eras": {
+        "1920s_1930s": "Art Deco, flapper, bias-cut silhouettes",
+        "1940s_1950s": "Swing dresses, high-waist, full skirts, saddle shoes",
+        "1960s": "Mod, shift dresses, bold color, geometric prints",
+        "1970s": "Flares, boho, platforms, earthy tones, peasant blouses",
+        "1980s": "Power shoulders, neon, spandex, athletic influence",
+        "1990s": "Grunge, slip dresses, mom jeans, minimalist Calvin Klein"
+      },
+      "brand_archetypes": ["Levi's Vintage Clothing", "Wrangler", "Champion", "Carhartt WIP"],
+      "aesthetic_tags": ["nostalgic", "retro", "second-hand", "era-specific", "character"],
+      "color_palette": ["Brown", "Olive", "Burgundy", "Rust", "Mustard", "Teal"],
+      "parent_styles": [],
+      "child_styles": [],
+      "incompatible_with": ["techwear", "minimalist"]
+    },
+
+    "athleisure": {
+      "label": "Athleisure",
+      "code": "ATH",
+      "tier": 1,
+      "description": "Athletic wear designed for both sport performance and casual lifestyle use. Comfort, functionality, and fashion-forward styling meet.",
+      "key_attributes": {
+        "fits": ["slim_fit", "athletic_fit", "relaxed_fit"],
+        "categories": ["t_shirts", "hoodies", "shorts", "pants", "footwear"],
+        "patterns": ["solid", "geometric", "camouflage"],
+        "fabrics": ["Spandex", "Polyester", "Performance Mesh", "Fleece", "Cotton-Spandex Blend"],
+        "occasions": ["sport", "casual", "lounge"],
+        "seasons": ["all_season"]
+      },
+      "brand_archetypes": ["Nike", "Adidas", "Lululemon", "Under Armour", "Gymshark", "Vuori"],
+      "aesthetic_tags": ["sporty", "comfortable", "performance", "modern", "functional"],
+      "color_palette": ["Black", "Grey", "Navy", "White", "Neon"],
+      "parent_styles": [],
+      "child_styles": [],
+      "incompatible_with": ["formal", "luxury", "vintage"]
+    }
+  },
+
+  "category_mappings": {
+    "gender_to_categories": {
+      "men":    ["t_shirts", "shirts", "hoodies", "jackets", "pants", "jeans", "shorts", "ethnic_wear", "footwear", "accessories"],
+      "women":  ["t_shirts", "shirts", "hoodies", "jackets", "pants", "jeans", "shorts", "dresses", "ethnic_wear", "footwear", "accessories"],
+      "unisex": ["t_shirts", "shirts", "hoodies", "jackets", "pants", "jeans", "shorts", "ethnic_wear", "footwear", "accessories"]
+    },
+
+    "style_to_categories": {
+      "streetwear":      ["t_shirts", "hoodies", "jackets", "jeans", "shorts", "footwear", "accessories"],
+      "luxury":          ["shirts", "jackets", "pants", "dresses", "footwear", "accessories"],
+      "formal":          ["shirts", "jackets", "pants", "dresses", "footwear"],
+      "business_casual": ["shirts", "t_shirts", "jackets", "pants", "jeans", "footwear"],
+      "techwear":        ["jackets", "pants", "hoodies", "footwear", "accessories"],
+      "minimalist":      ["t_shirts", "shirts", "pants", "dresses", "footwear"],
+      "vintage":         ["t_shirts", "shirts", "jackets", "jeans", "dresses", "footwear"],
+      "athleisure":      ["t_shirts", "hoodies", "shorts", "pants", "footwear"]
+    },
+
+    "occasion_to_styles": {
+      "casual":           ["streetwear", "minimalist", "vintage", "athleisure"],
+      "business_casual":  ["business_casual", "minimalist", "formal"],
+      "formal":           ["formal", "luxury"],
+      "party":            ["streetwear", "luxury", "vintage"],
+      "sport":            ["athleisure", "techwear"],
+      "outdoor":          ["techwear", "vintage"],
+      "beach":            ["athleisure"],
+      "wedding_festive":  ["formal", "luxury"],
+      "lounge":           ["athleisure", "minimalist"]
+    },
+
+    "season_to_fabrics": {
+      "spring":     ["Linen", "Cotton", "Cotton-Polyester Blend", "Viscose/Rayon"],
+      "summer":     ["Linen", "Cotton", "Performance Mesh", "Silk"],
+      "autumn":     ["Denim", "Cotton", "Wool Blend", "Fleece", "Nylon"],
+      "winter":     ["Wool", "Fleece", "Gore-Tex", "Ripstop Nylon", "Cordura", "Cotton-Spandex Blend"],
+      "all_season": ["Cotton", "Polyester", "Spandex"]
+    },
+
+    "category_to_attributes": {
+      "t_shirts":    ["color", "fabric", "fit", "pattern", "style", "occasion", "season"],
+      "shirts":      ["color", "fabric", "fit", "pattern", "style", "occasion", "season"],
+      "hoodies":     ["color", "fabric", "fit", "pattern", "style", "occasion", "season"],
+      "jackets":     ["color", "fabric", "fit", "pattern", "style", "occasion", "season"],
+      "pants":       ["color", "fabric", "fit", "pattern", "style", "occasion", "season"],
+      "jeans":       ["color", "fabric", "fit", "pattern", "occasion", "season"],
+      "shorts":      ["color", "fabric", "fit", "pattern", "style", "occasion", "season"],
+      "dresses":     ["color", "fabric", "fit", "pattern", "style", "occasion", "season"],
+      "ethnic_wear": ["color", "fabric", "fit", "pattern", "occasion"],
+      "footwear":    ["color", "fabric", "style", "occasion", "season"],
+      "accessories": ["color", "fabric", "style", "occasion"]
+    }
+  },
+
+  "validation_rules": {
+    "required_fields": ["image_id", "category", "gender", "dataset_source"],
+    "conditional_rules": [
+      {
+        "rule_id": "CR001",
+        "description": "Dresses are only valid for gender=women",
+        "condition": "category == 'dresses'",
+        "required": "gender in ['women']",
+        "severity": "error"
+      },
+      {
+        "rule_id": "CR002",
+        "description": "Ethnic wear must specify an occasion",
+        "condition": "category == 'ethnic_wear'",
+        "required": "occasion is not null",
+        "severity": "warning"
+      },
+      {
+        "rule_id": "CR003",
+        "description": "Formal style requires formal or business_casual occasion",
+        "condition": "style == 'formal'",
+        "required": "occasion in ['formal', 'business_casual', 'wedding_festive']",
+        "severity": "warning"
+      },
+      {
+        "rule_id": "CR004",
+        "description": "Athleisure style requires appropriate categories",
+        "condition": "style == 'athleisure'",
+        "required": "category in ['t_shirts', 'hoodies', 'shorts', 'pants', 'footwear']",
+        "severity": "warning"
+      },
+      {
+        "rule_id": "CR005",
+        "description": "Techwear fabrics should be technical",
+        "condition": "style == 'techwear'",
+        "recommended_fabrics": ["Gore-Tex", "Nylon", "Ripstop Nylon", "Cordura", "Performance Mesh"],
+        "severity": "info"
+      }
+    ],
+    "attribute_constraints": {
+      "fit": {
+        "skinny": {
+          "only_applies_to": ["jeans", "pants", "t_shirts"]
+        },
+        "cropped": {
+          "only_applies_to": ["t_shirts", "hoodies", "jackets", "pants"]
+        }
+      },
+      "season": {
+        "summer": {
+          "incompatible_fabrics": ["Wool", "Fleece", "Gore-Tex", "Cordura"]
+        },
+        "winter": {
+          "incompatible_fabrics": ["Linen", "Performance Mesh"]
+        }
+      }
+    }
+  }
+}

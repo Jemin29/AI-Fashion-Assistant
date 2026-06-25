@@ -1,0 +1,435 @@
+{
+  "_meta": {
+    "generated_at": "2026-06-02T08:35:32.021356+00:00",
+    "source": "fashion_knowledge.json",
+    "description": "Enriched style profiles with compatibility matrices",
+    "total_styles": 8
+  },
+  "profiles": {
+    "streetwear": {
+      "style_key": "streetwear",
+      "label": "Streetwear",
+      "code": "STW",
+      "tier": 1,
+      "description": "Urban-inspired casual fashion rooted in hip-hop, skateboarding, and youth culture. Bold graphics, oversized silhouettes, limited-edition drops.",
+      "color_palette": [
+        "Black",
+        "White",
+        "Red",
+        "Olive",
+        "Neon"
+      ],
+      "key_categories": [
+        "t_shirts",
+        "hoodies",
+        "jackets",
+        "jeans",
+        "sneakers",
+        "accessories"
+      ],
+      "key_fabrics": [
+        "Cotton",
+        "Fleece",
+        "Nylon"
+      ],
+      "key_occasions": [
+        "casual",
+        "party"
+      ],
+      "aesthetic_tags": [
+        "bold",
+        "graphic-heavy",
+        "logo-forward",
+        "limited-edition",
+        "hype"
+      ],
+      "brand_archetypes": [
+        "Supreme",
+        "Off-White",
+        "Palace",
+        "Stüssy",
+        "BAPE"
+      ],
+      "compatible_styles": [
+        "techwear"
+      ],
+      "incompatible_styles": [
+        "formal",
+        "luxury"
+      ]
+    },
+    "luxury": {
+      "style_key": "luxury",
+      "label": "Luxury",
+      "code": "LUX",
+      "tier": 1,
+      "description": "High-end fashion defined by premium materials, craftsmanship, heritage brand identity, and exclusivity. Includes haute couture and ready-to-wear luxury.",
+      "color_palette": [
+        "Black",
+        "Beige",
+        "Navy",
+        "Brown",
+        "White",
+        "Burgundy"
+      ],
+      "key_categories": [
+        "shirts",
+        "jackets",
+        "pants",
+        "dresses",
+        "footwear",
+        "accessories"
+      ],
+      "key_fabrics": [
+        "Silk",
+        "Wool",
+        "Cashmere",
+        "Leather"
+      ],
+      "key_occasions": [
+        "formal",
+        "business_casual",
+        "party"
+      ],
+      "aesthetic_tags": [
+        "premium",
+        "crafted",
+        "heritage",
+        "exclusive",
+        "investment piece"
+      ],
+      "brand_archetypes": [
+        "Gucci",
+        "Louis Vuitton",
+        "Prada",
+        "Hermès",
+        "Chanel",
+        "Bottega Veneta"
+      ],
+      "compatible_styles": [
+        "formal"
+      ],
+      "incompatible_styles": [
+        "streetwear",
+        "athleisure"
+      ]
+    },
+    "formal": {
+      "style_key": "formal",
+      "label": "Formal",
+      "code": "FML",
+      "tier": 2,
+      "description": "Structured, polished fashion for professional and ceremonial contexts. Tailoring, clean lines, neutral palettes.",
+      "color_palette": [
+        "Black",
+        "Navy",
+        "Charcoal",
+        "White",
+        "Grey"
+      ],
+      "key_categories": [
+        "shirts",
+        "jackets",
+        "pants",
+        "dresses",
+        "footwear"
+      ],
+      "key_fabrics": [
+        "Wool",
+        "Cotton",
+        "Silk",
+        "Polyester"
+      ],
+      "key_occasions": [
+        "formal",
+        "business_casual",
+        "wedding_festive"
+      ],
+      "aesthetic_tags": [
+        "tailored",
+        "structured",
+        "polished",
+        "professional",
+        "clean-lines"
+      ],
+      "brand_archetypes": [
+        "Hugo Boss",
+        "Ralph Lauren",
+        "Armani",
+        "Brooks Brothers"
+      ],
+      "compatible_styles": [
+        "luxury",
+        "business_casual"
+      ],
+      "incompatible_styles": [
+        "streetwear",
+        "athleisure"
+      ]
+    },
+    "business_casual": {
+      "style_key": "business_casual",
+      "label": "Business Casual",
+      "code": "BSC",
+      "tier": 3,
+      "description": "Smart but approachable — the intersection of professional and relaxed. Chinos, blazers, clean sneakers, smart dresses.",
+      "color_palette": [
+        "Navy",
+        "Grey",
+        "White",
+        "Beige",
+        "Olive"
+      ],
+      "key_categories": [
+        "shirts",
+        "t_shirts",
+        "jackets",
+        "pants",
+        "jeans",
+        "footwear"
+      ],
+      "key_fabrics": [
+        "Cotton",
+        "Wool Blend",
+        "Linen"
+      ],
+      "key_occasions": [
+        "business_casual",
+        "casual"
+      ],
+      "aesthetic_tags": [
+        "smart",
+        "approachable",
+        "clean",
+        "versatile",
+        "work-appropriate"
+      ],
+      "brand_archetypes": [
+        "J.Crew",
+        "Banana Republic",
+        "Uniqlo",
+        "COS"
+      ],
+      "compatible_styles": [
+        "formal"
+      ],
+      "incompatible_styles": [
+        "athleisure",
+        "punk"
+      ]
+    },
+    "techwear": {
+      "style_key": "techwear",
+      "label": "Techwear",
+      "code": "TCH",
+      "tier": 2,
+      "description": "Function-forward fashion blending technical outdoor performance materials with futuristic urban aesthetics. Utility pockets, waterproof fabrics, modular design.",
+      "color_palette": [
+        "Black",
+        "Charcoal",
+        "Olive",
+        "Navy"
+      ],
+      "key_categories": [
+        "jackets",
+        "pants",
+        "hoodies",
+        "footwear",
+        "accessories"
+      ],
+      "key_fabrics": [
+        "Gore-Tex",
+        "Nylon",
+        "Ripstop Nylon",
+        "Cordura",
+        "Performance Mesh"
+      ],
+      "key_occasions": [
+        "outdoor",
+        "casual",
+        "sport"
+      ],
+      "aesthetic_tags": [
+        "utilitarian",
+        "futuristic",
+        "dark",
+        "modular",
+        "waterproof"
+      ],
+      "brand_archetypes": [
+        "ACRONYM",
+        "Y-3",
+        "Stone Island",
+        "Arc'teryx",
+        "Nike ACG"
+      ],
+      "compatible_styles": [
+        "streetwear"
+      ],
+      "incompatible_styles": [
+        "formal",
+        "luxury",
+        "vintage"
+      ]
+    },
+    "minimalist": {
+      "style_key": "minimalist",
+      "label": "Minimalist",
+      "code": "MIN",
+      "tier": 1,
+      "description": "Less-is-more aesthetic: clean silhouettes, monochromatic palettes, quality basics, and the absence of unnecessary detail.",
+      "color_palette": [
+        "White",
+        "Black",
+        "Grey",
+        "Beige",
+        "Navy"
+      ],
+      "key_categories": [
+        "t_shirts",
+        "shirts",
+        "pants",
+        "dresses",
+        "footwear"
+      ],
+      "key_fabrics": [
+        "Cotton",
+        "Linen",
+        "Wool",
+        "Viscose/Rayon"
+      ],
+      "key_occasions": [
+        "casual",
+        "business_casual"
+      ],
+      "aesthetic_tags": [
+        "clean",
+        "neutral",
+        "capsule-wardrobe",
+        "timeless",
+        "refined"
+      ],
+      "brand_archetypes": [
+        "COS",
+        "Everlane",
+        "Muji",
+        "A.P.C.",
+        "Theory"
+      ],
+      "compatible_styles": [
+        "business_casual"
+      ],
+      "incompatible_styles": [
+        "maximalist",
+        "streetwear",
+        "bohemian"
+      ]
+    },
+    "vintage": {
+      "style_key": "vintage",
+      "label": "Vintage",
+      "code": "VIN",
+      "tier": 1,
+      "description": "Nostalgic styling inspired by or sourced from past decades (1920s–1990s). Authentic second-hand or reproduction pieces with retro character.",
+      "color_palette": [
+        "Brown",
+        "Olive",
+        "Burgundy",
+        "Rust",
+        "Mustard",
+        "Teal"
+      ],
+      "key_categories": [
+        "t_shirts",
+        "shirts",
+        "jackets",
+        "jeans",
+        "dresses",
+        "footwear"
+      ],
+      "key_fabrics": [
+        "Denim",
+        "Cotton",
+        "Wool",
+        "Corduroy",
+        "Velvet"
+      ],
+      "key_occasions": [
+        "casual",
+        "party"
+      ],
+      "aesthetic_tags": [
+        "nostalgic",
+        "retro",
+        "second-hand",
+        "era-specific",
+        "character"
+      ],
+      "brand_archetypes": [
+        "Levi's Vintage Clothing",
+        "Wrangler",
+        "Champion",
+        "Carhartt WIP"
+      ],
+      "compatible_styles": [],
+      "incompatible_styles": [
+        "techwear",
+        "minimalist"
+      ]
+    },
+    "athleisure": {
+      "style_key": "athleisure",
+      "label": "Athleisure",
+      "code": "ATH",
+      "tier": 1,
+      "description": "Athletic wear designed for both sport performance and casual lifestyle use. Comfort, functionality, and fashion-forward styling meet.",
+      "color_palette": [
+        "Black",
+        "Grey",
+        "Navy",
+        "White",
+        "Neon"
+      ],
+      "key_categories": [
+        "t_shirts",
+        "hoodies",
+        "shorts",
+        "pants",
+        "footwear"
+      ],
+      "key_fabrics": [
+        "Spandex",
+        "Polyester",
+        "Performance Mesh",
+        "Fleece",
+        "Cotton-Spandex Blend"
+      ],
+      "key_occasions": [
+        "sport",
+        "casual",
+        "lounge"
+      ],
+      "aesthetic_tags": [
+        "sporty",
+        "comfortable",
+        "performance",
+        "modern",
+        "functional"
+      ],
+      "brand_archetypes": [
+        "Nike",
+        "Adidas",
+        "Lululemon",
+        "Under Armour",
+        "Gymshark",
+        "Vuori"
+      ],
+      "compatible_styles": [],
+      "incompatible_styles": [
+        "formal",
+        "luxury",
+        "vintage"
+      ]
+    }
+  }
+}
