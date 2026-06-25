@@ -1,0 +1,630 @@
+{
+  "_meta": {
+    "pipeline": "MasterPipelineController",
+    "version": "1.0.0",
+    "run_id": "20260624T184450Z",
+    "generated_at": "2026-06-24T18:44:50.877790+00:00",
+    "total_records": 11,
+    "fashiongen_records": 0,
+    "deepfashion_records": 0,
+    "status": "success"
+  },
+  "summary": {
+    "pipeline_version": "1.0.0",
+    "run_id": "20260624T184450Z",
+    "started_at": "2026-06-24T18:44:50.855877+00:00",
+    "completed_at": "2026-06-24T18:44:50.877790+00:00",
+    "total_elapsed_s": 0.02,
+    "status": "success",
+    "record_counts": {
+      "fashiongen_raw": 0,
+      "deepfashion_raw": 0,
+      "total_raw": 11,
+      "metadata_enriched": 11,
+      "after_preprocessing": 11,
+      "duplicates_removed": 0,
+      "uncategorized": 0,
+      "validation_valid": 11,
+      "validation_failed": 0,
+      "final_exported": 11
+    },
+    "quality_metrics": {
+      "validation_success_rate": 1.0,
+      "validation_quality_score": 1.0
+    },
+    "stage_timings": [
+      {
+        "stage": "1 · FashionGen Loader [DEMO]",
+        "elapsed_s": 0.0,
+        "status": "ok",
+        "error": null
+      },
+      {
+        "stage": "2 · DeepFashion Loader [DEMO]",
+        "elapsed_s": 0.0,
+        "status": "ok",
+        "error": null
+      },
+      {
+        "stage": "3 - Metadata Generator",
+        "elapsed_s": 0.011,
+        "status": "ok",
+        "error": null
+      },
+      {
+        "stage": "4 - Preprocessing Pipeline",
+        "elapsed_s": 0.006,
+        "status": "ok",
+        "error": null
+      },
+      {
+        "stage": "5 - Validation Framework",
+        "elapsed_s": 0.003,
+        "status": "ok",
+        "error": null
+      },
+      {
+        "stage": "6 - Unified Dataset Export",
+        "elapsed_s": 0.0,
+        "status": "ok",
+        "error": null
+      }
+    ],
+    "output_paths": {
+      "clean_dataset": "C:\\Users\\HP\\AppData\\Local\\Temp\\pytest-of-HP\\pytest-153\\test_validation_report_json_wr0\\processed\\clean_dataset.json",
+      "validation_report": "C:\\Users\\HP\\AppData\\Local\\Temp\\pytest-of-HP\\pytest-153\\test_validation_report_json_wr0\\processed\\validation_report.json"
+    },
+    "errors": [],
+    "warnings": []
+  },
+  "records": [
+    {
+      "image_id": "DEMO_00001",
+      "image_path": "datasets/demo/images/DEMO_00001.jpg",
+      "source_dataset": "fashiongen",
+      "category": "t_shirts",
+      "gender": "unisex",
+      "style": "streetwear",
+      "description": "An oversized graphic tee with bold neon prints.",
+      "color": [
+        "Black"
+      ],
+      "season": "summer",
+      "fit": "regular_fit",
+      "occasion": [
+        "casual"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "attributes": [],
+      "landmarks": [],
+      "_auto_generated": true,
+      "_gen_confidence": 0.7562,
+      "_gen_processing_time_ms": 0.49,
+      "image_width": 256,
+      "image_height": 256,
+      "aspect_ratio_original": null,
+      "image_resized": false,
+      "imagenet_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "imagenet_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "pixel_mean_rgb": null,
+      "pixel_std_rgb": null,
+      "normalization_ok": false,
+      "dedup_hash": "3e658f9e36ea514c9c31566507a4e48e",
+      "description_raw": "An oversized graphic tee with bold neon prints.",
+      "description_length": 47,
+      "description_cleaned": false,
+      "description_empty": false,
+      "normalization_log": {},
+      "category_known": true
+    },
+    {
+      "image_id": "DEMO_00002",
+      "image_path": "datasets/demo/images/DEMO_00002.jpg",
+      "source_dataset": "fashiongen",
+      "category": "shirts",
+      "gender": "men",
+      "style": "formal",
+      "description": "Slim-fit white cotton dress shirt with a classic collar.",
+      "color": [
+        "White"
+      ],
+      "season": "all_season",
+      "fit": "regular_fit",
+      "occasion": [
+        "casual"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "attributes": [],
+      "landmarks": [],
+      "_auto_generated": true,
+      "_gen_confidence": 0.6437,
+      "_gen_processing_time_ms": 0.62,
+      "image_width": 256,
+      "image_height": 256,
+      "aspect_ratio_original": null,
+      "image_resized": false,
+      "imagenet_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "imagenet_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "pixel_mean_rgb": null,
+      "pixel_std_rgb": null,
+      "normalization_ok": false,
+      "dedup_hash": "c52be15b772b540da46f508c3980eb3a",
+      "description_raw": "Slim-fit white cotton dress shirt with a classic collar.",
+      "description_length": 56,
+      "description_cleaned": false,
+      "description_empty": false,
+      "normalization_log": {},
+      "category_known": true
+    },
+    {
+      "image_id": "DEMO_00003",
+      "image_path": "datasets/demo/images/DEMO_00003.jpg",
+      "source_dataset": "fashiongen",
+      "category": "hoodies",
+      "gender": "unisex",
+      "style": "athleisure",
+      "description": "A cosy fleece-lined pullover hoodie in charcoal.",
+      "color": [
+        "Charcoal"
+      ],
+      "season": "winter",
+      "fit": "regular_fit",
+      "occasion": [
+        "casual"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "attributes": [],
+      "landmarks": [],
+      "_auto_generated": true,
+      "_gen_confidence": 0.6125,
+      "_gen_processing_time_ms": 0.72,
+      "image_width": 256,
+      "image_height": 256,
+      "aspect_ratio_original": null,
+      "image_resized": false,
+      "imagenet_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "imagenet_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "pixel_mean_rgb": null,
+      "pixel_std_rgb": null,
+      "normalization_ok": false,
+      "dedup_hash": "08e4477ca117f1142f087758b2761f69",
+      "description_raw": "A cosy fleece-lined pullover hoodie in charcoal.",
+      "description_length": 48,
+      "description_cleaned": false,
+      "description_empty": false,
+      "normalization_log": {},
+      "category_known": true
+    },
+    {
+      "image_id": "DEMO_00004",
+      "image_path": "datasets/demo/images/DEMO_00004.jpg",
+      "source_dataset": "fashiongen",
+      "category": "jackets",
+      "gender": "women",
+      "style": "luxury",
+      "description": "An ivory double-breasted wool blazer for evening events.",
+      "color": [
+        "Ivory"
+      ],
+      "season": "autumn",
+      "fit": "regular_fit",
+      "occasion": [
+        "casual"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "attributes": [],
+      "landmarks": [],
+      "_auto_generated": true,
+      "_gen_confidence": 0.7,
+      "_gen_processing_time_ms": 0.91,
+      "image_width": 256,
+      "image_height": 256,
+      "aspect_ratio_original": null,
+      "image_resized": false,
+      "imagenet_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "imagenet_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "pixel_mean_rgb": null,
+      "pixel_std_rgb": null,
+      "normalization_ok": false,
+      "dedup_hash": "149cb839c3ae664b17f1ca53213a2a88",
+      "description_raw": "An ivory double-breasted wool blazer for evening events.",
+      "description_length": 56,
+      "description_cleaned": false,
+      "description_empty": false,
+      "normalization_log": {},
+      "category_known": true
+    },
+    {
+      "image_id": "DEMO_00005",
+      "image_path": "datasets/demo/images/DEMO_00005.jpg",
+      "source_dataset": "fashiongen",
+      "category": "pants",
+      "gender": "men",
+      "style": "business_casual",
+      "description": "Slim chino trousers in olive, ideal for smart casual.",
+      "color": [
+        "Olive"
+      ],
+      "season": "all_season",
+      "fit": "regular_fit",
+      "occasion": [
+        "casual"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "attributes": [],
+      "landmarks": [],
+      "_auto_generated": true,
+      "_gen_confidence": 0.725,
+      "_gen_processing_time_ms": 0.54,
+      "image_width": 256,
+      "image_height": 256,
+      "aspect_ratio_original": null,
+      "image_resized": false,
+      "imagenet_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "imagenet_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "pixel_mean_rgb": null,
+      "pixel_std_rgb": null,
+      "normalization_ok": false,
+      "dedup_hash": "7a6c722207ec9917e79ec0e48cdcf4e0",
+      "description_raw": "Slim chino trousers in olive, ideal for smart casual.",
+      "description_length": 53,
+      "description_cleaned": false,
+      "description_empty": false,
+      "normalization_log": {},
+      "category_known": true
+    },
+    {
+      "image_id": "DEMO_00006",
+      "image_path": "datasets/demo/images/DEMO_00006.jpg",
+      "source_dataset": "fashiongen",
+      "category": "jeans",
+      "gender": "women",
+      "style": "vintage",
+      "description": "High-waisted distressed denim jeans with frayed hem.",
+      "color": [
+        "Navy"
+      ],
+      "season": "all_season",
+      "fit": "regular_fit",
+      "occasion": [
+        "casual"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "attributes": [],
+      "landmarks": [],
+      "_auto_generated": true,
+      "_gen_confidence": 0.5857,
+      "_gen_processing_time_ms": 0.93,
+      "image_width": 256,
+      "image_height": 256,
+      "aspect_ratio_original": null,
+      "image_resized": false,
+      "imagenet_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "imagenet_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "pixel_mean_rgb": null,
+      "pixel_std_rgb": null,
+      "normalization_ok": false,
+      "dedup_hash": "5c106cfeea73c15478a402cb33f8acc4",
+      "description_raw": "High-waisted distressed denim jeans with frayed hem.",
+      "description_length": 52,
+      "description_cleaned": false,
+      "description_empty": false,
+      "normalization_log": {},
+      "category_known": true
+    },
+    {
+      "image_id": "DEMO_00007",
+      "image_path": "datasets/demo/images/DEMO_00007.jpg",
+      "source_dataset": "fashiongen",
+      "category": "shorts",
+      "gender": "men",
+      "style": "athleisure",
+      "description": "Lightweight running shorts with built-in liner.",
+      "color": [
+        "Black"
+      ],
+      "season": "summer",
+      "fit": "regular_fit",
+      "occasion": [
+        "casual"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "attributes": [],
+      "landmarks": [],
+      "_auto_generated": true,
+      "_gen_confidence": 0.7286,
+      "_gen_processing_time_ms": 0.93,
+      "image_width": 256,
+      "image_height": 256,
+      "aspect_ratio_original": null,
+      "image_resized": false,
+      "imagenet_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "imagenet_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "pixel_mean_rgb": null,
+      "pixel_std_rgb": null,
+      "normalization_ok": false,
+      "dedup_hash": "d03aa0d25086a83de28bcf3f9c00ba6b",
+      "description_raw": "Lightweight running shorts with built-in liner.",
+      "description_length": 47,
+      "description_cleaned": false,
+      "description_empty": false,
+      "normalization_log": {},
+      "category_known": true
+    },
+    {
+      "image_id": "DEMO_00008",
+      "image_path": "datasets/demo/images/DEMO_00008.jpg",
+      "source_dataset": "fashiongen",
+      "category": "dresses",
+      "gender": "women",
+      "style": "luxury",
+      "description": "A floor-length red silk evening gown for gala events.",
+      "color": [
+        "Red"
+      ],
+      "season": "all_season",
+      "fit": "regular_fit",
+      "occasion": [
+        "casual"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "attributes": [],
+      "landmarks": [],
+      "_auto_generated": true,
+      "_gen_confidence": 0.7,
+      "_gen_processing_time_ms": 1.31,
+      "image_width": 256,
+      "image_height": 256,
+      "aspect_ratio_original": null,
+      "image_resized": false,
+      "imagenet_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "imagenet_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "pixel_mean_rgb": null,
+      "pixel_std_rgb": null,
+      "normalization_ok": false,
+      "dedup_hash": "bbd5da3d1fd60faca801cee81561282f",
+      "description_raw": "A floor-length red silk evening gown for gala events.",
+      "description_length": 53,
+      "description_cleaned": false,
+      "description_empty": false,
+      "normalization_log": {
+        "color": {
+          "unknown_values": [
+            "Red"
+          ]
+        }
+      },
+      "normalization_warnings": [
+        "Unknown attribute value kept as-is: 'Red'"
+      ],
+      "category_known": true
+    },
+    {
+      "image_id": "DEMO_00009",
+      "image_path": "datasets/demo/images/DEMO_00009.jpg",
+      "source_dataset": "fashiongen",
+      "category": "ethnic_wear",
+      "gender": "men",
+      "style": "formal",
+      "description": "Ivory silk kurta with hand-embroidered cuffs for weddings.",
+      "color": [
+        "Ivory"
+      ],
+      "season": "all_season",
+      "fit": "regular_fit",
+      "occasion": [
+        "casual"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "attributes": [],
+      "landmarks": [],
+      "_auto_generated": true,
+      "_gen_confidence": 0.6375,
+      "_gen_processing_time_ms": 1.11,
+      "image_width": 256,
+      "image_height": 256,
+      "aspect_ratio_original": null,
+      "image_resized": false,
+      "imagenet_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "imagenet_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "pixel_mean_rgb": null,
+      "pixel_std_rgb": null,
+      "normalization_ok": false,
+      "dedup_hash": "47bd79878a0f8e7e90ae46cd14d07842",
+      "description_raw": "Ivory silk kurta with hand-embroidered cuffs for weddings.",
+      "description_length": 58,
+      "description_cleaned": false,
+      "description_empty": false,
+      "normalization_log": {},
+      "category_known": true
+    },
+    {
+      "image_id": "DEMO_00010",
+      "image_path": "datasets/demo/images/DEMO_00010.jpg",
+      "source_dataset": "fashiongen",
+      "category": "footwear",
+      "gender": "unisex",
+      "style": "streetwear",
+      "description": "Classic white leather low-top sneakers with gum sole.",
+      "color": [
+        "White"
+      ],
+      "season": "all_season",
+      "fit": "regular_fit",
+      "occasion": [
+        "casual"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "attributes": [],
+      "landmarks": [],
+      "_auto_generated": true,
+      "_gen_confidence": 0.6375,
+      "_gen_processing_time_ms": 0.73,
+      "image_width": 256,
+      "image_height": 256,
+      "aspect_ratio_original": null,
+      "image_resized": false,
+      "imagenet_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "imagenet_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "pixel_mean_rgb": null,
+      "pixel_std_rgb": null,
+      "normalization_ok": false,
+      "dedup_hash": "e84018cd378c3fef7ee42ab579823710",
+      "description_raw": "Classic white leather low-top sneakers with gum sole.",
+      "description_length": 53,
+      "description_cleaned": false,
+      "description_empty": false,
+      "normalization_log": {},
+      "category_known": true
+    },
+    {
+      "image_id": "DEMO_00011",
+      "image_path": "datasets/demo/images/DEMO_00011.jpg",
+      "source_dataset": "fashiongen",
+      "category": "accessories",
+      "gender": "women",
+      "style": "minimalist",
+      "description": "Structured brown leather tote with gold clasp hardware.",
+      "color": [
+        "Brown"
+      ],
+      "season": "all_season",
+      "fit": "regular_fit",
+      "occasion": [
+        "casual"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "attributes": [],
+      "landmarks": [],
+      "_auto_generated": true,
+      "_gen_confidence": 0.525,
+      "_gen_processing_time_ms": 1.11,
+      "image_width": 256,
+      "image_height": 256,
+      "aspect_ratio_original": null,
+      "image_resized": false,
+      "imagenet_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "imagenet_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "pixel_mean_rgb": null,
+      "pixel_std_rgb": null,
+      "normalization_ok": false,
+      "dedup_hash": "71abac5498f5295330bc6800fc4a4c86",
+      "description_raw": "Structured brown leather tote with gold clasp hardware.",
+      "description_length": 55,
+      "description_cleaned": false,
+      "description_empty": false,
+      "normalization_log": {},
+      "category_known": true
+    }
+  ]
+}

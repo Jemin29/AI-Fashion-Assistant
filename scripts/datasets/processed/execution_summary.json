@@ -1,0 +1,69 @@
+{
+  "pipeline_version": "1.0.0",
+  "run_id": "20260624T184450Z",
+  "started_at": "2026-06-24T18:44:50.855877+00:00",
+  "completed_at": "2026-06-24T18:44:50.877790+00:00",
+  "total_elapsed_s": 0.02,
+  "status": "success",
+  "record_counts": {
+    "fashiongen_raw": 0,
+    "deepfashion_raw": 0,
+    "total_raw": 11,
+    "metadata_enriched": 11,
+    "after_preprocessing": 11,
+    "duplicates_removed": 0,
+    "uncategorized": 0,
+    "validation_valid": 11,
+    "validation_failed": 0,
+    "final_exported": 11
+  },
+  "quality_metrics": {
+    "validation_success_rate": 1.0,
+    "validation_quality_score": 1.0
+  },
+  "stage_timings": [
+    {
+      "stage": "1 · FashionGen Loader [DEMO]",
+      "elapsed_s": 0.0,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "stage": "2 · DeepFashion Loader [DEMO]",
+      "elapsed_s": 0.0,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "stage": "3 - Metadata Generator",
+      "elapsed_s": 0.011,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "stage": "4 - Preprocessing Pipeline",
+      "elapsed_s": 0.006,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "stage": "5 - Validation Framework",
+      "elapsed_s": 0.003,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "stage": "6 - Unified Dataset Export",
+      "elapsed_s": 0.004,
+      "status": "ok",
+      "error": null
+    }
+  ],
+  "output_paths": {
+    "clean_dataset": "C:\\Users\\HP\\AppData\\Local\\Temp\\pytest-of-HP\\pytest-153\\test_validation_report_json_wr0\\processed\\clean_dataset.json",
+    "validation_report": "C:\\Users\\HP\\AppData\\Local\\Temp\\pytest-of-HP\\pytest-153\\test_validation_report_json_wr0\\processed\\validation_report.json",
+    "final_dataset": "C:\\Users\\HP\\Desktop\\AI Fashion Agent\\fashion-ai-assistant\\scripts\\datasets\\processed\\final_fashion_dataset.json"
+  },
+  "errors": [],
+  "warnings": []
+}
