@@ -1,0 +1,26 @@
+# =============================================================================
+# AI-Powered Fashion Design Assistant
+# week4/requirements.txt — Week 4 Dependencies
+# =============================================================================
+
+# PyTorch (Core Tensor Computations & GPU Acceleration)
+# torch>=2.0.0
+# torchvision>=0.15.0
+
+# PEFT (Parameter-Efficient Fine-Tuning - provides the LoRA implementations)
+peft>=0.7.0
+
+# Diffusers & Transformers (Generative Diffusion & Text Tokenizer Models)
+diffusers>=0.25.0
+transformers>=4.36.0
+accelerate>=0.25.0
+safetensors>=0.4.0
+
+# Configuration & Logging (Pydantic models, YAML serialization, Loguru logs)
+pydantic>=2.0.0
+pyyaml>=6.0.0
+loguru>=0.7.0
+
+# Verification & Coverage Testing
+pytest>=7.0.0
+pytest-cov>=4.0.0
