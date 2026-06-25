@@ -1,0 +1,217 @@
+# =============================================================================
+# prompt_config.yaml
+# Prompt Templates, Style Presets, and Vocabulary — Week 2
+# =============================================================================
+
+# ── Prompt Assembly Structure ─────────────────────────────────────────────────
+# Final prompt = subject + style + quality + technical + modifiers
+structure:
+  separator: ", "
+  max_tokens: 77                  # Per CLIP text encoder limit
+  truncation: ellipsis            # ellipsis | hard | error
+  deduplicate_tags: true          # Remove duplicate tokens before sending
+
+# ── Quality Boosters (always appended) ───────────────────────────────────────
+quality_boosters:
+  - photorealistic
+  - 8k resolution
+  - ultra detailed
+  - sharp focus
+  - professional photography
+  - studio lighting
+  - high quality
+
+# ── Fashion-Specific Technical Tags ──────────────────────────────────────────
+fashion_technical:
+  - fashion editorial
+  - fashion photography
+  - lookbook style
+  - commercial photography
+  - on white background
+  - full body shot
+  - model wearing
+
+# ── Global Negative Prompt ────────────────────────────────────────────────────
+negative:
+  global:
+    - blurry
+    - out of focus
+    - low quality
+    - pixelated
+    - jpeg artifacts
+    - deformed
+    - distorted
+    - disfigured
+    - bad anatomy
+    - extra limbs
+    - missing limbs
+    - ugly
+    - watermark
+    - text
+    - signature
+    - logo
+    - username
+    - cropped
+    - cut off
+    - worst quality
+    - low resolution
+    - grainy
+    - noise
+
+  fashion_specific:
+    - bad clothing
+    - wrinkled fabric
+    - dirty
+    - stained
+    - torn
+    - mismatched colors
+    - poor tailoring
+    - sloppy fit
+
+# ── Style Presets ─────────────────────────────────────────────────────────────
+style_presets:
+  streetwear:
+    positive:
+      - urban streetwear fashion
+      - trendy street style
+      - oversized silhouette
+      - sneaker culture
+    negative:
+      - formal
+      - business attire
+
+  formal:
+    positive:
+      - elegant formal wear
+      - tailored silhouette
+      - luxury fashion
+      - sophisticated style
+      - haute couture
+    negative:
+      - casual
+      - streetwear
+      - sporty
+
+  casual:
+    positive:
+      - casual everyday fashion
+      - relaxed fit
+      - comfortable style
+      - minimalist aesthetic
+    negative:
+      - formal
+      - evening wear
+
+  athleisure:
+    positive:
+      - athletic fashion
+      - sporty chic
+      - performance wear
+      - active lifestyle
+      - gym fashion
+    negative:
+      - formal
+      - office wear
+
+  bohemian:
+    positive:
+      - bohemian fashion
+      - boho chic
+      - free-spirited style
+      - flowy fabric
+      - earthy tones
+      - vintage-inspired
+    negative:
+      - structured
+      - corporate
+      - minimalist
+
+  luxury:
+    positive:
+      - luxury fashion
+      - high-end designer
+      - premium materials
+      - opulent style
+      - couture quality
+    negative:
+      - fast fashion
+      - casual
+      - streetwear
+
+  minimalist:
+    positive:
+      - minimalist fashion
+      - clean lines
+      - neutral palette
+      - understated elegance
+      - Scandinavian style
+    negative:
+      - busy pattern
+      - maximalist
+      - heavy embellishment
+
+  avant_garde:
+    positive:
+      - avant-garde fashion
+      - experimental design
+      - artistic fashion
+      - conceptual clothing
+      - sculptural silhouette
+    negative:
+      - conventional
+      - basic
+      - simple
+
+# ── Gender Modifiers ──────────────────────────────────────────────────────────
+gender_modifiers:
+  men:
+    - male model
+    - menswear
+    - men's fashion
+  women:
+    - female model
+    - womenswear
+    - women's fashion
+  unisex:
+    - genderless fashion
+    - unisex style
+    - gender-neutral clothing
+
+# ── Season Modifiers ──────────────────────────────────────────────────────────
+season_modifiers:
+  spring:
+    - spring fashion
+    - pastel colors
+    - light layers
+  summer:
+    - summer fashion
+    - lightweight fabric
+    - bright colors
+    - beach vibes
+  autumn:
+    - autumn fashion
+    - warm tones
+    - layered look
+    - earthy colors
+  winter:
+    - winter fashion
+    - heavy layers
+    - cozy fabric
+    - dark palette
+  all_season:
+    - versatile fashion
+    - year-round style
+
+# ── Category Templates ────────────────────────────────────────────────────────
+category_templates:
+  t_shirts: "a {gender} wearing a {style} {color} t-shirt, {description}"
+  shirts: "a {gender} wearing a {style} {color} shirt, {description}"
+  hoodies: "a {gender} wearing a {style} {color} hoodie, {description}"
+  jackets: "a {gender} wearing a {style} {color} jacket, {description}"
+  pants: "a {gender} wearing {style} {color} pants, {description}"
+  jeans: "a {gender} wearing {style} {color} jeans, {description}"
+  shorts: "a {gender} wearing {style} {color} shorts, {description}"
+  dresses: "a {gender} wearing a {style} {color} dress, {description}"
+  ethnic_wear: "a {gender} wearing traditional {style} {color} ethnic wear, {description}"
+  footwear: "a close-up of {style} {color} footwear, {description}"
+  accessories: "a {style} {color} fashion accessory, {description}, product photography"

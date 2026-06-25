@@ -1,0 +1,71 @@
+# =============================================================================
+# generation_config.yaml
+# SDXL Generation Hyperparameters — Week 2
+# =============================================================================
+
+generation:
+  # ── Canvas ─────────────────────────────────────────────────────────────────
+  width: 1024
+  height: 1024
+
+  # ── Sampling ───────────────────────────────────────────────────────────────
+  num_inference_steps: 30
+  guidance_scale: 7.5
+  # Negative prompt guidance scale (classifier-free guidance rescale)
+  guidance_rescale: 0.0
+
+  # ── Refiner ────────────────────────────────────────────────────────────────
+  use_refiner: false
+  refiner_strength: 0.3           # Fraction of total steps for refiner
+  refiner_aesthetic_score: 6.0
+  refiner_negative_aesthetic_score: 2.5
+
+  # ── Randomness ─────────────────────────────────────────────────────────────
+  seed: -1                        # -1 = random; any int = reproducible
+  num_images_per_prompt: 1
+
+  # ── Scheduler ──────────────────────────────────────────────────────────────
+  # Options: euler | euler_a | dpm++ | pndm | ddim | lms | heun | dpm_2
+  scheduler: euler
+  scheduler_karras_sigmas: false  # Enable Karras sigma schedule
+
+  # ── Output ─────────────────────────────────────────────────────────────────
+  output_format: png              # png | jpg | webp
+  output_quality: 95              # JPEG/WebP quality (1–100)
+  save_metadata_sidecar: true     # Save .json alongside every image
+
+  # ── Advanced ───────────────────────────────────────────────────────────────
+  clip_skip: 0                    # Number of CLIP layers to skip (0 = default)
+  eta: 0.0                        # DDIM eta parameter
+  denoising_end: 1.0              # End of denoising fraction (for refiner handoff)
+
+# ── Batch Presets ─────────────────────────────────────────────────────────────
+presets:
+  draft:
+    width: 512
+    height: 512
+    num_inference_steps: 15
+    guidance_scale: 6.0
+    use_refiner: false
+
+  standard:
+    width: 1024
+    height: 1024
+    num_inference_steps: 30
+    guidance_scale: 7.5
+    use_refiner: false
+
+  high_quality:
+    width: 1024
+    height: 1024
+    num_inference_steps: 50
+    guidance_scale: 8.0
+    use_refiner: true
+    refiner_strength: 0.3
+
+  portrait:
+    width: 768
+    height: 1024
+    num_inference_steps: 30
+    guidance_scale: 7.5
+    use_refiner: false

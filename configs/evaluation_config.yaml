@@ -1,0 +1,67 @@
+# =============================================================================
+# evaluation_config.yaml
+# Image Quality Evaluation Configuration — Week 2
+# =============================================================================
+
+evaluation:
+  # ── CLIP Similarity ─────────────────────────────────────────────────────────
+  clip:
+    enabled: true
+    model_name: ViT-L-14
+    pretrained: openai            # openai | laion400m_e32 | laion2b_s34b_b88k
+    batch_size: 8
+    # Minimum CLIP cosine similarity to consider image "on-prompt"
+    min_similarity_threshold: 0.20
+    # Warn (not fail) below this threshold
+    warn_threshold: 0.25
+
+  # ── Aesthetic Scoring (LAION Aesthetic Predictor) ──────────────────────────
+  aesthetic:
+    enabled: false                # Requires aesthetic predictor model download
+    model_name: laion/CLIP-ViT-L-14-laion2B-s32B-b82K-augreg
+    # Score 1.0–10.0; images below this are flagged for review
+    min_acceptable_score: 5.0
+    warn_score: 6.0
+
+  # ── Image Quality Metrics ───────────────────────────────────────────────────
+  quality:
+    enabled: true
+    # SSIM (Structural Similarity Index) for comparing against references
+    compute_ssim: false
+    # PSNR for reference comparison
+    compute_psnr: false
+    # Basic checks always run
+    check_resolution: true
+    min_width: 512
+    min_height: 512
+    check_artifacts: true         # Detect obvious compression artifacts
+    check_black_image: true       # Detect all-black (failed) outputs
+    check_white_image: true       # Detect all-white (saturated) outputs
+    black_threshold: 5            # Mean pixel value below this = black image
+    white_threshold: 250          # Mean pixel value above this = white image
+
+  # ── FID (Fréchet Inception Distance) ──────────────────────────────────────
+  fid:
+    enabled: false                # Requires reference dataset
+    # FID is computed offline over a batch; not per-image
+    reference_dir: null           # Path to real fashion image directory
+    batch_size: 32
+    num_workers: 4
+
+  # ── Report Output ──────────────────────────────────────────────────────────
+  report:
+    save_json: true
+    save_html: false              # Week 3 feature
+    output_dir: week2/outputs/evaluation_reports
+    filename_pattern: "eval_{timestamp}.json"
+    include_per_image_scores: true
+    include_summary_stats: true
+
+# ── Auto-Curation Settings ────────────────────────────────────────────────────
+# Images that fail these checks are moved to outputs/rejected/
+auto_curation:
+  enabled: false                  # Enable to auto-reject bad images
+  reject_black_images: true
+  reject_white_images: true
+  reject_below_clip_threshold: false
+  reject_below_aesthetic_score: false

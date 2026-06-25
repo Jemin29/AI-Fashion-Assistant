@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  gradio-ui:
+    build:
+      context: .
+      dockerfile: deployment/docker/Dockerfile
+    container_name: fashion-assistant-ui
+    image: fashion-assistant:latest
+    command: ["python", "apps/gradio_app/app.py"]
+    ports:
+      - "7860:7860"
+    volumes:
+      - ./logs:/app/logs
+      - ./outputs:/app/outputs
+    environment:
+      - ENV=production
+    restart: unless-stopped
+
+  fastapi-api:
+    build:
+      context: .
+      dockerfile: deployment/docker/Dockerfile
+    container_name: fashion-assistant-api
+    image: fashion-assistant:latest
+    command: ["uvicorn", "apps.api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./logs:/app/logs
+      - ./outputs:/app/outputs
+    environment:
+      - ENV=production
+    restart: unless-stopped

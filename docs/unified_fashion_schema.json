@@ -1,0 +1,487 @@
+{
+  "$defs": {
+    "BoundingBox": {
+      "additionalProperties": false,
+      "description": "Clothing item bounding box in pixel coordinates",
+      "example": {
+        "x1": 50,
+        "x2": 206,
+        "y1": 30,
+        "y2": 230
+      },
+      "properties": {
+        "x1": {
+          "description": "Left edge pixel coordinate",
+          "minimum": 0,
+          "title": "X1",
+          "type": "integer"
+        },
+        "y1": {
+          "description": "Top edge pixel coordinate",
+          "minimum": 0,
+          "title": "Y1",
+          "type": "integer"
+        },
+        "x2": {
+          "description": "Right edge pixel coordinate",
+          "minimum": 0,
+          "title": "X2",
+          "type": "integer"
+        },
+        "y2": {
+          "description": "Bottom edge pixel coordinate",
+          "minimum": 0,
+          "title": "Y2",
+          "type": "integer"
+        },
+        "nx1": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Normalised left edge",
+          "title": "Nx1"
+        },
+        "ny1": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Normalised top edge",
+          "title": "Ny1"
+        },
+        "nx2": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Normalised right edge",
+          "title": "Nx2"
+        },
+        "ny2": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Normalised bottom edge",
+          "title": "Ny2"
+        }
+      },
+      "required": [
+        "x1",
+        "y1",
+        "x2",
+        "y2"
+      ],
+      "title": "BoundingBox",
+      "type": "object"
+    },
+    "CategoryEnum": {
+      "description": "11-key product category taxonomy. Aligned with VALID_CATEGORIES in\nfashion_domain_research.py.\n\nMaps to both FashionGen and DeepFashion normalised categories via their\nrespective _CATEGORY_MAP / _DF_CATEGORY_MAP constants.",
+      "enum": [
+        "t_shirts",
+        "shirts",
+        "hoodies",
+        "jackets",
+        "pants",
+        "jeans",
+        "shorts",
+        "dresses",
+        "ethnic_wear",
+        "footwear",
+        "accessories"
+      ],
+      "title": "CategoryEnum",
+      "type": "string"
+    },
+    "DatasetSource": {
+      "description": "Identifies the originating dataset of a fashion item record.\n\nValues are lowercase strings matching the dataset_source fields used\nin FashionGenRecord and DeepFashionRecord.\n\nExamples:\n    DatasetSource.FASHIONGEN  → \"fashiongen\"\n    DatasetSource.DEEPFASHION → \"deepfashion\"",
+      "enum": [
+        "fashiongen",
+        "deepfashion"
+      ],
+      "title": "DatasetSource",
+      "type": "string"
+    },
+    "FitEnum": {
+      "description": "8-value fit taxonomy. Aligned with VALID_FITS in fashion_domain_research.py.",
+      "enum": [
+        "slim_fit",
+        "regular_fit",
+        "relaxed_fit",
+        "oversized",
+        "cropped",
+        "skinny",
+        "straight",
+        "athletic_fit"
+      ],
+      "title": "FitEnum",
+      "type": "string"
+    },
+    "GenderEnum": {
+      "description": "Gender taxonomy key. Aligned with VALID_GENDERS in fashion_domain_research.py.\n\nAll dataset-specific gender strings (e.g. \"Men\", \"Women\", \"Boys\") must\nbe pre-normalised to these keys before populating a UnifiedFashionItem.",
+      "enum": [
+        "men",
+        "women",
+        "unisex"
+      ],
+      "title": "GenderEnum",
+      "type": "string"
+    },
+    "LandmarkPoint": {
+      "additionalProperties": false,
+      "description": "Normalised 2D clothing landmark point",
+      "example": {
+        "name": "left_collar",
+        "visible": true,
+        "x": 0.32,
+        "y": 0.05
+      },
+      "properties": {
+        "name": {
+          "description": "Landmark name, e.g. 'left_collar'",
+          "title": "Name",
+          "type": "string"
+        },
+        "x": {
+          "description": "Normalised x-coordinate [0,1]",
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "X",
+          "type": "number"
+        },
+        "y": {
+          "description": "Normalised y-coordinate [0,1]",
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Y",
+          "type": "number"
+        },
+        "visible": {
+          "description": "True if landmark is visible in the image",
+          "title": "Visible",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "name",
+        "x",
+        "y",
+        "visible"
+      ],
+      "title": "LandmarkPoint",
+      "type": "object"
+    },
+    "OccasionEnum": {
+      "description": "9-value occasion taxonomy. Aligned with VALID_OCCASIONS in fashion_domain_research.py.",
+      "enum": [
+        "casual",
+        "business_casual",
+        "formal",
+        "party",
+        "sport",
+        "outdoor",
+        "beach",
+        "wedding_festive",
+        "lounge"
+      ],
+      "title": "OccasionEnum",
+      "type": "string"
+    },
+    "SeasonEnum": {
+      "description": "5-value season taxonomy. Aligned with VALID_SEASONS in fashion_domain_research.py.\n\nFashionGen infers season from description text (_SEASON_KEYWORDS).\nDeepFashion does not annotate season; use ALL_SEASON as default.",
+      "enum": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter",
+        "all_season"
+      ],
+      "title": "SeasonEnum",
+      "type": "string"
+    },
+    "StyleEnum": {
+      "description": "8-value style hierarchy. Aligned with VALID_STYLES in fashion_domain_research.py.\n\nFashionGen infers style from description keywords (_STYLE_KEYWORDS map).\nDeepFashion records may leave this field empty (style is not annotated\nin DeepFashion annotations).",
+      "enum": [
+        "streetwear",
+        "luxury",
+        "formal",
+        "business_casual",
+        "techwear",
+        "minimalist",
+        "vintage",
+        "athleisure"
+      ],
+      "title": "StyleEnum",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Canonical fashion item record for the AI Fashion Design Assistant. Stores data from FashionGen and DeepFashion in a unified, taxonomy-aligned format.",
+  "example": {
+    "attributes": [],
+    "bounding_box": null,
+    "category": "shirts",
+    "color": [
+      "White",
+      "Blue"
+    ],
+    "description": "A slim-fit white cotton dress shirt for formal occasions.",
+    "errors": [],
+    "fabric": [
+      "Cotton"
+    ],
+    "fit": "slim_fit",
+    "gender": "men",
+    "image_id": "FG_0000042",
+    "image_path": "datasets/fashiongen/images/FG_0000042.jpg",
+    "is_valid": true,
+    "landmarks": [],
+    "occasion": [
+      "formal",
+      "business_casual"
+    ],
+    "pattern": [
+      "solid"
+    ],
+    "season": "all_season",
+    "source_dataset": "fashiongen",
+    "style": "formal",
+    "subcategory": "formal_shirt",
+    "warnings": []
+  },
+  "properties": {
+    "image_id": {
+      "description": "Unique identifier for this fashion item across all datasets. Format: '{PREFIX}_{id}' where PREFIX is FG (FashionGen) or DF (DeepFashion). Example: 'FG_0000042', 'DF_img_Blouse_img_00000001'",
+      "examples": [
+        "FG_0000042",
+        "DF_img_Blouse_img_00000001"
+      ],
+      "minLength": 1,
+      "title": "Image Id",
+      "type": "string"
+    },
+    "image_path": {
+      "description": "Forward-slash path to the image file, relative to the project root (fashion-ai-assistant/). Example: 'datasets/fashiongen/images/FG_0000042.jpg'",
+      "examples": [
+        "datasets/fashiongen/images/FG_0000042.jpg",
+        "datasets/deepfashion/img/Blouse/img_00000001.jpg"
+      ],
+      "minLength": 1,
+      "title": "Image Path",
+      "type": "string"
+    },
+    "source_dataset": {
+      "$ref": "#/$defs/DatasetSource",
+      "description": "Originating dataset. Used to apply dataset-specific processing logic during enrichment and training. Values: 'fashiongen' | 'deepfashion'"
+    },
+    "category": {
+      "$ref": "#/$defs/CategoryEnum",
+      "description": "Primary product category. One of 11 taxonomy keys: t_shirts, shirts, hoodies, jackets, pants, jeans, shorts, dresses, ethnic_wear, footwear, accessories."
+    },
+    "subcategory": {
+      "anyOf": [
+        {
+          "maxLength": 100,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Optional sub-level category label. Example: 'graphic_tee' (under t_shirts), 'formal_shirt' (under shirts).",
+      "title": "Subcategory"
+    },
+    "gender": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/GenderEnum"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Target gender for the clothing item. None is acceptable when the dataset does not annotate gender (e.g. DeepFashion category-level annotations). Values: 'men' | 'women' | 'unisex'"
+    },
+    "color": {
+      "description": "List of normalised color names for the item. Derived from KB alias → canonical color name mapping. Example: ['Navy', 'White'], ['Olive Green']",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 20,
+      "title": "Color",
+      "type": "array"
+    },
+    "fabric": {
+      "description": "List of normalised fabric names. Example: ['Cotton', 'Polyester'], ['Denim']",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 10,
+      "title": "Fabric",
+      "type": "array"
+    },
+    "pattern": {
+      "description": "List of pattern type strings. Example: ['solid'], ['stripes', 'checked']",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 10,
+      "title": "Pattern",
+      "type": "array"
+    },
+    "fit": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/FitEnum"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Fit type. Values: slim_fit | regular_fit | relaxed_fit | oversized | cropped | skinny | straight | athletic_fit. FashionGen: inferred from description text. DeepFashion: inferred from attribute vector."
+    },
+    "style": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/StyleEnum"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Style hierarchy value. Values: streetwear | luxury | formal | business_casual | techwear | minimalist | vintage | athleisure. FashionGen: inferred from _STYLE_KEYWORDS in description. DeepFashion: typically None (not annotated)."
+    },
+    "season": {
+      "$ref": "#/$defs/SeasonEnum",
+      "default": "all_season",
+      "description": "Season suitability. Values: spring | summer | autumn | winter | all_season. FashionGen: inferred from _SEASON_KEYWORDS in description. DeepFashion: defaults to all_season."
+    },
+    "occasion": {
+      "description": "List of suitable occasions. Values: casual | business_casual | formal | party | sport | outdoor | beach | wedding_festive | lounge.",
+      "items": {
+        "$ref": "#/$defs/OccasionEnum"
+      },
+      "maxItems": 5,
+      "title": "Occasion",
+      "type": "array"
+    },
+    "description": {
+      "anyOf": [
+        {
+          "maxLength": 4096,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Human-written product description text. FashionGen: extracted from HDF5 'input_description' field. DeepFashion: None (no description annotations).",
+      "title": "Description"
+    },
+    "attributes": {
+      "description": "Free-form list of attribute label strings. FashionGen: populated from structured attributes dict. DeepFashion: decoded from 1000-dim attribute vector (only +1 = present values included, max 50).",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 100,
+      "title": "Attributes",
+      "type": "array"
+    },
+    "landmarks": {
+      "description": "Clothing landmark points. Populated for DeepFashion records. FashionGen records will always have an empty list. Each landmark: name, normalised x/y in [0,1], visibility flag.",
+      "items": {
+        "$ref": "#/$defs/LandmarkPoint"
+      },
+      "maxItems": 6,
+      "title": "Landmarks",
+      "type": "array"
+    },
+    "bounding_box": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/BoundingBox"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Axis-aligned bounding box for the clothing item. DeepFashion: from Anno/list_bbox.txt (pixel + normalised). FashionGen: None (no bbox annotations)."
+    },
+    "is_valid": {
+      "default": false,
+      "description": "True when the record passes all hard validation rules. Set automatically by validate_and_report(). Also pre-set by from_fashiongen() / from_deepfashion() based on the source record's is_valid flag.",
+      "title": "Is Valid",
+      "type": "boolean"
+    },
+    "errors": {
+      "description": "Hard validation errors from the source pipeline or validate_and_report().",
+      "items": {
+        "type": "string"
+      },
+      "title": "Errors",
+      "type": "array"
+    },
+    "warnings": {
+      "description": "Soft validation warnings. Record is kept but flagged.",
+      "items": {
+        "type": "string"
+      },
+      "title": "Warnings",
+      "type": "array"
+    },
+    "processed_at": {
+      "description": "ISO-8601 UTC timestamp of when this record was created/unified.",
+      "title": "Processed At",
+      "type": "string"
+    },
+    "schema_version": {
+      "default": "1.0.0",
+      "description": "Schema version string. Current: 1.0.0",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "image_id",
+    "image_path",
+    "source_dataset",
+    "category"
+  ],
+  "title": "UnifiedFashionItem",
+  "type": "object"
+}

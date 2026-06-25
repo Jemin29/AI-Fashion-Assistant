@@ -1,0 +1,82 @@
+# =============================================================================
+# AI-Powered Fashion Design Assistant
+# requirements.txt — Week 1: Fashion Domain Research & Dataset Curation
+# =============================================================================
+# Install all dependencies:
+#   pip install -r requirements.txt
+#
+# For a reproducible virtual environment:
+#   python -m venv .venv
+#   source .venv/bin/activate  (Linux/Mac)
+#   .venv\Scripts\activate     (Windows)
+#   pip install -r requirements.txt
+# =============================================================================
+
+# ─── Core Python Utilities ────────────────────────────────────────────────────
+python-dotenv==1.0.1          # Load environment variables from .env files
+pyyaml==6.0.1                 # Parse YAML config files
+click==8.1.7                  # CLI interface for pipeline scripts
+rich==13.7.1                  # Beautiful terminal output & logging
+tqdm==4.66.2                  # Progress bars for dataset processing loops
+loguru==0.7.2                 # Structured, leveled logging with file rotation
+
+# ─── Data Engineering & Processing ───────────────────────────────────────────
+pandas==2.2.1                 # Tabular data manipulation for metadata CSVs
+numpy==1.26.4                 # Numerical operations on image/feature arrays
+pyarrow==15.0.2               # Parquet file I/O for efficient dataset storage
+fastparquet==2024.2.0         # Alternative Parquet engine
+h5py==3.11.0                  # Read/write HDF5 datasets (FashionGen format)
+Pillow==10.3.0                # Image loading, resizing, format conversion
+opencv-python==4.9.0.80       # Advanced image processing operations
+imageio==2.34.1               # Multi-format image reading for dataset ingestion
+scikit-image==0.22.0          # Image quality metrics (SSIM, PSNR)
+
+# ─── Dataset Download & Management ───────────────────────────────────────────
+requests==2.31.0              # HTTP requests for API-based dataset downloads
+httpx==0.27.0                 # Async HTTP client for concurrent downloads
+aiofiles==23.2.1              # Async file I/O for high-throughput ingestion
+kaggle==1.6.6                 # Kaggle CLI/API for DeepFashion dataset access
+gdown==5.1.0                  # Google Drive dataset downloads
+
+# ─── Machine Learning & Embeddings ───────────────────────────────────────────
+torch==2.3.0                  # PyTorch core (CPU build — GPU optional)
+torchvision==0.18.0           # Image datasets, transforms, pretrained models
+transformers==4.41.1          # HuggingFace: CLIP, BLIP, text encoders
+sentence-transformers==3.0.1  # Sentence-level semantic embeddings
+clip-interrogator==0.6.0      # CLIP-based image captioning for metadata gen
+open-clip-torch==2.24.0       # OpenCLIP for fashion image feature extraction
+
+# ─── Data Validation & Quality ───────────────────────────────────────────────
+great-expectations==0.18.15   # Dataset contract validation & quality suites
+pydantic==2.7.1               # Schema validation for metadata JSON/dataclasses
+jsonschema==4.22.0            # JSON schema validation for metadata files
+cerberus==1.3.5               # Lightweight dict/record validation
+
+# ─── Vector Store & Metadata Indexing ────────────────────────────────────────
+chromadb==0.5.0               # Local vector database for fashion embeddings
+faiss-cpu==1.8.0              # Facebook AI Similarity Search (CPU)
+
+# ─── Notebook & Visualization ────────────────────────────────────────────────
+jupyter==1.0.0                # Jupyter notebook server
+ipywidgets==8.1.2             # Interactive widgets in notebooks
+matplotlib==3.8.4             # Plotting: dataset statistics & distributions
+seaborn==0.13.2               # Statistical visualizations
+plotly==5.22.0                # Interactive charts for EDA dashboards
+wordcloud==1.9.3              # Word clouds for fashion attribute analysis
+
+# ─── Testing ──────────────────────────────────────────────────────────────────
+pytest==8.2.0                 # Test framework
+pytest-asyncio==0.23.6        # Async test support
+pytest-cov==5.0.0             # Code coverage reporting
+pytest-mock==3.14.0           # Mocking utilities
+
+# ─── Code Quality & Formatting ───────────────────────────────────────────────
+black==24.4.2                 # Opinionated Python formatter
+isort==5.13.2                 # Import statement sorter
+flake8==7.0.0                 # Style linting
+mypy==1.10.0                  # Static type checking
+pre-commit==3.7.1             # Git pre-commit hooks for automated checks
+
+# ─── Documentation ───────────────────────────────────────────────────────────
+mkdocs==1.6.0                 # Static site docs generator
+mkdocs-material==9.5.21       # Material Design theme for MkDocs

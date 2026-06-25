@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fashion-assistant
+  labels:
+    app: fashion-assistant
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fashion-assistant
+  template:
+    metadata:
+      labels:
+        app: fashion-assistant
+    spec:
+      containers:
+        - name: gradio-ui
+          image: jemin29/ai-fashion-agent-ui:v1.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 7860
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "500m"
+            limits:
+              memory: "2Gi"
+              cpu: "1000m"
+          env:
+            - name: ENV
+              value: "production"
+        - name: fastapi-api
+          image: jemin29/ai-fashion-agent-api:v1.0.0
+          imagePullPolicy: IfNotPresent
+          command: ["uvicorn", "apps.api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+          ports:
+            - containerPort: 8000
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "500m"
+            limits:
+              memory: "2Gi"
+              cpu: "1000m"
+          env:
+            - name: ENV
+              value: "production"

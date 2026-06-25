@@ -1,0 +1,97 @@
+# =============================================================================
+# AI-Powered Fashion Design Assistant
+# .gitignore — Version Control Exclusion Rules
+# =============================================================================
+
+# ─── Python runtime ───────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+wheels/
+
+# ─── Virtual environments ─────────────────────────────────────────────────────
+.venv/
+venv/
+ENV/
+env/
+.env           # ← NEVER commit real credentials
+env.bak/
+venv.bak/
+
+# ─── Jupyter notebooks ────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ─── Dataset files (too large for git — use DVC or cloud storage) ─────────────
+datasets/fashiongen/*.h5
+datasets/fashiongen/*.hdf5
+datasets/deepfashion/img/
+datasets/processed/
+*.h5
+*.hdf5
+*.npy
+*.npz
+*.pkl
+*.pt
+*.pth          # PyTorch model weights
+
+# ─── Logs ─────────────────────────────────────────────────────────────────────
+logs/
+*.log
+*.log.*
+
+# ─── Outputs ──────────────────────────────────────────────────────────────────
+outputs/
+*.parquet
+*.arrow
+
+# ─── IDE and editor configs ───────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── Test and coverage ────────────────────────────────────────────────────────
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+
+# ─── Type checking ────────────────────────────────────────────────────────────
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pytype/
+
+# ─── Pre-commit ────────────────────────────────────────────────────────────────
+.pre-commit-cache/
+
+# ─── Documentation builds ─────────────────────────────────────────────────────
+site/
+docs/_build/
+
+# ─── Kaggle API token ─────────────────────────────────────────────────────────
+configs/gdrive_cookies.txt
+~/.kaggle/kaggle.json
+
+# ─── Generated artefacts (large / auto-regenerated) ───────────────────────────
+coverage.json
+coverage.xml
+test_out.txt
+test_rag.log
+comparison_report.json
+*.log
