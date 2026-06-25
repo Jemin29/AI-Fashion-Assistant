@@ -1,0 +1,167 @@
+# ============================================================
+# ATHLEISURE FASHION PROMPT LIBRARY
+# AI Fashion Design Assistant — Week 2
+# 50 High-Quality Prompts
+# ============================================================
+# Categories: leggings · sports bras · joggers · hoodies ·
+#             windbreakers · co-ords · trainers · vests · biker
+#             shorts · track jackets · sneakers · gym bags
+# Contexts:   photorealistic · runway · e-commerce · editorial
+# ============================================================
+
+# ── PHOTOREALISTIC ───────────────────────────────────────────
+# 01
+Dynamic lifestyle fashion photography of a woman wearing high-waist black sculpting leggings with mesh panel detail at the sides, a matching black cropped sports bra with strappy back, and white chunky training sneakers, bright clean gym studio, natural window light, ultra-realistic, sharp 8k detail
+
+# 02
+Photorealistic athleisure editorial: woman in matching sage green seamless ribbed sports bra and high-waist leggings, white oversized bomber jacket draped over shoulders, white athletic sneakers, outdoor urban park setting, natural morning light, dynamic pose
+
+# 03
+Athleisure lifestyle photo: woman in a dusty mauve cropped zip-up hoodie and matching high-waist wide-leg joggers, white athletic sneakers, coffee in hand, city streetscape background, golden morning light, gym-to-street aesthetic
+
+# 04
+Photorealistic fashion: man in a dark navy blue quarter-zip performance pullover, matching tapered navy joggers with white stripes, clean white athletic sneakers, and a gym duffel bag, urban park setting, midday natural light
+
+# 05
+Lifestyle athleisure photo: woman in a caramel brown oversized French terry co-ord set — cropped hoodie and wide-leg sweatpants — matching caramel new-balance style sneakers, autumn outdoor coffee shop, warm light, effortless sport-luxe
+
+# 06
+Photorealistic athletic fashion editorial: woman in a cobalt blue performance running vest, matching high-waist cycling shorts, white running trainers, dynamic pose on city bridge, blue sky background, morning run lifestyle
+
+# 07
+Realistic athleisure photo: man in a light grey premium co-ord set — slim-fit tapered jogger and matching crewneck sweatshirt — white minimal sneakers, clean urban park background, soft natural morning light, sport-luxe lifestyle
+
+# 08
+Athleisure lifestyle photography of a woman in coral pink high-waist flare yoga pants with a matching cropped long-sleeve top, white yoga mat, sunlit indoor studio, natural window light, wellness lifestyle, sharp detail
+
+# ── RUNWAY / EDITORIAL ───────────────────────────────────────
+# 09
+High fashion athleisure runway: model wearing a luxury ivory cashmere-wool tracksuit — structured bomber sweatshirt and matching tapered joggers — white leather minimal sneakers, pearl jewellery, white fashion week catwalk, editorial lighting
+
+# 10
+Fashion week runway: model in a bold neon green and black geometric sports co-ord — structured crop zip jacket and matching high-waist wide-leg trousers — black performance sneakers, white catwalk, dramatic fashion week uplighting
+
+# 11
+Runway editorial: model wearing a full metallic silver athletic ensemble — liquid silver sports bra, matching high-waist leggings, and cropped zip jacket — mirror-finish runway, dramatic silver editorial lighting, fashion week quality
+
+# 12
+Sport-luxe runway shot: model in an all-cream luxury athleisure set — oversized structured cropped hoodie and wide-leg ribbed joggers — cream designer sneakers, pearl drop earrings, white catwalk, soft editorial fashion lighting
+
+# 13
+Avant-garde athleisure runway: model in a sculptural black structured sports jacket with exaggerated back collar and matching black wide-leg performance trousers, black technical sneakers, dark editorial runway, dramatic underlighting
+
+# 14
+Fashion editorial runway: model wearing a floor-length athletic trench coat in deep cobalt blue over matching colour cycling shorts and sports bra, white performance sneakers, white catwalk, bold fashion week editorial lighting
+
+# 15
+Luxury sport-luxe runway: model in a rich burgundy velour tracksuit with gold stripe — matching zip jacket and tapered trousers — white and gold athletic sneakers, white runway background, luxury editorial lighting
+
+# 16
+High fashion runway shot: model wearing an oversized slate grey technical performance hoodie layered with a tactical chest rig, matching grey wide-leg cargo sweatpants, and black chunky sneakers, dark moody runway, blue-toned editorial lighting
+
+# ── E-COMMERCE / PRODUCT ─────────────────────────────────────
+# 17
+E-commerce product photography: model in a classic black high-waist athletic leggings with wide waistband, matching black cropped sports bra, standing against clean white studio background, full-body product shot, sharp fabric texture, athleisure e-commerce
+
+# 18
+Athleisure e-commerce photo: woman in a sage green seamless ribbed sports bra and matching seamless high-waist biker shorts, white studio background, full-body product shot, clean even professional lighting, sharp detail
+
+# 19
+Product fashion shot: man in a heather grey essential crewneck sweatshirt with minimalist logo, matching heather grey tapered joggers, and white minimal sneakers, clean white seamless background, e-commerce ready product photography
+
+# 20
+E-commerce athleisure: woman in a bold coral pink crop zip-up hoodie and matching high-waist wide-leg sweatpants, white trainers, clean white background, full-body product shot, professional even lighting
+
+# 21
+Athleisure e-commerce product: model in a classic black windbreaker with reflective side stripe, matching black track pants, and black athletic sneakers, clean dark grey background, product photography quality
+
+# 22
+Product shot: woman in a lavender performance running set — lightweight mesh sports bra and matching high-waist running shorts with side pockets — white athletic trainers, white seamless background, sharp athletic product photography
+
+# 23
+E-commerce product photography: man in a dark forest green premium quarter-zip performance pullover and matching tapered joggers with an elastic cuff, clean dark green background, product-focused athletic fashion photography
+
+# 24
+Athleisure product e-commerce: woman in a rich terracotta colour block sports co-ord — crop zip track jacket and high-waist flared yoga pants — white sneakers, clean studio background, professional lifestyle product photography
+
+# ── DIVERSE CATEGORIES ───────────────────────────────────────
+# 25
+Athleisure fashion editorial: woman in a white oversized vintage-wash crewneck sweatshirt, biker-length black cycling shorts, white knee-high athletic socks, and chunky white sneakers, outdoor city park, bright natural light
+
+# 26
+Sport-luxe editorial: woman in a matching two-piece cashmere-blend loungewear set in blush pink — cropped wide-sleeve top and high-waist wide-leg trousers — white slider sandals, luxury athleisure aesthetic, soft lifestyle photography
+
+# 27
+Athleisure lifestyle: man in a black performance bomber jacket with subtle tech-fabric panels, relaxed straight grey joggers, and black suede Chelsea-inspired sport boots, autumn urban setting, warm editorial lifestyle photography
+
+# 28
+Athletic fashion: woman in a deep purple ribbed sports bra, matching high-waist leggings with colour-block side panel in lilac, white ultra-boost style running shoes, rooftop sunset yoga setting, golden hour light
+
+# 29
+Gym-to-street athleisure: woman in a matching black and white pinstripe crewneck sweatshirt and sweatpants co-ord, white minimal leather sneakers, and a black designer bag, smart casual lifestyle setting, morning coffee run
+
+# 30
+Athleisure editorial: man in a sky blue oversized terry cloth zip hoodie, matching wide-leg terry shorts, white crew socks, and white chunky retro sneakers, outdoor rooftop pool setting, bright warm light, resort athleisure
+
+# 31
+Athletic fashion: woman in a neon yellow and black colourblock performance long-sleeve running top, black high-waist running tights, and yellow-accented black running shoes, dynamic outdoor running action, motion blur background
+
+# 32
+Sport-luxe fashion: woman in an all-white premium matching co-ord — fitted white sports bra and high-waist wide-leg track trousers — white leather sneakers, diamond stud earrings, luxury white studio, editorial lifestyle photography
+
+# ── MODERN ATHLEISURE TRENDS ────────────────────────────────
+# 33
+Pilates-chic editorial: woman in a cream ribbed seamless sports bra and matching high-waist ribbed leggings, white grip socks, minimalist white Pilates studio background, clean natural light, wellness lifestyle photography
+
+# 34
+Running-girl aesthetic: woman in a bright pink crop windbreaker over a pink sports bra, matching pink high-waist running shorts, white running shoes, earbuds, city park morning run, bright natural light, lifestyle editorial
+
+# 35
+Quiet luxury athleisure: model in a camel cashmere-blend oversized pullover worn over a matching camel ribbed sports bra and high-waist seamless leggings, white minimal sneakers, clean lifestyle shot, warm neutral editorial
+
+# 36
+'That girl' workout editorial: woman in a deep teal matching seamless ribbed set — sports bra and high-waist leggings — white minimal training shoes, white AirPods, glass of green smoothie, bright clean gym, morning natural light
+
+# 37
+Elevated tracksuit trend: woman in a powder blue Juicy-Couture-inspired velour tracksuit with embroidered logo, matching pale blue trainers, pearl necklace, Y2K revival editorial, warm nostalgic lifestyle lighting
+
+# 38
+Yoga-outdoor lifestyle: woman in a rust orange matching set — long-sleeve ribbed cropped top and high-waist wide-leg yoga trousers — barefoot on wooden deck, mountain sunrise background, warm natural light, wellness editorial
+
+# 39
+Streetwear-athlete crossover: woman in a black bra top, black cycling shorts, an oversized navy vintage athletics jersey over the top, chunky white sneakers, and a black mini bag, hypebeast-meets-athletic street editorial
+
+# 40
+Fashion-forward gym editorial: model in a bold red and black geometric print sports co-ord — structured sports bra with cage back and matching shorts — black training sneakers, bright gym setting, dynamic workout pose, editorial photography
+
+# ── SEASONAL ATHLEISURE ──────────────────────────────────────
+# 41
+Summer athleisure editorial: woman in a white crop zip windbreaker over a matching white sports bra and bike shorts, white platform trainers, sunglasses, sunlit beach promenade, bright summer coastal light
+
+# 42
+Autumn sport-luxe: woman in an oversized caramel teddy-fleece zip hoodie worn over a white sports bra and matching caramel wide-leg joggers, white running shoes, autumn park background, warm golden leaf light
+
+# 43
+Winter athleisure fashion: man in a dark navy insulated athletic puffer jacket, matching navy training trousers with white stripes, and white and navy athletic sneakers, winter city setting, cold overcast light
+
+# 44
+Spring active lifestyle: woman in a pastel lilac lightweight performance zip jacket and matching high-waist training shorts, white trainers, fresh spring park, cherry blossoms in background, bright morning light
+
+# ── COLOUR STORIES ───────────────────────────────────────────
+# 45
+Colour story — all black athletic: model in a full black seamless athletic set — crop sports bra, high-waist leggings, black windbreaker — matte black sneakers, dark editorial studio background, dramatic single light source
+
+# 46
+Colour story — millennial pink: matching blush pink seamless sports bra and high-waist leggings, light pink oversized zip hoodie, light pink running shoes, pink accessories, pastel studio background, soft fashion editorial lighting
+
+# 47
+Colour story — cobalt and white: bright cobalt blue colourblock athletic ensemble — structured sports bra, high-waist leggings and crop windbreaker — white chunky sneakers, white studio background, vibrant editorial
+
+# 48
+Colour story — earthy neutrals: matching caramel ribbed seamless sports bra and high-waist leggings, oatmeal oversized sweatshirt draped over shoulders, tan leather trainers, warm neutral studio, earthy lifestyle photography
+
+# 49
+Colour story — monochrome grey: model in a full grey matching athletic ensemble — grey zip hoodie, grey sports bra, grey high-waist leggings — grey and white sneakers, grey studio background, tonal sport-luxe editorial
+
+# 50
+Colour story — neon pop: woman in a neon lime green crop sports bra and matching high-waist leggings, neon green-accented white running shoes, white studio background, bold neon fashion editorial, vibrant athletic photography

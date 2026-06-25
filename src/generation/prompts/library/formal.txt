@@ -1,0 +1,167 @@
+# ============================================================
+# FORMAL FASHION PROMPT LIBRARY
+# AI Fashion Design Assistant — Week 2
+# 50 High-Quality Prompts
+# ============================================================
+# Categories: suits · blazers · dress shirts · ties · gowns ·
+#             pencil skirts · tailored trousers · tuxedos ·
+#             formal dresses · structured coats · accessories
+# Contexts:   photorealistic · runway · e-commerce · editorial
+# ============================================================
+
+# ── PHOTOREALISTIC ───────────────────────────────────────────
+# 01
+Professional fashion photography of a man wearing a charcoal grey three-piece wool suit with notch lapels, white poplin dress shirt, a burgundy silk repp tie, white pocket square, and black cap-toe Oxford shoes, corporate marble lobby, cinematic side lighting, ultra realistic, 8k
+
+# 02
+Photorealistic formal fashion portrait of a woman in a midnight blue double-breasted power blazer with peak lapels and coordinating high-waist wide-leg trousers, cream silk blouse, and black leather pointed-toe stiletto heels, sleek glass office backdrop, natural light
+
+# 03
+Full-body photorealistic fashion photo of a man in a navy blue slim-cut two-piece suit, classic white French-cuff dress shirt, gold cufflinks, silver tie, and black Oxford leather shoes, grey marble background, directional studio lighting, impeccable tailoring detail
+
+# 04
+Photorealistic fashion editorial of a woman wearing a tailored ivory wool crepe blazer dress with gold button fastening and structured belt, nude pointed-toe pumps, pearl drop earrings, white marble atrium background, natural diffused light
+
+# 05
+Realistic fashion portrait of a man in a pinstripe charcoal three-piece suit — pinstripes at 1cm intervals — white shirt with cutaway collar, silver silk tie, and black patent leather Oxford shoes, wood-panelled boardroom background, warm side lighting
+
+# 06
+Professional photorealistic photo: woman in a floor-length black structured crepe evening suit — tailored blazer with satin lapels and matching wide-leg tuxedo trousers — white silk camisole, black satin strappy heels, dark editorial background
+
+# 07
+High-resolution formal fashion photo: man wearing a camel wool overcoat over a dark charcoal suit, white shirt, navy regimental tie, brown Oxford shoes, cobblestone city street background, autumn morning light, full-body editorial
+
+# 08
+Photorealistic fashion photography: woman in a forest green structured peplum blazer with oversized peak lapels, matching high-waist pencil skirt, cream silk blouse, and black leather stiletto heels, law firm interior backdrop, professional lighting
+
+# ── RUNWAY / EDITORIAL ───────────────────────────────────────
+# 09
+High fashion runway photograph of a model wearing a sculptural ivory double-breasted blazer with architectural shoulders and matching straight-leg trousers, fashion week catwalk, stark white runway lighting, tailored silhouette, Vogue editorial quality
+
+# 10
+Fashion week runway shot: model in a dramatic black faille structured tuxedo gown combining a tailored tuxedo blazer top with a floor-length skirt, satin lapels, white shirt bib, and black patent court shoes, white catwalk, dramatic uplighting
+
+# 11
+Runway editorial: model wearing an all-white couture power suit — oversized double-breasted blazer with exaggerated gold buttons and wide-leg palazzo trousers — white catwalk, editorial fashion lighting, fashion week quality
+
+# 12
+High-fashion runway shot: model in a vivid red power suit — fitted double-breasted blazer with peak lapels and matching tapered trousers — white shirt, red strappy heels, white runway background, bold editorial composition
+
+# 13
+Avant-garde formal runway: model wearing a black sculptural houndstooth blazer with exaggerated balloon sleeves and matching cigarette trousers, white silk shirt, black pointed-toe mules, white runway, moody dramatic editorial lighting
+
+# 14
+Editorial fashion week shot: model in a floor-length navy blue structured column gown with built-in blazer shoulders, single button fastening, and a subtle train, white catwalk background, elegant fashion week lighting
+
+# 15
+Runway editorial: model wearing a pale gold brocade three-piece suit — structured blazer, waistcoat with contrast lapels, and tailored trousers — gold cufflinks, white shirt, champagne Oxford shoes, editorial runway lighting
+
+# 16
+Paris Fashion Week runway: model in a sharp royal purple double-breasted power blazer with matching flared trousers, white silk shirt, purple pointed court shoes, white catwalk, dramatic editorial lighting, impeccable tailoring
+
+# ── E-COMMERCE / PRODUCT ─────────────────────────────────────
+# 17
+Professional e-commerce product photo: model in a slim-fit navy blue two-button suit jacket and matching trousers, white dress shirt and navy tie, clean white background, full-body shot, crisp product photography, even professional lighting
+
+# 18
+Formal e-commerce photography: woman in a black tailored blazer with notch lapels over a white silk blouse, paired with high-waist black wide-leg trousers, clean grey background, full-body product shot, sharp tailoring detail, professional lighting
+
+# 19
+E-commerce formal fashion: man in a charcoal grey slim-fit suit with fine chalk stripe, white shirt, grey tie, and black leather Oxford shoes, light grey seamless background, e-commerce ready, flat even lighting
+
+# 20
+Product e-commerce photo: woman in a structured camel blazer with double-breasted button fastening and matching high-waist camel trousers, cream blouse, nude heels, white background, full-body, crisp detail, professional fashion lighting
+
+# 21
+E-commerce formal product shot: man wearing a classic black tuxedo with satin peak lapels, white dress shirt with bib front, black silk bow tie, and black patent leather shoes, dark grey studio background, elegant even lighting
+
+# 22
+Formal e-commerce: woman in a burgundy structured midi dress with tailored bodice, three-quarter sleeves, and A-line skirt, pearl stud earrings, nude block-heel pumps, white studio background, professional product photography
+
+# 23
+Product fashion shot: man in a mid-grey wool flannel suit jacket with patch pockets and matching straight trousers, pale blue shirt, navy tie, and tan suede Chelsea boots, cream background, e-commerce ready sharp product detail
+
+# 24
+E-commerce formal photography: woman wearing a structured royal blue blazer dress with gold button detail, worn with nude pointed court shoes, clean white background, 3/4 body shot, sharp tailoring, premium product lighting
+
+# ── DIVERSE CATEGORIES ───────────────────────────────────────
+# 25
+Professional fashion photography of a man in a chalk-white linen suit with relaxed structured blazer and pleated wide-leg trousers, white shirt open collar, tan loafers, summer garden party setting, warm afternoon sun
+
+# 26
+Formal fashion editorial: woman wearing a black tailored wool tuxedo blazer, matching black flared tuxedo trousers with satin stripe, white ruffle blouse, and black pointed-toe heels, moody dark editorial background
+
+# 27
+Fashion photography: man wearing a dark brown herringbone tweed three-piece suit — structured blazer, matching waistcoat, and tailored trousers — white shirt, wool tie, and brown brogue Oxford shoes, English countryside setting
+
+# 28
+Formal editorial: woman in a soft blush pink crepe power suit — structured single-button blazer and matching straight trousers — white silk blouse, pearl jewellery, nude heeled pumps, minimalist studio background
+
+# 29
+Professional fashion photo: man in a midnight blue velvet evening suit with satin peaked lapels, white dress shirt, white silk pocket square, black bow tie, and black patent shoes, luxury hotel reception, warm evening lighting
+
+# 30
+Formal fashion editorial: woman wearing a black and white glen check tailored coat-dress with oversized lapels and matching belt, sheer black stockings, black court shoes, modern office building backdrop
+
+# 31
+Fashion photography: man in a forest green slim-fit suit with notch lapels, white Oxford cloth shirt, burgundy silk tie, and dark brown cap-toe Oxford shoes, warm autumn boardroom setting, natural side lighting
+
+# 32
+Formal fashion editorial: woman in a cobalt blue structured blazer with matching high-waist cigarette trousers, white silk blouse, blue sapphire earrings, and nude pointed-toe pumps, light marble wall background
+
+# ── MODERN FORMAL TRENDS ────────────────────────────────────
+# 33
+Modern formal editorial: woman wearing a butter yellow structured blazer dress with bold padded shoulders, matching mini skirt and coordinating yellow court shoes, bright editorial background, modern power dressing
+
+# 34
+Contemporary formal: woman in a tailored stone-coloured oversized blazer worn as a mini dress, with black opaque tights and black pointed-toe ankle boots, minimalist office interior, natural light, modern professional aesthetic
+
+# 35
+Power dressing editorial: model in a vivid emerald green oversize single-button blazer with exaggerated shoulders and matching high-waist straight trousers, white shirt and gold chain jewellery, stark white background
+
+# 36
+Androgynous formal fashion: model wearing a classic black tuxedo with a structured peaked lapel blazer, matching tuxedo trousers, and white bib-front shirt, silver cufflinks, white catwalk background, editorial lighting
+
+# 37
+Formal fashion editorial: woman in a dusty rose structured power suit — single-breasted blazer with flap pockets and matching tailored flare trousers — pearl earrings, nude pointed heels, soft studio lighting
+
+# 38
+Modern boardroom style: man in a deep charcoal slim-cut suit with subtle micro-check pattern, pale pink shirt, a pale pink tie, and black Oxford shoes, contemporary glass office background, modern natural light
+
+# 39
+Seasonal formal: woman in a rich burgundy velvet tailored blazer and matching high-waist straight trousers, ivory silk blouse, garnet jewellery, black velvet heeled pumps, dark wood library interior, warm editorial lighting
+
+# 40
+Formal fashion editorial: woman wearing a white structured crepe column dress with an elongated structured single-button blazer in a tonal ivory over the top, white stiletto heels, white minimalist studio, soft diffused editorial light
+
+# ── ACCESSORIES & DETAIL ─────────────────────────────────────
+# 41
+Detail shot of a perfectly folded white pocket square in the breast pocket of a navy suit jacket, crisp fabric, gold lapel pin, tailoring stitching visible, shallow depth of field, dark background, product editorial photography
+
+# 42
+Close-up editorial of a pair of black patent cap-toe Oxford shoes on a marble floor, formal trouser hem above, warm editorial light, sharp shoe detail, e-commerce shoe photography quality
+
+# 43
+Accessory close-up: a silk repp tie in deep burgundy with navy micro-stripe, laid across a white poplin shirt, tailored suit lapel in background, soft depth of field, product photography quality, even studio lighting
+
+# 44
+Detail fashion shot: woman's hand touching a gold double-G style belt buckle on a camel wool blazer-dress, red manicure, shallow depth of field, warm studio lighting, accessory editorial quality
+
+# ── COLOUR STORIES ───────────────────────────────────────────
+# 45
+Colour story — all black: model in a perfectly tailored black suit — slim blazer and cigarette trousers — black dress shirt, black silk tie, and black Oxford shoes, dark studio background, dramatic rim lighting, editorial depth
+
+# 46
+Colour story — caramel warmth: man in a camel wool double-breasted suit, ivory dress shirt, camel-tone silk tie, and tan suede loafers, warm neutral editorial background, soft side lighting, warm colour palette
+
+# 47
+Colour story — cool greys: woman in a pale dove grey structured blazer with matching wide-leg trousers, white silk blouse, grey pearl earrings, and silver block-heel pumps, cool grey studio background, soft professional lighting
+
+# 48
+Colour story — classic navy: man in a deep navy blue wool suit — double-breasted blazer with gold buttons and matching straight trousers — crisp white shirt, gold cufflinks, and brown Oxford shoes, editorial background
+
+# 49
+Colour story — forest and cream: woman in a deep forest green structured blazer and matching tailored midi pencil skirt, cream silk blouse with gold chain jewellery, cream pointed heels, moss green editorial background
+
+# 50
+Colour story — bold monochrome: woman in a bright fire-engine red power suit — oversized blazer with patch pockets and wide-leg trousers — white shirt, red pointed stilettos, stark white studio background, bold editorial composition

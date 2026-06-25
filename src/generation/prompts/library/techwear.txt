@@ -1,0 +1,166 @@
+# ============================================================
+# TECHWEAR FASHION PROMPT LIBRARY
+# AI Fashion Design Assistant — Week 2
+# 50 High-Quality Prompts
+# ============================================================
+# Categories: tactical jackets · cargo pants · shell jackets ·
+#             vests · harnesses · joggers · hoods · utility bags
+# Contexts:   photorealistic · runway · e-commerce · editorial
+# ============================================================
+
+# ── PHOTOREALISTIC ───────────────────────────────────────────
+# 01
+Futuristic fashion photography of a model wearing a black ripstop nylon tactical shell jacket with multiple zipper pockets and modular attachment points, black cargo pants with utility straps, and black high-top technical sneakers, rain-slicked neon-lit Tokyo street, cinematic dramatic light, ultra-realistic, 8k
+
+# 02
+Photorealistic techwear editorial: man in a grey waterproof Gore-Tex hooded jacket with articulated patterning and taped seams, slim-fit black cargo joggers with side pockets, black combat boots, urban underpass background, dramatic tungsten-sodium lighting
+
+# 03
+Techwear fashion photo: model in an all-black ensemble — oversized black waterproof zip jacket with drop-hem and asymmetric zip closure, black technical wide-leg cargo trousers with buckle straps — black lug-sole boots, wet urban night, neon reflections on wet pavement
+
+# 04
+Photorealistic futuristic fashion: model wearing a matte dark olive nylon coach jacket with minimal logo and reflective piping, black water-resistant slim cargo pants, triple-black technical sneakers, dark industrial overpass setting, hard directional street lighting
+
+# 05
+Realistic cyberpunk fashion editorial: woman in a black cropped tactical jacket with integrated hood and silver metal hardware, high-waist black leather-look wide-leg pants with cargo pockets, black platform lug boots, neon pink and purple lit nightclub background
+
+# 06
+Techwear photo: model in a dark navy blue modular puffer jacket with removable sleeves and tactical vest overlay, black tapered tech cargo trousers, and dark navy technical sneakers, grey brutalist architecture background, overcast urban day light
+
+# 07
+Photorealistic fashion editorial: model wearing a dark forest green anorak with half-zip, utility pockets, and DWR coating, paired with black water-resistant joggers with articulated knees, dark trail boots, dark wet forest background
+
+# 08
+Futuristic techwear photo: model in a charcoal grey technical three-layer hard shell jacket with helmet-compatible hood and vent zips, black cargo pants, and grey waterproof trail running shoes, rooftop urban setting, blue-grey overcast sky
+
+# ── RUNWAY / EDITORIAL ───────────────────────────────────────
+# 09
+High-fashion techwear runway shot: model wearing a sculptural black neoprene tailored trench coat with architectural panelling, zip detailing, and integrated technology pockets, paired with wide-leg black cargo trousers, dark editorial runway, dramatic underlighting
+
+# 10
+Fashion week runway editorial: model in a structural all-black techwear ensemble — oversized shell jacket with modular pockets and tactical harness, matching wide-leg cargo trousers with multiple zip pockets, black combat platform boots, smoke-filled dark runway
+
+# 11
+Avant-garde techwear runway: model wearing a dark grey geometric deconstructed jacket with laser-cut panels, technical mesh underlayer, tactical webbing belt, black slim cargo pants, dark catwalk, blue-tinted dramatic editorial lighting
+
+# 12
+Techwear fashion week runway shot: model in a white futuristic utility jacket with clean technical lines and muted silver hardware, white tapered tech cargo trousers and white technical sneakers, all-white runway, soft directional editorial lighting
+
+# 13
+Runway editorial: model wearing an iridescent holographic techwear jacket — shifting from slate to cobalt under light — paired with matte black cargo pants, modular harness, and black technical boots, dark runway, dramatic coloured lights
+
+# 14
+Fashion editorial: model in a structured dark burgundy-red waterproof tactical parka with built-in balaclava hood, black wide-leg tech cargo trousers, and black tactical boots, dramatic red-lit industrial background
+
+# 15
+High-fashion techwear: model in a sculptural oversized black parachute-nylon jacket with extreme pocket detailing and utility webbing, slim black cargo trousers, and black technical sneakers, white abstract editorial background, harsh directional light
+
+# 16
+Futuristic runway shot: model wearing a full slate grey techwear suit — structured jacket with modular removable components and matching tapered cargo trousers — silver hardware, dark technical boots, dark moody runway, electric blue rim light
+
+# ── E-COMMERCE / PRODUCT ─────────────────────────────────────
+# 17
+E-commerce product photography: model wearing a black ripstop nylon shell jacket with multiple YKK zip pockets and taped seams, clean dark grey studio background, full-body product shot, sharp technical fabric detail, product-ready professional lighting
+
+# 18
+Techwear e-commerce photo: model in a dark olive tactical cargo trousers with D-ring hardware, multiple zip and Velcro pockets, slim tapered fit, and black technical sneakers, clean dark background, product photography quality, even lighting
+
+# 19
+Product fashion shot: model wearing a slate blue waterproof anorak with chest zip pocket, half-zip opening, and packable hood, against a clean grey seamless background, full-body e-commerce product shot, technical fabric clearly visible
+
+# 20
+E-commerce techwear: model in an all-black technical utility vest with molle attachment panels, buckle closures, and multiple pockets, worn over a black long-sleeve base layer, dark seamless background, product-focused editorial lighting
+
+# 21
+Product e-commerce shot: model in dark charcoal wide-leg cargo joggers with articulated knees, ankle zips, and multiple cargo pockets, paired with a black base layer tee, dark grey seamless background, sharp product photography
+
+# 22
+Techwear e-commerce: model wearing a black modular system jacket — removable tactical vest overlay and windproof inner layer — full-body product shot, dark seamless background, sharp detail on zips, straps, and pockets
+
+# 23
+E-commerce fashion: model in a matte black techwear harness vest worn over a black turtleneck with black slim tech joggers, clean dark studio background, e-commerce product photography, multiple pocket details sharp
+
+# 24
+Product photography: model in a forest green waterproof pull-on shell jacket with attached hood and single hand pocket, full-body shot against clean dark green background, product-ready e-commerce photography, technical fabric detail visible
+
+# ── DIVERSE CATEGORIES ───────────────────────────────────────
+# 25
+Techwear editorial: model wearing a black water-resistant hoodie with articulated seams and a hidden zip chest pocket, paired with black slim cargo shorts and black technical trail shoes, urban summer setting, natural urban light
+
+# 26
+Techwear fashion photo: woman in a cropped black tactical shell jacket, black utility harness layered over it, high-waist black tech-fabric flare trousers, black platform lug boots, urban night setting, purple neon lighting
+
+# 27
+Editorial: model in a dark slate grey modular system parka with detachable inner fleece, tactical side zips, and packable hood, black slim tapered cargo pants, dark urban winter setting, grey overcast light
+
+# 28
+Futuristic fashion: woman in a black neoprene bodysuit with silver zip detailing, layered with a modular techwear vest in grey, black tapered tech-fabric trousers and black platform trail boots, industrial interior, blue-white dramatic lighting
+
+# 29
+Techwear editorial: man in a sage green ultralight nylon packable jacket with thumb holes and chest zip pocket, dark olive water-resistant cargo shorts with multiple pockets, and trail running shoes, rooftop urban setting, warm natural light
+
+# 30
+Fashion editorial: model in a pearl grey technical suit — structured blazer with hidden pockets and articulated shoulders, matching tapered cargo trousers — white turtleneck, silver hardware, clean white editorial background, architectural lighting
+
+# 31
+Techwear photo: model wearing a black insulated tactical puffer jacket with urban camo inner lining visible at collar, black cargo trousers with red webbing details, red-accented black boots, urban industrial night setting
+
+# 32
+Futuristic editorial: woman in a dark navy blue technical drop-shoulder jacket with contrast orange taped seams, black wide-leg cargo pants with asymmetric hem, and orange-accent black technical boots, dark editorial background, dramatic orange fill light
+
+# ── NIGHT / ATMOSPHERIC ──────────────────────────────────────
+# 33
+Nighttime techwear editorial: model wearing a black hooded waterproof shell jacket with reflective DWR coating that catches neon light, black cargo trousers, tactical boots, rain-slicked Tokyo back alley, multiple neon signs in background, cinematic atmosphere
+
+# 34
+Atmospheric techwear fashion: model in a dark grey asymmetric-zip techwear coat with modular hood, black tech-fabric straight trousers, and black high-top boot-sneakers, foggy brutalist rooftop at night, single blue fill light
+
+# 35
+Cyberpunk fashion editorial: woman in a black PVC-coated techwear jacket, integrated mesh turtleneck, black cargo pants with holographic reflective stripes, platform boots, neon purple and cyan lit underground club setting
+
+# 36
+Night urban techwear: model in a black windproof shell jacket with silver reflective zip pulls, dark cargo joggers with ankle zips, black technical trainers, underpass streetlamp, wet concrete, orange sodium light glow
+
+# 37
+Cinematic techwear photo: model in a dark olive and black colourblock techwear suit — tactical jacket with modular panels and matching cargo trousers — tactical boots, moody rooftop with city lights in the background
+
+# 38
+Atmospheric editorial: model in a dark charcoal fleece-lined waterproof jacket with a large packable hood, dark utility trousers, and black lug-sole boots, dense fog urban setting, white mist editorial atmosphere
+
+# ── COLOUR STORIES ───────────────────────────────────────────
+# 39
+Colour story — all black: full black techwear look — matte black shell jacket, black cargo trousers, black boots and black utility harness — dark editorial background, subtle blue edge light, peak techwear monochrome
+
+# 40
+Colour story — slate and grey gradient: model in a pale dove grey techwear shell jacket layered over a medium grey long-sleeve base layer, dark charcoal cargo trousers, and all-grey technical sneakers, minimal white background, soft directional light
+
+# 41
+Colour story — military greens: dark olive shell jacket, sage green cargo trousers, forest green technical sneakers, khaki utility vest, dark wet forest background, natural muted light, full military-green techwear look
+
+# 42
+Colour story — bone and black: model in a clean off-white cropped techwear jacket, all-black cargo trousers and harness, bone-white technical boots, high-contrast black and white editorial background, dramatic uplighting
+
+# 43
+Colour story — dark rust and black: deep rust orange tactical jacket with black panelled details, black cargo joggers, rust orange-accented black boots, dark industrial background, dramatic warm-toned editorial
+
+# 44
+Colour story — iridescent: model wearing a full iridescent silver-blue techwear ensemble — holographic jacket and matching wide-leg cargo trousers — dark background, coloured moving lights, shifting holographic reflections
+
+# ── MODERN TECHWEAR TRENDS ──────────────────────────────────
+# 45
+Gorpcore-techwear hybrid editorial: model in a bright orange lightweight shell jacket with technical features, paired with dark grey wide-leg cargo trousers and orange-accented trail shoes, rugged urban landscape, editorial outdoor light
+
+# 46
+Quiet techwear editorial: model in a minimalist clean grey technical jacket with barely-visible seams and matte silver zips, slim black cargo trousers, white technical sneakers, minimal white background, understated futuristic aesthetic
+
+# 47
+Luxury techwear editorial: model in a slate grey cashmere-wool-tech blend tailored jacket with hidden technical pockets, slim black cargo trousers, and black leather minimalist combat boots, high-end editorial lighting, dark marble background
+
+# 48
+Futuristic techwear runway trend: model in a black utility bodysuit with integrated pockets and zipper detailing, paired with a structured techwear blazer, wide-leg cargo trousers, tactical boots, white fashion week runway, editorial composition
+
+# 49
+Techwear-influenced streetwear crossover: model in a dark navy puffer vest over a black modular harness and white longline tee, black cargo parachute trousers, white chunky technical sneakers, dark urban editorial setting
+
+# 50
+Techwear editorial masterclass: model in a full sculptural dark anthracite techwear system — shell jacket with modular chest rig, tech-fabric hood, wide-leg tactical cargo trousers with D-ring hardware, and black military lug-sole platform boots — dramatic dark editorial, blue electric underlighting

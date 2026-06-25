@@ -1,0 +1,167 @@
+# ============================================================
+# LUXURY FASHION PROMPT LIBRARY
+# AI Fashion Design Assistant — Week 2
+# 50 High-Quality Prompts
+# ============================================================
+# Categories: evening gowns · couture suits · designer coats ·
+#             silk blouses · embellished dresses · fur wraps  ·
+#             leather goods · bespoke tailoring · accessories
+# Contexts:   photorealistic · runway · e-commerce · editorial
+# ============================================================
+
+# ── PHOTOREALISTIC ───────────────────────────────────────────
+# 01
+Luxury fashion photography of a woman wearing a floor-length deep emerald silk charmeuse evening gown with a cowl neckline and open back, diamond drop earrings, black satin stilettos, grand marble interior, dramatic chandelier lighting, ultra-realistic, 8k resolution
+
+# 02
+Photorealistic high-fashion portrait of a woman in a midnight navy duchess satin ball gown with hand-sewn crystal bodice, cathedral train, long white satin gloves, Cartier diamond necklace, gilded palace ballroom background, dramatic golden light
+
+# 03
+Luxury fashion editorial of a man in a bespoke charcoal grey double-breasted wool suit with peak lapels and a white pocket square, white cotton shirt, a sapphire silk tie, and black cap-toe Oxford shoes, marble lobby backdrop, cinematic side lighting
+
+# 04
+Photorealistic fashion photograph of a woman in a ruby red silk crepe bias-cut slip dress with spaghetti straps, light catching subtle beading at the hem, strappy gold heeled sandals, minimalist luxury interior, soft cinematic light, 8k
+
+# 05
+High-resolution luxury fashion photo: woman wearing a floor-length black velvet gown with off-the-shoulder neckline and bell sleeves, dramatic ruched bodice, teardrop diamond earrings, black satin court shoes, black draped studio background, moody rim lighting
+
+# 06
+Photorealistic couture photography: woman in a structured ivory silk taffeta cocktail dress with origami-folded skirt and gold jewelled belt, champagne Manolo Blahnik stilettos, cream studio background, soft diffused luxury editorial lighting
+
+# 07
+Luxury fashion photograph of a woman wearing a full-length cashmere camel wrap coat with oversized lapels and leather belt, ivory silk blouse, wide-leg cream wool trousers, and nude pointed heels, grey stone lobby, natural winter light, impeccable detail
+
+# 08
+Photorealistic fashion editorial: man in a cream-white three-piece linen suit with gold button detail, ivory silk pocket square, tan suede loafers, open white shirt collar, sunlit Mediterranean terrace background, golden hour, 8k
+
+# ── RUNWAY / EDITORIAL ───────────────────────────────────────
+# 09
+High fashion runway photograph of a model wearing a sculptural ivory duchess satin gown with architectural petal skirt, strapless structured bodice, and dramatic train, Paris Fashion Week catwalk, stark white runway lighting, Vogue editorial quality, razor-sharp detail
+
+# 10
+Haute couture runway shot: model in a hand-beaded crimson red strapless gown with thousands of ruby and garnet beads cascading into a waterfall train, red carpet runway, dramatic theatrical lighting, fashion week front row, editorial composition
+
+# 11
+Fashion week runway editorial: model wearing a deconstructed black blazer dress with exaggerated shoulders, structured peplum waist, sheer organza panel inserts, and strappy black stilettos, white runway background, dramatic moody lighting
+
+# 12
+Couture runway shot: model in an oyster-white silk gown with hand-embroidered floral appliqué using silk thread, pearls, and crystals, structured strapless bodice and full tulle underskirt, white catwalk, editorial fashion lighting
+
+# 13
+Avant-garde luxury runway: model wearing a sculptural black leather and velvet coat dress with architectural collar and oversized sleeves, dramatic hemline variation, patent leather boots, white runway, moody dramatic lighting, fashion editorial
+
+# 14
+High fashion editorial runway: model in a deep sapphire blue heavily embellished column gown with 3D floral beading at the neckline and shoulders, long satin gloves, fashion week lighting, editorial quality, impeccable craftsmanship
+
+# 15
+Runway editorial: model in a liquid-silver pleated silk charmeuse gown with fluid movement, halter neckline, crystal-encrusted waistband, silver strappy heels, mirror-floor runway, dramatic fashion lighting, W Magazine quality
+
+# 16
+Paris Fashion Week runway shot: model wearing a powder rose couture ball gown with a structured silk duchess satin bodice, hand-pleated rose skirt, pearl choker, and ivory satin gloves, white catwalk, high fashion editorial lighting
+
+# ── E-COMMERCE / PRODUCT ─────────────────────────────────────
+# 17
+Professional luxury e-commerce photo: model wearing an ivory silk charmeuse wrap dress with V-neckline and tie-belt, against a clean light grey background, full-body shot, soft even lighting, sharp fabric texture, premium product photography
+
+# 18
+Luxury e-commerce product shot: model in a deep burgundy cashmere turtleneck sweater and wide-leg caramel wool trousers, seated on a marble bench, clean white studio background, luxury lifestyle product photography
+
+# 19
+E-commerce editorial: woman wearing a structured black crepe blazer with gold button fastening and matching high-waist black wide-leg trousers, white background, full-body shot, sharp tailoring details, professional luxury lighting
+
+# 20
+High-end e-commerce product photo: model in a champagne gold slip dress with bias-cut silk satin fabric and delicate lace trim, standing against a cream studio background, soft light, e-commerce ready, premium quality
+
+# 21
+Luxury product photography: model in a deep forest green cashmere midi skirt with A-line silhouette and matching cashmere ribbed turtleneck, pearl earrings, clean studio background, high-end fashion editorial lighting
+
+# 22
+E-commerce luxury fashion: woman in a blush pink silk charmeuse midi blouse with draped neckline and billowing sleeves, tucked into a high-waist ivory crepe wide-leg trouser, clean white background, product-ready sharp detail
+
+# 23
+Premium e-commerce photo: man in a navy blue cashmere double-breasted blazer with silver buttons and matching navy slim trousers, white Oxford shirt, silk pocket square, grey studio background, elegant product lighting
+
+# 24
+Luxury e-commerce: model wearing a deep teal velvet midi dress with ruched bodice and flutter sleeves, pearl strand necklace, cream leather pumps, light grey background, sharp velvet texture detail, premium product photography
+
+# ── DIVERSE CATEGORIES ───────────────────────────────────────
+# 25
+Luxury fashion editorial: woman in an aubergine floor-length velvet cape gown with dramatic hood, opera-length black satin gloves, and black platform sandals, dark marble background, dramatic upward lighting
+
+# 26
+High-end fashion photography: woman in a white broderie anglaise midi dress with puffed sleeves and a square neckline, gold rope belt, tan leather slingback heels, sunlit coastal villa background, warm natural light
+
+# 27
+Luxury editorial photography of a model in a full-length caramel leather trench coat with oversized lapels and tied belt, worn over a black satin blouse and cream silk wide-leg trousers, Paris streets, autumn light
+
+# 28
+Fashion editorial: woman wearing a cobalt blue structured cocktail dress with beaded cap sleeves and a fitted midi skirt, sapphire drop earrings, black strappy heels, blue-toned marble interior, dramatic fashion lighting
+
+# 29
+High-fashion luxury portrait: woman in a silver lamé halter gown with a plunging V-neckline, fluid draping, and a long side slit, diamond cuff bracelets, silver strappy sandals, mirror background, dramatic silver studio lighting
+
+# 30
+Luxury lifestyle photography: couple, man in a charcoal peak-lapel suit and woman in a dusty rose silk charmeuse maxi dress, opulent evening interior, warm candle-and-chandelier lighting, editorial composition
+
+# 31
+Luxury fashion editorial: model wearing a royal blue duchess satin structured blazer dress with notch lapels, gold button detail, and coordinating high-waist shorts, sapphire and gold jewellery, clean studio background
+
+# 32
+High fashion photography: woman in a gold brocade cropped jacket with mandarin collar over a black silk palazzo trouser, chandelier earrings, black pointed-toe pumps, luxury hotel interior background, warm editorial lighting
+
+# ── MODERN LUXURY TRENDS ────────────────────────────────────
+# 33
+Quiet luxury editorial: model wearing a floor-length oatmeal cashmere-blend duster coat over a matching cashmere turtleneck and wide-leg trousers, all in the same tonal caramel palette, minimal jewellery, natural light
+
+# 34
+Minimalist luxury fashion photography of a woman in a single-material cream satin column gown with a subtle sheen and a structured boned bodice, minimal pearl stud earrings, white studio, soft diffused lighting, understated elegance
+
+# 35
+Luxury dopamine dressing: woman in a vivid cobalt blue silk taffeta ball skirt and matching structured blazer, gold Valentino heels, bold gold earrings, stark white background, vibrant fashion editorial
+
+# 36
+Modern couture photography: model wearing a structural black and white contrast gown — white sculptural bodice with exaggerated 3D ruffle and floor-length black crepe skirt — stark white editorial background, dramatic contrast lighting
+
+# 37
+Sustainable luxury editorial: model in a tailored camel coat crafted from recycled wool with visible fibre texture, ivory organic cotton wide-leg trousers, and vegan leather loafers, soft natural studio lighting, eco-conscious luxury aesthetic
+
+# 38
+Luxury fashion editorial featuring power dressing: woman in a sharp white double-breasted power blazer with exaggerated padded shoulders, matching high-waist wide-leg trousers, nude pointed court shoes, dramatic upward lit office backdrop
+
+# 39
+Luxury resort wear editorial: woman in a floor-length emerald green silk kimono wrap dress with gold belt, standing on a sun-drenched white villa terrace, Mediterranean sea in background, warm golden light
+
+# 40
+Modern luxury fashion shot: man in an ivory raw-edge silk camp-collar shirt, wide-leg cream silk trousers, minimal gold jewellery, and white leather slip-on shoes, warm sunlit luxury interior, lifestyle editorial
+
+# ── ACCESSORIES & DETAIL SHOTS ───────────────────────────────
+# 41
+Luxury detail editorial: close-up of hands holding a quilted black lambskin Chanel-style handbag, gold chain hardware, red manicured nails, black couture jacket sleeve in background, soft editorial lighting, extreme detail
+
+# 42
+Luxury accessory photography: close-up of a woman's neck wearing a layered diamond pavé necklace, skin in warm light, dark blurred background, jewellery editorial quality, sharp gemstone detail, 8k
+
+# 43
+Luxury shoe editorial: close-up of a pair of nude patent leather stiletto court shoes on a white marble floor, woman's hem of a black gown visible, luxury hotel setting, sharp product detail, high-fashion editorial composition
+
+# 44
+Detail shot: hand-embroidered bodice detail on a pale gold couture gown — thousands of tiny crystal beads, pearl drops, and gold thread — extreme macro close-up, white background, sharp artisan craft detail
+
+# ── COLOUR STORIES ───────────────────────────────────────────
+# 45
+Colour story — all champagne: model in a champagne silk slip gown, champagne beaded clutch, champagne satin slingback heels, and delicate pearl jewellery, champagne-toned cream studio background, warm soft lighting
+
+# 46
+Colour story — midnight black: floor-length black velvet gown, black satin opera gloves, black diamond earrings, black pointed stilettos, all-black studio background, dramatic single rim light, mysterious luxury editorial
+
+# 47
+Colour story — royal jewel tones: woman in a deep amethyst purple velvet floor-length gown, emerald drop earrings, ruby red lips, gold strappy heels, dark moody interior, gemstone colour story editorial
+
+# 48
+Colour story — blush romance: model in a blush pink tulle ball gown with beaded sweetheart bodice, rose gold jewellery, pale blush satin heels, pastel rose studio backdrop, soft dreamy editorial lighting
+
+# 49
+Colour story — all ivory: woman in an ivory silk charmeuse wrap gown, ivory satin mules, pearl chandelier earrings, cream silk long gloves, white draped studio background, soft natural editorial light, pure luxury aesthetic
+
+# 50
+Colour story — bold scarlet: floor-length scarlet red silk crepe column gown with a structured shoulders, red satin pointed-toe pumps, red chandelier earrings, all-red editorial backdrop, dramatic high-contrast fashion lighting, Vogue quality

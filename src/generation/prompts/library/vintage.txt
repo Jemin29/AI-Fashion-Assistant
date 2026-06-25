@@ -1,0 +1,167 @@
+# ============================================================
+# VINTAGE / RETRO FASHION PROMPT LIBRARY
+# AI Fashion Design Assistant — Week 2
+# 50 High-Quality Prompts
+# ============================================================
+# Categories: 1950s · 1960s mod · 1970s boho · 1980s power ·
+#             1990s grunge · thrift-chic · heritage tailoring ·
+#             denim · band tees · retro accessories
+# Contexts:   photorealistic · runway · e-commerce · editorial
+# ============================================================
+
+# ── PHOTOREALISTIC ───────────────────────────────────────────
+# 01
+Photorealistic vintage fashion photography of a woman wearing a 1950s-inspired full circle skirt in fire-engine red with white polka dots, a fitted white cotton blouse with Peter Pan collar, red leather belt, and white kitten-heel pumps, classic American diner setting, warm nostalgic light, 8k
+
+# 02
+Retro fashion editorial: man in a 1970s-inspired wide-lapel brown corduroy blazer, cream flared trousers with subtle flare from the knee, brown platform Oxford shoes and an open-neck rust-orange shirt, warm wood-panelled interior, analogue film aesthetic
+
+# 03
+Photorealistic 1960s fashion: woman in a mod-style geometric print A-line mini dress in black and white, white go-go boots, thick black square-frame sunglasses, and white vinyl handbag, Swinging Sixties London street setting, bright pop-art editorial light
+
+# 04
+Vintage fashion photography of a woman in a pastel mint 1950s swing dress with cap sleeves, crinoline petticoat underskirt, white gloves, pearl necklace, and nude court heels, suburban home kitchen background, warm Kodachrome-style photography
+
+# 05
+Realistic 1980s power fashion: woman in a tailored charcoal wide-shoulder blazer with bold shoulder pads, matching high-waist pencil skirt, red power silk blouse, sheer stockings, and red classic court heels, 1980s Manhattan office setting, dramatic lighting
+
+# 06
+Photorealistic vintage fashion: man in a faded vintage Levis 501 jeans in classic light wash, a worn-in white band tee with a faded rock print, a black leather motorcycle jacket, and black Chelsea boots, 1970s rock-aesthetic urban backdrop
+
+# 07
+Retro photorealistic editorial: woman in a 1990s-inspired slip dress in bias-cut champagne satin, strappy thin-heeled sandals, a fitted oversized flannel shirt loosely draped over the shoulders, minimalist 90s aesthetic, film grain photography
+
+# 08
+Vintage editorial: man in a classic 1940s-inspired grey wool double-breasted suit with pinstripes, wide-brim fedora hat, white dress shirt, tie with geometric pattern, and black Oxford cap-toes, black-and-white editorial aesthetic with warm sepia tones
+
+# ── RUNWAY / EDITORIAL ───────────────────────────────────────
+# 09
+High fashion vintage runway: model in a 1970s-inspired floating chiffon floral maxi dress in sunset orange and yellow, with bell sleeves and a tie-waist belt, platform wooden sandals, white catwalk, warm golden runway lighting, fashion editorial quality
+
+# 10
+Vintage-inspired runway shot: model wearing a 1950s New Look silhouette — nipped waist structured blazer and full midi circle skirt in deep forest green wool — white gloves, black velvet heels, white catwalk, dramatic fashion week lighting
+
+# 11
+Runway editorial: model in a 1960s Mod-inspired structured coat dress in bold cobalt blue with white graphic trim and oversized white buttons, white vinyl boots, clean white runway, bright pop editorial lighting
+
+# 12
+Fashion week runway: model wearing a 1970s-inspired sleek halter-neck disco jumpsuit in iridescent silver lamé, wide-leg bell-bottom trousers, platform silver shoes, warm disco-era lighting on white catwalk, editorial composition
+
+# 13
+Avant-garde vintage runway: model in a 1920s Art Deco-inspired beaded flapper gown in black with silver beads and fringe hem, feathered headband, T-strap silver heels, moody dark art deco backdrop, editorial fashion lighting
+
+# 14
+Runway editorial: model wearing a deconstructed 1980s power blazer with oversized shoulders, neon floral print fabric, high-waist cigarette trousers, and black pointed court shoes, electric fashion editorial lighting
+
+# 15
+Vintage-inspired fashion week runway: model in a classic 1930s Hollywood Glamour bias-cut floor-length gown in midnight blue silk charmeuse, marcelled hair, jewelled headband, white fur stole, black satin courts, editorial composition
+
+# 16
+Fashion editorial runway: model in a 1990s supermodel-style look — white Calvin Klein-inspired slip dress, white sneakers, tiny sunglasses, and messy blow-dried hair — heroin chic-revival editorial aesthetic, moody white backdrop
+
+# ── E-COMMERCE / PRODUCT ─────────────────────────────────────
+# 17
+Vintage e-commerce product photography: model wearing a reproduction 1960s Mod-style cream shift dress with geometric brown print, white ankle boots, clean white background, full-body product shot, retro fashion styling, even professional lighting
+
+# 18
+Vintage-inspired e-commerce photo: model in a reproduction 1950s full-skirt floral cotton dress in pastel blue roses on white, white petticoat visible at hem, white platform wedge sandals, white seamless background, product photography quality
+
+# 19
+Vintage e-commerce product shot: man in a reproduction 1970s-style wide-collar shirt with a palm-print pattern in brown and orange, straight-leg faded denim jeans, and brown suede wedge boots, cream background, retro product photography
+
+# 20
+Vintage fashion e-commerce: woman in a 1940s-inspired reproduction tea dress in dusky pink floral cotton with puffed shoulders and A-line skirt, white Mary Jane heels, vintage-style pearls, clean background, professional product shot
+
+# 21
+E-commerce retro product: man in a vintage-washed champion-style sweatshirt in faded scarlet with cracked print logo, slim straight mid-wash jeans, and white canvas sneakers, clean white background, casual retro product photography
+
+# 22
+Vintage e-commerce: woman in a 1990s-style replica acid-wash denim jacket with floral embroidery on the back, light denim wash, cream tee, faded straight jeans, white background, full-body product photography
+
+# 23
+Product shot: model wearing a vintage-inspired paisley silk scarf as a halter-neck top, paired with high-waist caramel brown wide-leg trousers and cork platform wedges, cream studio background, warm product photography
+
+# 24
+Vintage e-commerce product photography: woman in a reproduction 1960s herringbone check wool A-line midi skirt, black ribbed turtleneck, and black pointed kitten-heels, clean light grey background, professional product shot
+
+# ── DIVERSE CATEGORIES ───────────────────────────────────────
+# 25
+Vintage fashion editorial: woman in a 1970s Bohemian-inspired crocheted vest over a white broderie anglaise blouse, high-waist flared corduroy jeans in caramel, and tan leather platform boots, sunflower field, golden hour
+
+# 26
+Retro fashion photography: man in a 1950s-inspired bowling shirt in cream with green printed flames, classic Levis 501 jeans, and white leather creeper shoes, 1950s American diner exterior, early morning golden hour
+
+# 27
+Vintage editorial: woman in a 1920s flapper-style drop-waist beaded evening dress in champagne gold, with tiered fringe hem and matching beaded headband, T-strap heeled shoes, art deco interior, warm amber light
+
+# 28
+Vintage fashion: man in a 1960s-inspired mod style slim-cut turtleneck in black ribbed cotton, with slim black cigarette trousers and black Chelsea boots, 1960s-style graphic background, mod editorial photography
+
+# 29
+Retro editorial: woman wearing a 1980s-inspired power suit in bright cobalt blue with exaggerated shoulders, matching wide-leg trousers, a sheer polka-dot blouse, and black patent court heels, 1980s Miami office backdrop
+
+# 30
+Vintage editorial: man in a classic 1930s-style brown flannel double-breasted three-piece suit, brown and gold tie, vintage pocket watch, and brown Oxford brogues, warm sepia-toned studio, black-and-white vintage editorial aesthetic
+
+# 31
+Vintage lifestyle: woman in a reproduction 1970s wrap dress in a colourful geometric print — rust, mustard and olive — cinched at the waist with a thin leather belt, strappy wedge sandals, urban summer setting, warm light
+
+# 32
+Fashion editorial: model wearing a deconstructed vintage band tee from a 1980s heavy metal band, tied at the waist and tucked into high-waist acid-wash denim shorts, black vintage Dr Marten boots, grunge aesthetic
+
+# ── MODERN VINTAGE TRENDS ────────────────────────────────────
+# 33
+Vintage thrift-chic editorial: woman in a vintage-sourced oversized blazer in grey plaid, a white vintage band tee tucked into high-waist vintage Levis 501 jeans, tan loafers, and a classic leather belt bag, modern editorial styling
+
+# 34
+Heritage fashion editorial: man in a classic Barbour-style waxed cotton jacket in olive green, cream cable-knit Guernsey sweater, straight corduroy trousers, and brown leather wellingtons, English countryside, autumn morning light
+
+# 35
+Y2K vintage revival: woman in a low-rise flared denim jeans with embroidered hem, a strappy mini tank top in hot pink, platform white sneakers, and a micro butterfly bag, 2000s revival editorial, vivid lifestyle photography
+
+# 36
+Cottagecore vintage: woman in a 1940s-style floral midi dress with puffed sleeves and white lace collar, cream cotton apron, white Mary Jane heels, rustic farmhouse kitchen setting, warm Kodachrome-toned editorial
+
+# 37
+Retro sportswear editorial: man in a vintage-style Adidas three-stripe tracksuit in navy and white with gold stripes, classic shell toe Adidas sneakers, gold chain, retro sportswear aesthetic, warm editorial lifestyle photography
+
+# 38
+Dark vintage editorial: woman in a 1970s-inspired velvet maxi dress in deep wine red with bell sleeves, wooden platform shoes, amber and garnet jewellery, autumn forest setting, warm dramatic golden editorial light
+
+# 39
+Vintage denim editorial: man in a perfect vintage double denim look — faded light-wash Levi 501 jeans and a dark-wash Levis denim trucker jacket — white tee underneath, classic white canvas sneakers, 1980s Americana aesthetic
+
+# 40
+Mod revival editorial: woman in a space-age 1960s Courreges-inspired vinyl white mini dress with silver trim, white knee-high vinyl boots, geometric jewellery, and graphic sixties backdrop, bright pop editorial photography
+
+# ── ACCESSORIES & DETAIL ─────────────────────────────────────
+# 41
+Vintage accessory editorial: close-up of a woman's wrist wearing a stack of Bakelite bangles in candy pink, red and yellow, against a 1950s floral dress fabric, warm nostalgic light, sharp product detail photography
+
+# 42
+Vintage detail shot: close-up of a perfectly preserved 1970s brown leather platform Oxford shoe with a wooden block heel, detailed stitching visible, warm editorial photography, extreme detail, fashion product close-up
+
+# 43
+Retro accessory photo: close-up of a 1960s-inspired mod shift dress with large geometric print in black and white, model turning to reveal a large white vinyl handbag, retro editorial lighting, fashion week quality
+
+# 44
+Vintage editorial: close-up of model wearing a 1970s-inspired wide-brim felt hat in caramel over loose wavy hair, wearing a floral blouse, warm autumn dappled light, editorial close-up composition
+
+# ── COLOUR STORIES ───────────────────────────────────────────
+# 45
+Colour story — 1950s candy: woman in a candy pink full-circle poodle skirt with white trim, white fitted top, white gloves, red accessories, nostalgic candy-toned editorial, warm Kodachrome photography, pastel palette
+
+# 46
+Colour story — 1970s earth: full 1970s earth-tone look — rust orange wide-collar shirt, caramel suede flared trousers, tan platform boots, vintage brown leather bag, warm analogue film aesthetic, golden hour
+
+# 47
+Colour story — 1980s neon: power shoulder neon pink blazer, cobalt blue wide-leg trousers, metallic silver heels, big curly hair, red lips, 1980s Miami neon editorial, electric fashion photography
+
+# 48
+Colour story — 1990s minimalism: woman in a 1990s-inspired minimalist look — white Calvin Klein slip dress, white platform sneakers, small sunglasses — heroin-chic revival, cool grey editorial backdrop, muted analogue aesthetic
+
+# 49
+Colour story — monochrome vintage: woman in a classic black and white vintage houndstooth tailored suit — structured blazer and pencil skirt — white gloves, black court heels, classic hair and makeup, black-and-white editorial photography
+
+# 50
+Colour story — vintage pastels: 1950s pastel palette — baby blue full circle skirt, soft pink Peter Pan blouse, mint green cardigan tied over shoulders, white ballet flats, pastel accessories, warm sunny garden setting

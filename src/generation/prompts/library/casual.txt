@@ -1,0 +1,166 @@
+# ============================================================
+# CASUAL FASHION PROMPT LIBRARY
+# AI Fashion Design Assistant — Week 2
+# 50 High-Quality Prompts
+# ============================================================
+# Categories: t-shirts · jeans · chinos · hoodies · dresses ·
+#             knitwear · linen · denim jackets · shorts · loafers
+# Contexts:   photorealistic · lifestyle · e-commerce · editorial
+# ============================================================
+
+# ── PHOTOREALISTIC ───────────────────────────────────────────
+# 01
+Lifestyle fashion photography of a woman wearing a white linen relaxed button-down shirt tucked into high-waist light wash straight-leg jeans, tan leather slide sandals, and a woven straw tote bag, sunlit outdoor café terrace, warm afternoon natural light, ultra-realistic, 8k
+
+# 02
+Photorealistic casual fashion photo: man in a classic white crewneck tee, relaxed-fit mid-wash blue jeans, and clean white canvas sneakers, outdoor park setting, bright natural daylight, candid lifestyle shot, sharp clothing detail
+
+# 03
+Casual fashion lifestyle photo: woman in an oversized sage green linen shirt worn open over a white fitted tee and high-waist straight light denim jeans, white leather mules, farmers market background, warm golden hour light
+
+# 04
+Photorealistic lifestyle shot: man in a vintage-washed burgundy crew-neck sweatshirt, relaxed straight beige chinos, and tan suede loafers, urban park background, soft autumn light, casual editorial style, sharp detail
+
+# 05
+Realistic fashion photo: woman wearing a light blue chambray button-up shirt tied at the waist, high-waist white linen shorts, and tan leather flat sandals, beachside promenade background, bright coastal light, casual summer editorial
+
+# 06
+Full-body photorealistic photo: man in a soft grey marl relaxed-fit long-sleeve tee, olive green chino shorts, white crew socks, and white canvas lace-up trainers, suburban neighbourhood setting, natural afternoon light
+
+# 07
+Photorealistic casual fashion: woman in a rust orange ribbed-knit midi dress with a scoop neck, tan leather crossbody bag, and camel block-heel ankle boots, autumn street setting, warm golden light, lifestyle photography
+
+# 08
+Casual photorealistic fashion: man in a classic light blue Oxford shirt with rolled sleeves, medium-wash slim straight jeans, and tan leather belt matching dark brown Derby shoes, outdoor cafe seating, warm dappled light
+
+# ── LIFESTYLE EDITORIAL ──────────────────────────────────────
+# 09
+Lifestyle editorial fashion photography: woman in a breezy white broderie anglaise midi dress with ruffled hem and smocked bodice, flat tan leather sandals, wicker bag, sunny outdoor coastal setting, natural diffused light, effortless casual style
+
+# 10
+Casual lifestyle editorial: couple matching in relaxed navy linen shirts and loose cream linen trousers, white canvas sneakers, walking through a sunlit farmer's market, warm golden lifestyle photography, natural moment
+
+# 11
+Lifestyle fashion photo: woman in a yellow sunflower-print cotton midi wrap dress, tan flat sandals, and woven raffia bag, outdoor weekend market, bright natural sunlight, cheerful lifestyle editorial
+
+# 12
+Casual editorial: man in a navy and white horizontal-stripe Breton tee, well-worn slim straight jeans, and white canvas plimsolls, seaside harbour background, bright coastal photography, effortless French casual style
+
+# 13
+Lifestyle editorial: woman in a soft lilac linen co-ord set — relaxed wide-leg trousers and matching oversized button-down shirt — tan leather sandals, flower garden background, warm afternoon light, easy weekend style
+
+# 14
+Casual fashion lifestyle: man in a classic camel crew-neck cashmere sweater, dark navy slim chinos, and brown suede Chelsea boots, city park autumn walk, golden leaf background, warm editorial photography
+
+# 15
+Lifestyle fashion shot: woman in an army green utility shirt dress with patch pockets and rolled sleeves, tan leather belt, brown leather ankle boots, and a crossbody bag, urban weekend lifestyle, natural light
+
+# 16
+Casual editorial photography: man in a relaxed olive green linen blazer worn open over a white tee, relaxed cream linen trousers, and white leather minimalist sneakers, Mediterranean courtyard, warm editorial light
+
+# ── E-COMMERCE / PRODUCT ─────────────────────────────────────
+# 17
+Casual e-commerce product shot: model in a classic white cotton crew-neck tee, medium-wash slim jeans, and white leather trainers, clean white studio background, full-body shot, flat even product lighting, sharp fabric detail
+
+# 18
+E-commerce casual fashion: woman in a relaxed-fit chambray blue denim shirt dress with rolled-up sleeves and a self-tie belt, white canvas sneakers, white background, full-body product photography, crisp detail
+
+# 19
+Product fashion photography: man in a grey marl classic pullover hoodie with ribbed cuffs and hem, relaxed straight dark chinos, white seamless background, clean even lighting, e-commerce ready casual product shot
+
+# 20
+Casual e-commerce: woman in a dusty pink ribbed-knit long-sleeve top and high-waist cream wide-leg linen trousers, white slider sandals, white studio background, product photography quality, soft even lighting
+
+# 21
+E-commerce casual product shot: man in a navy blue classic Breton-stripe long-sleeve tee, relaxed straight mid-wash jeans, and clean white canvas sneakers, clean white background, full-body, product-ready photography
+
+# 22
+Casual fashion e-commerce: woman in a terracotta orange linen midi skirt with elastic waist and a white fitted ribbed tee tucked in, tan leather mules, white studio background, professional product photography
+
+# 23
+Product shot: man in a sage green quarter-zip lightweight fleece sweater, relaxed straight grey chinos, and tan suede desert boots, clean grey background, even studio lighting, e-commerce product focus
+
+# 24
+Casual e-commerce: woman wearing a multicolour floral print cotton wrap midi dress with short sleeves, nude flat sandals and a small leather crossbody bag, white seamless background, professional casual fashion product lighting
+
+# ── DIVERSE CATEGORIES ───────────────────────────────────────
+# 25
+Weekend casual fashion: woman in a striped cream and navy lightweight knit sweater, high-waist light blue relaxed straight jeans, and white leather block-heel sandals, outdoor Sunday morning café, warm natural light
+
+# 26
+Casual fashion: man in a dark green graphic print tee with abstract nature print, relaxed straight dark indigo jeans, and white low-top canvas trainers, city park background, natural daylight, lifestyle editorial
+
+# 27
+Casual fashion photography: woman in a sky blue seersucker check shirt tied at the waist, wide-leg cream linen trousers, tan strappy flat sandals, and a straw sun hat, beach holiday setting, bright coastal light
+
+# 28
+Casual editorial: man in a washed terracotta orange pocket tee, relaxed khaki cargo shorts, white crew socks, and white leather trainers, suburban lifestyle setting, warm weekend afternoon photography
+
+# 29
+Lifestyle fashion: woman in a soft white cotton smocked midi dress with adjustable straps and tiered skirt, beige leather flat sandals and a basket bag, lavender field background, dreamy warm natural light
+
+# 30
+Casual fashion editorial: man in a vintage-inspired print Hawaiian shirt in teal and white with coconut buttons, worn with relaxed cream chinos and tan leather moccasin loafers, tropical garden setting, warm light
+
+# 31
+Casual fashion: woman in a ribbed pale yellow co-ord set — cropped long-sleeve top and matching midi jogger — white canvas sneakers, tote bag, sunny outdoor park lifestyle setting, fresh natural light
+
+# 32
+Lifestyle editorial: man wearing a thick oatmeal cable-knit crewneck sweater, dark slim-straight jeans, and brown suede Chelsea boots, autumn woodland walk, warm filtered light through leaves, cosy casual style
+
+# ── MODERN CASUAL TRENDS ────────────────────────────────────
+# 33
+Coastal grandmother casual trend: woman in a loose white linen blouse tucked into wide-leg cream linen trousers, sun hat, tan flat sandals, pearl stud earrings, wicker bag, Mediterranean beachfront, golden morning light
+
+# 34
+Cottagecore casual: woman in a ditsy floral print long sleeve midi dress with puffed sleeves, white apron pinafore over the top, white Mary Jane flats, wildflower field background, dreamy golden light
+
+# 35
+Mob wife casual-chic: woman in a black ribbed-knit midi dress with a side slit, black square-toe mules, gold chunky jewellery, and a structured tote, warm urban lifestyle photography, moody natural light
+
+# 36
+Casual fashion editorial featuring clean-girl aesthetic: woman in a white ribbed tank top, high-waist dark blue straight-leg jeans, minimalist white sneakers, slicked-back bun, gold hoop earrings, soft natural lifestyle photography
+
+# 37
+Casual dopamine dressing editorial: woman in bright sunshine yellow wide-leg linen trousers, an orange fitted cropped sweater, and red leather mule sandals, bold colour-blocked casual look, bright outdoor natural light
+
+# 38
+Effortless casual editorial: man in a classic black crewneck knit sweater, relaxed mid-wash jeans, white crew socks and black loafers, urban setting, natural afternoon light, understated casual elegance
+
+# 39
+Weekend fashion: woman in a coffee-brown oversized teddy fleece jacket worn open over a white tee and dark straight-leg jeans, caramel leather ankle boots, autumn weekend market, warm soft light
+
+# 40
+Casual but polished editorial: woman in a white linen oversized shirt tucked into a camel midi A-line skirt, tan leather loafers, gold minimalist jewellery, leather tote, European city streetscape, warm editorial light
+
+# ── SEASONAL CASUAL ──────────────────────────────────────────
+# 41
+Summer casual lifestyle: woman in a pastel gingham check cotton mini dress with puffed short sleeves, white canvas trainers, straw hat, and a woven bucket bag, outdoor summer festival, warm sunny lifestyle photography
+
+# 42
+Autumn casual editorial: man in a mustard yellow Shetland wool crew-neck sweater, dark brown corduroy wide-leg trousers, and tan suede Chelsea boots, autumn leaves park background, warm morning light
+
+# 43
+Winter casual fashion: woman in an oversized chunky knit oatmeal roll-neck sweater, dark relaxed-fit jeans, and camel suede ankle boots, cold winter city street, soft grey winter light, cosy casual editorial
+
+# 44
+Spring casual editorial: woman in a pastel lilac linen button-down midi shirtdress worn with white canvas sneakers and a wicker bag, cherry blossom park background, soft spring sunlight, effortless fresh casual style
+
+# ── COLOUR STORIES ───────────────────────────────────────────
+# 45
+Colour story — warm earth tones: woman in a cinnamon brown relaxed linen shirt, rust orange wide-leg linen trousers, tan leather flat sandals, and a caramel leather tote, warm autumn editorial, golden light
+
+# 46
+Colour story — soft neutrals: man in an oatmeal Breton-stripe cotton tee, stone-coloured relaxed chinos, cream canvas sneakers, and a tan belt, clean light background, soft lifestyle editorial photography
+
+# 47
+Colour story — pastel spring: woman in a baby blue linen shirt tied at the waist, pale pink linen wide-leg trousers, and white leather block-heel sandals, soft floral garden background, dreamy spring lifestyle shot
+
+# 48
+Colour story — bold brights: woman in a bright green crewneck cotton sweatshirt, electric blue wide-leg jeans, and orange canvas trainers, bold colourful casual look, white background, vibrant editorial photography
+
+# 49
+Colour story — denim on denim: man in a faded light denim trucker jacket over a white tee, medium wash relaxed straight jeans, and white canvas trainers, urban casual editorial, warm natural street light
+
+# 50
+Colour story — monochrome cream: woman in a cream ribbed-knit oversized cardigan, cream high-waist wide-leg linen trousers, cream leather slide sandals, minimal gold jewellery, clean white background, soft elegant casual editorial

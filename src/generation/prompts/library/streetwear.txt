@@ -1,0 +1,166 @@
+# ============================================================
+# STREETWEAR FASHION PROMPT LIBRARY
+# AI Fashion Design Assistant — Week 2
+# 50 High-Quality Prompts
+# ============================================================
+# Categories: hoodies · tees · cargo pants · sneakers · caps ·
+#             jackets · joggers · crossbody bags · windbreakers
+# Contexts:   photorealistic · runway · e-commerce · editorial
+# ============================================================
+
+# ── PHOTOREALISTIC ───────────────────────────────────────────
+# 01
+Professional fashion photography of a model wearing a black oversized graphic hoodie with bold white typography, distressed denim cargo pants, and chunky white sneakers, urban street background, natural daylight, candid editorial style, ultra detailed, 8k resolution, sharp focus
+
+# 02
+Photorealistic close-up of a matte black oversized bomber jacket with embroidered dragon motif and ribbed cuffs, worn over a white longline tee, street photography style, shallow depth of field, cinematic grain, 8k
+
+# 03
+Full-body photorealistic fashion shot of a model in an acid-wash denim jacket with patchwork detailing, rust-orange cargo joggers with utility pockets, and triple-white low-top sneakers, urban concrete background, natural light
+
+# 04
+Editorial street photography of a woman in a lime green oversized windbreaker, black cycling shorts, and chunky platform sneakers, skate park setting, golden hour light, hypebeast aesthetic, sharp details
+
+# 05
+Photorealistic fashion portrait of a man wearing a cobalt blue puffer vest over a grey ribbed turtleneck, wide-leg charcoal twill trousers, and off-white canvas sneakers, downtown city background, overcast diffused lighting
+
+# 06
+Full-length photorealistic photo of a model in an orange and black colourblock hoodie, slim-fit black tech joggers, and clean white Air-Force-style sneakers, graffiti wall backdrop, natural street light, 8k
+
+# 07
+Realistic fashion editorial: woman wearing a forest green corduroy oversized shirt jacket, relaxed-fit cream chinos, and beige suede chunky boots, autumn leaves park background, warm diffused sunlight
+
+# 08
+Photorealistic full-body shot of a man in a vintage-wash red graphic tee featuring a faded band logo, loose indigo selvedge jeans, and black old-school canvas shoes, brick wall backdrop, authentic street candid style
+
+# ── RUNWAY / EDITORIAL ───────────────────────────────────────
+# 09
+High fashion runway photograph of a model wearing a deconstructed black denim jacket with asymmetric cut-outs and silver chain detailing, paired with wide-leg black utility pants and white platform sneakers, fashion week catwalk, dramatic runway lighting, Vogue editorial quality
+
+# 10
+Fashion week runway shot: model in an oversized scarlet red quilted puffer jacket with tonal stitching, loose wide-leg black trousers, and co-ordinating red chunky sneakers, stark white runway background, dramatic uplighting, editorial composition
+
+# 11
+High-fashion editorial of a non-binary model wearing a black and white abstract-print oversized coach jacket, high-waist black parachute pants with side buckles, and silver metallic sneakers, industrial warehouse setting, moody dramatic lighting
+
+# 12
+Runway editorial: model wearing a deep purple velour tracksuit set with gold embossed branding, matching purple slide sandals, clean white runway background, fashion week quality, sharp tailoring details, dramatic uplighting
+
+# 13
+Avant-garde streetwear runway look: model in a floor-length black trench coat with tactical strap detailing, layered over a white mesh tee and leather cargo trousers, white catwalk background, high fashion magazine quality
+
+# 14
+Editorial fashion photography: model wearing a vibrant tie-dye oversized hoodie in sunset orange and pink, wide-leg denim jeans with raw hem, and chunky transparent platform sneakers, studio seamless background, fashion editorial lighting
+
+# 15
+Vogue-quality runway shot of a woman in a metallic silver puffer jacket cropped at the waist, high-gloss vinyl flare trousers in silver, and silver high-top sneakers, mirror-finished runway, dramatic strobes
+
+# 16
+Street style runway editorial: model wearing a dusty rose oversized fleece zip-up hoodie, ivory wide-leg corduroy pants, and co-ordinating dusty rose platform sneakers, minimal white background, soft diffused fashion lighting
+
+# ── E-COMMERCE / PRODUCT ─────────────────────────────────────
+# 17
+Professional e-commerce product photography of a black oversized cotton pullover hoodie with kangaroo pocket, model standing against clean white background, full-body shot, neutral expression, sharp product details, e-commerce ready
+
+# 18
+E-commerce fashion photo: clean white studio, model wearing a navy blue heavyweight fleece hoodie with embroidered logo on chest, paired with matching navy joggers, front-facing, full-body, bright even lighting, product focus
+
+# 19
+Product e-commerce shot: model in a burgundy ribbed-knit oversized crewneck sweater, black relaxed-fit joggers, and white socks, white seamless background, clean crisp product photography, professional lighting
+
+# 20
+E-commerce apparel photo: model wearing a forest green nylon windbreaker with reflective piping, matching green track pants, clean background, multiple angle ready, sharp product detail, even studio lighting
+
+# 21
+Professional product shoot: model in a cream white zip-up track jacket with tonal logo, paired with sand-coloured wide-leg sweatpants, white studio background, flat even lighting, e-commerce quality, full-body framing
+
+# 22
+E-commerce editorial hybrid: model wearing a bold red and black colourblock track jacket with zip pockets, black jogger pants with red stripe, neutral grey background, 3/4 body shot, sharp clothing details
+
+# 23
+Clean product photography of a bright yellow oversized tie-dye hoodie on a model against a white cyclorama background, multiple poses, e-commerce ready, sharp fabric texture visible, front and back view framing
+
+# 24
+E-commerce shoot: man wearing a classic grey marl oversized tee with a minimalist chest graphic, paired with olive cargo shorts and white crew socks, white background, clean natural light, full-body product shot
+
+# ── DIVERSE CATEGORIES ───────────────────────────────────────
+# 25
+Streetwear photography of a man wearing a slate grey quilted coach jacket with snap buttons, chocolate brown relaxed-fit corduroy pants, and tan suede work boots, autumn city background, warm natural light
+
+# 26
+Fashion editorial of a woman in a neon yellow safety vest styled over a black longline tee and wide-leg black denim, platform lug-sole boots, urban rooftop setting, dramatic sunset, editorial composition
+
+# 27
+Street photography of a model in a vintage-style collegiate varsity jacket in royal blue and white with leather sleeves, white tee, slim straight jeans, and retro white sneakers, campus setting, afternoon sun
+
+# 28
+Streetwear lookbook shot: model wearing a fire-engine red satin bomber jacket with embroidered tiger on the back, black tapered trousers, and black patent leather sneakers, dark urban alley, neon light accents
+
+# 29
+Hypebeast fashion photography: model in an all-black monochromatic look — oversized hoodie, slim tapered joggers, and high-top sneakers — accessorised with silver chain necklace and black bucket hat, concrete backdrop
+
+# 30
+Street style photo: woman in a powder blue oversized denim jacket with hand-painted floral motif, white crop tee, high-waist black straight-leg jeans, and white chunky sneakers, flower market background, natural light
+
+# 31
+Editorial fashion shot: model wearing a khaki military-inspired field jacket with multiple chest pockets, sage green relaxed straight trousers, and olive canvas sneakers, desert urban landscape, harsh midday sun
+
+# 32
+Streetwear fashion photography of a non-binary model in a white oversized graphic tee with abstract art print, caramel-brown leather cargo pants, and cream platform sneakers, gallery art space background, soft diffused light
+
+# ── MODERN TRENDS ────────────────────────────────────────────
+# 33
+Gorpcore streetwear editorial: model in a bright orange technical fleece vest layered over a black quarter-zip pullover, olive green cargo pants with drawstring ankles, and rugged trail sneakers, rocky urban landscape
+
+# 34
+Quiet luxury streetwear: model in a taupe cashmere-blend oversized crew neck sweater, straight-leg dark grey chinos, and white leather minimal sneakers, clean urban background, natural light, understated elegance
+
+# 35
+Y2K revival streetwear: woman in a pink metallic butterfly-print crop jacket, low-rise flared cargo jeans with butterfly embroidery, and platform wedge sneakers, Y2K aesthetic, vibrant editorial lighting
+
+# 36
+Dark academia streetwear: model wearing a black plaid oversized blazer-hoodie hybrid, dark olive straight trousers, and black leather oxford shoes with white socks, moody library background, dramatic side lighting
+
+# 37
+Biker-influenced streetwear: man in a black waxed cotton motorcycle jacket with silver hardware, distressed slim black jeans, and chunky black combat boots, urban alley, gritty cinematic atmosphere
+
+# 38
+Fashion editorial of a model in colourful patchwork denim jeans and a matching patchwork denim jacket, white crop tee underneath, white platform sneakers, bright summer backdrop, vibrant editorial photography
+
+# 39
+Streetwear editorial: model wearing a neon green cropped windbreaker jacket over a black longline hoodie, black wide-leg cargo pants with utility pockets, and white Air-style sneakers, rainy night city street, neon reflections
+
+# 40
+Techwear-influenced streetwear: model in an all-black tactical harness vest over an oversized black hoodie, black water-resistant wide-leg trousers, and black high-top technical sneakers, dark futuristic urban setting
+
+# ── ACCESSORIES & LAYERING ───────────────────────────────────
+# 41
+Streetwear layering editorial: model wearing a black beanie, grey face balaclava, olive tactical vest over a white logo hoodie, black parachute trousers, and black and white Nike Dunk low sneakers, urban winter aesthetic
+
+# 42
+Accessory-focused streetwear: woman in a colourful crocheted bucket hat, yellow gradient tie-dye oversized hoodie, high-waist wide-leg jeans, chunky carabiner keychain, and yellow Converse sneakers, bright lifestyle shot
+
+# 43
+Streetwear editorial: model in a brown suede baseball cap, retro brown leather coach jacket with contrast stitching, cream baggy trousers, and tan colourway chunky sneakers, retro editorial style, warm tones
+
+# 44
+Hypebeast look: model wearing a balaclavas hood in white, white oversized puffer jacket, white wide-leg cargo pants, silver chain accessories, and triple-white sneakers, all-white monochrome street look, dramatic fashion lighting
+
+# ── COLOUR STORIES ───────────────────────────────────────────
+# 45
+Colour story — earth tones: model in a camel-brown oversized hoodie, terracotta wide-leg trousers, rust-orange canvas sneakers, and a matching beige crossbody bag, warm lifestyle photography, golden hour natural light
+
+# 46
+Colour story — monochromes: full grey monochrome street look — heather grey oversized hoodie, charcoal wide-leg sweatpants, dove grey sneakers, silver accessories, minimal white background, clean product-editorial hybrid
+
+# 47
+Colour story — pastels: model wearing a lavender oversized corduroy shirt jacket, baby pink wide-leg cargo pants, sage green chunky sneakers, and pastel accessories, spring outdoor lifestyle photography, soft light
+
+# 48
+Colour story — bold primaries: woman in a true-red cropped hooded sweatshirt, cobalt blue wide-leg jeans, and sunshine yellow low-top sneakers, primary colour-blocked outfit, bright white background, bold editorial
+
+# 49
+Colour story — midnight tones: all-navy look — deep navy puffer jacket, navy corduroy trousers, navy suede sneakers, silver accessories, dark studio background, dramatic moody lighting, fashion editorial
+
+# 50
+Colour story — neutral luxe: model in an off-white oversized cashmere-blend crewneck, stone-coloured wide-leg wool trousers, cream leather minimal sneakers, and a tan canvas tote bag, natural light studio, editorial quality
