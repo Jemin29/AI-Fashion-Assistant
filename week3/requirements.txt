@@ -1,0 +1,15 @@
+# AI Fashion Assistant - Week 3 ControlNet Dependencies
+torch>=2.2.0
+torchvision>=0.17.0
+diffusers>=0.27.0
+transformers>=4.38.0
+accelerate>=0.28.0
+controlnet_aux>=0.0.7
+opencv-python-headless>=4.9.0
+pydantic>=2.6.0
+pydantic-settings>=2.2.0
+loguru>=0.7.0
+pyyaml>=6.0.1
+pillow>=10.2.0
+numpy>=1.26.0
+pytest>=8.0.0
