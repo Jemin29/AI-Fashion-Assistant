@@ -863,7 +863,7 @@ class StateManager(BaseService):
             "call_count":     self._call_count,
             "error_count":    self._error_count,
         }
-        return ServiceResult(success=(status == "ok"), data=res)
+        return ServiceResult(success=(status == "ok"), data=res, message=msg)
 
     # ══════════════════════════════════════════════════════════════════════════
     # Private Helpers

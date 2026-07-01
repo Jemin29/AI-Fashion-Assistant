@@ -552,7 +552,7 @@ class ExportManager(BaseService):
                 "backend":   "local_fs",
                 "message":   f"Exports folder {_EXPORTS_DIR} is fully readable/writable.",
             }
-            return ServiceResult(success=True, data=res)
+            return ServiceResult(success=True, data=res, message=res["message"])
         except Exception as e:
             res = {
                 "status":    "error",
@@ -560,4 +560,4 @@ class ExportManager(BaseService):
                 "backend":   "local_fs",
                 "message":   f"Directory write permission check failed: {e}",
             }
-            return ServiceResult(success=False, data=res, error=res["message"])
+            return ServiceResult(success=False, data=res, error=res["message"], message=res["message"])

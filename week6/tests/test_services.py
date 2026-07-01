@@ -183,15 +183,15 @@ def test_trend_service(trend_service: TrendService) -> None:
     assert "spring_summer" in seasons
 
     all_trends = trend_service.get_all_trends()
-    assert isinstance(all_trends, list)
-    assert all_trends[0]["name"] == "Quiet Luxury"
+    assert isinstance(all_trends.data, list)
+    assert all_trends.data[0]["name"] == "Quiet Luxury"
 
     explain = trend_service.explain_trend("Quiet Luxury")
     assert explain["trend"] == "Quiet Luxury"
     assert "velocity" in explain
 
     forecast = trend_service.forecast_season("spring_summer")
-    assert isinstance(forecast, list)
+    assert isinstance(forecast.data, list)
 
     chart_data = trend_service.get_velocity_chart_data()
     assert "labels" in chart_data

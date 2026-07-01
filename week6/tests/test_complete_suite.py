@@ -1052,16 +1052,16 @@ class TestTrendService:
 
     def test_get_all_trends_returns_list(self, trend_svc):
         res = trend_svc.get_all_trends()
-        assert isinstance(res, list)
-        assert len(res) > 0
+        assert isinstance(res.data, list)
+        assert len(res.data) > 0
 
     def test_get_trend_forecast_returns_list(self, trend_svc):
         res = trend_svc.forecast_season("spring_summer")
-        assert isinstance(res, list)
-        assert len(res) > 0
+        assert isinstance(res.data, list)
+        assert len(res.data) > 0
 
     def test_get_trend_detail_known(self, trend_svc):
-        active = trend_svc.get_all_trends()
+        active = trend_svc.get_all_trends().data
         if active:
             first_trend = active[0]
             trend_name = first_trend.get("name") or first_trend.get("trend", "")
@@ -1071,8 +1071,8 @@ class TestTrendService:
 
     def test_get_all_trends_result_fields(self, trend_svc):
         res = trend_svc.get_all_trends()
-        assert isinstance(res, list)
-        for item in res:
+        assert isinstance(res.data, list)
+        for item in res.data:
             assert isinstance(item, dict)
             assert "name" in item or "trend" in item
 
