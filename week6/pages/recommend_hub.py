@@ -49,7 +49,10 @@ def build_recommend_hub_page(rec_service: Any) -> None:
                     style_output = gr.Markdown("_Set your preferences and click 'Get Style Recommendations'._")
 
             def on_style_rec(g, s, o, f, n):
-                recs = rec_service.recommend_styles(g, s, o, f, n=int(n))
+                result = rec_service.recommend_styles(g, s, o, f, n=int(n))
+                if not result.success:
+                    raise gr.Error(result.message)
+                recs = result.data or []
                 if not recs:
                     return "_No recommendations match your preferences._"
                 md = f"## 👗 Top {len(recs)} Style Recommendations\n\n"
@@ -93,7 +96,10 @@ def build_recommend_hub_page(rec_service: Any) -> None:
                     brand_output = gr.Markdown("_Set your aesthetic and click 'Find Matching Brands'._")
 
             def on_brand_rec(styles, aesthetic, n):
-                recs = rec_service.recommend_brands(styles, aesthetic, n=int(n))
+                result = rec_service.recommend_brands(styles, aesthetic, n=int(n))
+                if not result.success:
+                    raise gr.Error(result.message)
+                recs = result.data or []
                 if not recs:
                     return "_No brand recommendations match your profile._"
                 md = f"## 🏷️ Top {len(recs)} Brand Recommendations\n\n"
@@ -123,6 +129,9 @@ def build_recommend_hub_page(rec_service: Any) -> None:
             profile_output = gr.JSON(label="User Preference Profile")
 
             def on_view_profile(uid):
-                return rec_service.get_user_profile(uid or "demo_user")
+                result = rec_service.get_user_profile(uid or "demo_user")
+                if not result.success:
+                    raise gr.Error(result.message)
+                return result.data
 
             view_profile_btn.click(on_view_profile, inputs=[user_id], outputs=[profile_output])
