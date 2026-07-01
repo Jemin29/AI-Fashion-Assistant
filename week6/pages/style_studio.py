@@ -109,7 +109,7 @@ def build_style_studio_page(gen_service: Any) -> None:
         if not prompt_text.strip():
             return None, {"error": "Please enter a prompt."}, _gallery_images
 
-        img, meta = gen_service.generate(
+        result = gen_service.generate(
             prompt=prompt_text,
             negative_prompt=neg_prompt,
             num_inference_steps=int(n_steps),
@@ -119,6 +119,11 @@ def build_style_studio_page(gen_service: Any) -> None:
             seed=None if seed_val == -1 else int(seed_val),
             style_label=preset_label if preset_label != "Custom" else "Fashion Generation",
         )
+        if not result.success:
+            raise gr.Error(result.message)
+        
+        img = result.data.get("image") if isinstance(result.data, dict) else result.data
+        meta = result.metadata
         if img is not None:
             _gallery_images.insert(0, img)
         return img, meta, _gallery_images[:8]

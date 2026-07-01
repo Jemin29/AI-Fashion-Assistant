@@ -71,14 +71,17 @@ def build_controlnet_page(cn_service: Any) -> None:
     def on_preview(img, selected_mode):
         if img is None:
             return None
-        return cn_service.preprocess_image(img, mode=selected_mode)
+        result = cn_service.preprocess_image(img, mode=selected_mode)
+        if not result.success:
+            raise gr.Error(result.message)
+        return result.data
 
     def on_generate(img, prompt_text, selected_mode, cond_scale, n_steps, cfg_scale):
         if img is None:
             return None, {"error": "Please upload a control image."}
         if not prompt_text.strip():
             return None, {"error": "Please enter a prompt."}
-        return cn_service.generate_conditioned(
+        result = cn_service.generate_conditioned(
             prompt=prompt_text,
             control_image=img,
             mode=selected_mode,
@@ -86,6 +89,11 @@ def build_controlnet_page(cn_service: Any) -> None:
             num_inference_steps=int(n_steps),
             guidance_scale=float(cfg_scale),
         )
+        if not result.success:
+            raise gr.Error(result.message)
+        
+        res_image = result.data.get("image") if isinstance(result.data, dict) else result.data
+        return res_image, result.metadata
 
     preview_btn.click(on_preview, inputs=[control_image, mode], outputs=[preprocessed_preview])
     generate_btn.click(
