@@ -120,16 +120,17 @@ def build_fashion_assistant_page(rag_service: Any) -> None:
             return history, "", "_No question entered._"
 
         # Use the chat method to run intent routing and retrieve citations
-        result = rag_service.chat(question)
+        result = rag_service.chat(question, history=history)
         if not result.success:
             raise gr.Error(result.message)
-        data_payload = result.data or {}
-        answer = data_payload.get("response", "No answer found.")
-        docs = data_payload.get("source_documents", [])
+        
+        response = result.data["response"]
+        citations = result.data["citations"]
+        history = result.data["history"]
 
-        if docs:
+        if citations:
             sources_md = "#### 📚 Retrieved Citations\n\n"
-            for i, d in enumerate(docs[:3], 1):
+            for i, d in enumerate(citations[:3], 1):
                 meta = d.get("metadata", {})
                 name = meta.get("name") or meta.get("brand") or meta.get("trend") or meta.get("style") or f"Document {i}"
                 snippet = d.get("document", "")[:180]
@@ -139,8 +140,6 @@ def build_fashion_assistant_page(rag_service: Any) -> None:
         else:
             sources_md = "_No specific grounding documents retrieved from vector index._"
 
-        history = history or []
-        history.append((question, answer))
         return history, "", sources_md
 
     def on_fabric_click(fabric: str, history: List[Tuple[str, str]]) -> Tuple[List[Tuple[str, str]], str, str]:

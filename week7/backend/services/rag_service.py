@@ -11,8 +11,8 @@ class RAGService:
     def __init__(self, mock_mode: bool = True) -> None:
         self._svc = Week6RAGService(mock_mode=mock_mode)
 
-    def chat(self, message: str, user_id: str = "default_user") -> ServiceResult:
-        res = self._svc.chat(message=message, user_id=user_id)
+    def chat(self, message: str, user_id: str = "default_user", history: Optional[List[Tuple[str, str]]] = None) -> ServiceResult:
+        res = self._svc.chat(message=message, user_id=user_id, history=history)
         return res
 
     def answer_question(self, question: str) -> ServiceResult:

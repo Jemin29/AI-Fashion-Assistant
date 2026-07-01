@@ -195,6 +195,7 @@ class RAGService(BaseService):
         self,
         message: str,
         user_id: str = "default_user",
+        history: Optional[List[Tuple[str, str]]] = None,
     ) -> ServiceResult[Dict[str, Any]]:
         """Unified conversational router — detects intent and returns a response.
 
@@ -209,10 +210,12 @@ class RAGService(BaseService):
         Args:
             message: User message text.
             user_id: Optional user identifier for session context.
+            history: Optional conversation history.
 
         Returns:
             ``ServiceResult`` whose ``.data`` dict contains:
-            ``response`` (str), ``intent`` (str), ``source_documents`` (list).
+            ``response`` (str), ``intent`` (str), ``source_documents`` (list),
+            ``citations`` (list), ``history`` (list).
         """
         self._call_count += 1
 
@@ -239,11 +242,19 @@ class RAGService(BaseService):
                     "source_documents": [],
                 }
 
+        # Populate citations and history keys in data payload
+        response_text = result.get("response", "No answer found.")
+        source_docs = result.get("source_documents", [])
+        updated_history = (history or []) + [(message, response_text)]
+
+        result["citations"] = source_docs
+        result["history"] = updated_history
+
         latency = t.elapsed_ms
-        log_rag_query(message, len(result.get("source_documents", [])), latency)
+        log_rag_query(message, len(source_docs), latency)
         logger.info(
             "RAGService.chat | intent=%s | docs=%d | latency=%.0fms",
-            result.get("intent", "?"), len(result.get("source_documents", [])), latency,
+            result.get("intent", "?"), len(source_docs), latency,
         )
 
         status = (
