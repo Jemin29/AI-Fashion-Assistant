@@ -32,13 +32,21 @@ async def chat_with_assistant(
 ):
     """Submit dialogue turns to conversational RAG Fashion Assistant."""
     try:
-        data = rag_svc.chat(message=payload.message, user_id=payload.session_id)
+        res = rag_svc.chat(message=payload.message, user_id=payload.session_id)
+        if not res.success:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=res.error or "Chat query failed."
+            )
+        data = res.data
         if isinstance(data, dict) and "response" in data and "answer" not in data:
             data["answer"] = data["response"]
         return {
             "success": True,
             "data": data
         }
+    except HTTPException:
+        raise
     except Exception as exc:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -55,13 +63,20 @@ async def raw_semantic_search(
 ):
     """Execute vector similarity searches across the vector collections databases."""
     try:
-        data = rag_svc.semantic_search(query=payload.query, n=payload.limit)
+        res = rag_svc.semantic_search(query=payload.query, n=payload.limit)
+        if not res.success:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=res.error or "Search query failed."
+            )
         return {
             "success": True,
             "data": {
-                "citations": data
+                "citations": res.data
             }
         }
+    except HTTPException:
+        raise
     except Exception as exc:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -75,11 +90,18 @@ async def get_collection_database_stats(
 ):
     """Retrieve ChromaDB collection metadata and documents distribution statistics."""
     try:
-        data = rag_svc.get_collection_stats()
+        res = rag_svc.get_collection_stats()
+        if not res.success:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=res.error or "Failed to retrieve statistics."
+            )
         return {
             "success": True,
-            "data": data
+            "data": res.data
         }
+    except HTTPException:
+        raise
     except Exception as exc:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,

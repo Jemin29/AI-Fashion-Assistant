@@ -161,10 +161,11 @@ class ControlNetService:
             "metadata": res.metadata
         }
 
-    def health_check(self) -> Dict[str, Any]:
+    def health_check(self) -> ServiceResult:
         """Verify the health status of the controlnet service."""
-        return {
+        res = {
             "status": "ok" if self._get_engine() is not None else "error",
             "name": "ControlNetService",
             "mode": "mock" if self.settings.model.global_mock else "production"
         }
+        return ServiceResult(success=(res["status"] == "ok"), data=res)

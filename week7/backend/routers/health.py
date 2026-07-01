@@ -69,11 +69,11 @@ async def get_system_health(
                 "system_headroom": sys_health,
             },
             "services": {
-                "generation": gen_svc.health_check(),
-                "controlnet": cn_svc.health_check(),
-                "lora": lora_svc.health_check(),
-                "rag": rag_svc.health_check(),
-                "state_manager": state_mgr.health_check(),
+                "generation": gen_svc.health_check().to_dict() if hasattr(gen_svc.health_check(), "to_dict") else gen_svc.health_check(),
+                "controlnet": cn_svc.health_check().to_dict() if hasattr(cn_svc.health_check(), "to_dict") else cn_svc.health_check(),
+                "lora": lora_svc.health_check().to_dict() if hasattr(lora_svc.health_check(), "to_dict") else lora_svc.health_check(),
+                "rag": rag_svc.health_check().to_dict() if hasattr(rag_svc.health_check(), "to_dict") else rag_svc.health_check(),
+                "state_manager": state_mgr.health_check().to_dict() if hasattr(state_mgr.health_check(), "to_dict") else state_mgr.health_check(),
             }
         }
     }

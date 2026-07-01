@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, List, Optional
 from week6.services.recommendation_service import RecommendationService as Week6RecommendationService
+from week6.services.base import ServiceResult
 
 
 class RecommendationService:
@@ -19,7 +20,7 @@ class RecommendationService:
         n: int = 4,
         color: str = "",
         preferences: Optional[Dict[str, Any]] = None
-    ) -> List[Dict[str, Any]]:
+    ) -> ServiceResult:
         if preferences is not None:
             gender = preferences.get("gender", gender)
             style = preferences.get("style", style)
@@ -35,10 +36,7 @@ class RecommendationService:
             n=n,
             color=color
         )
-
-        if not res.is_ok:
-            raise ValueError(res.error or "Style recommendations failed.")
-        return res.data
+        return res
 
     def recommend_brands(
         self,
@@ -47,7 +45,7 @@ class RecommendationService:
         price_range: str = "",
         n: int = 4,
         profile: Optional[Dict[str, Any]] = None
-    ) -> List[Dict[str, Any]]:
+    ) -> ServiceResult:
         if profile is not None:
             styles = profile.get("styles", styles)
             aesthetic = profile.get("aesthetic", aesthetic)
@@ -59,13 +57,8 @@ class RecommendationService:
             price_range=price_range,
             n=n
         )
+        return res
 
-        if not res.is_ok:
-            raise ValueError(res.error or "Brand recommendations failed.")
-        return res.data
-
-    def health_check(self) -> Dict[str, Any]:
+    def health_check(self) -> ServiceResult:
         res = self._svc.health_check()
-        if hasattr(res, "data"):
-            return res.data
         return res

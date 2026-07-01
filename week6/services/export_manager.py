@@ -539,23 +539,25 @@ class ExportManager(BaseService):
 
     # ── Health check ──────────────────────────────────────────────────────────
 
-    def health_check(self) -> Dict[str, Any]:
+    def health_check(self) -> ServiceResult:
         """Lightweight status probe to check directory permissions and status."""
         try:
             # Check write permission to exports folder
             test_file = _EXPORTS_DIR / ".permissions_probe"
             test_file.write_text("ok", encoding="utf-8")
             test_file.unlink()
-            return {
+            res = {
                 "status":    "ok",
                 "mock_mode": self.mock_mode,
                 "backend":   "local_fs",
                 "message":   f"Exports folder {_EXPORTS_DIR} is fully readable/writable.",
             }
+            return ServiceResult(success=True, data=res)
         except Exception as e:
-            return {
+            res = {
                 "status":    "error",
                 "mock_mode": self.mock_mode,
                 "backend":   "local_fs",
                 "message":   f"Directory write permission check failed: {e}",
             }
+            return ServiceResult(success=False, data=res, error=res["message"])

@@ -9,6 +9,7 @@ from PIL import Image, ImageDraw
 
 from src.generation.generator.sdxl_generator import FashionSDXLGenerator
 from week7.backend.configs.config import get_settings
+from week6.services.base import ServiceResult
 
 
 class GenerationService:
@@ -85,7 +86,7 @@ class GenerationService:
                 from week7.backend.api.dependencies import get_watermark_service
                 watermarked_b64 = get_watermark_service().apply_watermark_to_b64(img_b64)
                 
-                return {"image": watermarked_b64, "metadata": meta, "generation_time": latency_s}
+                return ServiceResult(success=True, data={"image": watermarked_b64, "metadata": meta, "generation_time": latency_s}, metadata=meta)
             else:
                 generator = self._get_generator()
                 if not generator._is_loaded:
@@ -127,7 +128,7 @@ class GenerationService:
                 from week7.backend.api.dependencies import get_watermark_service
                 watermarked_b64 = get_watermark_service().apply_watermark_to_b64(img_b64)
                 
-                return {"image": watermarked_b64, "metadata": meta, "generation_time": latency_s}
+                return ServiceResult(success=True, data={"image": watermarked_b64, "metadata": meta, "generation_time": latency_s}, metadata=meta)
         except Exception as exc:
             from week7.backend.logging_config import log_generation_failure
             log_generation_failure(prompt=prompt, error_msg=str(exc))
@@ -146,10 +147,11 @@ class GenerationService:
         d.text((10, 30), prompt[:50] + "...", fill=(200, 200, 200))
         return img
 
-    def health_check(self) -> Dict[str, Any]:
+    def health_check(self) -> ServiceResult:
         """Verify the health status of the generation service."""
-        return {
+        res = {
             "status": "ok",
             "name": "GenerationService",
             "mode": "mock" if self.settings.model.global_mock else "production"
         }
+        return ServiceResult(success=True, data=res)

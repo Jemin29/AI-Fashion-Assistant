@@ -141,30 +141,63 @@ class ValidationError(ServiceError):
 # Result Container
 # ══════════════════════════════════════════════════════════════════════════════
 
-@dataclass
-class ServiceResult(Generic[T]):
+@dataclass(init=False)
+class ServiceResult(dict, Generic[T]):
     """Generic result container for all service method calls.
 
     Every service method that performs computation returns a ``ServiceResult``
     so that UI callbacks can handle success / failure uniformly.
 
     Attributes:
+        success:     Boolean indicating whether the call succeeded.
         data:        Primary output payload (image, list, string, …).
-        meta:        Dict of metadata (mode, model, latency_ms, timestamp, …).
-        status:      ``ServiceStatus`` describing the outcome.
+        message:     Human-readable output message or description.
         error:       Human-readable error message (``None`` on success).
-        error_code:  Machine-readable code (``None`` on success).
-        warnings:    Non-fatal advisory messages accumulated during the call.
-        latency_ms:  End-to-end latency in milliseconds.
+        metadata:    Dict of metadata (mode, model, latency_ms, timestamp, …).
     """
 
-    data:        Optional[T]            = None
-    meta:        Dict[str, Any]         = field(default_factory=dict)
-    status:      ServiceStatus          = ServiceStatus.OK
-    error:       Optional[str]          = None
-    error_code:  Optional[str]          = None
-    warnings:    List[str]              = field(default_factory=list)
-    latency_ms:  float                  = 0.0
+    success:     bool
+    data:        Optional[T]
+    message:     str
+    error:       Optional[str]
+    metadata:    Dict[str, Any]
+    status:      ServiceStatus
+    error_code:  Optional[str]
+    warnings:    List[str]
+    latency_ms:  float
+
+    def __init__(
+        self,
+        success: bool = True,
+        data: Optional[T] = None,
+        message: str = "",
+        error: Optional[str] = None,
+        metadata: Optional[Dict[str, Any]] = None,
+        status: ServiceStatus = ServiceStatus.OK,
+        error_code: Optional[str] = None,
+        warnings: Optional[List[str]] = None,
+        latency_ms: float = 0.0,
+        meta: Optional[Dict[str, Any]] = None,
+    ) -> None:
+        super().__init__()
+        self.status = status
+        if status in (ServiceStatus.ERROR, ServiceStatus.VALIDATION, ServiceStatus.UNAVAILABLE):
+            self.success = False
+        else:
+            self.success = success
+
+        self.data = data
+        self.error = error
+        self.message = message or error or ""
+        self.metadata = metadata or meta or {}
+        self.error_code = error_code
+        self.warnings = warnings or []
+        self.latency_ms = latency_ms
+
+    def __setattr__(self, name: str, value: Any) -> None:
+        super().__setattr__(name, value)
+        # Keep internal dict storage synchronized with attributes
+        self[name] = value
 
     # ── Convenience constructors ─────────────────────────────────────────────
 
@@ -179,6 +212,7 @@ class ServiceResult(Generic[T]):
     ) -> "ServiceResult[T]":
         """Create a successful result."""
         return cls(
+            success=True,
             data=data,
             meta=meta or {},
             status=ServiceStatus.OK,
@@ -199,6 +233,7 @@ class ServiceResult(Generic[T]):
         _meta = dict(meta or {})
         _meta.setdefault("mode", "mock")
         return cls(
+            success=True,
             data=data,
             meta=_meta,
             status=ServiceStatus.MOCK,
@@ -217,10 +252,12 @@ class ServiceResult(Generic[T]):
     ) -> "ServiceResult[None]":
         """Create a failed result (data=None, status=ERROR)."""
         return cls(
+            success=False,
             data=None,
             meta=meta or {},
             status=ServiceStatus.ERROR,
             error=message,
+            message=message,
             error_code=code,
             latency_ms=latency_ms,
         )
@@ -232,11 +269,14 @@ class ServiceResult(Generic[T]):
         reason: str,
     ) -> "ServiceResult[None]":
         """Create a validation-failed result."""
+        msg = f"Invalid '{field}': {reason}"
         return cls(
+            success=False,
             data=None,
             meta={},
             status=ServiceStatus.VALIDATION,
-            error=f"Invalid '{field}': {reason}",
+            error=msg,
+            message=msg,
             error_code="VALIDATION_ERROR",
         )
 
@@ -244,10 +284,12 @@ class ServiceResult(Generic[T]):
     def from_service_error(cls, exc: "ServiceError") -> "ServiceResult[None]":
         """Wrap a ``ServiceError`` into a failed result."""
         return cls(
+            success=False,
             data=None,
             meta=exc.to_dict(),
             status=ServiceStatus.ERROR,
             error=exc.message,
+            message=exc.message,
             error_code=exc.code,
         )
 
@@ -256,7 +298,16 @@ class ServiceResult(Generic[T]):
     @property
     def is_ok(self) -> bool:
         """``True`` if the call succeeded (real or mock)."""
-        return self.status in (ServiceStatus.OK, ServiceStatus.MOCK)
+        return self.success
+
+    @property
+    def meta(self) -> Dict[str, Any]:
+        """Backward compatibility mapping to metadata."""
+        return self.metadata
+
+    @meta.setter
+    def meta(self, val: Dict[str, Any]) -> None:
+        self.metadata = val
 
     @property
     def has_error(self) -> bool:
@@ -273,14 +324,15 @@ class ServiceResult(Generic[T]):
             "status":     self.status.value,
             "error":      self.error,
             "error_code": self.error_code,
-            "meta":       self.meta,
+            "meta":       self.metadata,
             "warnings":   self.warnings,
             "latency_ms": round(self.latency_ms, 1),
         }
 
+
     def __iter__(self) -> Any:
         """Allow unpacking/iteration based on the wrapped data type."""
-        if isinstance(self.data, list):
+        if isinstance(self.data, (list, tuple)):
             return iter(self.data)
         
         # Tuple unpacking fallback: yield (image/data, meta)
@@ -294,18 +346,26 @@ class ServiceResult(Generic[T]):
         return _unpack()
 
     def __len__(self) -> int:
-        """Return the length of the underlying data if it supports len(), else 0 or 1."""
-        if self.data is None:
-            return 0
-        if hasattr(self.data, "__len__"):
+        """Return the length of the underlying data if it supports len(), else dict keys count."""
+        if isinstance(self.data, (list, dict, tuple)):
             return len(self.data)
-        return 1
+        return dict.__len__(self)
+
+    def __contains__(self, key: Any) -> bool:
+        """Check if key exists in the ServiceResult dictionary or inside data dictionary."""
+        if dict.__contains__(self, key):
+            return True
+        if isinstance(self.data, dict) and key in self.data:
+            return True
+        return False
 
     def __getitem__(self, key: Any) -> Any:
-        """Allow indexing/subscripting into the result data or metadata."""
+        """Allow indexing/subscripting into the result data, metadata, or dict keys."""
         if isinstance(self.data, list) and isinstance(key, int):
             return self.data[key]
-        if isinstance(self.data, dict):
+        if dict.__contains__(self, key):
+            return dict.__getitem__(self, key)
+        if isinstance(self.data, dict) and key in self.data:
             return self.data[key]
         if key == 0:
             if isinstance(self.data, dict) and "image" in self.data:
@@ -316,8 +376,10 @@ class ServiceResult(Generic[T]):
         raise KeyError(f"Invalid key for ServiceResult: {key}")
 
     def get(self, key: str, default: Any = None) -> Any:
-        """Allow dictionary-like .get() access, delegating to data if it is a dict."""
-        if isinstance(self.data, dict):
+        """Allow dictionary-like .get() access, delegating to dict keys or data dict."""
+        if dict.__contains__(self, key):
+            return dict.get(self, key)
+        if isinstance(self.data, dict) and key in self.data:
             return self.data.get(key, default)
         return getattr(self, key, default)
 
@@ -380,12 +442,11 @@ class BaseService(ABC):
     # ── Health / Status ──────────────────────────────────────────────────────
 
     @abstractmethod
-    def health_check(self) -> Dict[str, Any]:
+    def health_check(self) -> ServiceResult:
         """Perform a lightweight health check.
 
         Returns:
-            Dict with at minimum: ``{"status": "ok"|"degraded"|"error",
-            "mock_mode": bool, "message": str}``.
+            ServiceResult wrapping health details.
         """
         ...
 

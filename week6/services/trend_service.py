@@ -14,6 +14,7 @@ if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
 from week6.gradio_app.logger import get_logger
+from week6.services.base import ServiceResult
 
 logger = get_logger(__name__)
 
@@ -48,27 +49,31 @@ class TrendService:
                 logger.warning(f"TrendService: real mode failed — {exc}")
                 self.mock_mode = True
 
-    def get_all_trends(self) -> List[Dict[str, Any]]:
+    def get_all_trends(self) -> ServiceResult[List[Dict[str, Any]]]:
         """Return all known trends sorted by velocity."""
         try:
             if not self.mock_mode and self._analyzer:
-                return self._analyzer.get_all_trends()
+                res = self._analyzer.get_all_trends()
+                return ServiceResult(success=True, data=res)
         except Exception as exc:
             logger.error(f"TrendService.get_all_trends error: {exc}")
-        return sorted(_MOCK_TRENDS, key=lambda x: x["velocity"], reverse=True)
+        
+        res = sorted(_MOCK_TRENDS, key=lambda x: x["velocity"], reverse=True)
+        return ServiceResult(success=True, data=res)
 
-    def explain_trend(self, trend_name: str) -> Dict[str, Any]:
+    def explain_trend(self, trend_name: str) -> ServiceResult[Dict[str, Any]]:
         """Return detailed analysis for a specific trend."""
         try:
             if not self.mock_mode and self._analyzer:
-                return self._analyzer.explain(trend_name)
+                res = self._analyzer.explain(trend_name)
+                return ServiceResult(success=True, data=res)
         except Exception as exc:
             logger.error(f"TrendService.explain_trend error: {exc}")
 
         # Find in mock trends
         for t in _MOCK_TRENDS:
             if trend_name.lower() in t["name"].lower():
-                return {
+                res = {
                     "trend": t["name"],
                     "velocity": t["velocity"],
                     "confidence": t["confidence"],
@@ -79,8 +84,9 @@ class TrendService:
                     "key_influences": ["Runway shows", "Social media adoption", "Celebrity endorsement"],
                     "target_demographics": ["25-34", "Urban millennials", "Style-conscious professionals"],
                 }
+                return ServiceResult(success=True, data=res)
         # Generic fallback
-        return {
+        res = {
             "trend": trend_name or "Unknown Trend",
             "velocity": 0.5,
             "confidence": 0.5,
@@ -90,25 +96,39 @@ class TrendService:
             "key_influences": ["Fashion week", "Social media"],
             "target_demographics": ["General audience"],
         }
+        return ServiceResult(success=True, data=res)
 
-    def forecast_season(self, season: str) -> List[Dict[str, Any]]:
+    def forecast_season(self, season: str) -> ServiceResult[List[Dict[str, Any]]]:
         """Forecast top trends for a given season."""
         try:
             if not self.mock_mode and self._forecaster:
-                return self._forecaster.forecast(season)
+                res = self._forecaster.forecast(season)
+                return ServiceResult(success=True, data=res)
         except Exception as exc:
             logger.error(f"TrendService.forecast_season error: {exc}")
-        return [t for t in _MOCK_TRENDS if t["season"] == season] or _MOCK_TRENDS[:3]
+        
+        res = [t for t in _MOCK_TRENDS if t["season"] == season] or _MOCK_TRENDS[:3]
+        return ServiceResult(success=True, data=res)
 
-    def get_velocity_chart_data(self) -> Dict[str, Any]:
+    def get_velocity_chart_data(self) -> ServiceResult[Dict[str, Any]]:
         """Return data suitable for a velocity bar/radar chart."""
-        trends = self.get_all_trends()
-        return {
+        trends_res = self.get_all_trends()
+        trends = trends_res.data or []
+        res = {
             "labels": [t["name"] for t in trends],
             "velocities": [t["velocity"] for t in trends],
             "confidence": [t["confidence"] for t in trends],
             "growth": [float(t["growth"].replace("%", "").replace("+", "")) for t in trends],
         }
+        return ServiceResult(success=True, data=res)
+
+    def health_check(self) -> ServiceResult:
+        res = {
+            "status": "ok",
+            "name": "TrendService",
+            "mode": "mock" if self.mock_mode else "production"
+        }
+        return ServiceResult(success=True, data=res)
 
     @staticmethod
     def get_seasons() -> List[str]:

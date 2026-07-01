@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, List, Optional, Tuple
 from week6.services.history_manager import HistoryManager
+from week6.services.base import ServiceResult
 
 
 class HistoryService:
@@ -21,7 +22,7 @@ class HistoryService:
         resolution: str,
         latency_ms: float,
         tags: Optional[List[str]] = None
-    ) -> Dict[str, Any]:
+    ) -> ServiceResult:
         entry = self._mgr.record(
             prompt=prompt,
             image_path=image_path,
@@ -33,7 +34,8 @@ class HistoryService:
             latency_ms=latency_ms,
             tags=tags
         )
-        return entry.to_dict() if hasattr(entry, "to_dict") else vars(entry)
+        entry_dict = entry.to_dict() if hasattr(entry, "to_dict") else vars(entry)
+        return ServiceResult(success=True, data=entry_dict)
 
     def search(
         self,
@@ -42,17 +44,21 @@ class HistoryService:
         page_size: int = 20,
         sort: str = "newest",
         filters: Optional[Dict[str, Any]] = None
-    ) -> Tuple[List[Any], int]:
-        return self._mgr.search(
+    ) -> ServiceResult:
+        entries, total = self._mgr.search(
             query=query,
             page=page,
             page_size=page_size,
             sort=sort,
             filters=filters
         )
+        return ServiceResult(success=True, data=(entries, total))
 
-    def get_entry(self, entry_id: str) -> Optional[Any]:
-        return self._mgr.get_entry(entry_id)
+    def get_entry(self, entry_id: str) -> ServiceResult:
+        entry = self._mgr.get_entry(entry_id)
+        if not entry:
+            return ServiceResult(success=False, error=f"Record with ID '{entry_id}' not found.")
+        return ServiceResult(success=True, data=entry)
 
     def update_entry(
         self,
@@ -60,20 +66,27 @@ class HistoryService:
         rating: Optional[int] = None,
         notes: Optional[str] = None,
         tags: Optional[List[str]] = None
-    ) -> Optional[Any]:
-        return self._mgr.update_entry(
+    ) -> ServiceResult:
+        updated = self._mgr.update_entry(
             entry_id=entry_id,
             rating=rating,
             notes=notes,
             tags=tags
         )
+        if not updated:
+            return ServiceResult(success=False, error=f"Record with ID '{entry_id}' not found.")
+        return ServiceResult(success=True, data=updated)
 
-    def delete_entry(self, entry_id: str, delete_file: bool = False) -> bool:
-        return self._mgr.delete_entry(entry_id=entry_id, delete_file=delete_file)
+    def delete_entry(self, entry_id: str, delete_file: bool = False) -> ServiceResult:
+        deleted = self._mgr.delete_entry(entry_id=entry_id, delete_file=delete_file)
+        if not deleted:
+            return ServiceResult(success=False, error=f"Record with ID '{entry_id}' not found.", data=False)
+        return ServiceResult(success=True, data=True)
 
-    def health_check(self) -> Dict[str, Any]:
+    def health_check(self) -> ServiceResult:
         """Verify the health status of the history service."""
-        return {
+        res = {
             "status": "ok",
             "name": "HistoryService"
         }
+        return ServiceResult(success=True, data=res)

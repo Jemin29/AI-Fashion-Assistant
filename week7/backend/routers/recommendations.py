@@ -37,9 +37,9 @@ async def recommend_styles(
     payload: StyleRecommendationRequest,
     rec_svc: RecommendationService = Depends(get_recommendation_service)
 ):
-    """Generate style suggestions matching user occassion and fit parameters."""
+    """Generate style suggestions matching user occasion and fit parameters."""
     try:
-        data = rec_svc.recommend_styles(
+        res = rec_svc.recommend_styles(
             gender=payload.gender,
             style=payload.style,
             occasion=payload.occasion,
@@ -47,11 +47,18 @@ async def recommend_styles(
             n=payload.limit,
             color=payload.color or ""
         )
+        if not res.success:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=res.error or "Failed to recommend styles."
+            )
         return {
             "success": True,
-            "data": data,
-            "meta": {}
+            "data": res.data,
+            "meta": res.metadata
         }
+    except HTTPException:
+        raise
     except Exception as exc:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -68,17 +75,24 @@ async def recommend_brands(
 ):
     """Generate brand suggestions matching designer style collections."""
     try:
-        data = rec_svc.recommend_brands(
+        res = rec_svc.recommend_brands(
             styles=payload.styles,
             aesthetic=payload.aesthetic or "",
             price_range=payload.price_range or "",
             n=payload.limit
         )
+        if not res.success:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=res.error or "Failed to recommend brands."
+            )
         return {
             "success": True,
-            "data": data,
-            "meta": {}
+            "data": res.data,
+            "meta": res.metadata
         }
+    except HTTPException:
+        raise
     except Exception as exc:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -91,10 +105,15 @@ async def list_active_trends(
     trend_svc: TrendService = Depends(get_trend_service)
 ):
     """Retrieve all logged fashion trends ranked by velocity."""
-    trends = trend_svc.get_all_trends()
+    res = trend_svc.get_all_trends()
+    if not res.success:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=res.error or "Failed to retrieve trends."
+        )
     return {
         "success": True,
-        "data": trends
+        "data": res.data
     }
 
 
@@ -104,8 +123,13 @@ async def get_seasonal_forecast(
     trend_svc: TrendService = Depends(get_trend_service)
 ):
     """Retrieve top forecasted trend cards for a given season."""
-    forecast = trend_svc.forecast_season(season.strip().lower())
+    res = trend_svc.forecast_season(season.strip().lower())
+    if not res.success:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=res.error or "Failed to retrieve forecast."
+        )
     return {
         "success": True,
-        "data": forecast
+        "data": res.data
     }

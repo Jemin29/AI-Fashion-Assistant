@@ -10,6 +10,7 @@ from typing import Any, Dict, List, Optional
 
 from week6.gradio_app.logger import get_logger
 from week6.gradio_app.config import get_config
+from week6.services.base import ServiceResult
 
 logger = get_logger(__name__)
 
@@ -27,12 +28,13 @@ class EvaluationService:
         self.report_dir.mkdir(parents=True, exist_ok=True)
         self.report_path = self.report_dir / "evaluation_report.json"
 
-    def get_last_report(self) -> Dict[str, Any]:
+    def get_last_report(self) -> ServiceResult[Dict[str, Any]]:
         """Retrieve the latest evaluation report, fallback to root or mock."""
         if self.report_path.exists():
             try:
                 with open(self.report_path, "r", encoding="utf-8") as f:
-                    return json.load(f)
+                    res = json.load(f)
+                    return ServiceResult(success=True, data=res)
             except Exception as e:
                 logger.error(f"Error reading evaluation report: {e}")
 
@@ -45,14 +47,15 @@ class EvaluationService:
                     # Copy to our reports directory
                     with open(self.report_path, "w", encoding="utf-8") as out:
                         json.dump(data, out, indent=2)
-                    return data
+                    return ServiceResult(success=True, data=data)
             except Exception as e:
                 logger.error(f"Error reading root evaluation report: {e}")
 
         # Return default mock report
-        return self._get_default_mock_report()
+        res = self._get_default_mock_report()
+        return ServiceResult(success=True, data=res)
 
-    def run_evaluation(self) -> Dict[str, Any]:
+    def run_evaluation(self) -> ServiceResult[Dict[str, Any]]:
         """Execute the RAG evaluation suite and save results."""
         if self.mock_mode:
             logger.info("Running evaluation in mock mode...")
@@ -68,16 +71,26 @@ class EvaluationService:
                     json.dump(report, f, indent=2)
             except Exception as e:
                 logger.error(f"Error saving mock evaluation report: {e}")
-            return report
+            return ServiceResult(success=True, data=report)
 
         try:
             from src.evaluation.rag_evaluator import RAGEvaluator
             # RAGEvaluator saves report to its report_path
             evaluator = RAGEvaluator(report_path=self.report_path)
-            return evaluator.run_evaluation()
+            res = evaluator.run_evaluation()
+            return ServiceResult(success=True, data=res)
         except Exception as e:
             logger.error(f"Error running evaluation: {e}")
-            return self._get_default_mock_report()
+            res = self._get_default_mock_report()
+            return ServiceResult(success=True, data=res)
+
+    def health_check(self) -> ServiceResult:
+        res = {
+            "status": "ok",
+            "name": "EvaluationService",
+            "mode": "mock" if self.mock_mode else "production"
+        }
+        return ServiceResult(success=True, data=res)
 
     def _get_default_mock_report(self) -> Dict[str, Any]:
         return {

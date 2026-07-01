@@ -558,10 +558,10 @@ class RAGService(BaseService):
 
     # ── Health ─────────────────────────────────────────────────────────────────
 
-    def health_check(self) -> Dict[str, Any]:
+    def health_check(self) -> ServiceResult:
         """Return lightweight health status of the RAG backend."""
         assistant_ok = self._assistant is not None
-        return {
+        res = {
             "status":        "ok" if assistant_ok else "mock",
             "mock_mode":     self.mock_mode,
             "assistant":     "loaded" if assistant_ok else "unavailable",
@@ -571,6 +571,7 @@ class RAGService(BaseService):
                 else "RAGService running in mock mode — no embeddings required."
             ),
         }
+        return ServiceResult(success=True, data=res)
 
     # ── Private helpers ────────────────────────────────────────────────────────
 

@@ -177,10 +177,11 @@ class LoraService:
         raw_res = self.mix_styles(prompt, brand_weights, seed=seed)
         return ServiceResult(data=raw_res, status=ServiceStatus.OK, meta=raw_res["metadata"])
 
-    def health_check(self) -> Dict[str, Any]:
+    def health_check(self) -> ServiceResult:
         """Verify the health status of the lora service."""
-        return {
+        res = {
             "status": "ok" if self._get_lora_sys() is not None else "error",
             "name": "LoraService",
             "mode": "mock" if self.settings.model.global_mock else "production"
         }
+        return ServiceResult(success=(res["status"] == "ok"), data=res)

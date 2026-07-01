@@ -401,30 +401,33 @@ class ControlNetService(BaseService):
 
     # ── Health ─────────────────────────────────────────────────────────────────
 
-    def health_check(self) -> Dict[str, Any]:
+    def health_check(self) -> ServiceResult:
         """Return lightweight health status of the ControlNet backend."""
         if self.mock_mode or self._engine is None:
-            return {
+            res = {
                 "status":    "ok",
                 "mock_mode": True,
                 "backend":   "mock",
                 "message":   "ControlNetService running in mock mode.",
                 "modes":     list(CONDITIONING_MODES.keys()),
             }
+            return ServiceResult(success=True, data=res)
         try:
             _ = self._engine
-            return {
+            res = {
                 "status":    "ok",
                 "mock_mode": False,
                 "backend":   "controlnet",
                 "message":   "ControlNet engine loaded and ready.",
                 "modes":     list(CONDITIONING_MODES.keys()),
             }
+            return ServiceResult(success=True, data=res)
         except Exception as exc:
-            return {
+            res = {
                 "status":    "error",
                 "mock_mode": self.mock_mode,
                 "backend":   "controlnet",
                 "message":   f"Engine probe failed: {exc}",
                 "modes":     list(CONDITIONING_MODES.keys()),
             }
+            return ServiceResult(success=False, data=res, error=res["message"])

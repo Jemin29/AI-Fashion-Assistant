@@ -836,11 +836,11 @@ class StateManager(BaseService):
     # Health Check
     # ══════════════════════════════════════════════════════════════════════════
 
-    def health_check(self) -> Dict[str, Any]:
+    def health_check(self) -> ServiceResult:
         """Return a lightweight health summary.
 
         Returns:
-            Dict with ``status``, ``message``, ``mock_mode``, and session stats.
+            ServiceResult wrapping health details.
         """
         with self._lock:
             total = len(self._sessions)
@@ -853,7 +853,7 @@ class StateManager(BaseService):
             if writable
             else f"StateManager degraded — snapshot dir not writable: {_SNAPSHOT_DIR}"
         )
-        return {
+        res = {
             "status":         status,
             "message":        msg,
             "mock_mode":      self.mock_mode,
@@ -863,6 +863,7 @@ class StateManager(BaseService):
             "call_count":     self._call_count,
             "error_count":    self._error_count,
         }
+        return ServiceResult(success=(status == "ok"), data=res)
 
     # ══════════════════════════════════════════════════════════════════════════
     # Private Helpers

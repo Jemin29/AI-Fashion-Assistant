@@ -556,9 +556,9 @@ class LoRAService(BaseService):
 
     # ── Health ─────────────────────────────────────────────────────────────────
 
-    def health_check(self) -> Dict[str, Any]:
+    def health_check(self) -> ServiceResult:
         """Return lightweight health status of the LoRA backend."""
-        return {
+        res = {
             "status":        "ok" if not self.mock_mode else "mock",
             "mock_mode":     self.mock_mode,
             "backend":       "lora" if not self.mock_mode else "mock",
@@ -569,3 +569,4 @@ class LoRAService(BaseService):
                 else f"LoRAService running in mock mode with {len(BRAND_REGISTRY)} brand profiles."
             ),
         }
+        return ServiceResult(success=True, data=res)

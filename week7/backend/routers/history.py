@@ -40,14 +40,21 @@ async def list_history_entries(
     if has_image is not None:
         filters["has_image"] = has_image
 
-    # Use search method on history service
-    entries, total = hist_svc.search(
+    res = hist_svc.search(
         query=query,
         page=page,
         page_size=page_size,
         sort=sort,
         filters=filters
     )
+
+    if not res.success:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=res.error or "Failed to query history."
+        )
+
+    entries, total = res.data
 
     return {
         "success": True,
@@ -66,13 +73,14 @@ async def get_history_entry_details(
     hist_svc: HistoryService = Depends(get_history_service)
 ):
     """Retrieve technical parameters and generation metadata for a single design."""
-    entry = hist_svc.get_entry(entry_id.strip())
-    if not entry:
+    res = hist_svc.get_entry(entry_id.strip())
+    if not res.success or res.data is None:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"History record with ID '{entry_id}' not found."
+            detail=res.error or f"History record with ID '{entry_id}' not found."
         )
 
+    entry = res.data
     return {
         "success": True,
         "data": entry.to_dict() if hasattr(entry, "to_dict") else vars(entry)
@@ -86,19 +94,20 @@ async def update_history_entry(
     hist_svc: HistoryService = Depends(get_history_service)
 ):
     """Update reviewer ratings, tag labels, and notes for a specific design."""
-    updated = hist_svc.update_entry(
+    res = hist_svc.update_entry(
         entry_id=entry_id.strip(),
         rating=payload.rating,
         notes=payload.notes,
         tags=payload.tags
     )
 
-    if not updated:
+    if not res.success or res.data is None:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"History record with ID '{entry_id}' not found."
+            detail=res.error or f"History record with ID '{entry_id}' not found."
         )
 
+    updated = res.data
     return {
         "success": True,
         "data": updated.to_dict() if hasattr(updated, "to_dict") else vars(updated)
@@ -112,11 +121,11 @@ async def delete_history_entry(
     hist_svc: HistoryService = Depends(get_history_service)
 ):
     """Delete a generated design record from the history database index."""
-    deleted = hist_svc.delete_entry(entry_id=entry_id.strip(), delete_file=delete_file)
-    if not deleted:
+    res = hist_svc.delete_entry(entry_id=entry_id.strip(), delete_file=delete_file)
+    if not res.success:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"History record with ID '{entry_id}' not found."
+            detail=res.error or f"History record with ID '{entry_id}' not found."
         )
 
     return {

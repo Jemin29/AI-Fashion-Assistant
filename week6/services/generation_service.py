@@ -451,32 +451,35 @@ class GenerationService(BaseService):
 
     # ── Health ────────────────────────────────────────────────────────────────
 
-    def health_check(self) -> Dict[str, Any]:
+    def health_check(self) -> ServiceResult:
         """Probe backend availability without loading the full pipeline.
 
         Returns:
-            Dict with ``status``, ``mock_mode``, ``backend``, ``message`` keys.
+            ServiceResult wrapping health details.
         """
         if self.mock_mode or self._generator is None:
-            return {
+            res = {
                 "status":    "ok",
                 "mock_mode": True,
                 "backend":   "mock",
                 "message":   "GenerationService running in mock mode — no GPU required.",
             }
+            return ServiceResult(success=True, data=res)
         try:
             # Light probe: check the generator object is still responsive
             _ = self._generator  # noqa: F841
-            return {
+            res = {
                 "status":    "ok",
                 "mock_mode": False,
                 "backend":   "sdxl",
                 "message":   "SDXLGenerator loaded and ready.",
             }
+            return ServiceResult(success=True, data=res)
         except Exception as exc:
-            return {
+            res = {
                 "status":    "error",
                 "mock_mode": self.mock_mode,
                 "backend":   "sdxl",
                 "message":   f"SDXLGenerator probe failed: {exc}",
             }
+            return ServiceResult(success=False, data=res, error=res["message"])

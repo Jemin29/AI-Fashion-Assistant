@@ -511,9 +511,9 @@ class RecommendationService(BaseService):
 
     # ── Health ─────────────────────────────────────────────────────────────────
 
-    def health_check(self) -> Dict[str, Any]:
+    def health_check(self) -> ServiceResult:
         """Return lightweight health status of the recommendation backend."""
-        return {
+        res = {
             "status":         "ok",
             "mock_mode":      self.mock_mode,
             "style_rec":      "loaded" if self._style_rec else "mock",
@@ -528,3 +528,4 @@ class RecommendationService(BaseService):
                 else "RecommendationService running in mock mode."
             ),
         }
+        return ServiceResult(success=True, data=res)
