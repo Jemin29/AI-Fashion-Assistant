@@ -114,7 +114,7 @@ def build_sketch_to_design_page(cn_service: Any) -> None:
             resolved_seed = random.randint(0, 1000000)
 
         # Generate conditioned design
-        res_image, meta = cn_service.generate_conditioned(
+        result = cn_service.generate_conditioned(
             prompt=prompt_text,
             control_image=preprocessed,
             mode=cnet_mode,
@@ -122,6 +122,10 @@ def build_sketch_to_design_page(cn_service: Any) -> None:
             num_inference_steps=int(steps_val),
             guidance_scale=float(cfg_val),
         )
+        if not result.success:
+            raise gr.Error(result.message)
+        res_image = result.data
+        meta = result.metadata
 
         # Enforce resolved seed into metadata
         if meta:

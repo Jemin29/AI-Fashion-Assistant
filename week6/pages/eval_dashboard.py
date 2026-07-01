@@ -83,7 +83,10 @@ def build_eval_dashboard_page(eval_service: Any) -> None:
         elem_classes="studio-subtitle",
     )
 
-    last_eval = eval_service.get_last_report()
+    result = eval_service.get_last_report()
+    if not result.success:
+        raise gr.Error(result.message)
+    last_eval = result.data or {}
     summary_data = last_eval.get("summary", {})
     cases_data = last_eval.get("test_cases", [])
 
@@ -104,7 +107,10 @@ def build_eval_dashboard_page(eval_service: Any) -> None:
     def trigger_evaluation():
         logger_name = "Evaluation Dashboard"
         # Run new evaluation
-        new_report = eval_service.run_evaluation()
+        res = eval_service.run_evaluation()
+        if not res.success:
+            raise gr.Error(res.message)
+        new_report = res.data or {}
         new_summary = new_report.get("summary", {})
         new_cases = new_report.get("test_cases", [])
         return (

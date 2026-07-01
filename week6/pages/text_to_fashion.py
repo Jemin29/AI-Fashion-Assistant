@@ -138,7 +138,7 @@ def build_text_to_fashion_page(gen_service: Any) -> None:
         # Loop through batch size
         for i in range(batch):
             current_seed = resolved_seed + i
-            img, meta = gen_service.generate(
+            result = gen_service.generate(
                 prompt=p,
                 negative_prompt=np,
                 num_inference_steps=int(steps_val),
@@ -148,6 +148,10 @@ def build_text_to_fashion_page(gen_service: Any) -> None:
                 seed=current_seed,
                 style_label="Batch Item" if batch > 1 else "Fashion Design",
             )
+            if not result.success:
+                raise gr.Error(result.message)
+            img = result.data
+            meta = result.metadata
             if img is not None:
                 images.append(img)
                 metadata_list.append(meta)

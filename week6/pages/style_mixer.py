@@ -114,7 +114,11 @@ def build_style_mixer_page(lora_service: Any) -> None:
         if not brand_w:
             return None, {"error": "At least one brand weight must be greater than 0."}, gr.update(selected="blend_tab")
 
-        img, meta = lora_service.mix_styles(p, brand_w)
+        result = lora_service.mix_styles(p, brand_w)
+        if not result.success:
+            raise gr.Error(result.message)
+        img = result.data
+        meta = result.metadata
         return img, meta, gr.update(selected="blend_tab")
 
     def on_compare(p: str, *weights) -> Tuple[List[Tuple[Image.Image, str]], Dict[str, Any], Any]:
@@ -126,7 +130,11 @@ def build_style_mixer_page(lora_service: Any) -> None:
             return [], {"error": "At least one brand weight must be greater than 0."}, gr.update(selected="compare_tab")
 
         # 1. Generate blended design
-        blend_img, blend_meta = lora_service.mix_styles(p, brand_w)
+        result = lora_service.mix_styles(p, brand_w)
+        if not result.success:
+            raise gr.Error(result.message)
+        blend_img = result.data
+        blend_meta = result.metadata
         
         gallery_items = []
         if blend_img is not None:
@@ -135,7 +143,11 @@ def build_style_mixer_page(lora_service: Any) -> None:
         # 2. Generate individual pure brands that contributed
         individual_meta = {}
         for b, w in brand_w.items():
-            pure_img, pure_meta = lora_service.generate_with_brand(p, b, lora_scale=0.85)
+            pure_res = lora_service.generate_with_brand(p, b, lora_scale=0.85)
+            if not pure_res.success:
+                raise gr.Error(pure_res.message)
+            pure_img = pure_res.data
+            pure_meta = pure_res.metadata
             if pure_img is not None:
                 label_text = f"Pure {brand_labels.get(b, b.title())} (Weight: {w:.1%})"
                 gallery_items.append((pure_img, label_text))

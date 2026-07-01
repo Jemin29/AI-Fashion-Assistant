@@ -126,7 +126,10 @@ def build_recommendations_page(rec_service: Any, trend_service: Any) -> None:
                     style_empty_lbl = gr.Markdown("_Submit criteria to view style recommendations._")
 
             def on_get_styles(g, s, o, f):
-                recs = rec_service.recommend_styles(g, s, o, f, n=4)
+                result = rec_service.recommend_styles(g, s, o, f, n=4)
+                if not result.success:
+                    raise gr.Error(result.message)
+                recs = result.data or []
                 if not recs:
                     return [gr.update(visible=False)] * 4 + [None] * 4 + [None] * 4 + [gr.update(value="_No recommendations matches found._", visible=True)]
 
@@ -203,7 +206,10 @@ def build_recommendations_page(rec_service: Any, trend_service: Any) -> None:
                     brand_empty_lbl = gr.Markdown("_Submit aesthetic details to view brand matches._")
 
             def on_get_brands(styles, aesthetic):
-                recs = rec_service.recommend_brands(styles, aesthetic, n=4)
+                result = rec_service.recommend_brands(styles, aesthetic, n=4)
+                if not result.success:
+                    raise gr.Error(result.message)
+                recs = result.data or []
                 if not recs:
                     return [gr.update(visible=False)] * 4 + [None] * 4 + [None] * 4 + [gr.update(value="_No matching brands found._", visible=True)]
 
@@ -275,7 +281,10 @@ def build_recommendations_page(rec_service: Any, trend_service: Any) -> None:
                     trend_empty_lbl = gr.Markdown("_Submit season details to view trend forecasts._")
 
             def on_get_trends(season):
-                recs = trend_service.forecast_season(season)
+                result = trend_service.forecast_season(season)
+                if not result.success:
+                    raise gr.Error(result.message)
+                recs = result.data or []
                 if not recs:
                     return [gr.update(visible=False)] * 4 + [None] * 4 + [None] * 4 + [gr.update(value="_No trend forecasts found._", visible=True)]
 

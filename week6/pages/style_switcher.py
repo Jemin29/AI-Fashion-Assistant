@@ -110,13 +110,17 @@ def build_style_switcher_page(lora_service: Any) -> None:
         if not p.strip():
             return None, {"error": "Prompt cannot be empty."}, gr.update(selected="single_tab")
         
-        img, meta = lora_service.generate_with_brand(
+        result = lora_service.generate_with_brand(
             prompt=p,
             brand=b,
             lora_scale=float(scale),
             num_inference_steps=int(steps_val),
             guidance_scale=float(cfg_val),
         )
+        if not result.success:
+            raise gr.Error(result.message)
+        img = result.data
+        meta = result.metadata
         return img, meta, gr.update(selected="single_tab")
 
     def on_compare(
@@ -132,13 +136,17 @@ def build_style_switcher_page(lora_service: Any) -> None:
         meta_dict = {}
 
         for b in brands:
-            img, meta = lora_service.generate_with_brand(
+            result = lora_service.generate_with_brand(
                 prompt=p,
                 brand=b,
                 lora_scale=float(scale),
                 num_inference_steps=int(steps_val),
                 guidance_scale=float(cfg_val),
             )
+            if not result.success:
+                raise gr.Error(result.message)
+            img = result.data
+            meta = result.metadata
             if img is not None:
                 label_text = brand_labels.get(b, b.title())
                 comparison_images.append((img, label_text))

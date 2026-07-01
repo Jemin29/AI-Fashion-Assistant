@@ -23,7 +23,10 @@ def build_trend_explorer_page(trend_service: Any) -> None:
             trends_table = gr.Markdown("_Click 'Load Trends' to fetch data._")
 
             def load_all_trends() -> str:
-                trends = trend_service.get_all_trends()
+                result = trend_service.get_all_trends()
+                if not result.success:
+                    raise gr.Error(result.message)
+                trends = result.data or []
                 if not trends:
                     return "No trends available."
                 md = "| Rank | Trend | Velocity | Growth | Season | Confidence |\n"
@@ -63,7 +66,10 @@ def build_trend_explorer_page(trend_service: Any) -> None:
             def on_analyze(trend_name: str) -> str:
                 if not trend_name.strip():
                     return "_Please enter a trend name._"
-                info = trend_service.explain_trend(trend_name)
+                result = trend_service.explain_trend(trend_name)
+                if not result.success:
+                    raise gr.Error(result.message)
+                info = result.data or {}
                 vel = info.get("velocity", 0.0)
                 vel_bar = "█" * int(vel * 10) + "░" * (10 - int(vel * 10))
                 conf = info.get("confidence", 0.0)
@@ -105,7 +111,10 @@ def build_trend_explorer_page(trend_service: Any) -> None:
                     forecast_output = gr.Markdown("_Select a season and click 'Generate Forecast'._")
 
             def on_forecast(season: str) -> str:
-                trends = trend_service.forecast_season(season)
+                result = trend_service.forecast_season(season)
+                if not result.success:
+                    raise gr.Error(result.message)
+                trends = result.data or []
                 if not trends:
                     return f"No forecasts for '{season}'."
 

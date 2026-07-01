@@ -120,9 +120,12 @@ def build_fashion_assistant_page(rag_service: Any) -> None:
             return history, "", "_No question entered._"
 
         # Use the chat method to run intent routing and retrieve citations
-        res = rag_service.chat(question)
-        answer = res.get("response", "No answer found.")
-        docs = res.get("source_documents", [])
+        result = rag_service.chat(question)
+        if not result.success:
+            raise gr.Error(result.message)
+        data_payload = result.data or {}
+        answer = data_payload.get("response", "No answer found.")
+        docs = data_payload.get("source_documents", [])
 
         if docs:
             sources_md = "#### 📚 Retrieved Citations\n\n"

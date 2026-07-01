@@ -82,8 +82,11 @@ def build_fashion_qa_page(rag_service: Any) -> None:
             return history, "", "_No question entered._"
 
         result = rag_service.answer_question(question)
-        answer = result.get("response", "No response generated.")
-        docs = result.get("source_documents", [])
+        if not result.success:
+            raise gr.Error(result.message)
+        data_payload = result.data or {}
+        answer = data_payload.get("response", "No response generated.")
+        docs = data_payload.get("source_documents", [])
 
         # Format citations
         if docs:
@@ -104,7 +107,10 @@ def build_fashion_qa_page(rag_service: Any) -> None:
     def on_search(query: str, n: int) -> str:
         if not query.strip():
             return "_Enter a search query._"
-        results = rag_service.semantic_search(query, n_results=int(n))
+        result = rag_service.semantic_search(query, n_results=int(n))
+        if not result.success:
+            raise gr.Error(result.message)
+        results = result.data or []
         if not results:
             return "No results found."
 
