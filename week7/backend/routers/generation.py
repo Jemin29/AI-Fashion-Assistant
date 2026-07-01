@@ -84,11 +84,17 @@ async def generate_fashion_image(
             cfg=payload.cfg,
             resolution=res_str
         )
+        if not res.success:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=res.error or "Generation failed."
+            )
+        data = res.data or {}
         return {
             "success": True,
             "data": {
-                "image": res.get("image", ""),
-                "meta": res.get("metadata", {})
+                "image": data.get("image", ""),
+                "meta": data.get("metadata", {})
             }
         }
     except Exception as exc:
