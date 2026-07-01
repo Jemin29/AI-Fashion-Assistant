@@ -1,0 +1,9 @@
+{
+  "prompt": "Fashion-forward Cardigan, editorial studio photography, clean product shots",
+  "control_strength": 0.8,
+  "seed": 2017,
+  "sketch_image_filename": "sketch_17.png",
+  "design_image_filename": "design_17.png",
+  "comparison_image_filename": "comparison_17.png",
+  "latency_ms": 0.0
+}

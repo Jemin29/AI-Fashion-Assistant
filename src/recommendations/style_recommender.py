@@ -8,7 +8,7 @@ and unified personalized matching algorithms.
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional
+from typing import Dict, List, Optional
 
 from loguru import logger
 

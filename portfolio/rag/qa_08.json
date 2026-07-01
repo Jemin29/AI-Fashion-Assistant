@@ -1,0 +1,13 @@
+{
+  "id": 8,
+  "question": "What accessories match an emerald green gown?",
+  "answer": "### Fashion AI Assistant - Generation Report\nProcessed Query: *\"What accessories match an emerald green gown?\"*\n\n#### Retrieved Domain Insights\n- According to category **Velvet Gown Opulence** (luxury_trends): Opulent luxury trend featuring deep velvet fabrics decorated with gold thread embroidery and metallic chains for haute-couture gowns. `[kb_luxury_trends_velvet_gown_opulence]`\n- According to category **Analogous Color Scheme** (color_theory): Colors adjacent to each other on the color wheel, such as blue, blue-green, and green. Creates a harmonious, visually calming palette suited for coordinated separates. `[kb_color_theory_analogous_color_scheme]`\n- Detected trend record **Digital Neo-Mint** (color): An optimistic, gender-neutral tech pastel hue that bridges the gap between science and nature. Dominated by youth-focused activewear and streetwear brands. `[trend_color_digital_neo_mint]`\n- According to category **Hoodies** (fashion_categories): A casual sweatshirt top featuring an attached drawstring hood. Usually made from knitted fleece or French terry cotton. Associated with sportswear and streetwear silhouettes. `[kb_fashion_categories_hoodies]`\n- According to category **Complementary Colors** (color_theory): Colors directly opposite each other on the color wheel (e.g. red/green, blue/orange). High contrast palettes that make design details pop dramatically. `[kb_color_theory_complementary_colors]`\n\n#### Recommended Design Inspirations\n- **Velvet Gown Opulence** (Relevance Match: 0.54) - Opulent luxury trend featuring deep velvet fabrics decorated with gold thread embroidery and metallic chains for haute-c... `[kb_luxury_trends_velvet_gown_opulence]`\n\n**Citations**: This response is grounded in: `[kb_color_theory_analogous_color_scheme]`, `[kb_color_theory_complementary_colors]`, `[kb_fashion_categories_hoodies]`, `[kb_luxury_trends_velvet_gown_opulence]`, `[trend_color_digital_neo_mint]`",
+  "citations": [
+    "Velvet Gown Opulence (luxury_trends)",
+    "Analogous Color Scheme (color_theory)",
+    "Digital Neo-Mint (color)",
+    "Hoodies (fashion_categories)",
+    "Complementary Colors (color_theory)"
+  ],
+  "confidence_score": 0.65
+}

@@ -1,0 +1,9 @@
+{
+  "prompt": "Organic linen shirt",
+  "is_mixed": false,
+  "brand": "h&m",
+  "lora_scale": 0.8,
+  "brand_weights": null,
+  "seed": 3004,
+  "latency_ms": 0.0
+}

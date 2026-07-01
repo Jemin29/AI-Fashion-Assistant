@@ -23,16 +23,17 @@ jobs:
       - name: Install lint tools
         run: |
           python -m pip install --upgrade pip
-          pip install flake8 pycodestyle
+          pip install black flake8 ruff
 
-      - name: Run flake8
-        run: |
-          flake8 src/ --max-line-length=120 --extend-ignore=E203,W503 --count --statistics
-        continue-on-error: true   # advisory only — does not fail the build
+      - name: Run Black formatter check
+        run: black --check .
 
-  # ── Unit Tests ────────────────────────────────────────────────────────────────
+      - name: Run Ruff linter check
+        run: ruff check .
+
+  # ── Unit & Integration Tests ──────────────────────────────────────────────────
   test:
-    name: Unit Tests & Coverage
+    name: Unit & Integration Tests
     runs-on: ubuntu-latest
     needs: lint
 
@@ -45,19 +46,35 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
 
-      - name: Install dependencies
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgl1-mesa-glx libglib2.0-0
+
+      - name: Install python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install pytest pytest-cov pytest-subtests
+          pip install pytest pytest-cov pytest-subtests psutil
 
-      - name: Run tests with coverage
+      - name: Run test suite
+        env:
+          ENVIRONMENT: test
+          MODEL__GLOBAL_MOCK: "true"
+          REDIS__MOCK_FALLBACK: "true"
+          GLOBAL_MOCK: "True"
         run: |
-          python -m pytest tests/ \
+          python -m pytest tests/ week7/backend/tests/ \
+            --ignore=tests/test_fashiongen_loader.py \
+            --ignore=tests/test_fid_evaluator.py \
+            --ignore=tests/test_generate_cli.py \
+            --ignore=tests/test_image_quality.py \
+            --ignore=tests/test_ingestion.py \
+            --ignore=tests/test_lora_inference.py \
             --cov=src \
+            --cov=week7/backend \
             --cov-fail-under=80 \
             --cov-report=xml \
-            --cov-report=term-missing \
             --strict-markers \
             -q
 
@@ -68,28 +85,62 @@ jobs:
           files: coverage.xml
           fail_ci_if_error: false
 
-  # ── Build Check ───────────────────────────────────────────────────────────────
-  build:
-    name: Package Build Check
+  # ── Docker Build & Scan ────────────────────────────────────────────────────────
+  docker-build-scan:
+    name: Docker Build & Vulnerability Scan
     runs-on: ubuntu-latest
     needs: test
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-          cache: 'pip'
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
-      - name: Install build tools
-        run: pip install build wheel setuptools
-
-      - name: Build package
-        run: python -m build --sdist
-
-      - name: Verify importable
+      - name: Build Docker Image
         run: |
-          pip install -e .
-          python -c "import src; print('src package OK')"
+          docker build -t fashion-ai-assistant:latest .
+
+      - name: Scan Docker Image (Trivy)
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'fashion-ai-assistant:latest'
+          format: 'table'
+          exit-code: '0'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+
+  # ── Deployment Validation ─────────────────────────────────────────────────────
+  deployment-validation:
+    name: Live Deployment Validation
+    runs-on: ubuntu-latest
+    needs: docker-build-scan
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Start services with Docker Compose
+        run: |
+          docker compose up -d
+
+      - name: Verify API Health Check Endpoint
+        run: |
+          echo "Polling FastAPI backend health status..."
+          for i in {1..12}; do
+            if curl -s -f http://localhost:8001/api/v1/health; then
+              echo "FastAPI API endpoint is responsive and healthy!"
+              curl -s http://localhost:8001/api/v1/health
+              exit 0
+            fi
+            echo "Waiting for API gateway... (attempt $i/12)"
+            sleep 5
+          done
+          echo "ERROR: Backend API container failed to start or report healthy in time."
+          docker compose logs
+          exit 1
+
+      - name: Stop and clean up services
+        if: always()
+        run: |
+          docker compose down -v

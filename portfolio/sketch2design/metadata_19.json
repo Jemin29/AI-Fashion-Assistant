@@ -1,0 +1,9 @@
+{
+  "prompt": "Fashion-forward Pleated skirt, editorial studio photography, clean product shots",
+  "control_strength": 0.8,
+  "seed": 2019,
+  "sketch_image_filename": "sketch_19.png",
+  "design_image_filename": "design_19.png",
+  "comparison_image_filename": "comparison_19.png",
+  "latency_ms": 0.0
+}

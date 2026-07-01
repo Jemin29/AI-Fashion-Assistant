@@ -1,0 +1,8 @@
+{
+  "prompt": "Athletic crop top and compression shorts, neon mint",
+  "negative_prompt": "low quality, blurry",
+  "seed": 1010,
+  "cfg": 7.5,
+  "resolution": "512x512",
+  "latency_sec": 0.002173800000036863
+}

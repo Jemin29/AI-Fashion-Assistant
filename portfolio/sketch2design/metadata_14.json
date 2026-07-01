@@ -1,0 +1,9 @@
+{
+  "prompt": "Fashion-forward Baseball cap, editorial studio photography, clean product shots",
+  "control_strength": 0.8,
+  "seed": 2014,
+  "sketch_image_filename": "sketch_14.png",
+  "design_image_filename": "design_14.png",
+  "comparison_image_filename": "comparison_14.png",
+  "latency_ms": 0.0
+}

@@ -353,3 +353,27 @@ def mock_config():
     from src.utils.config_manager import get_config
     return get_config()
 
+
+@pytest.fixture
+def tiny_image():
+    """Return a tiny 8x8 RGB PIL Image for unit tests."""
+    try:
+        from PIL import Image
+        return Image.new("RGB", (8, 8), color=(255, 0, 0))
+    except ImportError:
+        return None
+
+
+@pytest.fixture(autouse=True)
+def mock_clip_loading():
+    """Mock CLIP model and processor loading globally during tests to avoid downloading or access violations on CPU."""
+    from unittest.mock import patch
+    try:
+        with patch("transformers.CLIPModel.from_pretrained", side_effect=RuntimeError("Mocked CLIP Model Loading")), \
+             patch("transformers.CLIPProcessor.from_pretrained", side_effect=RuntimeError("Mocked CLIP Processor Loading")):
+            yield
+    except ImportError:
+        yield
+
+
+

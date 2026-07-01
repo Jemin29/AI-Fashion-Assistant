@@ -1,0 +1,9 @@
+{
+  "prompt": "Minimalist knitted sweater",
+  "is_mixed": false,
+  "brand": "h&m",
+  "lora_scale": 0.85,
+  "brand_weights": null,
+  "seed": 3008,
+  "latency_ms": 0.0
+}

@@ -1,0 +1,8 @@
+{
+  "prompt": "Retro high-waisted denim jeans, light wash",
+  "negative_prompt": "low quality, blurry",
+  "seed": 1007,
+  "cfg": 7.5,
+  "resolution": "512x512",
+  "latency_sec": 0.0036299999997027044
+}

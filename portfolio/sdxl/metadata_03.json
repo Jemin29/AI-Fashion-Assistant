@@ -1,0 +1,8 @@
+{
+  "prompt": "Vintage corduroy trucker jacket, mustard yellow",
+  "negative_prompt": "low quality, blurry",
+  "seed": 1003,
+  "cfg": 7.5,
+  "resolution": "512x512",
+  "latency_sec": 0.0022532999996656145
+}

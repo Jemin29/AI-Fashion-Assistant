@@ -1,48 +1,210 @@
+# =============================================================================
+# Redis Cache & Task Queue Broker Deployment
+# =============================================================================
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fashion-assistant
+  name: fashion-redis
+  namespace: fashion-ai
   labels:
-    app: fashion-assistant
+    app: fashion-redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fashion-redis
+  template:
+    metadata:
+      labels:
+        app: fashion-redis
+    spec:
+      containers:
+        - name: redis
+          image: redis:7-alpine
+          ports:
+            - containerPort: 6379
+              name: redisport
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "200m"
+              memory: "256Mi"
+
+---
+
+# =============================================================================
+# FastAPI REST API Backend Deployment
+# =============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fashion-api
+  namespace: fashion-ai
+  labels:
+    app: fashion-api
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: fashion-assistant
+      app: fashion-api
   template:
     metadata:
       labels:
-        app: fashion-assistant
+        app: fashion-api
+    spec:
+      containers:
+        - name: fastapi-api
+          image: jemin29/ai-fashion-agent-api:v1.0.0
+          imagePullPolicy: IfNotPresent
+          command: ["uvicorn", "week7.backend.main:app", "--host", "0.0.0.0", "--port", "8000"]
+          ports:
+            - containerPort: 8000
+              name: apiport
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "1Gi"
+            limits:
+              cpu: "1000m"
+              memory: "2Gi"
+          # Resiliency health checks
+          livenessProbe:
+            httpGet:
+              path: /api/v1/health
+              port: 8000
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /api/v1/health
+              port: 8000
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            timeoutSeconds: 5
+          envFrom:
+            - configMapRef:
+                name: fashion-assistant-config
+          env:
+            - name: JWT_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: fashion-assistant-secret
+                  key: JWT_SECRET_KEY
+          volumeMounts:
+            - name: fashion-shared-data
+              mountPath: /app/outputs
+      volumes:
+        - name: fashion-shared-data
+          persistentVolumeClaim:
+            claimName: fashion-assistant-pvc
+
+---
+
+# =============================================================================
+# Gradio Creative Studio UI Deployment
+# =============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fashion-ui
+  namespace: fashion-ai
+  labels:
+    app: fashion-ui
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fashion-ui
+  template:
+    metadata:
+      labels:
+        app: fashion-ui
     spec:
       containers:
         - name: gradio-ui
           image: jemin29/ai-fashion-agent-ui:v1.0.0
           imagePullPolicy: IfNotPresent
+          command: ["python", "apps/gradio_app/app.py"]
           ports:
             - containerPort: 7860
+              name: uiport
           resources:
             requests:
-              memory: "1Gi"
-              cpu: "500m"
+              cpu: "250m"
+              memory: "512Mi"
             limits:
-              memory: "2Gi"
-              cpu: "1000m"
+              cpu: "500m"
+              memory: "1Gi"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 7860
+            initialDelaySeconds: 30
+            periodSeconds: 20
+          envFrom:
+            - configMapRef:
+                name: fashion-assistant-config
           env:
-            - name: ENV
-              value: "production"
-        - name: fastapi-api
+            - name: BACKEND_API_URL
+              value: "http://fashion-api-service:8000"
+          volumeMounts:
+            - name: fashion-shared-data
+              mountPath: /app/outputs
+      volumes:
+        - name: fashion-shared-data
+          persistentVolumeClaim:
+            claimName: fashion-assistant-pvc
+
+---
+
+# =============================================================================
+# Celery Asynchronous Inference Worker Deployment
+# =============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fashion-worker
+  namespace: fashion-ai
+  labels:
+    app: fashion-worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fashion-worker
+  template:
+    metadata:
+      labels:
+        app: fashion-worker
+    spec:
+      containers:
+        - name: celery-worker
           image: jemin29/ai-fashion-agent-api:v1.0.0
           imagePullPolicy: IfNotPresent
-          command: ["uvicorn", "apps.api.main:app", "--host", "0.0.0.0", "--port", "8000"]
-          ports:
-            - containerPort: 8000
+          command: ["celery", "-A", "week7.backend.workers.celery_app", "worker", "--loglevel=info", "-Q", "inference", "-c", "1"]
           resources:
             requests:
-              memory: "1Gi"
-              cpu: "500m"
-            limits:
-              memory: "2Gi"
               cpu: "1000m"
+              memory: "2Gi"
+            limits:
+              cpu: "2000m"
+              memory: "4Gi"
+          envFrom:
+            - configMapRef:
+                name: fashion-assistant-config
           env:
-            - name: ENV
-              value: "production"
+            - name: JWT_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: fashion-assistant-secret
+                  key: JWT_SECRET_KEY
+          volumeMounts:
+            - name: fashion-shared-data
+              mountPath: /app/outputs
+      volumes:
+        - name: fashion-shared-data
+          persistentVolumeClaim:
+            claimName: fashion-assistant-pvc

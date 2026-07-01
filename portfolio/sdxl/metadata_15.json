@@ -1,0 +1,8 @@
+{
+  "prompt": "Sophisticated cashmere wrap shawl, soft mauve",
+  "negative_prompt": "low quality, blurry",
+  "seed": 1015,
+  "cfg": 7.5,
+  "resolution": "512x512",
+  "latency_sec": 0.002168600000004517
+}

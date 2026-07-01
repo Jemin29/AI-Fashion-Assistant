@@ -1,0 +1,8 @@
+{
+  "prompt": "Elegant satin slip dress, midnight black",
+  "negative_prompt": "low quality, blurry",
+  "seed": 1017,
+  "cfg": 7.5,
+  "resolution": "512x512",
+  "latency_sec": 0.0019039000003431283
+}

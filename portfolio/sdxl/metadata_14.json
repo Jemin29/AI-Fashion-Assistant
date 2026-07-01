@@ -1,0 +1,8 @@
+{
+  "prompt": "Summer breathable linen button-up shirt, sand",
+  "negative_prompt": "low quality, blurry",
+  "seed": 1014,
+  "cfg": 7.5,
+  "resolution": "512x512",
+  "latency_sec": 0.0020918000000165193
+}

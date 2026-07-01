@@ -1,0 +1,9 @@
+{
+  "prompt": "Fashion-forward Swimsuit, editorial studio photography, clean product shots",
+  "control_strength": 0.8,
+  "seed": 2012,
+  "sketch_image_filename": "sketch_12.png",
+  "design_image_filename": "design_12.png",
+  "comparison_image_filename": "comparison_12.png",
+  "latency_ms": 0.0
+}

@@ -1,0 +1,13 @@
+{
+  "id": 1,
+  "question": "How do I style a beige trench coat?",
+  "answer": "### Fashion AI Assistant - Generation Report\nProcessed Query: *\"How do I style a beige trench coat?\"*\n\n#### Retrieved Domain Insights\n- According to category **Zara** (brand_profiles): Fast-fashion retail leader specializing in contemporary, trend-driven designs. Aesthetics emphasize minimalist cuts, neutral earth tones (beige, cream), and casual tailored garments. `[kb_brand_profiles_zara]`\n- According to category **Velvet Gown Opulence** (luxury_trends): Opulent luxury trend featuring deep velvet fabrics decorated with gold thread embroidery and metallic chains for haute-couture gowns. `[kb_luxury_trends_velvet_gown_opulence]`\n- According to category **Streetwear** (fashion_styles): A style of casual clothing which became global in the 1990s. Influenced by hip-hop, skate culture, sportswear, and contemporary haute couture. Characters are oversized cuts, graphical screen prints, drawstring hoodies, sneaker matching, and utility elements. `[kb_fashion_styles_streetwear]`\n- Detected trend record **Biophilic Responsive Textiles** (forecast): Future fabric concept infused with micro-algae or responsive biopolymers that actively react to carbon dioxide and humidity, changing texture and color patterns in real-time. `[trend_forecast_biophilic_responsive_textiles]`\n- According to category **Luxury Haute-Couture** (fashion_styles): Opulent, high-end designer garments tailor-made by hand. Characterized by premium fabrics (silk, velvet), gold embroideries, sharp structured lines, patterned blazers, tailored fits, and high-fashion aesthetics. `[kb_fashion_styles_luxury_haute_couture]`\n\n#### Recommended Design Inspirations\n- **Zara** (Relevance Match: 0.53) - Fast-fashion retail leader specializing in contemporary, trend-driven designs. Aesthetics emphasize minimalist cuts, neu... `[kb_brand_profiles_zara]`\n\n**Citations**: This response is grounded in: `[kb_brand_profiles_zara]`, `[kb_fashion_styles_luxury_haute_couture]`, `[kb_fashion_styles_streetwear]`, `[kb_luxury_trends_velvet_gown_opulence]`, `[trend_forecast_biophilic_responsive_textiles]`",
+  "citations": [
+    "Zara (brand_profiles)",
+    "Velvet Gown Opulence (luxury_trends)",
+    "Streetwear (fashion_styles)",
+    "Biophilic Responsive Textiles (forecast)",
+    "Luxury Haute-Couture (fashion_styles)"
+  ],
+  "confidence_score": 0.69
+}

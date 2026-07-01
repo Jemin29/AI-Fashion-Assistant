@@ -1,0 +1,9 @@
+{
+  "prompt": "Fashion-forward Streetwear hoodie, editorial studio photography, clean product shots",
+  "control_strength": 0.8,
+  "seed": 2002,
+  "sketch_image_filename": "sketch_02.png",
+  "design_image_filename": "design_02.png",
+  "comparison_image_filename": "comparison_02.png",
+  "latency_ms": 0.0
+}

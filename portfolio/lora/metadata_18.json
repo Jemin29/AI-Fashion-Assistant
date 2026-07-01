@@ -1,0 +1,12 @@
+{
+  "prompt": "Mixed streetwear chic cardigan",
+  "is_mixed": true,
+  "brand": null,
+  "lora_scale": null,
+  "brand_weights": {
+    "zara": 0.6,
+    "h&m": 0.4
+  },
+  "seed": 3018,
+  "latency_ms": 0.0
+}

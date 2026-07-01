@@ -1,0 +1,102 @@
+# ============================================================================
+# Week 6 — Services Configuration
+# Per-service model paths, hyperparameters, and provider settings
+# ============================================================================
+
+# ── SDXL Generation Service ───────────────────────────────────────────────────
+generation:
+  model_id: "stabilityai/stable-diffusion-xl-base-1.0"
+  vae_id: "madebyollin/sdxl-vae-fp16-fix"
+  refiner_id: "stabilityai/stable-diffusion-xl-refiner-1.0"
+  use_refiner: false
+  torch_dtype: "float16"      # float16 | bfloat16 | float32
+  device: "auto"              # auto | cuda | cpu | mps
+  enable_xformers: true
+  safety_checker: false
+  default_params:
+    num_inference_steps: 30
+    guidance_scale: 7.5
+    width: 1024
+    height: 1024
+    negative_prompt: "low quality, blurry, watermark, text, distorted"
+
+# ── ControlNet Service ────────────────────────────────────────────────────────
+controlnet:
+  canny_model_id: "diffusers/controlnet-canny-sdxl-1.0"
+  pose_model_id: "thibaud/controlnet-openpose-sdxl-1.0"
+  depth_model_id: "diffusers/controlnet-depth-sdxl-1.0"
+  conditioning_scale: 0.7
+  default_mode: "canny"       # canny | pose | depth
+  preprocessor:
+    canny_low: 100
+    canny_high: 200
+    blur_kernel: 5
+
+# ── LoRA Service ──────────────────────────────────────────────────────────────
+lora:
+  adapters_dir: "week4/lora_outputs"
+  brands:
+    nike:
+      adapter_path: "week4/lora_outputs/nike_lora"
+      trigger_word: "nike_style"
+      description: "Performance athletic wear — bold, dynamic, sport-forward"
+    gucci:
+      adapter_path: "week4/lora_outputs/gucci_lora"
+      trigger_word: "gucci_style"
+      description: "Opulent Italian luxury — maximalist, heritage-driven"
+    zara:
+      adapter_path: "week4/lora_outputs/zara_lora"
+      trigger_word: "zara_style"
+      description: "Contemporary European minimalism — clean, versatile"
+    hm:
+      adapter_path: "week4/lora_outputs/hm_lora"
+      trigger_word: "hm_style"
+      description: "Affordable Scandinavian fashion — trend-responsive, accessible"
+  default_lora_scale: 0.85
+  max_mix_adapters: 3
+
+# ── RAG Service ───────────────────────────────────────────────────────────────
+rag:
+  embedding_model: "BAAI/bge-small-en-v1.5"
+  embedding_dim: 384
+  force_mock_embeddings: true    # false requires HuggingFace model download
+  chromadb:
+    persist_directory: "week5/chromadb_store"
+    in_memory: true             # true = no disk persistence required
+    collections:
+      - fashion_knowledge
+      - trend_items
+      - style_profiles
+      - brand_profiles
+  retrieval:
+    default_n_results: 5
+    similarity_threshold: 0.3
+    search_modes:
+      - semantic
+      - keyword
+      - hybrid
+
+# ── Recommendation Service ────────────────────────────────────────────────────
+recommendations:
+  style_recommender:
+    n_results: 5
+    similarity_weight: 0.7
+    rule_weight: 0.3
+  brand_recommender:
+    n_results: 4
+    database_size: 35          # total brands in database
+  user_profile:
+    history_limit: 100
+    preference_decay: 0.95     # exponential decay for old interactions
+
+# ── Trend Service ─────────────────────────────────────────────────────────────
+trends:
+  forecaster:
+    forecast_horizon: 2         # seasons ahead
+    velocity_window: 4          # number of periods for velocity calc
+    confidence_threshold: 0.6
+  analyzer:
+    trend_database_size: 12     # trends in the knowledge base
+    seasons:
+      - spring_summer
+      - autumn_winter

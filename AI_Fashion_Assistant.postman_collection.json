@@ -1,0 +1,897 @@
+{
+  "info": {
+    "name": "AI Fashion Assistant",
+    "description": "Enterprise-grade REST API collection for AI Fashion Assistant backend. Contains endpoints for image generation, ControlNet layout styling, LoRA adapter mixing, semantic search, personalization, and diagnostics.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "description": "Endpoints managing secure user registration, JWT generation, token refresh cycles, and profile retrievals.",
+      "item": [
+        {
+          "name": "Register Account",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"designer_user\",\n  \"password\": \"secure_password\",\n  \"role\": \"designer\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/register",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Obtain Access Token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "if (jsonData.access_token) {",
+                  "    pm.environment.set(\"token\", jsonData.access_token);",
+                  "    console.log(\"Saved access_token to environment variable 'token'\");",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "username",
+                  "value": "designer_user",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "secure_password",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/token",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "token"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Refresh Access Token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refresh_token\": \"your-refresh-token-here\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/refresh",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "refresh"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Active Profile",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/auth/me",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "me"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Generation",
+      "description": "Fashion design text-to-image synthesis pipelines with style presets and watermark embedding.",
+      "item": [
+        {
+          "name": "Retrieve Style Presets",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/v1/generation/presets",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "generation",
+                "presets"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Generate Image",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"prompt\": \"A modern black silk blazer, studio runway model\",\n  \"negative_prompt\": \"blurry, low quality\",\n  \"style_preset\": \"Minimalist Studio\",\n  \"width\": 1024,\n  \"height\": 1024,\n  \"steps\": 25,\n  \"cfg\": 7.5,\n  \"seed\": 42,\n  \"session_id\": \"default-session\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/generation/generate",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "generation",
+                "generate"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "ControlNet",
+      "description": "Image-to-image generation routing sketches and outline maps to construct structured layout consistency.",
+      "item": [
+        {
+          "name": "Retrieve Conditioning Modes",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/v1/controlnet/modes",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "controlnet",
+                "modes"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Preprocess Sketch Map",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "mode",
+                  "value": "canny",
+                  "type": "text"
+                },
+                {
+                  "key": "file",
+                  "description": "The sketch layout image file.",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/controlnet/preprocess",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "controlnet",
+                "preprocess"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Generate Conditioned Design",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "prompt",
+                  "value": "A loose linen summer shirt",
+                  "type": "text"
+                },
+                {
+                  "key": "negative_prompt",
+                  "value": "blurry",
+                  "type": "text"
+                },
+                {
+                  "key": "mode",
+                  "value": "canny",
+                  "type": "text"
+                },
+                {
+                  "key": "conditioning_scale",
+                  "value": "0.7",
+                  "type": "text"
+                },
+                {
+                  "key": "steps",
+                  "value": "25",
+                  "type": "text"
+                },
+                {
+                  "key": "cfg",
+                  "value": "7.5",
+                  "type": "text"
+                },
+                {
+                  "key": "session_id",
+                  "value": "default-session",
+                  "type": "text"
+                },
+                {
+                  "key": "file",
+                  "description": "Contour image used to guide generation layouts.",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/controlnet/generate",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "controlnet",
+                "generate"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "LoRA",
+      "description": "Endpoints managing the styling of designs by injecting single or blended brand adapter weights.",
+      "item": [
+        {
+          "name": "Retrieve Registered Adapters",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/v1/lora/adapters",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "lora",
+                "adapters"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Single Brand Generation",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"prompt\": \"Oversized hoodie with technical stitching\",\n  \"brand\": \"nike\",\n  \"lora_scale\": 0.85,\n  \"steps\": 25,\n  \"cfg\": 7.5,\n  \"seed\": 1001,\n  \"session_id\": \"default-session\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/lora/generate",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "lora",
+                "generate"
+              ]
+            }
+          }
+        },
+        {
+          "name": "LoRA Adapter Blend (Mix)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"prompt\": \"Avant-garde streetwear tracksuit\",\n  \"brand_weights\": {\n    \"nike\": 0.6,\n    \"gucci\": 0.4\n  },\n  \"steps\": 25,\n  \"cfg\": 7.5,\n  \"seed\": 2026,\n  \"session_id\": \"default-session\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/lora/mix",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "lora",
+                "mix"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Fashion Assistant",
+      "description": "Conversational RAG assistant queries, fabric description intent triggers, and semantic searches.",
+      "item": [
+        {
+          "name": "Assistant Chat",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"Which fabrics are most suitable for summer tailored suits?\",\n  \"session_id\": \"default-session\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/rag/chat",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "rag",
+                "chat"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Semantic Vector Search",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"breathable weave structures\",\n  \"limit\": 3\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/rag/search",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "rag",
+                "search"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Retrieve RAG Statistics",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/v1/rag/stats",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "rag",
+                "stats"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Recommendations",
+      "description": "Personalization services recommending clothing fits, styles, brand directories, and seasonal forecasting.",
+      "item": [
+        {
+          "name": "Style Recommendations",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"gender\": \"unisex\",\n  \"style\": \"streetwear\",\n  \"occasion\": \"casual\",\n  \"fit\": \"oversized\",\n  \"limit\": 3\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/recommendations/styles",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "recommendations",
+                "styles"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Brand Recommendations",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"styles\": [\"minimalist\", \"clean\"],\n  \"aesthetic\": \"minimalist\",\n  \"limit\": 2\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/recommendations/brands",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "recommendations",
+                "brands"
+              ]
+            }
+          }
+        },
+        {
+          "name": "List Active Trends",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/v1/recommendations/trends",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "recommendations",
+                "trends"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Seasonal Trend Forecast",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/v1/recommendations/trends/forecast?season=spring_summer",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "recommendations",
+                "trends",
+                "forecast"
+              ],
+              "query": [
+                {
+                  "key": "season",
+                  "value": "spring_summer"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "History",
+      "description": "Endpoints reading active designer sessions, listing details, and deleting metadata histories.",
+      "item": [
+        {
+          "name": "List Active Sessions",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/v1/history/sessions",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "history",
+                "sessions"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Session History",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/v1/history/session/default-session",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "history",
+                "session",
+                "default-session"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Session History",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "url": {
+              "raw": "{{base_url}}/api/v1/history/session/default-session",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "history",
+                "session",
+                "default-session"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tasks",
+      "description": "Polling status and output results for long-running Celery worker background tasks.",
+      "item": [
+        {
+          "name": "Get Task Status",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/v1/tasks/status/task_example_123",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "tasks",
+                "status",
+                "task_example_123"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Health",
+      "description": "Central diagnostics endpoint monitoring database writeability, Redis connections, and hardware resources.",
+      "item": [
+        {
+          "name": "Get System Health",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/v1/health",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "health"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}

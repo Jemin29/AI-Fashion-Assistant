@@ -1,0 +1,8 @@
+{
+  "prompt": "Minimalist silk evening gown, emerald green",
+  "negative_prompt": "low quality, blurry",
+  "seed": 1001,
+  "cfg": 7.5,
+  "resolution": "512x512",
+  "latency_sec": 0.02559449999989738
+}

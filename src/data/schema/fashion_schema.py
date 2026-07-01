@@ -140,7 +140,7 @@ except ImportError as exc:
 
 # ─── Resolve project root ──────────────────────────────────────────────────────
 _FILE_DIR      = Path(__file__).resolve().parent         # data_pipeline/schema/
-_PROJECT_ROOT  = _FILE_DIR.parent.parent                 # fashion-ai-assistant/
+_PROJECT_ROOT  = _FILE_DIR.parent.parent.parent                 # fashion-ai-assistant/
 
 if str(_PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(_PROJECT_ROOT))

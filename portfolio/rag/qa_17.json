@@ -1,0 +1,13 @@
+{
+  "id": 17,
+  "question": "What are some eco-friendly alternatives to polyester?",
+  "answer": "### Fashion AI Assistant - Generation Report\nProcessed Query: *\"What are some eco-friendly alternatives to polyester?\"*\n\n#### Retrieved Domain Insights\n- Detected trend record **Organic Slub Cotton Jersey** (fabric): Eco-friendly cotton jersey characterized by slight irregularities in thread thickness, giving a rich textured surface and highly breathable qualities. `[trend_fabric_organic_slub_cotton_jersey]`\n- Detected trend record **Recycled Ocean Polyester** (fabric): Sustainable performance technical textiles synthesized from upcycled ocean plastics and discarded nets. Features high durability, moisture wicking, and eco certifications. `[trend_fabric_recycled_ocean_polyester]`\n- According to category **Streetwear** (fashion_styles): A style of casual clothing which became global in the 1990s. Influenced by hip-hop, skate culture, sportswear, and contemporary haute couture. Characters are oversized cuts, graphical screen prints, drawstring hoodies, sneaker matching, and utility elements. `[kb_fashion_styles_streetwear]`\n- Detected trend record **Metallic Liquid Lam\u00e9 Gowns** (luxury): Avant-garde evening wear using high-shine metallic threads woven into silks to create a liquid draping effect resembling molten silver and gold. `[trend_luxury_metallic_liquid_lam\u00e9_gowns]`\n- According to category **Technical windbreaker layering** (streetwear_trends): Active layering trend using water-resistant tech windbreakers and drawstring hoodies to create structural panels. `[kb_streetwear_trends_technical_windbreaker_layering]`\n\n#### Recommended Design Inspirations\n- **Organic Slub Cotton Jersey** (Relevance Match: 0.53) - Eco-friendly cotton jersey characterized by slight irregularities in thread thickness, giving a rich textured surface an... `[trend_fabric_organic_slub_cotton_jersey]`\n- **Recycled Ocean Polyester** (Relevance Match: 0.53) - Sustainable performance technical textiles synthesized from upcycled ocean plastics and discarded nets. Features high du... `[trend_fabric_recycled_ocean_polyester]`\n\n**Citations**: This response is grounded in: `[kb_fashion_styles_streetwear]`, `[kb_streetwear_trends_technical_windbreaker_layering]`, `[trend_fabric_organic_slub_cotton_jersey]`, `[trend_fabric_recycled_ocean_polyester]`, `[trend_luxury_metallic_liquid_lam\u00e9_gowns]`",
+  "citations": [
+    "Organic Slub Cotton Jersey (fabric)",
+    "Recycled Ocean Polyester (fabric)",
+    "Streetwear (fashion_styles)",
+    "Metallic Liquid Lam\u00e9 Gowns (luxury)",
+    "Technical windbreaker layering (streetwear_trends)"
+  ],
+  "confidence_score": 0.62
+}

@@ -1,0 +1,13 @@
+{
+  "id": 14,
+  "question": "How do I care for a distressed leather jacket?",
+  "answer": "### Fashion AI Assistant - Generation Report\nProcessed Query: *\"How do I care for a distressed leather jacket?\"*\n\n#### Retrieved Domain Insights\n- According to category **Blazers** (fashion_categories): A structured, collared jacket similar to a suit jacket but cut more casually. Often features double or single-breasted button plackets and structured shoulders. `[kb_fashion_categories_blazers]`\n- Detected trend record **Winter Shearling Aviator Jackets** (seasonal): Heavyweight leather aviator jackets lined with thick insulating sheepskin shearling. Features leather buckles and double collar straps. `[trend_seasonal_winter_shearling_aviator_jackets]`\n- Detected trend record **Distressed Graphic Hoodies** (streetwear): French terry cotton hoodies characterized by faded vintage washes, frayed edge distressing, boxy/cropped silhouettes, and large puff-printed typography. `[trend_streetwear_distressed_graphic_hoodies]`\n- According to category **Gucci** (brand_profiles): Italian luxury fashion house specializing in high-end leather goods, tailoring, and avant-garde designs. Renowned for gold embroidery, velvet materials, and eccentric red/green palettes. `[kb_brand_profiles_gucci]`\n- According to category **Patterned Silk Blazer** (luxury_trends): Contemporary luxury styling utilizing printed silk fabrics for slim-fit blazers with bold patterns. `[kb_luxury_trends_patterned_silk_blazer]`\n\n#### Recommended Design Inspirations\n- **Blazers** (Relevance Match: 0.54) - A structured, collared jacket similar to a suit jacket but cut more casually. Often features double or single-breasted b... `[kb_fashion_categories_blazers]`\n\n**Citations**: This response is grounded in: `[kb_brand_profiles_gucci]`, `[kb_fashion_categories_blazers]`, `[kb_luxury_trends_patterned_silk_blazer]`, `[trend_seasonal_winter_shearling_aviator_jackets]`, `[trend_streetwear_distressed_graphic_hoodies]`",
+  "citations": [
+    "Blazers (fashion_categories)",
+    "Winter Shearling Aviator Jackets (seasonal)",
+    "Distressed Graphic Hoodies (streetwear)",
+    "Gucci (brand_profiles)",
+    "Patterned Silk Blazer (luxury_trends)"
+  ],
+  "confidence_score": 0.63
+}

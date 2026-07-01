@@ -34,8 +34,9 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 # ── Paths ─────────────────────────────────────────────────────────────────────
 _WEEK2_DIR   = Path(__file__).resolve().parent
-_CONFIGS_DIR = _WEEK2_DIR / "configs"
 _PROJECT_ROOT = _WEEK2_DIR.parent
+_CONFIGS_DIR = _PROJECT_ROOT / "configs"
+
 
 
 # =============================================================================

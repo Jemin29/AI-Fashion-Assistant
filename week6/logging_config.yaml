@@ -1,0 +1,59 @@
+# ============================================================================
+# Week 6 — Fashion Creative Studio · Logging Configuration
+# ============================================================================
+#
+# Used by week6/gradio_app/main.py via:
+#   from week6.gradio_app.logger import setup_logging
+#   setup_logging()
+#
+# Loguru is the primary logging backend; this YAML drives its configuration.
+# ============================================================================
+
+version: 1
+
+# ── Console sink ──────────────────────────────────────────────────────────────
+console:
+  enabled: true
+  level: INFO
+  format: >
+    <green>{time:YYYY-MM-DD HH:mm:ss}</green> |
+    <level>{level: <8}</level> |
+    <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> |
+    <level>{message}</level>
+  colorize: true
+  backtrace: true
+  diagnose: false   # set true for debug sessions
+
+# ── Rotating file sink ────────────────────────────────────────────────────────
+file:
+  enabled: true
+  path: "week6/logs/studio.log"
+  level: DEBUG
+  format: "{time:YYYY-MM-DD HH:mm:ss.SSS} | {level: <8} | {name}:{function}:{line} | {message}"
+  rotation: "10 MB"      # rotate when file hits 10 MB
+  retention: "7 days"    # keep logs for 7 days
+  compression: "zip"     # compress old logs
+  backtrace: true
+  diagnose: false
+  enqueue: true          # thread-safe async logging
+
+# ── Error-only sink ───────────────────────────────────────────────────────────
+error_file:
+  enabled: true
+  path: "week6/logs/errors.log"
+  level: ERROR
+  format: "{time:YYYY-MM-DD HH:mm:ss.SSS} | {level: <8} | {name}:{function}:{line} | {message}\n{exception}"
+  rotation: "5 MB"
+  retention: "30 days"
+  compression: "zip"
+  backtrace: true
+  diagnose: true
+
+# ── Request access log sink ───────────────────────────────────────────────────
+access:
+  enabled: true
+  path: "week6/logs/access.log"
+  level: INFO
+  format: "{time:YYYY-MM-DD HH:mm:ss} | ACCESS | {message}"
+  rotation: "50 MB"
+  retention: "3 days"

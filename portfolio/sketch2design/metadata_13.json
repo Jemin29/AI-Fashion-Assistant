@@ -1,0 +1,9 @@
+{
+  "prompt": "Fashion-forward Overalls, editorial studio photography, clean product shots",
+  "control_strength": 0.8,
+  "seed": 2013,
+  "sketch_image_filename": "sketch_13.png",
+  "design_image_filename": "design_13.png",
+  "comparison_image_filename": "comparison_13.png",
+  "latency_ms": 0.0
+}

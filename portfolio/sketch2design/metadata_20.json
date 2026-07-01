@@ -1,0 +1,9 @@
+{
+  "prompt": "Fashion-forward Wide-leg pants, editorial studio photography, clean product shots",
+  "control_strength": 0.8,
+  "seed": 2020,
+  "sketch_image_filename": "sketch_20.png",
+  "design_image_filename": "design_20.png",
+  "comparison_image_filename": "comparison_20.png",
+  "latency_ms": 0.0
+}

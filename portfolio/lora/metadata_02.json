@@ -1,0 +1,9 @@
+{
+  "prompt": "Formal velvet tuxedo",
+  "is_mixed": false,
+  "brand": "gucci",
+  "lora_scale": 0.9,
+  "brand_weights": null,
+  "seed": 3002,
+  "latency_ms": 0.0
+}

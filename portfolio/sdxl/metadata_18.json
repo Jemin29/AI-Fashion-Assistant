@@ -1,0 +1,8 @@
+{
+  "prompt": "Chic high-collar puffer vest, metallic silver",
+  "negative_prompt": "low quality, blurry",
+  "seed": 1018,
+  "cfg": 7.5,
+  "resolution": "512x512",
+  "latency_sec": 0.0021685000001525623
+}

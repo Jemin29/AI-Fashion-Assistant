@@ -1,0 +1,13 @@
+{
+  "id": 13,
+  "question": "What fabrics are best for hot, humid climates?",
+  "answer": "### Fashion AI Assistant - Generation Report\nProcessed Query: *\"What fabrics are best for hot, humid climates?\"*\n\n#### Retrieved Domain Insights\n- According to category **Patterned Silk Blazer** (luxury_trends): Contemporary luxury styling utilizing printed silk fabrics for slim-fit blazers with bold patterns. `[kb_luxury_trends_patterned_silk_blazer]`\n- According to category **Velvet Gown Opulence** (luxury_trends): Opulent luxury trend featuring deep velvet fabrics decorated with gold thread embroidery and metallic chains for haute-couture gowns. `[kb_luxury_trends_velvet_gown_opulence]`\n- According to category **Streetwear** (fashion_styles): A style of casual clothing which became global in the 1990s. Influenced by hip-hop, skate culture, sportswear, and contemporary haute couture. Characters are oversized cuts, graphical screen prints, drawstring hoodies, sneaker matching, and utility elements. `[kb_fashion_styles_streetwear]`\n- According to category **Drape** (fashion_terminology): The fluid way a textile hangs, falls, or flows under its own weight on a body or mannequin. Soft fabrics (silk, rayon) have high drape, while stiff fabrics (denim, canvas) have low drape. `[kb_fashion_terminology_drape]`\n- Detected trend record **Summer Linen Separates** (seasonal): Ultra-lightweight, highly breathable co-ord sets containing loose-fit open collar shirts and elasticated drawstring trousers. Ideal for high heat conditions. `[trend_seasonal_summer_linen_separates]`\n\n#### Recommended Design Inspirations\n- **Patterned Silk Blazer** (Relevance Match: 0.53) - Contemporary luxury styling utilizing printed silk fabrics for slim-fit blazers with bold patterns.... `[kb_luxury_trends_patterned_silk_blazer]`\n\n**Citations**: This response is grounded in: `[kb_fashion_styles_streetwear]`, `[kb_fashion_terminology_drape]`, `[kb_luxury_trends_patterned_silk_blazer]`, `[kb_luxury_trends_velvet_gown_opulence]`, `[trend_seasonal_summer_linen_separates]`",
+  "citations": [
+    "Patterned Silk Blazer (luxury_trends)",
+    "Velvet Gown Opulence (luxury_trends)",
+    "Streetwear (fashion_styles)",
+    "Drape (fashion_terminology)",
+    "Summer Linen Separates (seasonal)"
+  ],
+  "confidence_score": 0.6
+}

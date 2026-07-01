@@ -1,0 +1,79 @@
+{
+  "id": 1,
+  "profile": {
+    "gender": "unisex",
+    "style": "athleisure",
+    "occasion": "workout",
+    "fit": "slim",
+    "limit": 3
+  },
+  "recommendations": [
+    {
+      "style": "Quiet Luxury",
+      "score": 0.94,
+      "description": "Understated elegance with premium fabrics \u2014 cashmere, silk, fine wool. No visible logos.",
+      "occasions": [
+        "business",
+        "formal",
+        "evening"
+      ],
+      "key_items": [
+        "tailored blazer",
+        "cashmere sweater",
+        "slim trousers",
+        "leather loafers"
+      ],
+      "color_palette": [
+        "Beige",
+        "Ivory",
+        "Camel",
+        "Black"
+      ]
+    },
+    {
+      "style": "Smart Casual",
+      "score": 0.87,
+      "description": "Polished but relaxed \u2014 chinos, Oxford shirts, clean sneakers or loafers.",
+      "occasions": [
+        "business_casual",
+        "casual",
+        "social"
+      ],
+      "key_items": [
+        "chinos",
+        "Oxford shirt",
+        "clean sneakers",
+        "light blazer"
+      ],
+      "color_palette": [
+        "Navy",
+        "White",
+        "Grey",
+        "Light Blue"
+      ]
+    },
+    {
+      "style": "Business Casual",
+      "score": 0.81,
+      "description": "Professional without the suit \u2014 blazers over trousers, tucked shirts.",
+      "occasions": [
+        "business_casual",
+        "office",
+        "presentation"
+      ],
+      "key_items": [
+        "blazer",
+        "trousers",
+        "tucked shirt",
+        "oxford shoes"
+      ],
+      "color_palette": [
+        "Charcoal",
+        "Navy",
+        "White",
+        "Light Grey"
+      ]
+    }
+  ],
+  "success": true
+}

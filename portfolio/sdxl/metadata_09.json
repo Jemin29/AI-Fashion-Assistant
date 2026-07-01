@@ -1,0 +1,8 @@
+{
+  "prompt": "Sleek leather chelsea boots, dark espresso",
+  "negative_prompt": "low quality, blurry",
+  "seed": 1009,
+  "cfg": 7.5,
+  "resolution": "512x512",
+  "latency_sec": 0.0024364999999306747
+}

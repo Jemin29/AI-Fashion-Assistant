@@ -1,0 +1,13 @@
+{
+  "id": 6,
+  "question": "Tell me about the trend for digital neo-mint.",
+  "answer": "### Fashion AI Assistant - Generation Report\nProcessed Query: *\"Tell me about the trend for digital neo-mint.\"*\n\n#### Retrieved Domain Insights\n- Detected trend record **Digital Neo-Mint** (color): An optimistic, gender-neutral tech pastel hue that bridges the gap between science and nature. Dominated by youth-focused activewear and streetwear brands. `[trend_color_digital_neo_mint]`\n- According to category **Velvet Gown Opulence** (luxury_trends): Opulent luxury trend featuring deep velvet fabrics decorated with gold thread embroidery and metallic chains for haute-couture gowns. `[kb_luxury_trends_velvet_gown_opulence]`\n- According to category **Hypebeast Cargo Joggers** (streetwear_trends): Streetwear trend incorporating utility pocket cargo styling onto relaxed jogger silhouettes. Often paired with technical sneaker releases. `[kb_streetwear_trends_hypebeast_cargo_joggers]`\n- According to category **Technical windbreaker layering** (streetwear_trends): Active layering trend using water-resistant tech windbreakers and drawstring hoodies to create structural panels. `[kb_streetwear_trends_technical_windbreaker_layering]`\n- According to category **Patterned Silk Blazer** (luxury_trends): Contemporary luxury styling utilizing printed silk fabrics for slim-fit blazers with bold patterns. `[kb_luxury_trends_patterned_silk_blazer]`\n\n#### Recommended Design Inspirations\n- **Digital Neo-Mint** (Relevance Match: 0.53) - An optimistic, gender-neutral tech pastel hue that bridges the gap between science and nature. Dominated by youth-focuse... `[trend_color_digital_neo_mint]`\n\n**Citations**: This response is grounded in: `[kb_luxury_trends_patterned_silk_blazer]`, `[kb_luxury_trends_velvet_gown_opulence]`, `[kb_streetwear_trends_hypebeast_cargo_joggers]`, `[kb_streetwear_trends_technical_windbreaker_layering]`, `[trend_color_digital_neo_mint]`",
+  "citations": [
+    "Digital Neo-Mint (color)",
+    "Velvet Gown Opulence (luxury_trends)",
+    "Hypebeast Cargo Joggers (streetwear_trends)",
+    "Technical windbreaker layering (streetwear_trends)",
+    "Patterned Silk Blazer (luxury_trends)"
+  ],
+  "confidence_score": 0.62
+}

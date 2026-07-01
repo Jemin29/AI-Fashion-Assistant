@@ -1,0 +1,15 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  # Monitor Prometheus itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Scrape operational health metrics from the REST API service
+  - job_name: 'fashion-assistant-api'
+    metrics_path: '/api/v1/health'
+    static_configs:
+      - targets: ['fashion-api-service.fashion-ai.svc.cluster.local:8000']

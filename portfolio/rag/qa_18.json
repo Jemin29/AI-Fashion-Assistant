@@ -1,0 +1,13 @@
+{
+  "id": 18,
+  "question": "How do I dress for a smart casual business event?",
+  "answer": "### Fashion AI Assistant - Generation Report\nProcessed Query: *\"How do I dress for a smart casual business event?\"*\n\n#### Retrieved Domain Insights\n- According to category **Zara** (brand_profiles): Fast-fashion retail leader specializing in contemporary, trend-driven designs. Aesthetics emphasize minimalist cuts, neutral earth tones (beige, cream), and casual tailored garments. `[kb_brand_profiles_zara]`\n- Detected trend record **Augmented Wearable Projections** (forecast): Integration of clothes with AR-tags allowing wearers to project dynamic digital textures, colors, and 3D graphics onto physical white garments via smart lenses. `[trend_forecast_augmented_wearable_projections]`\n- According to category **Denim** (fabric_types): A sturdy cotton warp-faced twill textile in which the weft passes under two or more warp threads. Rugged, durable, commonly dyed with indigo to yield jeans and structured casual jackets. `[kb_fabric_types_denim]`\n- According to category **Streetwear** (fashion_styles): A style of casual clothing which became global in the 1990s. Influenced by hip-hop, skate culture, sportswear, and contemporary haute couture. Characters are oversized cuts, graphical screen prints, drawstring hoodies, sneaker matching, and utility elements. `[kb_fashion_styles_streetwear]`\n- According to category **Patterned Silk Blazer** (luxury_trends): Contemporary luxury styling utilizing printed silk fabrics for slim-fit blazers with bold patterns. `[kb_luxury_trends_patterned_silk_blazer]`\n\n#### Recommended Design Inspirations\n- **Zara** (Relevance Match: 0.52) - Fast-fashion retail leader specializing in contemporary, trend-driven designs. Aesthetics emphasize minimalist cuts, neu... `[kb_brand_profiles_zara]`\n\n**Citations**: This response is grounded in: `[kb_brand_profiles_zara]`, `[kb_fabric_types_denim]`, `[kb_fashion_styles_streetwear]`, `[kb_luxury_trends_patterned_silk_blazer]`, `[trend_forecast_augmented_wearable_projections]`",
+  "citations": [
+    "Zara (brand_profiles)",
+    "Augmented Wearable Projections (forecast)",
+    "Denim (fabric_types)",
+    "Streetwear (fashion_styles)",
+    "Patterned Silk Blazer (luxury_trends)"
+  ],
+  "confidence_score": 0.57
+}

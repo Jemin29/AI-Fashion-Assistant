@@ -1,0 +1,83 @@
+version: '3.8'
+
+services:
+  # High-performance key-value database for caching & task broker state
+  redis:
+    image: redis:7-alpine
+    container_name: fashion-redis-prod
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_prod_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: always
+
+  # FastAPI production REST backend serving model endpoints
+  fastapi-api:
+    build:
+      context: ../../../
+      dockerfile: week8/deployment/docker/Dockerfile
+    container_name: fashion-api-prod
+    command: uvicorn week7.backend.main:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - ENV=production
+      - PYTHONWRITEBYTECODE=1
+    depends_on:
+      redis:
+        condition: service_healthy
+    volumes:
+      - app_prod_outputs:/app/outputs
+      - app_prod_logs:/app/logs
+    restart: always
+
+  # Gradio Interactive Web UI for the creative fashion studio dashboard
+  gradio-ui:
+    build:
+      context: ../../../
+      dockerfile: week8/deployment/docker/Dockerfile
+    container_name: fashion-ui-prod
+    command: python apps/gradio_app/app.py
+    ports:
+      - "7860:7860"
+    environment:
+      - BACKEND_API_URL=http://fastapi-api:8000
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - ENV=production
+    depends_on:
+      - fastapi-api
+    volumes:
+      - app_prod_outputs:/app/outputs
+    restart: always
+
+  # Celery asynchronous worker to run Stable Diffusion & ControlNet inference pipelines
+  celery-worker:
+    build:
+      context: ../../../
+      dockerfile: week8/deployment/docker/Dockerfile
+    container_name: fashion-worker-prod
+    command: celery -A week7.backend.workers.celery_app worker --loglevel=info -Q inference -c 1
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - ENV=production
+    depends_on:
+      redis:
+        condition: service_healthy
+    volumes:
+      - app_prod_outputs:/app/outputs
+      - app_prod_logs:/app/logs
+    restart: always
+
+volumes:
+  redis_prod_data:
+  app_prod_outputs:
+  app_prod_logs:

@@ -1,0 +1,13 @@
+{
+  "id": 2,
+  "question": "What are the characteristics of organic linen?",
+  "answer": "### Fashion AI Assistant - Generation Report\nProcessed Query: *\"What are the characteristics of organic linen?\"*\n\n#### Retrieved Domain Insights\n- According to category **Linen** (fabric_types): A woven textile made from the fibers of the flax plant. Exceptional breathability, quick-drying, and crisp textured weave. Ideal for warm weather, despite being prone to wrinkling. `[kb_fabric_types_linen]`\n- According to category **H&M** (brand_profiles): Swedish multinational clothing retailer focusing on fast-fashion basics. Key offerings center on essential organic cotton t-shirts and casual staple trousers in a range of simple colors. `[kb_brand_profiles_hm]`\n- According to category **Silhouette** (fashion_terminology): The overall outline, shape, or contour of a garment when worn on the body (e.g. A-line, oversized, hour-glass, boxy). `[kb_fashion_terminology_silhouette]`\n- According to category **Streetwear** (fashion_styles): A style of casual clothing which became global in the 1990s. Influenced by hip-hop, skate culture, sportswear, and contemporary haute couture. Characters are oversized cuts, graphical screen prints, drawstring hoodies, sneaker matching, and utility elements. `[kb_fashion_styles_streetwear]`\n- According to category **Monochromatic** (color_theory): A color scheme consisting of variations of a single hue, adjusted by shade, tone, and tint. Yields cohesive, elongating, and sleek fashion silhouettes. `[kb_color_theory_monochromatic]`\n\n#### Recommended Design Inspirations\n- **Linen** (Relevance Match: 0.54) - A woven textile made from the fibers of the flax plant. Exceptional breathability, quick-drying, and crisp textured weav... `[kb_fabric_types_linen]`\n- **H&M** (Relevance Match: 0.52) - Swedish multinational clothing retailer focusing on fast-fashion basics. Key offerings center on essential organic cotto... `[kb_brand_profiles_hm]`\n\n**Citations**: This response is grounded in: `[kb_brand_profiles_hm]`, `[kb_color_theory_monochromatic]`, `[kb_fabric_types_linen]`, `[kb_fashion_styles_streetwear]`, `[kb_fashion_terminology_silhouette]`",
+  "citations": [
+    "Linen (fabric_types)",
+    "H&M (brand_profiles)",
+    "Silhouette (fashion_terminology)",
+    "Streetwear (fashion_styles)",
+    "Monochromatic (color_theory)"
+  ],
+  "confidence_score": 0.53
+}

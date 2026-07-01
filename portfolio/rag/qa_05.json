@@ -1,0 +1,13 @@
+{
+  "id": 5,
+  "question": "How should I wash a merino wool sweater?",
+  "answer": "### Fashion AI Assistant - Generation Report\nProcessed Query: *\"How should I wash a merino wool sweater?\"*\n\n#### Retrieved Domain Insights\n- According to category **Autumn Winter** (fashion_seasons): Cold-weather collections focusing on heavy fabrics, insulation, and layering. Wool, cashmere, fleece, denim, and leather dominate. Colors lean toward dark, earthy, and rich neutral tones, with structured coats and jackets. `[kb_fashion_seasons_autumn_winter]`\n- Detected trend record **Biophilic Responsive Textiles** (forecast): Future fabric concept infused with micro-algae or responsive biopolymers that actively react to carbon dioxide and humidity, changing texture and color patterns in real-time. `[trend_forecast_biophilic_responsive_textiles]`\n- Detected trend record **Quiet Luxury Deconstructivism** (luxury): Tailored garments made from ultra-premium cashmere and fine wools that feature subverted tailoring, asymmetric buttoning, raw hems, and lack visible branding. `[trend_luxury_quiet_luxury_deconstructivism]`\n- According to category **Hypebeast Cargo Joggers** (streetwear_trends): Streetwear trend incorporating utility pocket cargo styling onto relaxed jogger silhouettes. Often paired with technical sneaker releases. `[kb_streetwear_trends_hypebeast_cargo_joggers]`\n- According to category **Analogous Color Scheme** (color_theory): Colors adjacent to each other on the color wheel, such as blue, blue-green, and green. Creates a harmonious, visually calming palette suited for coordinated separates. `[kb_color_theory_analogous_color_scheme]`\n\n#### Recommended Design Inspirations\n- **Autumn Winter** (Relevance Match: 0.54) - Cold-weather collections focusing on heavy fabrics, insulation, and layering. Wool, cashmere, fleece, denim, and leather... `[kb_fashion_seasons_autumn_winter]`\n\n**Citations**: This response is grounded in: `[kb_color_theory_analogous_color_scheme]`, `[kb_fashion_seasons_autumn_winter]`, `[kb_streetwear_trends_hypebeast_cargo_joggers]`, `[trend_forecast_biophilic_responsive_textiles]`, `[trend_luxury_quiet_luxury_deconstructivism]`",
+  "citations": [
+    "Autumn Winter (fashion_seasons)",
+    "Biophilic Responsive Textiles (forecast)",
+    "Quiet Luxury Deconstructivism (luxury)",
+    "Hypebeast Cargo Joggers (streetwear_trends)",
+    "Analogous Color Scheme (color_theory)"
+  ],
+  "confidence_score": 0.69
+}

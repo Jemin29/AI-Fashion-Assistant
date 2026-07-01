@@ -68,6 +68,9 @@ class TrainerConfig(BaseModel):
     mixed_precision: str = Field(default="fp16", pattern="^(fp16|bf16|no)$")
     learning_rate: float = Field(default=1e-4, ge=0.0)
     output_dir: str = Field(default="outputs/trainer")
+    num_epochs: int = Field(default=10, ge=1)
+    batch_size: int = Field(default=1, ge=1)
+
 
 
 class InferenceConfig(BaseModel):

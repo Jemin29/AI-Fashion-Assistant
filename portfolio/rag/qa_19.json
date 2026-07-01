@@ -1,0 +1,13 @@
+{
+  "id": 19,
+  "question": "What is the Oeko-Tex certification for textiles?",
+  "answer": "### Fashion AI Assistant - Generation Report\nProcessed Query: *\"What is the Oeko-Tex certification for textiles?\"*\n\n#### Retrieved Domain Insights\n- According to category **Linen** (fabric_types): A woven textile made from the fibers of the flax plant. Exceptional breathability, quick-drying, and crisp textured weave. Ideal for warm weather, despite being prone to wrinkling. `[kb_fabric_types_linen]`\n- According to category **Silhouette** (fashion_terminology): The overall outline, shape, or contour of a garment when worn on the body (e.g. A-line, oversized, hour-glass, boxy). `[kb_fashion_terminology_silhouette]`\n- Detected trend record **Recycled Ocean Polyester** (fabric): Sustainable performance technical textiles synthesized from upcycled ocean plastics and discarded nets. Features high durability, moisture wicking, and eco certifications. `[trend_fabric_recycled_ocean_polyester]`\n- Detected trend record **Biophilic Responsive Textiles** (forecast): Future fabric concept infused with micro-algae or responsive biopolymers that actively react to carbon dioxide and humidity, changing texture and color patterns in real-time. `[trend_forecast_biophilic_responsive_textiles]`\n- According to category **Analogous Color Scheme** (color_theory): Colors adjacent to each other on the color wheel, such as blue, blue-green, and green. Creates a harmonious, visually calming palette suited for coordinated separates. `[kb_color_theory_analogous_color_scheme]`\n\n#### Recommended Design Inspirations\n- **Linen** (Relevance Match: 0.53) - A woven textile made from the fibers of the flax plant. Exceptional breathability, quick-drying, and crisp textured weav... `[kb_fabric_types_linen]`\n- **Silhouette** (Relevance Match: 0.51) - The overall outline, shape, or contour of a garment when worn on the body (e.g. A-line, oversized, hour-glass, boxy).... `[kb_fashion_terminology_silhouette]`\n\n**Citations**: This response is grounded in: `[kb_color_theory_analogous_color_scheme]`, `[kb_fabric_types_linen]`, `[kb_fashion_terminology_silhouette]`, `[trend_fabric_recycled_ocean_polyester]`, `[trend_forecast_biophilic_responsive_textiles]`",
+  "citations": [
+    "Linen (fabric_types)",
+    "Silhouette (fashion_terminology)",
+    "Recycled Ocean Polyester (fabric)",
+    "Biophilic Responsive Textiles (forecast)",
+    "Analogous Color Scheme (color_theory)"
+  ],
+  "confidence_score": 0.54
+}

@@ -1,0 +1,8 @@
+{
+  "prompt": "Avant-garde sculptural blazer, off-white",
+  "negative_prompt": "low quality, blurry",
+  "seed": 1005,
+  "cfg": 7.5,
+  "resolution": "512x512",
+  "latency_sec": 0.00250110000024506
+}

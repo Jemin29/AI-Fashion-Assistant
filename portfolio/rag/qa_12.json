@@ -1,0 +1,13 @@
+{
+  "id": 12,
+  "question": "What is the history of Gorpcore aesthetic?",
+  "answer": "### Fashion AI Assistant - Generation Report\nProcessed Query: *\"What is the history of Gorpcore aesthetic?\"*\n\n#### Retrieved Domain Insights\n- According to category **Silhouette** (fashion_terminology): The overall outline, shape, or contour of a garment when worn on the body (e.g. A-line, oversized, hour-glass, boxy). `[kb_fashion_terminology_silhouette]`\n- According to category **Linen** (fabric_types): A woven textile made from the fibers of the flax plant. Exceptional breathability, quick-drying, and crisp textured weave. Ideal for warm weather, despite being prone to wrinkling. `[kb_fabric_types_linen]`\n- According to category **Monochromatic** (color_theory): A color scheme consisting of variations of a single hue, adjusted by shade, tone, and tint. Yields cohesive, elongating, and sleek fashion silhouettes. `[kb_color_theory_monochromatic]`\n- According to category **Streetwear** (fashion_styles): A style of casual clothing which became global in the 1990s. Influenced by hip-hop, skate culture, sportswear, and contemporary haute couture. Characters are oversized cuts, graphical screen prints, drawstring hoodies, sneaker matching, and utility elements. `[kb_fashion_styles_streetwear]`\n- Detected trend record **Augmented Wearable Projections** (forecast): Integration of clothes with AR-tags allowing wearers to project dynamic digital textures, colors, and 3D graphics onto physical white garments via smart lenses. `[trend_forecast_augmented_wearable_projections]`\n\n#### Recommended Design Inspirations\n- **Silhouette** (Relevance Match: 0.53) - The overall outline, shape, or contour of a garment when worn on the body (e.g. A-line, oversized, hour-glass, boxy).... `[kb_fashion_terminology_silhouette]`\n\n**Citations**: This response is grounded in: `[kb_color_theory_monochromatic]`, `[kb_fabric_types_linen]`, `[kb_fashion_styles_streetwear]`, `[kb_fashion_terminology_silhouette]`, `[trend_forecast_augmented_wearable_projections]`",
+  "citations": [
+    "Silhouette (fashion_terminology)",
+    "Linen (fabric_types)",
+    "Monochromatic (color_theory)",
+    "Streetwear (fashion_styles)",
+    "Augmented Wearable Projections (forecast)"
+  ],
+  "confidence_score": 0.62
+}

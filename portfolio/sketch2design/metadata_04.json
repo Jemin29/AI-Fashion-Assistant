@@ -1,0 +1,9 @@
+{
+  "prompt": "Fashion-forward Cargo shorts, editorial studio photography, clean product shots",
+  "control_strength": 0.8,
+  "seed": 2004,
+  "sketch_image_filename": "sketch_04.png",
+  "design_image_filename": "design_04.png",
+  "comparison_image_filename": "comparison_04.png",
+  "latency_ms": 0.0
+}

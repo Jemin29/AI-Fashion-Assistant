@@ -1,0 +1,8 @@
+{
+  "prompt": "Cozy chunky knit merino wool sweater, cream",
+  "negative_prompt": "low quality, blurry",
+  "seed": 1008,
+  "cfg": 7.5,
+  "resolution": "512x512",
+  "latency_sec": 0.002607999999781896
+}

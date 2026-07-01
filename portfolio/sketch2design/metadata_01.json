@@ -1,0 +1,9 @@
+{
+  "prompt": "Fashion-forward Summer dress, editorial studio photography, clean product shots",
+  "control_strength": 0.8,
+  "seed": 2001,
+  "sketch_image_filename": "sketch_01.png",
+  "design_image_filename": "design_01.png",
+  "comparison_image_filename": "comparison_01.png",
+  "latency_ms": 0.0
+}

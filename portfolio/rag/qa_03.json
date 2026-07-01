@@ -1,0 +1,13 @@
+{
+  "id": 3,
+  "question": "Is silk fabric suitable for summer weather?",
+  "answer": "### Fashion AI Assistant - Generation Report\nProcessed Query: *\"Is silk fabric suitable for summer weather?\"*\n\n#### Retrieved Domain Insights\n- According to category **Patterned Silk Blazer** (luxury_trends): Contemporary luxury styling utilizing printed silk fabrics for slim-fit blazers with bold patterns. `[kb_luxury_trends_patterned_silk_blazer]`\n- According to category **Spring Summer** (fashion_seasons): Warm-weather collections prioritizing breathable, lightweight fabrics like linen, cotton, and silk. Palettes feature bright colors, pastel shades, and cream/beige tones, with loose cuts and activewear fits. `[kb_fashion_seasons_spring_summer]`\n- According to category **Linen** (fabric_types): A woven textile made from the fibers of the flax plant. Exceptional breathability, quick-drying, and crisp textured weave. Ideal for warm weather, despite being prone to wrinkling. `[kb_fabric_types_linen]`\n- Detected trend record **Summer Linen Separates** (seasonal): Ultra-lightweight, highly breathable co-ord sets containing loose-fit open collar shirts and elasticated drawstring trousers. Ideal for high heat conditions. `[trend_seasonal_summer_linen_separates]`\n- According to category **Silk** (fabric_types): A luxury natural protein fiber produced by silkworms. Possesses high sheen, exceptionally soft texture, and fluid drape. Ideal for high-end luxury gowns and blouses. `[kb_fabric_types_silk]`\n\n#### Recommended Design Inspirations\n- **Patterned Silk Blazer** (Relevance Match: 0.53) - Contemporary luxury styling utilizing printed silk fabrics for slim-fit blazers with bold patterns.... `[kb_luxury_trends_patterned_silk_blazer]`\n\n**Citations**: This response is grounded in: `[kb_fabric_types_linen]`, `[kb_fabric_types_silk]`, `[kb_fashion_seasons_spring_summer]`, `[kb_luxury_trends_patterned_silk_blazer]`, `[trend_seasonal_summer_linen_separates]`",
+  "citations": [
+    "Patterned Silk Blazer (luxury_trends)",
+    "Spring Summer (fashion_seasons)",
+    "Linen (fabric_types)",
+    "Summer Linen Separates (seasonal)",
+    "Silk (fabric_types)"
+  ],
+  "confidence_score": 0.6
+}

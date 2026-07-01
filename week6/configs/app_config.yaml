@@ -1,0 +1,78 @@
+# ============================================================================
+# Week 6 — AI Fashion Creative Studio · Application Configuration
+# ============================================================================
+
+app:
+  name: "AI Fashion Creative Studio"
+  version: "1.0.0"
+  description: "Week 6 Gradio Creative Studio — Integrating Weeks 1-5"
+  week: 6
+  author: "Jemin29"
+
+# ── Server settings ───────────────────────────────────────────────────────────
+server:
+  host: "0.0.0.0"
+  port: 7860
+  share: false          # Set true to create public Gradio share link
+  debug: false
+  reload: false         # Auto-reload on file change (dev only)
+  max_threads: 40
+  show_error: true
+  quiet: false
+
+# ── Feature flags ─────────────────────────────────────────────────────────────
+features:
+  home_page: true
+  style_studio: true
+  controlnet_studio: true
+  brand_studio: true
+  fashion_qa: true
+  trend_explorer: true
+  recommend_hub: true
+  eval_dashboard: true
+  show_api_docs: false
+
+# ── Mock mode — disable to use real GPU models ───────────────────────────────
+mock:
+  global_mock: true       # Master switch — overrides all per-service flags
+  generation: true        # SDXL generator
+  controlnet: true        # ControlNet engine
+  lora: true              # LoRA inference
+  rag: false              # RAG + embeddings (lightweight, runs on CPU)
+  recommendations: false  # Recommendation engine (CPU-only)
+  trends: false           # Trend forecaster (CPU-only)
+
+# ── Paths ─────────────────────────────────────────────────────────────────────
+paths:
+  project_root: ".."            # Relative to week6/
+  outputs_dir: "week6/outputs"
+  logs_dir: "week6/logs"
+  assets_dir: "week6/assets"
+  configs_dir: "week6/configs"
+  generated_images: "week6/outputs/generated"
+  sketch_outputs: "week6/outputs/sketches"
+  reports: "week6/outputs/reports"
+
+# ── UI customization ──────────────────────────────────────────────────────────
+ui:
+  theme: "dark"                  # dark | light
+  primary_color: "hsl(245, 70%, 60%)"     # Indigo
+  accent_color: "hsl(15, 90%, 65%)"       # Coral
+  font_family: "Outfit, Inter, sans-serif"
+  max_gallery_images: 8
+  chat_history_limit: 20
+  enable_animations: true
+
+# ── Session ───────────────────────────────────────────────────────────────────
+session:
+  max_session_history: 50       # Max interactions stored per session
+  auto_save_outputs: true       # Auto-save generated images
+  output_format: "png"          # png | jpg | webp
+  output_quality: 95
+
+# ── Analytics (logging only — no external tracking) ──────────────────────────
+analytics:
+  log_interactions: true
+  log_generation_params: true
+  log_rag_queries: true
+  log_latency: true

@@ -1,0 +1,8 @@
+{
+  "prompt": "Streetwear boxy puff-print hoodie, washed gray",
+  "negative_prompt": "low quality, blurry",
+  "seed": 1013,
+  "cfg": 7.5,
+  "resolution": "512x512",
+  "latency_sec": 0.0027163999998265353
+}

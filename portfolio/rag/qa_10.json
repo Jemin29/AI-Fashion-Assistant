@@ -1,0 +1,13 @@
+{
+  "id": 10,
+  "question": "What shoes should I wear with wide-leg trousers?",
+  "answer": "### Fashion AI Assistant - Generation Report\nProcessed Query: *\"What shoes should I wear with wide-leg trousers?\"*\n\n#### Retrieved Domain Insights\n- Detected trend record **Metallic Liquid Lam\u00e9 Gowns** (luxury): Avant-garde evening wear using high-shine metallic threads woven into silks to create a liquid draping effect resembling molten silver and gold. `[trend_luxury_metallic_liquid_lam\u00e9_gowns]`\n- Detected trend record **Summer Linen Separates** (seasonal): Ultra-lightweight, highly breathable co-ord sets containing loose-fit open collar shirts and elasticated drawstring trousers. Ideal for high heat conditions. `[trend_seasonal_summer_linen_separates]`\n- According to category **H&M** (brand_profiles): Swedish multinational clothing retailer focusing on fast-fashion basics. Key offerings center on essential organic cotton t-shirts and casual staple trousers in a range of simple colors. `[kb_brand_profiles_hm]`\n- Detected trend record **Winter Shearling Aviator Jackets** (seasonal): Heavyweight leather aviator jackets lined with thick insulating sheepskin shearling. Features leather buckles and double collar straps. `[trend_seasonal_winter_shearling_aviator_jackets]`\n- According to category **Patterned Silk Blazer** (luxury_trends): Contemporary luxury styling utilizing printed silk fabrics for slim-fit blazers with bold patterns. `[kb_luxury_trends_patterned_silk_blazer]`\n\n#### Recommended Design Inspirations\n- **Metallic Liquid Lam\u00e9 Gowns** (Relevance Match: 0.54) - Avant-garde evening wear using high-shine metallic threads woven into silks to create a liquid draping effect resembling... `[trend_luxury_metallic_liquid_lam\u00e9_gowns]`\n\n**Citations**: This response is grounded in: `[kb_brand_profiles_hm]`, `[kb_luxury_trends_patterned_silk_blazer]`, `[trend_luxury_metallic_liquid_lam\u00e9_gowns]`, `[trend_seasonal_summer_linen_separates]`, `[trend_seasonal_winter_shearling_aviator_jackets]`",
+  "citations": [
+    "Metallic Liquid Lam\u00e9 Gowns (luxury)",
+    "Summer Linen Separates (seasonal)",
+    "H&M (brand_profiles)",
+    "Winter Shearling Aviator Jackets (seasonal)",
+    "Patterned Silk Blazer (luxury_trends)"
+  ],
+  "confidence_score": 0.59
+}

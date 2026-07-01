@@ -1,0 +1,8 @@
+{
+  "prompt": "Preppy tailored tweed vest, houndstooth pattern",
+  "negative_prompt": "low quality, blurry",
+  "seed": 1012,
+  "cfg": 7.5,
+  "resolution": "512x512",
+  "latency_sec": 0.0033860999997159524
+}

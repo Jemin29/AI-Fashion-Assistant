@@ -1,0 +1,13 @@
+{
+  "id": 16,
+  "question": "Can I combine Nike and Gucci in style mixing?",
+  "answer": "### Fashion AI Assistant - Generation Report\nProcessed Query: *\"Can I combine Nike and Gucci in style mixing?\"*\n\n#### Retrieved Domain Insights\n- According to category **Nike** (brand_profiles): Global athletic brand specializing in performance activewear. Design language blends functional tech fabrics, athletic fits, swoosh branding, and a sleek black/grey/white color palette. `[kb_brand_profiles_nike]`\n- According to category **Gucci** (brand_profiles): Italian luxury fashion house specializing in high-end leather goods, tailoring, and avant-garde designs. Renowned for gold embroidery, velvet materials, and eccentric red/green palettes. `[kb_brand_profiles_gucci]`\n- According to category **Streetwear** (fashion_styles): A style of casual clothing which became global in the 1990s. Influenced by hip-hop, skate culture, sportswear, and contemporary haute couture. Characters are oversized cuts, graphical screen prints, drawstring hoodies, sneaker matching, and utility elements. `[kb_fashion_styles_streetwear]`\n- Detected trend record **Organic Slub Cotton Jersey** (fabric): Eco-friendly cotton jersey characterized by slight irregularities in thread thickness, giving a rich textured surface and highly breathable qualities. `[trend_fabric_organic_slub_cotton_jersey]`\n- Detected trend record **Earthy Terracotta Rust** (color): Warm, rich clay-based orange-brown hues that evoke nature and grounding. Extremely popular in cozy knitwear and heavy winter outerwear palettes. `[trend_color_earthy_terracotta_rust]`\n\n#### Recommended Design Inspirations\n- **Nike** (Relevance Match: 0.53) - Global athletic brand specializing in performance activewear. Design language blends functional tech fabrics, athletic f... `[kb_brand_profiles_nike]`\n- **Gucci** (Relevance Match: 0.53) - Italian luxury fashion house specializing in high-end leather goods, tailoring, and avant-garde designs. Renowned for go... `[kb_brand_profiles_gucci]`\n\n**Citations**: This response is grounded in: `[kb_brand_profiles_gucci]`, `[kb_brand_profiles_nike]`, `[kb_fashion_styles_streetwear]`, `[trend_color_earthy_terracotta_rust]`, `[trend_fabric_organic_slub_cotton_jersey]`",
+  "citations": [
+    "Nike (brand_profiles)",
+    "Gucci (brand_profiles)",
+    "Streetwear (fashion_styles)",
+    "Organic Slub Cotton Jersey (fabric)",
+    "Earthy Terracotta Rust (color)"
+  ],
+  "confidence_score": 0.56
+}

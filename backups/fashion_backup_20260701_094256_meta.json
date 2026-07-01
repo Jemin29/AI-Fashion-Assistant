@@ -1,0 +1,35 @@
+{
+  "backup_name": "fashion_backup_20260701_094256",
+  "timestamp": "2026-07-01T09:42:57.279151",
+  "compress": true,
+  "total_files": 252,
+  "total_bytes": 6197743,
+  "archive_size_bytes": 5684834,
+  "archive_sha256": "49e9f2ead5208f3698e2dc7ef98615b36f220ec00d061d5d592861df0021d81d",
+  "components": {
+    "models": {
+      "file_count": 1,
+      "size_bytes": 3450
+    },
+    "chromadb": {
+      "file_count": 2,
+      "size_bytes": 56807
+    },
+    "outputs": {
+      "file_count": 227,
+      "size_bytes": 5922963
+    },
+    "configs": {
+      "file_count": 20,
+      "size_bytes": 55959
+    },
+    "history": {
+      "file_count": 2,
+      "size_bytes": 158564
+    }
+  },
+  "system": {
+    "os": "nt",
+    "platform": "Wednesday, 01 July 2026"
+  }
+}

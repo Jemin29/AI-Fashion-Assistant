@@ -1,0 +1,9 @@
+{
+  "prompt": "Fashion-forward Turtleneck sweater, editorial studio photography, clean product shots",
+  "control_strength": 0.8,
+  "seed": 2008,
+  "sketch_image_filename": "sketch_08.png",
+  "design_image_filename": "design_08.png",
+  "comparison_image_filename": "comparison_08.png",
+  "latency_ms": 0.0
+}

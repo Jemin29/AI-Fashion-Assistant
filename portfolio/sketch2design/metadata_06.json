@@ -1,0 +1,9 @@
+{
+  "prompt": "Fashion-forward Puffer jacket, editorial studio photography, clean product shots",
+  "control_strength": 0.8,
+  "seed": 2006,
+  "sketch_image_filename": "sketch_06.png",
+  "design_image_filename": "design_06.png",
+  "comparison_image_filename": "comparison_06.png",
+  "latency_ms": 0.0
+}

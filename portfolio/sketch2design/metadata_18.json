@@ -1,0 +1,9 @@
+{
+  "prompt": "Fashion-forward Denim jacket, editorial studio photography, clean product shots",
+  "control_strength": 0.8,
+  "seed": 2018,
+  "sketch_image_filename": "sketch_18.png",
+  "design_image_filename": "design_18.png",
+  "comparison_image_filename": "comparison_18.png",
+  "latency_ms": 0.0
+}

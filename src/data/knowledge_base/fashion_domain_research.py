@@ -77,7 +77,7 @@ from loguru import logger
 
 # Absolute path to fashion_knowledge.json (relative to this file's location)
 _MODULE_DIR      = Path(__file__).resolve().parent
-_PROJECT_ROOT    = _MODULE_DIR.parent.parent          # fashion-ai-assistant/
+_PROJECT_ROOT    = _MODULE_DIR.parent.parent.parent          # fashion-ai-assistant/
 _KNOWLEDGE_JSON  = _PROJECT_ROOT / "datasets" / "metadata" / "fashion_knowledge.json"
 _METADATA_OUTPUT = _PROJECT_ROOT / "datasets" / "metadata"
 

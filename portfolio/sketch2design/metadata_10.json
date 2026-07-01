@@ -1,0 +1,9 @@
+{
+  "prompt": "Fashion-forward Crop top, editorial studio photography, clean product shots",
+  "control_strength": 0.8,
+  "seed": 2010,
+  "sketch_image_filename": "sketch_10.png",
+  "design_image_filename": "design_10.png",
+  "comparison_image_filename": "comparison_10.png",
+  "latency_ms": 0.0
+}

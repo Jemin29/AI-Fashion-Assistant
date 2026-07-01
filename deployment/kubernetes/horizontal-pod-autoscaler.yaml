@@ -1,0 +1,62 @@
+# =============================================================================
+# Horizontal Pod Autoscaling for FastAPI Backend (fashion-api)
+# Scaling based on CPU & Memory resource usage (Target: 80%)
+# =============================================================================
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: fashion-api-hpa
+  namespace: fashion-ai
+  labels:
+    app: fashion-api
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: fashion-api
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 80
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 80
+
+---
+
+# =============================================================================
+# KEDA ScaledObject for Celery Workers (fashion-worker)
+# Autoscaling dynamically based on Celery Queue Length inside Redis
+# =============================================================================
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: fashion-worker-keda
+  namespace: fashion-ai
+  labels:
+    app: fashion-worker
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: fashion-worker
+  minReplicaCount: 1
+  maxReplicaCount: 8
+  cooldownPeriod: 120
+  pollingInterval: 15
+  triggers:
+    # Scale based on the number of messages waiting in the Redis Celery queue list
+    - type: redis
+      metadata:
+        host: fashion-redis-service.fashion-ai.svc.cluster.local
+        port: "6379"
+        listName: "celery" # Default Celery task queue list key in Redis
+        listLength: "5"    # Scale up replicas for every 5 pending tasks in queue

@@ -1,0 +1,9 @@
+{
+  "prompt": "Fashion-forward Evening gown, editorial studio photography, clean product shots",
+  "control_strength": 0.8,
+  "seed": 2009,
+  "sketch_image_filename": "sketch_09.png",
+  "design_image_filename": "design_09.png",
+  "comparison_image_filename": "comparison_09.png",
+  "latency_ms": 0.0
+}

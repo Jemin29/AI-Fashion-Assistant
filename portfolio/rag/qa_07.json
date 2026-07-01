@@ -1,0 +1,13 @@
+{
+  "id": 7,
+  "question": "What is quiet luxury deconstructivism?",
+  "answer": "### Fashion AI Assistant - Generation Report\nProcessed Query: *\"What is quiet luxury deconstructivism?\"*\n\n#### Retrieved Domain Insights\n- Detected trend record **Quiet Luxury Deconstructivism** (luxury): Tailored garments made from ultra-premium cashmere and fine wools that feature subverted tailoring, asymmetric buttoning, raw hems, and lack visible branding. `[trend_luxury_quiet_luxury_deconstructivism]`\n- According to category **Silk** (fabric_types): A luxury natural protein fiber produced by silkworms. Possesses high sheen, exceptionally soft texture, and fluid drape. Ideal for high-end luxury gowns and blouses. `[kb_fabric_types_silk]`\n- According to category **Gucci** (brand_profiles): Italian luxury fashion house specializing in high-end leather goods, tailoring, and avant-garde designs. Renowned for gold embroidery, velvet materials, and eccentric red/green palettes. `[kb_brand_profiles_gucci]`\n- According to category **Patterned Silk Blazer** (luxury_trends): Contemporary luxury styling utilizing printed silk fabrics for slim-fit blazers with bold patterns. `[kb_luxury_trends_patterned_silk_blazer]`\n- According to category **Streetwear** (fashion_styles): A style of casual clothing which became global in the 1990s. Influenced by hip-hop, skate culture, sportswear, and contemporary haute couture. Characters are oversized cuts, graphical screen prints, drawstring hoodies, sneaker matching, and utility elements. `[kb_fashion_styles_streetwear]`\n\n#### Recommended Design Inspirations\n- **Quiet Luxury Deconstructivism** (Relevance Match: 0.54) - Tailored garments made from ultra-premium cashmere and fine wools that feature subverted tailoring, asymmetric buttoning... `[trend_luxury_quiet_luxury_deconstructivism]`\n\n**Citations**: This response is grounded in: `[kb_brand_profiles_gucci]`, `[kb_fabric_types_silk]`, `[kb_fashion_styles_streetwear]`, `[kb_luxury_trends_patterned_silk_blazer]`, `[trend_luxury_quiet_luxury_deconstructivism]`",
+  "citations": [
+    "Quiet Luxury Deconstructivism (luxury)",
+    "Silk (fabric_types)",
+    "Gucci (brand_profiles)",
+    "Patterned Silk Blazer (luxury_trends)",
+    "Streetwear (fashion_styles)"
+  ],
+  "confidence_score": 0.67
+}

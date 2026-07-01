@@ -119,7 +119,7 @@ except ImportError:
 # ─── Internal ─────────────────────────────────────────────────────────────────
 # Resolve project root regardless of working directory
 _FILE_DIR    = Path(__file__).resolve().parent          # data_pipeline/ingestion/
-_PROJECT_ROOT = _FILE_DIR.parent.parent                 # fashion-ai-assistant/
+_PROJECT_ROOT = _FILE_DIR.parent.parent.parent                 # fashion-ai-assistant/
 
 # We add project root to sys.path so the package imports work when run directly
 if str(_PROJECT_ROOT) not in sys.path:

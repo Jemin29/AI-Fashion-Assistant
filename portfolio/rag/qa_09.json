@@ -1,0 +1,13 @@
+{
+  "id": 9,
+  "question": "How do I transition activewear into streetwear?",
+  "answer": "### Fashion AI Assistant - Generation Report\nProcessed Query: *\"How do I transition activewear into streetwear?\"*\n\n#### Retrieved Domain Insights\n- Detected trend record **Digital Neo-Mint** (color): An optimistic, gender-neutral tech pastel hue that bridges the gap between science and nature. Dominated by youth-focused activewear and streetwear brands. `[trend_color_digital_neo_mint]`\n- According to category **Nike** (brand_profiles): Global athletic brand specializing in performance activewear. Design language blends functional tech fabrics, athletic fits, swoosh branding, and a sleek black/grey/white color palette. `[kb_brand_profiles_nike]`\n- According to category **Hypebeast Cargo Joggers** (streetwear_trends): Streetwear trend incorporating utility pocket cargo styling onto relaxed jogger silhouettes. Often paired with technical sneaker releases. `[kb_streetwear_trends_hypebeast_cargo_joggers]`\n- Detected trend record **Metallic Liquid Lam\u00e9 Gowns** (luxury): Avant-garde evening wear using high-shine metallic threads woven into silks to create a liquid draping effect resembling molten silver and gold. `[trend_luxury_metallic_liquid_lam\u00e9_gowns]`\n- Detected trend record **Distressed Graphic Hoodies** (streetwear): French terry cotton hoodies characterized by faded vintage washes, frayed edge distressing, boxy/cropped silhouettes, and large puff-printed typography. `[trend_streetwear_distressed_graphic_hoodies]`\n\n#### Recommended Design Inspirations\n- **Digital Neo-Mint** (Relevance Match: 0.54) - An optimistic, gender-neutral tech pastel hue that bridges the gap between science and nature. Dominated by youth-focuse... `[trend_color_digital_neo_mint]`\n\n**Citations**: This response is grounded in: `[kb_brand_profiles_nike]`, `[kb_streetwear_trends_hypebeast_cargo_joggers]`, `[trend_color_digital_neo_mint]`, `[trend_luxury_metallic_liquid_lam\u00e9_gowns]`, `[trend_streetwear_distressed_graphic_hoodies]`",
+  "citations": [
+    "Digital Neo-Mint (color)",
+    "Nike (brand_profiles)",
+    "Hypebeast Cargo Joggers (streetwear_trends)",
+    "Metallic Liquid Lam\u00e9 Gowns (luxury)",
+    "Distressed Graphic Hoodies (streetwear)"
+  ],
+  "confidence_score": 0.55
+}

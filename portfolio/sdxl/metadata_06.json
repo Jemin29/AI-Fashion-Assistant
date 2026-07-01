@@ -1,0 +1,8 @@
+{
+  "prompt": "Classic double-breasted trench coat, camel",
+  "negative_prompt": "low quality, blurry",
+  "seed": 1006,
+  "cfg": 7.5,
+  "resolution": "512x512",
+  "latency_sec": 0.0021589000002677494
+}

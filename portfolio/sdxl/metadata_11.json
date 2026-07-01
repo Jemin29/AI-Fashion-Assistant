@@ -1,0 +1,8 @@
+{
+  "prompt": "Modern asymmetrical cocktail dress, royal blue",
+  "negative_prompt": "low quality, blurry",
+  "seed": 1011,
+  "cfg": 7.5,
+  "resolution": "512x512",
+  "latency_sec": 0.0021517000000130793
+}

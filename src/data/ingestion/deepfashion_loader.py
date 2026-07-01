@@ -119,7 +119,7 @@ except ImportError:
 
 # ─── Internal: resolve project root regardless of cwd ─────────────────────────
 _FILE_DIR     = Path(__file__).resolve().parent       # data_pipeline/ingestion/
-_PROJECT_ROOT = _FILE_DIR.parent.parent               # fashion-ai-assistant/
+_PROJECT_ROOT = _FILE_DIR.parent.parent.parent               # fashion-ai-assistant/
 
 if str(_PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(_PROJECT_ROOT))
