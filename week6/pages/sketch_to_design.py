@@ -124,7 +124,9 @@ def build_sketch_to_design_page(cn_service: Any) -> None:
         )
         if not result.success:
             raise gr.Error(result.message)
-        res_image = result.data
+        
+        data_payload = result.data or {}
+        res_image = data_payload.get("image")
         meta = result.metadata
 
         # Enforce resolved seed into metadata
