@@ -278,6 +278,58 @@ class ServiceResult(Generic[T]):
             "latency_ms": round(self.latency_ms, 1),
         }
 
+    def __iter__(self) -> Any:
+        """Allow unpacking/iteration based on the wrapped data type."""
+        if isinstance(self.data, list):
+            return iter(self.data)
+        
+        # Tuple unpacking fallback: yield (image/data, meta)
+        def _unpack():
+            if isinstance(self.data, dict) and "image" in self.data:
+                yield self.data["image"]
+            else:
+                yield self.data
+            yield self.meta
+            
+        return _unpack()
+
+    def __len__(self) -> int:
+        """Return the length of the underlying data if it supports len(), else 0 or 1."""
+        if self.data is None:
+            return 0
+        if hasattr(self.data, "__len__"):
+            return len(self.data)
+        return 1
+
+    def __getitem__(self, key: Any) -> Any:
+        """Allow indexing/subscripting into the result data or metadata."""
+        if isinstance(self.data, list) and isinstance(key, int):
+            return self.data[key]
+        if isinstance(self.data, dict):
+            return self.data[key]
+        if key == 0:
+            if isinstance(self.data, dict) and "image" in self.data:
+                return self.data["image"]
+            return self.data
+        if key == 1:
+            return self.meta
+        raise KeyError(f"Invalid key for ServiceResult: {key}")
+
+    def get(self, key: str, default: Any = None) -> Any:
+        """Allow dictionary-like .get() access, delegating to data if it is a dict."""
+        if isinstance(self.data, dict):
+            return self.data.get(key, default)
+        return getattr(self, key, default)
+
+    def __bool__(self) -> bool:
+        """Allow boolean checks. Returns True if status is OK/MOCK and data is present/not empty."""
+        if not self.is_ok:
+            return False
+        if isinstance(self.data, (list, dict)):
+            return len(self.data) > 0
+        return self.data is not None
+
+
 
 # ══════════════════════════════════════════════════════════════════════════════
 # Timing Context Manager
