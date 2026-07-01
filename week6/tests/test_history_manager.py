@@ -98,9 +98,17 @@ def test_history_manager_search_and_filters(temp_history_file) -> None:
     assert entries[0].prompt == "Neon leather jacket"
 
 
-def test_history_manager_sorting_and_pagination(temp_history_file) -> None:
+def test_history_manager_sorting_and_pagination(temp_history_file, monkeypatch) -> None:
     """Test sorting modes and pagination limits."""
     mgr = HistoryManager(history_file=temp_history_file)
+
+    # Mock time.time to increment dynamically
+    t_val = 1000.0
+    def mock_time():
+        nonlocal t_val
+        t_val += 1.0
+        return t_val
+    monkeypatch.setattr("time.time", mock_time)
 
     # Insert 5 entries
     for i in range(1, 6):
