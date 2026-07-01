@@ -117,7 +117,8 @@ def build_style_mixer_page(lora_service: Any) -> None:
         result = lora_service.mix_styles(p, brand_w)
         if not result.success:
             raise gr.Error(result.message)
-        img = result.data
+        data_payload = result.data or {}
+        img = data_payload.get("image")
         meta = result.metadata
         return img, meta, gr.update(selected="blend_tab")
 
@@ -133,7 +134,8 @@ def build_style_mixer_page(lora_service: Any) -> None:
         result = lora_service.mix_styles(p, brand_w)
         if not result.success:
             raise gr.Error(result.message)
-        blend_img = result.data
+        data_payload = result.data or {}
+        blend_img = data_payload.get("image")
         blend_meta = result.metadata
         
         gallery_items = []
@@ -146,7 +148,8 @@ def build_style_mixer_page(lora_service: Any) -> None:
             pure_res = lora_service.generate_with_brand(p, b, lora_scale=0.85)
             if not pure_res.success:
                 raise gr.Error(pure_res.message)
-            pure_img = pure_res.data
+            pure_data = pure_res.data or {}
+            pure_img = pure_data.get("image")
             pure_meta = pure_res.metadata
             if pure_img is not None:
                 label_text = f"Pure {brand_labels.get(b, b.title())} (Weight: {w:.1%})"

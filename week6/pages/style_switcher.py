@@ -119,7 +119,8 @@ def build_style_switcher_page(lora_service: Any) -> None:
         )
         if not result.success:
             raise gr.Error(result.message)
-        img = result.data
+        data_payload = result.data or {}
+        img = data_payload.get("image")
         meta = result.metadata
         return img, meta, gr.update(selected="single_tab")
 
@@ -145,7 +146,8 @@ def build_style_switcher_page(lora_service: Any) -> None:
             )
             if not result.success:
                 raise gr.Error(result.message)
-            img = result.data
+            data_payload = result.data or {}
+            img = data_payload.get("image")
             meta = result.metadata
             if img is not None:
                 label_text = brand_labels.get(b, b.title())
