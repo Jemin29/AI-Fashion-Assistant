@@ -54,25 +54,6 @@ def build_style_switcher_page(lora_service: Any) -> None:
             gr.Markdown("---")
             brand_info_display = gr.Markdown()
 
-            def update_brand_display(b: str) -> str:
-                info = lora_service.get_brand_info(b)
-                if not info:
-                    return "_No description loaded for this brand._"
-                return f"""
-                ### Brand Card: **{info.get('name', b.upper())}**
-                _{info.get('description', '')}_
-                
-                - **Aesthetic Signature**: {info.get('aesthetic', '')}
-                - **Color Theme**: {info.get('color_palette', '')}
-                - **Key Style Matches**: {', '.join(info.get('key_styles', []))}
-                """
-
-            brand_dropdown.change(update_brand_display, inputs=[brand_dropdown], outputs=[brand_info_display])
-            
-            # Seed brand description on load
-            if brands:
-                brand_info_display.value = update_brand_display(brands[0])
-
         # ── Right Column: Outputs ────────────────────────────────────────────
         with gr.Column(scale=1):
             gr.Markdown("### 🖼️ Design Outputs")
@@ -99,7 +80,29 @@ def build_style_switcher_page(lora_service: Any) -> None:
                     compare_meta = gr.JSON(label="Comparison Details")
 
     # ── Event Handlers ────────────────────────────────────────────────────────
+    from week6.pages.utils import safe_callback
 
+    @safe_callback(1)
+    def update_brand_display(b: str) -> str:
+        info = lora_service.get_brand_info(b)
+        if not info:
+            return "_No description loaded for this brand._"
+        return f"""
+        ### Brand Card: **{info.get('name', b.upper())}**
+        _{info.get('description', '')}_
+
+        - **Aesthetic Signature**: {info.get('aesthetic', '')}
+        - **Color Theme**: {info.get('color_palette', '')}
+        - **Key Style Matches**: {', '.join(info.get('key_styles', []))}
+        """
+
+    brand_dropdown.change(update_brand_display, inputs=[brand_dropdown], outputs=[brand_info_display])
+
+    # Seed brand description on load
+    if brands:
+        brand_info_display.value = update_brand_display(brands[0])
+
+    @safe_callback(3, fallback_values=[None, {}, gr.update(selected="single_tab")])
     def on_generate(
         p: str,
         b: str,
@@ -109,7 +112,7 @@ def build_style_switcher_page(lora_service: Any) -> None:
     ) -> Tuple[Optional[Image.Image], Dict[str, Any], Any]:
         if not p.strip():
             return None, {"error": "Prompt cannot be empty."}, gr.update(selected="single_tab")
-        
+
         result = lora_service.generate_with_brand(
             prompt=p,
             brand=b,
@@ -124,6 +127,7 @@ def build_style_switcher_page(lora_service: Any) -> None:
         meta = result.metadata
         return img, meta, gr.update(selected="single_tab")
 
+    @safe_callback(3, fallback_values=[[], {}, gr.update(selected="compare_tab")])
     def on_compare(
         p: str,
         scale: float,

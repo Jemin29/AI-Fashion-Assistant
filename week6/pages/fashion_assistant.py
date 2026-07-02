@@ -114,7 +114,9 @@ def build_fashion_assistant_page(rag_service: Any) -> None:
                     sug_btn.click(lambda q=q_text: q, outputs=[chat_input])
 
     # ── Event Handlers ────────────────────────────────────────────────────────
+    from week6.pages.utils import safe_callback
 
+    @safe_callback(3, fallback_values=[[], "", "_Error occurred._"])
     def on_send(question: str, history: List[Tuple[str, str]]) -> Tuple[List[Tuple[str, str]], str, str]:
         if not question.strip():
             return history, "", "_No question entered._"
@@ -142,23 +144,28 @@ def build_fashion_assistant_page(rag_service: Any) -> None:
 
         return history, "", sources_md
 
+    @safe_callback(3, fallback_values=[[], "", "_Error occurred._"])
     def on_fabric_click(fabric: str, history: List[Tuple[str, str]]) -> Tuple[List[Tuple[str, str]], str, str]:
         query = f"Explain the properties, durability, breathability, and weight of {fabric} fabric."
         return on_send(query, history)
 
+    @safe_callback(3, fallback_values=[[], "", "_Error occurred._"])
     def on_trend_click(trend: str, custom: str, history: List[Tuple[str, str]]) -> Tuple[List[Tuple[str, str]], str, str]:
         selected_trend = custom.strip() if custom.strip() else trend
         query = f"Provide a trend explanation and growth forecast details for {selected_trend}."
         return on_send(query, history)
 
+    @safe_callback(3, fallback_values=[[], "", "_Error occurred._"])
     def on_style_click(style: str, occasion: str, color: str, history: List[Tuple[str, str]]) -> Tuple[List[Tuple[str, str]], str, str]:
         query = f"Provide styling advice for a {color} look in {style} style suitable for a {occasion} occasion."
         return on_send(query, history)
 
+    @safe_callback(3, fallback_values=[[], "", "_Error occurred._"])
     def on_brand_click(style: str, history: List[Tuple[str, str]]) -> Tuple[List[Tuple[str, str]], str, str]:
         query = f"Recommend brand suggestions that match a {style} style aesthetic."
         return on_send(query, history)
 
+    @safe_callback(3, fallback_values=[[], "", "_Conversation cleared._"])
     def on_clear():
         return [], "", "_Conversation cleared._"
 

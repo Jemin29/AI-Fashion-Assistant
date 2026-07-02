@@ -95,8 +95,10 @@ def build_text_to_fashion_page(gen_service: Any) -> None:
             output_meta = gr.JSON(label="Metadata")
 
     # ── Event Handlers ────────────────────────────────────────────────────────
+    from week6.pages.utils import safe_callback
 
     # Preset selection syncs textbox
+    @safe_callback(1)
     def on_preset_change(selected: str) -> str:
         if selected != "Custom":
             return _STYLE_PRESETS.get(selected, "")
@@ -105,6 +107,7 @@ def build_text_to_fashion_page(gen_service: Any) -> None:
     preset.change(on_preset_change, inputs=[preset], outputs=[prompt])
 
     # Prompt History selection updates main textbox
+    @safe_callback(1)
     def on_history_change(selected_hist: Optional[str]) -> str:
         if selected_hist:
             return selected_hist
@@ -113,6 +116,7 @@ def build_text_to_fashion_page(gen_service: Any) -> None:
     history_select.change(on_history_change, inputs=[history_select], outputs=[prompt])
 
     # Generate callback
+    @safe_callback(4, fallback_values=[[], {}, [], gr.update()])
     def on_generate(
         p: str,
         np: str,
@@ -176,6 +180,7 @@ def build_text_to_fashion_page(gen_service: Any) -> None:
     )
 
     # Clear callback
+    @safe_callback(7, fallback_values=[[], {}, "Custom", "", _NEGATIVE_DEFAULT, -1, 1])
     def on_clear():
         return [], {}, "Custom", "", _NEGATIVE_DEFAULT, -1, 1
 

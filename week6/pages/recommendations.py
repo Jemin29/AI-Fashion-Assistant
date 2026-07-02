@@ -125,6 +125,10 @@ def build_recommendations_page(rec_service: Any, trend_service: Any) -> None:
                     
                     style_empty_lbl = gr.Markdown("_Submit criteria to view style recommendations._")
 
+            from week6.pages.utils import safe_callback
+
+            _style_fallback = [gr.update(visible=False)] * 4 + [None] * 4 + [""] * 4 + [gr.update(visible=True)]
+            @safe_callback(13, fallback_values=_style_fallback)
             def on_get_styles(g, s, o, f):
                 result = rec_service.recommend_styles(g, s, o, f, n=4)
                 if not result.success:
@@ -205,6 +209,8 @@ def build_recommendations_page(rec_service: Any, trend_service: Any) -> None:
                     
                     brand_empty_lbl = gr.Markdown("_Submit aesthetic details to view brand matches._")
 
+            _brand_fallback = [gr.update(visible=False)] * 4 + [None] * 4 + [""] * 4 + [gr.update(visible=True)]
+            @safe_callback(13, fallback_values=_brand_fallback)
             def on_get_brands(styles, aesthetic):
                 result = rec_service.recommend_brands(styles, aesthetic, n=4)
                 if not result.success:
@@ -280,6 +286,8 @@ def build_recommendations_page(rec_service: Any, trend_service: Any) -> None:
                     
                     trend_empty_lbl = gr.Markdown("_Submit season details to view trend forecasts._")
 
+            _trend_fallback = [gr.update(visible=False)] * 4 + [None] * 4 + [""] * 4 + [gr.update(visible=True)]
+            @safe_callback(13, fallback_values=_trend_fallback)
             def on_get_trends(season):
                 result = trend_service.forecast_season(season)
                 if not result.success:
@@ -345,6 +353,8 @@ def build_recommendations_page(rec_service: Any, trend_service: Any) -> None:
                     
                     lookbook_empty = gr.Markdown("_Click 'Generate Personalized Lookbook' to compile your profile-matching outfit card._")
 
+            _lookbook_fallback = [{}, gr.update(visible=False), None, "", gr.update(visible=True)]
+            @safe_callback(5, fallback_values=_lookbook_fallback)
             def on_generate_lookbook(uid):
                 uid_clean = uid.strip() or "demo_user"
                 profile = rec_service.get_user_profile(uid_clean)

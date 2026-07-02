@@ -183,6 +183,9 @@ def build_eval_dashboard_page(eval_service: Any) -> None:
     with gr.Accordion("Raw Report Output", open=False):
         raw_json = gr.JSON(last_eval)
 
+    from week6.pages.utils import safe_callback
+
+    @safe_callback(5, fallback_values=["_Evaluation failed._", "<p>No data.</p>", "<p>No chart.</p>", "_No cases._", {}])
     def trigger_evaluation():
         # Run new evaluation
         res = eval_service.run_evaluation()

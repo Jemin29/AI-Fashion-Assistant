@@ -281,7 +281,9 @@ def build_gallery_page() -> None:
                 export_file = gr.File(label="📥 Download Exported Dataset", visible=False)
 
     # ── Event Handlers ────────────────────────────────────────────────────────
+    from week6.pages.utils import safe_callback
 
+    @safe_callback(7, fallback_values=[[], [], "Page 1", gr.update(interactive=False), gr.update(interactive=False), gr.update(visible=False), gr.update(visible=True)])
     def handle_refresh(search_q, filt, sort_by, page_num):
         entries_dicts, gallery_data, page_str, prev_up, next_up = query_history(
             search_q, filt, sort_by, page_num, page_size_val
@@ -296,6 +298,7 @@ def build_gallery_page() -> None:
             gr.update(visible=True)
         )
 
+    @safe_callback(8, fallback_values=[1, [], [], "Page 1", gr.update(interactive=False), gr.update(interactive=False), gr.update(visible=False), gr.update(visible=True)])
     def handle_prev_page(search_q, filt, sort_by, current_page):
         new_page = max(1, current_page - 1)
         entries_dicts, gallery_data, page_str, prev_up, next_up = query_history(
@@ -312,6 +315,7 @@ def build_gallery_page() -> None:
             gr.update(visible=True)
         )
 
+    @safe_callback(8, fallback_values=[1, [], [], "Page 1", gr.update(interactive=False), gr.update(interactive=False), gr.update(visible=False), gr.update(visible=True)])
     def handle_next_page(search_q, filt, sort_by, current_page):
         new_page = current_page + 1
         entries_dicts, gallery_data, page_str, prev_up, next_up = query_history(
@@ -328,6 +332,7 @@ def build_gallery_page() -> None:
             gr.update(visible=True)
         )
 
+    @safe_callback(9, fallback_values=[gr.update()] * 9)
     def handle_select(evt: gr.SelectData, entries_dicts: List[Dict[str, Any]]):
         index = evt.index
         if index >= len(entries_dicts):
@@ -368,6 +373,7 @@ def build_gallery_page() -> None:
             entry.id,                      # selected_entry_id
         )
 
+    @safe_callback(2, fallback_values=["❌ Action failed.", gr.update()])
     def handle_save_review(entry_id, rating, notes):
         if not entry_id:
             return "⚠️ No design selected.", gr.update()
@@ -378,6 +384,7 @@ def build_gallery_page() -> None:
         except Exception as e:
             return f"❌ Save failed: {e}", gr.update()
 
+    @safe_callback(7, fallback_values=[[], [], "Page 1", gr.update(interactive=False), gr.update(interactive=False), gr.update(visible=False), gr.update(visible=True)])
     def handle_delete(entry_id, search_q, filt, sort_by, current_page):
         if not entry_id:
             return [gr.update()] * 7
@@ -402,6 +409,7 @@ def build_gallery_page() -> None:
             gr.update(visible=True)
         )
 
+    @safe_callback(1, fallback_values=[gr.update(visible=False)])
     def handle_export(export_format_type):
         try:
             if export_format_type == "json":

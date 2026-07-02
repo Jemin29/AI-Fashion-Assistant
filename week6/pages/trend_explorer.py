@@ -22,6 +22,9 @@ def build_trend_explorer_page(trend_service: Any) -> None:
             refresh_btn = gr.Button("🔄 Load Trends", variant="primary")
             trends_table = gr.Markdown("_Click 'Load Trends' to fetch data._")
 
+            from week6.pages.utils import safe_callback
+
+            @safe_callback(1, fallback_values=["_Failed to load trends._"])
             def load_all_trends() -> str:
                 result = trend_service.get_all_trends()
                 if not result.success:
@@ -63,6 +66,7 @@ def build_trend_explorer_page(trend_service: Any) -> None:
                 with gr.Column(scale=2):
                     trend_detail = gr.Markdown("_Select or type a trend name to analyze._")
 
+            @safe_callback(1, fallback_values=["_Analysis failed._"])
             def on_analyze(trend_name: str) -> str:
                 if not trend_name.strip():
                     return "_Please enter a trend name._"
@@ -110,6 +114,7 @@ def build_trend_explorer_page(trend_service: Any) -> None:
                 with gr.Column(scale=2):
                     forecast_output = gr.Markdown("_Select a season and click 'Generate Forecast'._")
 
+            @safe_callback(1, fallback_values=["_Forecast failed._"])
             def on_forecast(season: str) -> str:
                 result = trend_service.forecast_season(season)
                 if not result.success:

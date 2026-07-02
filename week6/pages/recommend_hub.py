@@ -48,6 +48,9 @@ def build_recommend_hub_page(rec_service: Any) -> None:
                 with gr.Column(scale=2):
                     style_output = gr.Markdown("_Set your preferences and click 'Get Style Recommendations'._")
 
+            from week6.pages.utils import safe_callback
+
+            @safe_callback(1, fallback_values=["_Recommendation failed._"])
             def on_style_rec(g, s, o, f, n):
                 result = rec_service.recommend_styles(g, s, o, f, n=int(n))
                 if not result.success:
@@ -95,6 +98,7 @@ def build_recommend_hub_page(rec_service: Any) -> None:
                 with gr.Column(scale=2):
                     brand_output = gr.Markdown("_Set your aesthetic and click 'Find Matching Brands'._")
 
+            @safe_callback(1, fallback_values=["_Brand recommendation failed._"])
             def on_brand_rec(styles, aesthetic, n):
                 result = rec_service.recommend_brands(styles, aesthetic, n=int(n))
                 if not result.success:
@@ -128,6 +132,7 @@ def build_recommend_hub_page(rec_service: Any) -> None:
             view_profile_btn = gr.Button("🔍 View My Profile", variant="secondary")
             profile_output = gr.JSON(label="User Preference Profile")
 
+            @safe_callback(1, fallback_values=[{}])
             def on_view_profile(uid):
                 result = rec_service.get_user_profile(uid or "demo_user")
                 if not result.success:

@@ -82,12 +82,15 @@ def build_sketch_to_design_page(cn_service: Any) -> None:
             output_meta = gr.JSON(label="Metadata")
 
     # ── Event Handlers ────────────────────────────────────────────────────────
+    from week6.pages.utils import safe_callback
 
+    @safe_callback(1)
     def on_preview(img: Optional[Image.Image], method: str) -> Optional[Image.Image]:
         if img is None:
             return None
         return processor.preprocess_sketch(img, method=method)
 
+    @safe_callback(3, fallback_values=[None, {}, None])
     def on_generate(
         img: Optional[Image.Image],
         prompt_text: str,

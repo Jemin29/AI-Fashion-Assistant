@@ -52,7 +52,10 @@ def build_style_mixer_page(lora_service: Any) -> None:
                     label=brand_labels.get(b, b.upper()),
                 )
 
-            # Sync sliders with preset selection
+    # Sync sliders with preset selection
+            from week6.pages.utils import safe_callback
+
+            @safe_callback(4, fallback_values=[gr.update(), gr.update(), gr.update(), gr.update()])
             def on_preset_change(preset: str) -> Tuple[Any, ...]:
                 if preset == "nike_gucci":
                     return 0.5, 0.5, 0.0, 0.0
@@ -69,6 +72,7 @@ def build_style_mixer_page(lora_service: Any) -> None:
             )
 
             # If sliders are manually edited, reset preset dropdown to "custom"
+            @safe_callback(1, fallback_values=["custom"])
             def on_slider_touch() -> str:
                 return "custom"
 
@@ -106,6 +110,7 @@ def build_style_mixer_page(lora_service: Any) -> None:
 
     # ── Event Handlers ────────────────────────────────────────────────────────
 
+    @safe_callback(3, fallback_values=[None, {}, gr.update(selected="blend_tab")])
     def on_blend(p: str, *weights) -> Tuple[Optional[Image.Image], Dict[str, Any], Any]:
         if not p.strip():
             return None, {"error": "Prompt cannot be empty."}, gr.update(selected="blend_tab")
@@ -122,6 +127,7 @@ def build_style_mixer_page(lora_service: Any) -> None:
         meta = result.metadata
         return img, meta, gr.update(selected="blend_tab")
 
+    @safe_callback(3, fallback_values=[[], {}, gr.update(selected="compare_tab")])
     def on_compare(p: str, *weights) -> Tuple[List[Tuple[Image.Image, str]], Dict[str, Any], Any]:
         if not p.strip():
             return [], {"error": "Prompt cannot be empty."}, gr.update(selected="compare_tab")

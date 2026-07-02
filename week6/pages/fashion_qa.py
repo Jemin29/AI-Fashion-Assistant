@@ -75,8 +75,10 @@ def build_fashion_qa_page(rag_service: Any) -> None:
     search_results = gr.Markdown(label="Search Results")
 
     # ── Event handlers ────────────────────────────────────────────────────────
+    from week6.pages.utils import safe_callback
     _chat_history: List[Tuple[str, str]] = []
 
+    @safe_callback(3, fallback_values=[[], "", "_Error occurred._"])
     def on_send(question: str, history: List):
         if not question.strip():
             return history, "", "_No question entered._"
@@ -104,6 +106,7 @@ def build_fashion_qa_page(rag_service: Any) -> None:
         history.append((question, answer))
         return history, "", sources_md
 
+    @safe_callback(1, fallback_values=["_Search failed._"])
     def on_search(query: str, n: int) -> str:
         if not query.strip():
             return "_Enter a search query._"
@@ -126,6 +129,7 @@ def build_fashion_qa_page(rag_service: Any) -> None:
             md += f"*Collection: `{coll}` | Similarity Distance: `{dist:.4f}`*\n\n---\n\n"
         return md
 
+    @safe_callback(3, fallback_values=[[], "", "_Conversation cleared._"])
     def on_clear():
         return [], "", "_Conversation cleared._"
 

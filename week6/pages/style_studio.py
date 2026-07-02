@@ -91,11 +91,15 @@ def build_style_studio_page(gen_service: Any) -> None:
     _gallery_images: List[Image.Image] = []
 
     # ── Event handlers ────────────────────────────────────────────────────────
+    from week6.pages.utils import safe_callback
+
+    @safe_callback(1)
     def on_preset_change(selected: str) -> str:
         if selected and selected != "Custom":
             return _STYLE_PRESETS.get(selected, "")
         return gr.update()
 
+    @safe_callback(3, fallback_values=[None, {}, []])
     def on_generate(
         prompt_text: str,
         neg_prompt: str,
@@ -128,6 +132,7 @@ def build_style_studio_page(gen_service: Any) -> None:
             _gallery_images.insert(0, img)
         return img, meta, _gallery_images[:8]
 
+    @safe_callback(3, fallback_values=[None, {}, gr.update()])
     def on_clear():
         return None, {}, gr.update()
 

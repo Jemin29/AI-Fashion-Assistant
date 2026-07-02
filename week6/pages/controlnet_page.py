@@ -68,6 +68,9 @@ def build_controlnet_page(cn_service: Any) -> None:
 | **Depth** | 3D spatial structure | Best with depth map images |
 """)
 
+    from week6.pages.utils import safe_callback
+
+    @safe_callback(1)
     def on_preview(img, selected_mode):
         if img is None:
             return None
@@ -76,6 +79,7 @@ def build_controlnet_page(cn_service: Any) -> None:
             raise gr.Error(result.message)
         return result.data
 
+    @safe_callback(2, fallback_values=[None, {}])
     def on_generate(img, prompt_text, selected_mode, cond_scale, n_steps, cfg_scale):
         if img is None:
             return None, {"error": "Please upload a control image."}

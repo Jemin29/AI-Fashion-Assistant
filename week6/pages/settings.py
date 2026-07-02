@@ -435,6 +435,9 @@ def build_settings_page() -> None:
             "enable_animations": animations,
         }
 
+    from week6.pages.utils import safe_callback
+
+    @safe_callback(2, fallback_values=["_Save failed._", {}])
     def on_save(*args) -> Tuple[str, Any]:
         settings_dict = _collect_settings(*args)
         ok, msg = save_settings(settings_dict)
@@ -444,6 +447,7 @@ def build_settings_page() -> None:
             html = _status_html(False, f"Save failed: {msg}")
         return html, settings_dict
 
+    @safe_callback(28, fallback_values=["_Reset failed._"] + [gr.update()] * 27)
     def on_reset() -> list:
         defaults = reset_settings()
         return [
@@ -478,6 +482,7 @@ def build_settings_page() -> None:
             defaults,  # JSON preview
         ]
 
+    @safe_callback(2, fallback_values=[gr.update(visible=False), "_Export failed._"])
     def on_export(*args) -> Tuple[gr.update, str]:
         settings_dict = _collect_settings(*args)
         ok, msg = save_settings(settings_dict)

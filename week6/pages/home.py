@@ -148,6 +148,9 @@ def build_home_page(nav_component: Optional[gr.Radio] = None) -> None:
             
             refresh_btn = gr.Button("🔄 Refresh Status", size="sm")
             
+            from week6.pages.utils import safe_callback
+
+            @safe_callback(1)
             def refresh_status():
                 return _build_model_status_html()
             
@@ -182,6 +185,9 @@ def build_home_page(nav_component: Optional[gr.Radio] = None) -> None:
     )
 
     # Reload gallery on load
+    from week6.pages.utils import safe_callback
+
+    @safe_callback(1)
     def refresh_recent():
         return _get_recent_generations()
         
