@@ -161,7 +161,8 @@ class HistoryEntry:
     rating:            int   = 0
     notes:             str   = ""
     created_at:        str   = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
-    created_ts:        float = field(default_factory=time.time)
+    created_ts:        float = field(default_factory=lambda: time.time())
+
     deleted:           bool  = False
 
     # ── Convenience ──────────────────────────────────────────────────────────
