@@ -42,7 +42,7 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="py-32 relative overflow-hidden">
+    <section id="faq" className="py-32 relative overflow-hidden scroll-mt-20">
       <div className="absolute inset-0 grid-bg opacity-20" />
 
       <div className="relative z-10 max-w-3xl mx-auto px-6">

@@ -75,7 +75,7 @@ const PLANS = [
 
 export default function PricingSection() {
   return (
-    <section id="pricing" className="py-32 relative overflow-hidden">
+    <section id="pricing" className="py-32 relative overflow-hidden scroll-mt-20">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-[hsl(225,25%,6%)] via-[hsl(225,22%,8%)] to-[hsl(225,25%,6%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_50%,rgba(99,102,241,0.07),transparent)]" />

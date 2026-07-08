@@ -47,7 +47,7 @@ export default function DemoSection() {
   const output = DEMO_OUTPUTS[outputIndex];
 
   return (
-    <section id="demo" className="py-32 relative overflow-hidden">
+    <section id="demo" className="py-32 relative overflow-hidden scroll-mt-20">
       {/* Radial glow background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_100%,rgba(99,102,241,0.12),transparent)]" />
 
