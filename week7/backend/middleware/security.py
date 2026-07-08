@@ -90,11 +90,11 @@ def validate_production_environment():
             "32 characters long."
         )
 
-    # 3. CORS configuration warning
+    # 3. CORS configuration validation
     if "*" in settings.server.allowed_origins:
-        logger.warning(
-            "[SECURITY WARNING] CORS allowed_origins is set to allow '*'. "
-            "Production deployments should restrict origins to verified domains."
+        raise ValueError(
+            "CRITICAL SECURITY FAILURE: SERVER__ALLOWED_ORIGINS cannot contain wildcard '*' "
+            "in a production environment."
         )
 
     # 4. Redis password validation
