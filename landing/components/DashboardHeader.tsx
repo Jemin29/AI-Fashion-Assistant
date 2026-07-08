@@ -110,7 +110,7 @@ export default function DashboardHeader({ isSidebarCollapsed }: DashboardHeaderP
 
         {/* Top level CTAs */}
         <a
-          href="http://127.0.0.1:7860"
+          href={process.env.NEXT_PUBLIC_STUDIO_URL || "http://127.0.0.1:7860"}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-xs font-semibold hover:from-indigo-500 hover:to-purple-500 transition-all duration-300"

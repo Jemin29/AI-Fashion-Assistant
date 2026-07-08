@@ -300,16 +300,17 @@ generator.flush_to_parquet("fashiongen_train_meta.parquet")
 
 ## ⚙️ Configuration
 
-All parameters are controlled via **two sources** (env file overrides YAML):
+All parameters are controlled via **three sources** (env file overrides YAML / Next.js defaults):
 
-| Parameter | YAML Key | .env Variable |
-|---|---|---|
-| FashionGen HDF5 path | `datasets.fashiongen.hdf5_file` | `FASHIONGEN_HDF5_PATH` |
-| Target image size | `pipeline.preprocessing.target_size` | `TARGET_IMAGE_SIZE` |
-| Compute device | `compute.device` | `DEVICE` |
-| CLIP model | `pipeline.metadata_generation.clip_model` | `CLIP_MODEL_NAME` |
-| Batch size | `pipeline.metadata_generation.batch_size` | `EMBED_BATCH_SIZE` |
-| Log level | `logging.level` | `LOG_LEVEL` |
+| Parameter | YAML Key | .env Variable / Config | Default / Description |
+|---|---|---|---|
+| FashionGen HDF5 path | `datasets.fashiongen.hdf5_file` | `FASHIONGEN_HDF5_PATH` | HDF5 file path |
+| Target image size | `pipeline.preprocessing.target_size` | `TARGET_IMAGE_SIZE` | Preprocessor target dimensions |
+| Compute device | `compute.device` | `DEVICE` | Compute target (cuda, cpu) |
+| CLIP model | `pipeline.metadata_generation.clip_model` | `CLIP_MODEL_NAME` | Model naming tag |
+| Batch size | `pipeline.metadata_generation.batch_size` | `EMBED_BATCH_SIZE` | Embedding batch slice size |
+| Log level | `logging.level` | `LOG_LEVEL` | App logger console verbosity |
+| Gradio Studio URL | - | `NEXT_PUBLIC_STUDIO_URL` | Gradio server URL (`http://127.0.0.1:7860`) |
 
 ---
 

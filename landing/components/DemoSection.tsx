@@ -277,7 +277,7 @@ export default function DemoSection() {
           <p className="text-slate-500 text-sm">
             This is a preview demo.{" "}
             <a
-              href="http://127.0.0.1:7860"
+              href={process.env.NEXT_PUBLIC_STUDIO_URL || "http://127.0.0.1:7860"}
               target="_blank"
               rel="noopener noreferrer"
               className="text-indigo-400 hover:text-indigo-300 underline"

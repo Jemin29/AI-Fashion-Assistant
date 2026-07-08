@@ -146,7 +146,7 @@ export default function RedesignedDashboardPage() {
 
             <div className="flex flex-wrap gap-4 mt-2">
               <a
-                href="http://127.0.0.1:7860"
+                href={process.env.NEXT_PUBLIC_STUDIO_URL || "http://127.0.0.1:7860"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold text-xs shadow-lg shadow-indigo-600/20 transition-all active:scale-95 flex-shrink-0"

@@ -61,7 +61,7 @@ export default function HeroSection() {
           className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
         >
           <a
-            href="http://127.0.0.1:7860"
+            href={process.env.NEXT_PUBLIC_STUDIO_URL || "http://127.0.0.1:7860"}
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold text-lg hover:from-indigo-500 hover:to-purple-500 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(102,126,234,0.5)] glow-indigo"

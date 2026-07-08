@@ -2,6 +2,8 @@
 import { motion } from "framer-motion";
 import { Check, Zap, Star, Building2, ArrowRight } from "lucide-react";
 
+const STUDIO_URL = process.env.NEXT_PUBLIC_STUDIO_URL || "http://127.0.0.1:7860";
+
 const PLANS = [
   {
     name: "Explorer",
@@ -22,7 +24,7 @@ const PLANS = [
     ],
     cta: "Start Free",
     ctaStyle: "glass border border-white/15 text-white hover:border-indigo-500/50",
-    href: "http://127.0.0.1:7860",
+    href: STUDIO_URL,
   },
   {
     name: "Studio",
@@ -46,7 +48,7 @@ const PLANS = [
     ],
     cta: "Start Studio",
     ctaStyle: "bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-500 hover:to-purple-500 hover:shadow-[0_0_30px_rgba(99,102,241,0.5)]",
-    href: "http://127.0.0.1:7860",
+    href: STUDIO_URL,
   },
   {
     name: "Enterprise",

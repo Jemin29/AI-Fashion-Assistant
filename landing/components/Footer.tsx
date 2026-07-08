@@ -81,7 +81,7 @@ export default function Footer() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="http://127.0.0.1:7860"
+                href={process.env.NEXT_PUBLIC_STUDIO_URL || "http://127.0.0.1:7860"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center justify-center gap-3 px-10 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold text-lg hover:from-indigo-500 hover:to-purple-500 hover:scale-105 hover:shadow-[0_0_50px_rgba(99,102,241,0.5)] transition-all duration-300"

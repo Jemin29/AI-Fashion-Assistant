@@ -62,7 +62,7 @@ export default function FAQSection() {
           </h2>
           <p className="text-lg text-slate-400">
             Can't find your answer?{" "}
-            <a href="http://127.0.0.1:7860" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:underline">
+            <a href={process.env.NEXT_PUBLIC_STUDIO_URL || "http://127.0.0.1:7860"} target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:underline">
               Ask the Fashion Assistant
             </a>
             .

@@ -61,7 +61,7 @@ export default function Navbar() {
           {/* CTA */}
           <div className="flex items-center gap-3">
             <a
-              href="http://127.0.0.1:7860"
+              href={process.env.NEXT_PUBLIC_STUDIO_URL || "http://127.0.0.1:7860"}
               target="_blank"
               rel="noopener noreferrer"
               className="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm font-semibold hover:from-indigo-500 hover:to-purple-500 transition-all duration-300 hover:shadow-[0_0_20px_rgba(99,102,241,0.5)]"
@@ -104,7 +104,7 @@ export default function Navbar() {
                 </a>
               ))}
               <a
-                href="http://127.0.0.1:7860"
+                href={process.env.NEXT_PUBLIC_STUDIO_URL || "http://127.0.0.1:7860"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-3 flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold text-sm"
