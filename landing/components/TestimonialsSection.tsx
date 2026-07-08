@@ -84,7 +84,7 @@ export default function TestimonialsSection() {
         </motion.div>
 
         {/* Masonry-style testimonials */}
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+        <div className="columns-1 md:columns-2 lg:columns-3 gap-6">
           {TESTIMONIALS.map((t, i) => (
             <motion.div
               key={t.name}
