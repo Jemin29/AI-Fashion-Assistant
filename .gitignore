@@ -16,14 +16,17 @@ dist/
 *.egg
 wheels/
 
-# ─── Virtual environments ─────────────────────────────────────────────────────
+# ─── Virtual environments & config overrides ──────────────────────────────────
 .venv/
 venv/
 ENV/
 env/
-.env           # ← NEVER commit real credentials
+.env
+.env.*
+!.env.example
 env.bak/
 venv.bak/
+backups/
 
 # ─── Jupyter notebooks ────────────────────────────────────────────────────────
 .ipynb_checkpoints/
@@ -40,7 +43,7 @@ datasets/processed/
 *.npz
 *.pkl
 *.pt
-*.pth          # PyTorch model weights
+*.pth
 
 # ─── Logs ─────────────────────────────────────────────────────────────────────
 logs/
