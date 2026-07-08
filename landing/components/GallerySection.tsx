@@ -69,7 +69,7 @@ export default function GallerySection() {
         </motion.div>
 
         {/* Gallery grid */}
-        <motion.div layout className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <motion.div layout className="grid grid-cols-2 md:grid-cols-3 gap-6">
           <AnimatePresence>
             {filtered.map((item, i) => (
               <motion.div
@@ -101,7 +101,7 @@ export default function GallerySection() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      className="absolute inset-0 bg-black/60 backdrop-blur-sm flex flex-col justify-end p-4"
+                      className="absolute inset-0 bg-black/60 backdrop-blur-sm flex flex-col justify-end p-6"
                     >
                       <div className="flex items-center gap-1 mb-2">
                         {Array.from({ length: item.rating }).map((_, i) => (

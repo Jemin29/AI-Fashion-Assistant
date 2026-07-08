@@ -109,18 +109,18 @@ export default function StatsSection() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
               whileHover={{ scale: 1.03, y: -4 }}
-              className="relative glass rounded-2xl p-8 border border-white/5 overflow-hidden group cursor-default"
+              className="relative glass rounded-2xl p-6 border border-white/5 overflow-hidden group cursor-default flex flex-col h-full"
             >
               {/* Gradient blob */}
               <div className={`absolute -top-8 -right-8 w-32 h-32 rounded-full bg-gradient-to-br ${stat.color} opacity-10 blur-2xl group-hover:opacity-20 transition-opacity`} />
 
-              <div className="relative z-10">
+              <div className="relative z-10 flex flex-col h-full">
                 <div className="text-3xl mb-3">{stat.icon}</div>
                 <div className={`text-5xl font-black mb-1 bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}>
                   <CountUp end={stat.value} suffix={stat.suffix} />
                 </div>
                 <div className="text-lg font-bold text-white mb-1">{stat.label}</div>
-                <div className="text-sm text-slate-500">{stat.sub}</div>
+                <div className="text-sm text-slate-500 mt-auto">{stat.sub}</div>
               </div>
 
               {/* Bottom accent line */}

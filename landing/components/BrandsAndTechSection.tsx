@@ -58,11 +58,11 @@ export default function BrandsAndTechSection() {
                 <motion.div
                   key={`${brand.name}-${i}`}
                   whileHover={{ scale: 1.05, y: -4 }}
-                  className="flex-shrink-0 glass rounded-2xl px-8 py-5 border border-white/8 text-center min-w-[160px] cursor-pointer group hover:border-indigo-500/40 transition-all"
+                  className="flex-shrink-0 glass rounded-2xl p-6 border border-white/8 text-center min-w-[160px] cursor-pointer group hover:border-indigo-500/40 transition-all flex flex-col h-full justify-between"
                 >
                   <div className="text-3xl mb-2">{brand.emoji}</div>
                   <div className="text-white font-bold text-lg">{brand.name}</div>
-                  <div className="text-slate-500 text-xs mt-1">{brand.tagline}</div>
+                  <div className="text-slate-500 text-xs mt-auto">{brand.tagline}</div>
                 </motion.div>
               ))}
             </div>
@@ -93,7 +93,7 @@ export default function BrandsAndTechSection() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
             {TECH_STACK.map((tech, i) => (
               <motion.div
                 key={tech.name}
@@ -102,11 +102,11 @@ export default function BrandsAndTechSection() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
                 whileHover={{ y: -4, scale: 1.03 }}
-                className={`rounded-2xl p-5 border ${tech.bg} text-center cursor-default transition-all duration-200`}
+                className={`rounded-2xl p-6 border ${tech.bg} text-center cursor-default transition-all duration-200 flex flex-col h-full justify-between`}
               >
                 <div className="text-2xl mb-2">{tech.icon}</div>
                 <div className={`font-bold text-sm ${tech.color} mb-0.5`}>{tech.name}</div>
-                <div className="text-slate-600 text-xs">{tech.category}</div>
+                <div className="text-slate-600 text-xs mt-auto">{tech.category}</div>
               </motion.div>
             ))}
           </div>

@@ -123,7 +123,7 @@ export default function FeaturesSection() {
         </motion.div>
 
         {/* Feature grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {FEATURES.map((feature, i) => {
             const Icon = feature.icon;
             return (
@@ -135,7 +135,7 @@ export default function FeaturesSection() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 whileHover={{ y: -6 }}
-                className={`group relative glass rounded-2xl p-6 border border-white/5 transition-all duration-300 cursor-pointer ${feature.glow} ${feature.border}`}
+                className={`group relative glass rounded-2xl p-6 border border-white/5 transition-all duration-300 cursor-pointer flex flex-col h-full ${feature.glow} ${feature.border}`}
               >
                 {/* Badge */}
                 <span className="absolute top-4 right-4 text-[10px] font-bold text-slate-500 bg-white/5 px-2 py-0.5 rounded-full">
@@ -143,14 +143,14 @@ export default function FeaturesSection() {
                 </span>
 
                 {/* Icon */}
-                <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${feature.accent} mb-4`}>
+                <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${feature.accent} mb-4 w-fit`}>
                   <Icon className="w-5 h-5 text-white" />
                 </div>
 
                 <h3 className="text-lg font-bold text-white mb-2 leading-tight">
                   {feature.title}
                 </h3>
-                <p className="text-sm text-slate-400 leading-relaxed">
+                <p className="text-sm text-slate-400 leading-relaxed flex-grow">
                   {feature.description}
                 </p>
 
