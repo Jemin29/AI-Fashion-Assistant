@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <!-- Definitions for Gradients -->
+  <defs>
+    <linearGradient id="ai-gradient-anim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="50%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+    
+    <style>
+      @keyframes breathe {
+        0%, 100% { opacity: 0.5; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.05); }
+      }
+      @keyframes dash {
+        to {
+          stroke-dashoffset: -40;
+        }
+      }
+      .anim-glow {
+        transform-origin: center;
+        animation: breathe 3s ease-in-out infinite;
+      }
+      .anim-stroke {
+        stroke-dasharray: 8 4;
+        animation: dash 2s linear infinite;
+      }
+    </style>
+  </defs>
+  
+  <g class="anim-glow" transform="translate(10, 10)">
+    <!-- Glow Backdrop Layer -->
+    <path d="M 40,10 L 70,55 C 73,60 73,66 70,70 L 60,85 C 57,90 51,90 48,85 L 15,35 C 12,30 12,24 15,20 L 25,5 C 28,0 34,0 37,5 Z" 
+          fill="none" stroke="#8b5cf6" stroke-width="6" opacity="0.3" filter="blur(6px)" />
+
+    <!-- Primary Ribbon Path -->
+    <path d="M 40,10 L 70,55 C 73,60 73,66 70,70 L 60,85 C 57,90 51,90 48,85 L 15,35 C 12,30 12,24 15,20 L 25,5 C 28,0 34,0 37,5 Z" 
+          fill="url(#ai-gradient-anim)" />
+          
+    <!-- Animated Border Overlay -->
+    <path d="M 40,10 L 70,55 C 73,60 73,66 70,70 L 60,85 C 57,90 51,90 48,85 L 15,35 C 12,30 12,24 15,20 L 25,5 C 28,0 34,0 37,5 Z" 
+          fill="none" stroke="#ffffff" stroke-width="1.5" class="anim-stroke" opacity="0.6" />
+          
+    <!-- Inner Stylized Thread Fold -->
+    <path d="M 30,35 L 55,35" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.9" />
+    <circle cx="55" cy="35" r="4" fill="#ffffff" />
+  </g>
+</svg>

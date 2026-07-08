@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <!-- Definitions for Gradients -->
+  <defs>
+    <linearGradient id="ai-gradient-icon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="50%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Standalone Ribbon Frame -->
+  <g transform="translate(10, 10)">
+    <!-- Primary Ribbon Path -->
+    <path d="M 40,10 L 70,55 C 73,60 73,66 70,70 L 60,85 C 57,90 51,90 48,85 L 15,35 C 12,30 12,24 15,20 L 25,5 C 28,0 34,0 37,5 Z" 
+          fill="url(#ai-gradient-icon)" />
+          
+    <!-- Inner Stylized Thread Fold -->
+    <path d="M 30,35 L 55,35" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.9" />
+    <circle cx="55" cy="35" r="4" fill="#ffffff" />
+  </g>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" width="100%" height="100%">
+  <!-- Definitions for Gradients -->
+  <defs>
+    <linearGradient id="ai-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5" />
+      <stop offset="50%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#db2777" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Logo Icon: Interlocking Thread / Ribbon forming 'A' and 'F' -->
+  <g transform="translate(10, 10)">
+    <!-- Primary Ribbon Path -->
+    <path d="M 40,10 L 70,55 C 73,60 73,66 70,70 L 60,85 C 57,90 51,90 48,85 L 15,35 C 12,30 12,24 15,20 L 25,5 C 28,0 34,0 37,5 Z" 
+          fill="url(#ai-gradient)" />
+          
+    <!-- Inner Stylized Thread Fold -->
+    <path d="M 30,35 L 55,35" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.9" />
+    <circle cx="55" cy="35" r="4" fill="#ffffff" />
+  </g>
+
+  <!-- Typography: "AI Fashion Studio" -->
+  <g transform="translate(110, 0)">
+    <!-- Primary text -->
+    <text x="0" y="48" font-family="'Plus Jakarta Sans', 'Inter', system-ui, sans-serif" font-size="28" font-weight="900" fill="#0f0f15" letter-spacing="-0.5">
+      AI FASHION
+    </text>
+    <!-- Secondary text -->
+    <text x="0" y="78" font-family="'Inter', system-ui, sans-serif" font-size="14" font-weight="700" fill="#4f46e5" letter-spacing="4">
+      STUDIO
+    </text>
+  </g>
+</svg>

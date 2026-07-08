@@ -7,7 +7,7 @@ from pathlib import Path
 # Add project root to sys.path
 _ROOT = Path(__file__).resolve().parent.parent.parent
 if str(_ROOT) not in sys.path:
-    sys.path.insert(0, str(_ROOT))
+    sys.path.append(str(_ROOT))
 
 from src.rag.fashion_assistant import FashionAssistant
 

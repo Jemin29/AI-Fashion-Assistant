@@ -1,5 +1,16 @@
 from __future__ import annotations
 
+import sys
+import os
+# Move current working directory to the end of sys.path to prevent 'datasets' folder shading
+cwd = os.getcwd()
+if cwd in sys.path:
+    sys.path.remove(cwd)
+    sys.path.append(cwd)
+if '' in sys.path:
+    sys.path.remove('')
+    sys.path.append('')
+
 import time
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request, status
