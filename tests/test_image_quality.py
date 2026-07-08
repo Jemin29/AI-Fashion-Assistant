@@ -92,9 +92,10 @@ def _checkerboard(size: int = 512, block: int = 4) -> PILImage.Image:
 
 def _gradient(size: int = 512) -> PILImage.Image:
     """Smooth horizontal gradient — moderate sharpness."""
+    import math
     arr = np.zeros((size, size, 3), dtype=np.uint8)
     for x in range(size):
-        arr[:, x] = int(x / size * 255)
+        arr[:, x] = int((math.cos(x / size * math.pi * 32) + 1) / 2 * 255)
     return PILImage.fromarray(arr)
 
 def _vivid(size: int = 512) -> PILImage.Image:

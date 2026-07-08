@@ -828,13 +828,13 @@ class TestModuleFunctions:
         return patch.object(evaluator, "_compute_fid", return_value=(28.4, None, None))
 
     def test_calculate_fid_returns_fid_score(self, real_imgs, gen_imgs):
-        with patch("week2.evaluation.fid_evaluator.FIDEvaluator.calculate_fid") as mock_fn:
+        with patch("src.evaluation.week2_fid_evaluator.FIDEvaluator.calculate_fid") as mock_fn:
             mock_fn.return_value = FIDScore(fid_score=28.4, quality_rating="good")
             result = calculate_fid(real_imgs, gen_imgs)
         assert isinstance(result, FIDScore)
 
     def test_compare_with_dataset_returns_comparison(self, gen_imgs):
-        with patch("week2.evaluation.fid_evaluator.FIDEvaluator.compare_with_dataset") as mock_fn:
+        with patch("src.evaluation.week2_fid_evaluator.FIDEvaluator.compare_with_dataset") as mock_fn:
             mock_fn.return_value = DatasetComparison(
                 dataset_name="ds",
                 fid_result=FIDScore(fid_score=28.4, quality_rating="good"),
@@ -843,7 +843,7 @@ class TestModuleFunctions:
         assert isinstance(result, DatasetComparison)
 
     def test_benchmark_results_returns_report(self, gen_imgs):
-        with patch("week2.evaluation.fid_evaluator.FIDEvaluator.benchmark_results") as mock_fn:
+        with patch("src.evaluation.week2_fid_evaluator.FIDEvaluator.benchmark_results") as mock_fn:
             mock_fn.return_value = BenchmarkReport()
             result = benchmark_results(runs={"r1": gen_imgs})
         assert isinstance(result, BenchmarkReport)

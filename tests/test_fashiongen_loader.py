@@ -356,7 +356,7 @@ class TestFashionGenExtractor:
         result = FashionGenExtractor._decode(b"\xff\xfe")
         assert isinstance(result, str)   # Should not raise
 
-    @patch("data_pipeline.ingestion.fashiongen_loader._H5PY_AVAILABLE", False)
+    @patch("src.data.ingestion.fashiongen_loader._H5PY_AVAILABLE", False)
     def test_stream_raises_when_h5py_missing(self, tmp_path):
         """stream() should raise RuntimeError if h5py is not installed."""
         extractor = FashionGenExtractor(tmp_path / "fake.h5")
@@ -372,8 +372,8 @@ class TestFashionGenExtractor:
         with pytest.raises(KeyError, match="missing required keys"):
             extractor._validate_hdf5_keys(fake_hdf5)
 
-    @patch("data_pipeline.ingestion.fashiongen_loader.h5py")
-    @patch("data_pipeline.ingestion.fashiongen_loader._H5PY_AVAILABLE", True)
+    @patch("src.data.ingestion.fashiongen_loader.h5py")
+    @patch("src.data.ingestion.fashiongen_loader._H5PY_AVAILABLE", True)
     def test_stream_yields_raw_records(self, mock_h5py, tmp_path, dummy_image):
         """stream() should yield (RawFashionGenRecord, None) for valid rows."""
         # Build mock HDF5 file structure
@@ -859,7 +859,7 @@ class TestFashionGenLoader:
         info = loader.get_dataset_info()
         assert info.get("available") is False
 
-    @patch("data_pipeline.ingestion.fashiongen_loader.FashionGenExtractor")
+    @patch("src.data.ingestion.fashiongen_loader.FashionGenExtractor")
     def test_run_with_mock_extractor(self, MockExtractor, tmp_path, dummy_image):
         """
         Full pipeline run with a mocked extractor that returns 5 valid records.
@@ -911,7 +911,7 @@ class TestFashionGenLoader:
         assert result["total_records"]            == 5
         assert Path(result["output_path"]).exists()
 
-    @patch("data_pipeline.ingestion.fashiongen_loader.FashionGenExtractor")
+    @patch("src.data.ingestion.fashiongen_loader.FashionGenExtractor")
     def test_run_skips_corrupted_records(self, MockExtractor, tmp_path, dummy_image, zero_image):
         """Pipeline should skip records with extraction errors, not crash."""
         raw_records = [
@@ -948,7 +948,7 @@ class TestFashionGenLoader:
         assert result["stats"]["total_corrupted"] == 1
         assert result["stats"]["total_skipped"]   == 1
 
-    @patch("data_pipeline.ingestion.fashiongen_loader.FashionGenExtractor")
+    @patch("src.data.ingestion.fashiongen_loader.FashionGenExtractor")
     def test_run_creates_output_json(self, MockExtractor, tmp_path, dummy_image):
         """After run(), fashiongen_processed.json must exist on disk."""
         raw_records = [
@@ -978,7 +978,7 @@ class TestFashionGenLoader:
         assert len(data["records"]) == 1
         assert data["records"][0]["category"] == "jackets"
 
-    @patch("data_pipeline.ingestion.fashiongen_loader.FashionGenExtractor")
+    @patch("src.data.ingestion.fashiongen_loader.FashionGenExtractor")
     def test_run_stats_accumulate_correctly(self, MockExtractor, tmp_path, dummy_image):
         """PipelineStats counters should be accurate after pipeline run."""
         # 3 valid, 1 invalid (dresses+men)

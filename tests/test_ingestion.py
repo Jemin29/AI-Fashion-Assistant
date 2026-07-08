@@ -111,7 +111,7 @@ class TestFashionGenIngester:
         with pytest.raises(FileNotFoundError):
             list(ingester.stream())
 
-    @patch("data_pipeline.ingestion.fashiongen_ingester.h5py.File")
+    @patch("src.data.ingestion.fashiongen_ingester.h5py.File")
     def test_stream_yields_correct_count(self, mock_h5, ingester):
         """stream(max_items=3) should yield exactly 3 records."""
         mock_file = self._make_mock_hdf5(n=5)
@@ -121,7 +121,7 @@ class TestFashionGenIngester:
         records = list(ingester.stream(max_items=3))
         assert len(records) == 3
 
-    @patch("data_pipeline.ingestion.fashiongen_ingester.h5py.File")
+    @patch("src.data.ingestion.fashiongen_ingester.h5py.File")
     def test_stream_record_schema(self, mock_h5, ingester):
         """Each yielded record must contain all required keys."""
         mock_file = self._make_mock_hdf5(n=2)
@@ -139,7 +139,7 @@ class TestFashionGenIngester:
                 f"Record missing keys: {required_keys - rec.keys()}"
             )
 
-    @patch("data_pipeline.ingestion.fashiongen_ingester.h5py.File")
+    @patch("src.data.ingestion.fashiongen_ingester.h5py.File")
     def test_stream_image_shape(self, mock_h5, ingester):
         """Image arrays should be 256×256×3 uint8."""
         mock_file = self._make_mock_hdf5(n=1)
@@ -152,7 +152,7 @@ class TestFashionGenIngester:
         assert img.shape == (256, 256, 3), f"Unexpected shape: {img.shape}"
         assert img.dtype == np.uint8, f"Unexpected dtype: {img.dtype}"
 
-    @patch("data_pipeline.ingestion.fashiongen_ingester.h5py.File")
+    @patch("src.data.ingestion.fashiongen_ingester.h5py.File")
     def test_stream_dataset_source(self, mock_h5, ingester):
         """dataset_source must be 'fashiongen'."""
         mock_file = self._make_mock_hdf5(n=1)

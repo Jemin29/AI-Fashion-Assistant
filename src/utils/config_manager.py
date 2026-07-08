@@ -77,6 +77,8 @@ class InferenceConfig(BaseModel):
     """Configuration for model evaluation and testing inference."""
     lora_scale: float = Field(default=0.8, ge=0.0, le=1.0)
     num_inference_steps: int = Field(default=30, ge=1)
+    base_model_id: str = Field(default="stabilityai/stable-diffusion-xl-base-1.0", description="Base SDXL model identifier.")
+    guidance_scale: float = Field(default=7.5, ge=1.0, le=20.0, description="Classifier-free guidance scale.")
 
 
 class Week4Config(BaseModel):

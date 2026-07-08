@@ -43,42 +43,25 @@ validating data quality, and generating rich embeddings-based metadata.
 
 ## 🏗 Architecture
 
-```
-Raw Datasets (HDF5 / Image Folders)
-        │
-        ▼
-┌─────────────────────┐
-│   Data Ingesters    │  ← fashiongen_ingester.py
-│   (Stream records)  │  ← deepfashion_ingester.py
-└────────┬────────────┘
-         │  FashionRecord dicts
-         ▼
-┌─────────────────────┐
-│  Image Preprocessor │  ← image_preprocessor.py
-│  resize · filter    │
-│  normalize · save   │
-└────────┬────────────┘
-         │  ProcessingResult dicts
-         ▼
-┌─────────────────────┐
-│   Data Validator    │  ← data_validator.py
-│  schema · dims      │
-│  file · text checks │
-└────────┬────────────┘
-         │  Validated records
-         ▼
-┌─────────────────────┐
-│ Metadata Generator  │  ← metadata_generator.py
-│  CLIP embeddings    │
-│  text embeddings    │
-│  Parquet / JSONL    │
-└─────────────────────┘
-         │
-         ▼
-  datasets/metadata/
-  datasets/processed/
-  outputs/chroma_db/
-```
+The AI-Powered Fashion Design Assistant uses a modular multi-tier architecture separating core generative models, data structures, and the service routing layer:
+
+1. **Next.js Landing Page**: The main public portal of the application, serving as the visual gate. It routes users dynamically to either the local/staging backend API or the interactive **Open Studio** UI, based on environment configuration (`NEXT_PUBLIC_STUDIO_URL`).
+2. **Gradio Creative Studio (Open Studio UI)**: Located in [`apps/gradio_app/app.py`](file:///c:/Users/HP/Desktop/AI%20Fashion%20Agent/fashion-ai-assistant/apps/gradio_app/app.py), this is the front-facing UI that serves as the creative design board (sketch control, LoRA style mixing, multi-stage prompts).
+3. **FastAPI Serving Backend**: Located in [`week7/backend/main.py`](file:///c:/Users/HP/Desktop/AI%20Fashion%20Agent/fashion-ai-assistant/week7/backend/main.py), it exposes production-ready REST endpoints, API routes, security middleware, and task queues.
+4. **Celery Task Queue & Redis Cache**: Coordinates long-running generative model tasks asynchronously (background jobs) to keep the REST API responsive.
+5. **ChromaDB & Vector Search Layer**: Handles multi-modal search querying (using CLIP embeddings) to support retrieval-augmented generation (RAG) and fashion design recommendations.
+6. **Core Engines (Canonical Packages)**: Located under [`src/`](file:///c:/Users/HP/Desktop/AI%20Fashion%20Agent/fashion-ai-assistant/src/), it houses the core algorithmic code:
+   - `src/generation/`: SDXL diffusion generator engine.
+   - `src/lora/`: Style registries, mixing, and parameter-efficient adapters.
+   - `src/controlnet/`: Preprocessing and conditioning models.
+   - `src/rag/`: Retrieval-augmented semantic agent.
+   - `src/recommendations/`: Collaborative recommendation logic.
+   - `src/trends/`: Trend metrics analysis.
+7. **Versioned Milestone Iterations**:
+   - `week6/services/`: Hosts the core service logic wrappers and adapter layers actively utilized by the `week7` FastAPI router.
+   - `week2/` and `week3/`: Expose utility configuration parsing schemas and sketch preprocessing hooks utilized dynamically by the `src/` modules.
+   - `week8/`: Exposes DevOps and containerization configurations (`docker-compose`, Dockerfiles).
+   - `archive/` (e.g. `archive/week4`, `archive/week5`): Legacy milestone directories that have been fully superseded by the canonical implementations in `src/` and are archived for repo cleanliness.
 
 ---
 
@@ -119,82 +102,64 @@ kaggle datasets download -d nguyngiabol/colorful-fashion-dataset-for-object-dete
 ```
 fashion-ai-assistant/
 │
-├── datasets/                         # Raw & processed dataset files
-│   ├── fashiongen/                   # FashionGen HDF5 files (gitignored)
-│   ├── deepfashion/                  # DeepFashion images + annotations
-│   ├── processed/                    # Preprocessed output images
-│   └── metadata/                     # Parquet + JSONL metadata files
+├── apps/                             # Interactive creative UI apps
+│   └── gradio_app/                   # Gradio Open Studio UI front-facing portal
+│       └── app.py                    # Main Gradio application runner
 │
-├── data_pipeline/                    # Core data engineering package
-│   ├── __init__.py                   # Package root
-│   ├── ingestion/
-│   │   ├── __init__.py               # Exports: FashionGenIngester, DeepFashionIngester
-│   │   ├── fashiongen_ingester.py    # HDF5 streaming ingester
-│   │   ├── deepfashion_ingester.py   # Image-folder ingester with annotation parsing
-│   │   └── download_fashiongen.py    # Download guide script
-│   ├── preprocessing/
-│   │   ├── __init__.py               # Exports: FashionPreprocessor
-│   │   └── image_preprocessor.py    # Resize, quality filter, normalize, save
-│   ├── validation/
-│   │   ├── __init__.py               # Exports: DataValidator
-│   │   └── data_validator.py        # Schema + statistical quality gates
-│   └── metadata_generation/
-│       ├── __init__.py               # Exports: MetadataGenerator
-│       └── metadata_generator.py    # CLIP + text embeddings + Parquet export
+├── src/                              # Core canonical package modules
+│   ├── data/                         # Data ingestion and verification pipelines
+│   │   ├── ingestion/                # Stream HDF5 and image folders ingesters
+│   │   ├── preprocessing/            # Image resizing and normalization
+│   │   ├── validation/               # Statistical and schema quality gates
+│   │   └── metadata_generation/      # Multimodal visual & text embedding extraction
+│   ├── generation/                   # Stable Diffusion XL models and generators
+│   ├── lora/                         # style registries and adapter mixing logic
+│   ├── controlnet/                   # Preprocessors and sketch conditioning systems
+│   └── rag/                          # Retrieval-Augmented Generation agent
 │
-├── configs/
-│   ├── settings.yaml                 # Master config: datasets, pipeline, compute
-│   └── logging_config.yaml          # Loguru multi-sink logging config
+├── week6/                            # Milestone service layer (actively used)
+│   └── services/                     # Business logic and adapters for fastapi/celery
 │
-├── notebooks/
-│   └── 01_dataset_exploration.py    # Week 1 EDA notebook (jupytext format)
+├── week7/                            # Active fastapi server and Celery background workers
+│   └── backend/                      # fastapi routes, dependencies, schemas, entry points
 │
-├── tests/
-│   ├── __init__.py
-│   ├── test_ingestion.py            # 9 unit tests for both ingesters
-│   ├── test_preprocessing.py        # 11 unit tests for image preprocessor
-│   └── test_validation.py           # 13 unit tests for data validator
+├── week8/                            # Deployment, DevOps and docker compose configurations
 │
-├── logs/                            # Rotating log files (gitignored)
-├── outputs/                         # Model outputs, plots, embeddings
-├── docs/                            # Extended documentation
+├── datasets/                         # Datasets storage (gitignored)
 │
-├── .env.example                     # Environment variable template
-├── .gitignore                       # Excludes datasets, credentials, builds
-├── requirements.txt                 # Full dependency list with pinned versions
-├── setup.py                         # Editable package install configuration
-└── pytest.ini                       # Pytest discovery and marker configuration
+├── landing/                          # Public landing page (Next.js & Vanilla CSS)
+│
+├── tests/                            # 2,900+ test cases covering all modules
+│
+├── archive/                          # Superseded milestone directories (week4, week5)
+│
+├── configs/                          # YAML/YAML-overridden configuration schemas
+│
+├── setup.py                          # Editable package installer metadata
+└── requirements.txt                  # Consolidated python dependency manifests
 ```
 
 ---
 
 ## 📄 File Descriptions
 
-### Core Pipeline Modules
+### Core Pipeline & Engine Modules
 
 | File | Purpose |
 |---|---|
-| [`fashiongen_ingester.py`](data_pipeline/ingestion/fashiongen_ingester.py) | Streams records from FashionGen HDF5 files. Handles byte decoding, lazy loading, and key validation. |
-| [`deepfashion_ingester.py`](data_pipeline/ingestion/deepfashion_ingester.py) | Parses all DeepFashion annotation files at init, then streams image + metadata records. |
-| [`image_preprocessor.py`](data_pipeline/preprocessing/image_preprocessor.py) | Resizes to 256×256, detects blur/low-contrast, saves JPEG, and returns ImageNet-normalized float32 tensors. |
-| [`data_validator.py`](data_pipeline/validation/data_validator.py) | Validates records against a schema: required fields, allowed categoricals, image dimensions, file existence, and description quality. |
-| [`metadata_generator.py`](data_pipeline/metadata_generation/metadata_generator.py) | Computes CLIP image embeddings and SentenceTransformer text embeddings; saves as `.npy` and exports metadata to Parquet. |
+| [`src/data/ingestion/`](src/data/ingestion/) | Ingests raw fashion metadata, handles HDF5 bytes parsing, and streams parsed design records lazily. |
+| [`src/data/preprocessing/`](src/data/preprocessing/) | Normalizes image pixel channels, handles size conversions, and quarantined corrupt records. |
+| [`src/data/validation/`](src/data/validation/) | Coordinates strict Pydantic validation checks on schema attributes. |
+| [`src/generation/`](src/generation/) | Hosts base generative Diffusion models and configures schedulers. |
+| [`src/lora/`](src/lora/) | Manages styled design blending and adapter mixing parameters. |
+| [`src/controlnet/`](src/controlnet/) | Performs outline conditioning maps generation and ControlNet model routing. |
 
 ### Configuration Files
 
 | File | Purpose |
 |---|---|
 | [`configs/settings.yaml`](configs/settings.yaml) | Master configuration: dataset paths, pipeline parameters, schema definition, logging, compute settings. |
-| [`configs/logging_config.yaml`](configs/logging_config.yaml) | Loguru sink definitions: colorized console + rotating file logs + error-only file. |
 | [`.env.example`](.env.example) | Template for all environment variables: API keys, dataset paths, model names, device settings. |
-
-### Test Files
-
-| File | Coverage |
-|---|---|
-| [`tests/test_ingestion.py`](tests/test_ingestion.py) | FashionGen byte decoding, record schema, HDF5 structure validation; DeepFashion annotation loading. |
-| [`tests/test_preprocessing.py`](tests/test_preprocessing.py) | Success/failure paths, output shapes, MD5 determinism, normalization layout (CHW), config dataclass. |
-| [`tests/test_validation.py`](tests/test_validation.py) | Required fields, categorical values, dimensions, file checks, description length, batch aggregation. |
 
 ---
 

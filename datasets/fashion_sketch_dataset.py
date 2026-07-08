@@ -20,11 +20,15 @@ from torch.utils.data import Dataset
 from torchvision.transforms import functional as F
 
 try:
-    from week3.preprocessors.sketch_processor import SketchProcessor
+    from src.controlnet.preprocessors.sketch_processor import SketchProcessor
     _HAS_SKETCH_PROCESSOR = True
 except ImportError:
-    SketchProcessor = None
-    _HAS_SKETCH_PROCESSOR = False
+    try:
+        from week3.preprocessors.sketch_processor import SketchProcessor
+        _HAS_SKETCH_PROCESSOR = True
+    except ImportError:
+        SketchProcessor = None
+        _HAS_SKETCH_PROCESSOR = False
 
 
 class FashionSketchDataset(Dataset):

@@ -337,7 +337,7 @@ class TestMain:
                 "--size", "square_512",
                 "--output-dir", str(tmp_path),
             ]),
-            patch("week2.generate.FashionSDXLGenerator") as MockGen,
+            patch("src.generation.generate.FashionSDXLGenerator") as MockGen,
         ):
             instance = MockGen.return_value
             instance.load_model.return_value = None
@@ -359,7 +359,7 @@ class TestMain:
                 "--device", "cpu",
                 "--output-dir", str(tmp_path),
             ]),
-            patch("week2.generate.FashionSDXLGenerator") as MockGen,
+            patch("src.generation.generate.FashionSDXLGenerator") as MockGen,
         ):
             instance = MockGen.return_value
             instance.load_model.side_effect = RuntimeError("model not found")
