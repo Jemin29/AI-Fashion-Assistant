@@ -40,10 +40,10 @@ class TrendService:
 
         if not mock_mode:
             try:
-                from src.trends.trend_forecaster import TrendForecaster
-                from src.trends.trend_analyzer import TrendAnalyzer
-                self._forecaster = TrendForecaster()
-                self._analyzer = TrendAnalyzer()
+                from src.rag.fashion_assistant import FashionAssistant
+                self._assistant = FashionAssistant(force_mock_embeddings=False)
+                self._forecaster = self._assistant.trend_forecaster
+                self._analyzer = self._assistant.rag_coordinator.trend_analyzer
                 logger.info("TrendService initialized with real forecaster")
             except Exception as exc:
                 logger.warning(f"TrendService: real mode failed — {exc}")
@@ -102,7 +102,7 @@ class TrendService:
         """Forecast top trends for a given season."""
         try:
             if not self.mock_mode and self._forecaster:
-                res = self._forecaster.forecast(season)
+                res = self._forecaster.forecast_trends(current_season=season)
                 return ServiceResult(success=True, data=res)
         except Exception as exc:
             logger.error(f"TrendService.forecast_season error: {exc}")

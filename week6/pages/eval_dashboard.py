@@ -179,6 +179,126 @@ def build_eval_dashboard_page(eval_service: Any) -> None:
     gr.Markdown("### 📋 Test Case Details")
     cases_table_md = gr.Markdown(_build_cases_table(cases_data))
 
+    # ── Controlled vs Uncontrolled Comparison Section ───────────────────────────
+    import os
+    import json
+    from pathlib import Path
+
+    _COMP_DIR = Path(__file__).resolve().parent.parent / "outputs" / "comparison"
+    _MANIFEST_PATH = _COMP_DIR / "comparison_manifest.json"
+
+    def load_comparison_data() -> List[Dict[str, Any]]:
+        if _MANIFEST_PATH.exists():
+            try:
+                with open(_MANIFEST_PATH, "r", encoding="utf-8") as f:
+                    return json.load(f)
+            except Exception as e:
+                logger.error("Error reading comparison manifest: {}", e)
+        return []
+
+    comparison_list = load_comparison_data()
+
+    if comparison_list:
+        gr.Markdown("### 🔍 Controlled vs. Uncontrolled Design Comparison")
+        gr.Markdown(
+            "Select a fashion prompt example below to see a side-by-side visual and quantitative structure preservation comparison.",
+            elem_classes="studio-subtitle",
+        )
+
+        choices = [f"Example {c['id']}: {c['prompt']}" for c in comparison_list]
+
+        with gr.Row():
+            selector = gr.Dropdown(
+                choices=choices,
+                value=choices[0] if choices else None,
+                label="Select Fashion Prompt Example",
+                interactive=True
+            )
+
+        with gr.Row():
+            sketch_view = gr.Image(label="Input Sketch Structure Map", type="filepath", interactive=False)
+            uncontrolled_view = gr.Image(label="Uncontrolled (Pure Text Prompt)", type="filepath", interactive=False)
+            controlled_view = gr.Image(label="Controlled (ControlNet Canny Edge)", type="filepath", interactive=False)
+
+        metrics_table = gr.HTML(label="Fidelity Metrics")
+
+        def update_comparison(selection: str):
+            if not selection:
+                return None, None, None, "<p>No selection</p>"
+            try:
+                ex_id = int(selection.split(":")[0].replace("Example ", "").strip())
+            except Exception:
+                return None, None, None, "<p>Error parsing selection</p>"
+
+            ex_data = next((c for c in comparison_list if c["id"] == ex_id), None)
+            if not ex_data:
+                return None, None, None, "<p>Example not found</p>"
+
+            sketch_abs = str(_COMP_DIR / f"example_{ex_id}_sketch.png")
+            unc_abs = str(_COMP_DIR / f"example_{ex_id}_uncontrolled.png")
+            con_abs = str(_COMP_DIR / f"example_{ex_id}_controlled.png")
+
+            std_m = ex_data["metrics"]["standard"]
+            cnet_m = ex_data["metrics"]["controlnet"]
+            imp = ex_data["improvements"]
+
+            table_html = f"""
+            <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 1.2rem; margin-top: 1rem; width: 100%;">
+                <h4 style="color: #fff; margin-top: 0; margin-bottom: 0.8rem; font-weight: 500;">Fidelity & Structure Adherence Metrics</h4>
+                <table style="width: 100%; border-collapse: collapse; text-align: left; color: #d0d0d8; font-size: 0.9rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1); color: #fff;">
+                            <th style="padding: 0.5rem 0.5rem 0.5rem 0;">Metric</th>
+                            <th style="padding: 0.5rem;">Unconditioned (Standard)</th>
+                            <th style="padding: 0.5rem;">Conditioned (ControlNet)</th>
+                            <th style="padding: 0.5rem;">Improvement (Advantage)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+                            <td style="padding: 0.5rem 0.5rem 0.5rem 0; font-weight: bold; color: #fff;">SSIM</td>
+                            <td style="padding: 0.5rem;">{std_m['ssim']:.4f}</td>
+                            <td style="padding: 0.5rem; color: #2ecc71; font-weight: 600;">{cnet_m['ssim']:.4f}</td>
+                            <td style="padding: 0.5rem; color: #2ecc71;">+{imp['ssim']:.4f}</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+                            <td style="padding: 0.5rem 0.5rem 0.5rem 0; font-weight: bold; color: #fff;">Edge Preservation</td>
+                            <td style="padding: 0.5rem;">{std_m['edge_preservation']:.4f}</td>
+                            <td style="padding: 0.5rem; color: #2ecc71; font-weight: 600;">{cnet_m['edge_preservation']:.4f}</td>
+                            <td style="padding: 0.5rem; color: #2ecc71;">+{imp['edge_preservation']:.4f}</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+                            <td style="padding: 0.5rem 0.5rem 0.5rem 0; font-weight: bold; color: #fff;">Layout Consistency</td>
+                            <td style="padding: 0.5rem;">{std_m['layout_consistency']:.4f}</td>
+                            <td style="padding: 0.5rem; color: #2ecc71; font-weight: 600;">{cnet_m['layout_consistency']:.4f}</td>
+                            <td style="padding: 0.5rem; color: #2ecc71;">+{imp['layout_consistency']:.4f}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.5rem 0.5rem 0.5rem 0; font-weight: bold; color: #fff;">Shape Preservation</td>
+                            <td style="padding: 0.5rem;">{std_m['shape_preservation']:.4f}</td>
+                            <td style="padding: 0.5rem; color: #2ecc71; font-weight: 600;">{cnet_m['shape_preservation']:.4f}</td>
+                            <td style="padding: 0.5rem; color: #2ecc71;">+{imp['shape_preservation']:.4f}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            """
+            return sketch_abs, unc_abs, con_abs, table_html
+
+        # Bind events
+        selector.change(
+            update_comparison,
+            inputs=[selector],
+            outputs=[sketch_view, uncontrolled_view, controlled_view, metrics_table]
+        )
+        
+        # Initialize first sample state on load
+        initial_sketch, initial_unc, initial_con, initial_table = update_comparison(choices[0])
+        sketch_view.value = initial_sketch
+        uncontrolled_view.value = initial_unc
+        controlled_view.value = initial_con
+        metrics_table.value = initial_table
+
     gr.Markdown("### 🔍 Full JSON Report")
     with gr.Accordion("Raw Report Output", open=False):
         raw_json = gr.JSON(last_eval)
@@ -187,7 +307,6 @@ def build_eval_dashboard_page(eval_service: Any) -> None:
 
     @safe_callback(5, fallback_values=["_Evaluation failed._", "<p>No data.</p>", "<p>No chart.</p>", "_No cases._", {}])
     def trigger_evaluation():
-        # Run new evaluation
         res = eval_service.run_evaluation()
         if not res.success:
             raise gr.Error(res.message)
@@ -207,3 +326,4 @@ def build_eval_dashboard_page(eval_service: Any) -> None:
         inputs=[],
         outputs=[timestamp_label, metrics_cards_html, metrics_chart_html, cases_table_md, raw_json]
     )
+

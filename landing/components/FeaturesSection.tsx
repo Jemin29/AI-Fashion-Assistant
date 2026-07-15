@@ -98,7 +98,7 @@ const cardVariants = {
 
 export default function FeaturesSection() {
   return (
-    <section id="features" className="py-32 relative overflow-hidden scroll-mt-20">
+    <section id="features" className="py-32 relative overflow-hidden scroll-mt-24">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-[hsl(225,25%,6%)] via-[hsl(225,22%,8%)] to-[hsl(225,25%,6%)]" />
 
@@ -110,14 +110,14 @@ export default function FeaturesSection() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold text-indigo-300 border border-indigo-500/30 bg-indigo-500/10 mb-4">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-widest text-indigo-300 border border-indigo-500/30 bg-indigo-500/10 mb-5">
             CAPABILITIES
           </span>
-          <h2 className="text-5xl md:text-6xl font-black text-white mb-6">
+          <h2 className="text-5xl md:text-6xl font-black text-white mb-6 tracking-tight leading-tight">
             Every tool a fashion{" "}
             <span className="gradient-text">designer needs</span>
           </h2>
-          <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto">
             Eight integrated AI pipelines working in harmony — from imagination to finished editorial look.
           </p>
         </motion.div>
@@ -135,7 +135,7 @@ export default function FeaturesSection() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 whileHover={{ y: -6 }}
-                className={`group relative glass rounded-2xl p-6 border border-white/5 transition-all duration-300 cursor-pointer flex flex-col h-full ${feature.glow} ${feature.border}`}
+                className={`group relative glass rounded-2xl p-7 border border-white/5 transition-all duration-300 cursor-pointer flex flex-col h-full ${feature.glow} ${feature.border}`}
               >
                 {/* Badge */}
                 <span className="absolute top-4 right-4 text-[10px] font-bold text-slate-500 bg-white/5 px-2 py-0.5 rounded-full">
@@ -147,10 +147,10 @@ export default function FeaturesSection() {
                   <Icon className="w-5 h-5 text-white" />
                 </div>
 
-                <h3 className="text-lg font-bold text-white mb-2 leading-tight">
+                <h3 className="text-base font-bold text-white mb-2 leading-tight tracking-tight">
                   {feature.title}
                 </h3>
-                <p className="text-sm text-slate-400 leading-relaxed flex-grow">
+                <p className="text-[0.9rem] text-slate-400 leading-relaxed flex-grow">
                   {feature.description}
                 </p>
 

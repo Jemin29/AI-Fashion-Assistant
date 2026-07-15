@@ -35,6 +35,7 @@ from week6.pages import (
     build_recommendations_page,
     build_gallery_page,
     build_eval_dashboard_page,
+    build_wardrobe_gen_page,
 )
 
 # Services
@@ -91,16 +92,25 @@ def create_app() -> gr.Blocks:
     if css_path.exists():
         try:
             css_content = css_path.read_text(encoding="utf-8")
+            assets_abs = Path(cfg.paths.assets_dir).resolve().as_posix()
+            gradio_major = int(gr.__version__.split(".")[0])
+            file_prefix = "/gradio_api/file=" if gradio_major >= 6 else "/file="
+            css_content = css_content.replace("__ASSETS_DIR__", f"{file_prefix}{assets_abs}")
             logger.info("Custom global CSS stylesheet loaded successfully")
         except Exception as e:
             logger.error(f"Failed to read studio.css: {e}")
+            if not global_mock:
+                raise RuntimeError(f"Failed to read custom CSS stylesheet at {css_path}: {e}") from e
     else:
-        logger.warning(f"Custom CSS stylesheet not found at: {css_path}")
+        msg = f"Custom CSS stylesheet not found at: {css_path}"
+        logger.warning(msg)
+        if not global_mock:
+            raise FileNotFoundError(msg)
 
     # 5. Build gr.Blocks layout
     theme = FashionTheme()
     
-    with gr.Blocks(theme=theme, css=css_content, title=cfg.name) as app:
+    with gr.Blocks(title=cfg.name) as app:
         # Header hero component
         build_header()
 
@@ -134,6 +144,10 @@ def create_app() -> gr.Blocks:
                 with gr.TabItem("👗 Recommend Hub", id="recommend_hub"):
                     build_recommendations_page(rec_service, trend_service)
             
+            if getattr(cfg.features, "wardrobe_gen", True):
+                with gr.TabItem("👚 Wardrobe Generator", id="wardrobe_gen"):
+                    build_wardrobe_gen_page(rec_service, gen_service)
+            
             with gr.TabItem("🖼️ Gallery", id="gallery"):
                 build_gallery_page()
             
@@ -143,5 +157,22 @@ def create_app() -> gr.Blocks:
 
         # Footer Status Bar
         build_status_bar(mock_mode=global_mock)
+
+    original_launch = app.launch
+    def custom_launch(*args, **kwargs):
+        kwargs.setdefault("theme", theme)
+        kwargs.setdefault("css", css_content)
+        
+        allowed = list(kwargs.get("allowed_paths", []))
+        assets_dir_str = str(Path(cfg.paths.assets_dir).resolve())
+        if assets_dir_str not in allowed:
+            allowed.append(assets_dir_str)
+        kwargs["allowed_paths"] = allowed
+        
+        return original_launch(*args, **kwargs)
+    app.launch = custom_launch
+    
+    app.theme = theme
+    app.css = css_content
 
     return app

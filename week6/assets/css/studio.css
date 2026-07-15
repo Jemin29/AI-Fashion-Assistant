@@ -1,3 +1,100 @@
+/* Local Font Self-Hosting Rules */
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url("__ASSETS_DIR__/fonts/inter_300_normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("__ASSETS_DIR__/fonts/inter_400_normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url("__ASSETS_DIR__/fonts/inter_500_normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("__ASSETS_DIR__/fonts/inter_600_normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("__ASSETS_DIR__/fonts/jetbrains_mono_400_normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url("__ASSETS_DIR__/fonts/jetbrains_mono_500_normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url("__ASSETS_DIR__/fonts/outfit_300_normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("__ASSETS_DIR__/fonts/outfit_400_normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url("__ASSETS_DIR__/fonts/outfit_500_normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("__ASSETS_DIR__/fonts/outfit_600_normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("__ASSETS_DIR__/fonts/outfit_700_normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+    src: url("__ASSETS_DIR__/fonts/outfit_800_normal.woff2") format("woff2");
+}
+
 /* studio.css - Premium Glassmorphic Fashion Studio Styling */
 
 /* Hero Banner */

@@ -176,10 +176,15 @@ class LoRAService(BaseService):
             try:
                 from src.lora.inference.lora_inference import LoRAInference
                 from src.lora.style_manager.style_mixer import StyleMixer
-                self._inference = LoRAInference()
-                self._mixer     = StyleMixer()
+                import torch
+                dry_run = not torch.cuda.is_available()
+                self._inference = LoRAInference(dry_run=dry_run)
+                self._mixer     = StyleMixer(
+                    registry=self._inference.registry,
+                    inference_pipeline=self._inference.pipeline
+                )
                 self.mock_mode  = False
-                logger.info("LoRAService: real inference engine loaded")
+                logger.info(f"LoRAService: real inference engine loaded | dry_run={dry_run}")
             except Exception as exc:
                 logger.warning("LoRAService: real engine unavailable — %s", exc)
                 self.mock_mode = True
@@ -223,6 +228,19 @@ class LoRAService(BaseService):
         except ValidationError as e:
             self._error_count += 1
             return ServiceResult.validation_fail("prompt", e.reason)
+
+        # ── Prompt token style switching ──────────────────────────────────────
+        import re
+        pattern = r"<(nike|gucci|zara|h&m|hm)>"
+        match = re.search(pattern, prompt, re.IGNORECASE)
+        if match:
+            token = match.group(0)
+            token_brand = match.group(1).lower()
+            if token_brand in ("hm", "h&m"):
+                token_brand = "hm"
+            brand = token_brand
+            prompt = prompt.replace(token, "").strip()
+            prompt = re.sub(r"\s+", " ", prompt)
 
         brand = brand.lower().strip()
         if brand not in BRAND_REGISTRY:

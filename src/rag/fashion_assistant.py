@@ -115,6 +115,22 @@ class FashionAssistant:
         """Seed the ChromaDB database collections with knowledge base & trend items."""
         logger.info("Synchronizing ChromaDB collections with JSON databases...")
 
+        def _sanitize_metadata(meta: Dict[str, Any]) -> Dict[str, Any]:
+            import json
+            sanitized = {}
+            for k, v in meta.items():
+                if isinstance(v, (list, tuple)):
+                    sanitized[k] = ", ".join(str(x) for x in v)
+                elif isinstance(v, dict):
+                    sanitized[k] = json.dumps(v)
+                elif isinstance(v, (str, int, float, bool)):
+                    sanitized[k] = v
+                elif v is None:
+                    sanitized[k] = ""
+                else:
+                    sanitized[k] = str(v)
+            return sanitized
+
         # Seed Styles
         styles = self.rag_coordinator.kb.list_items(category="fashion_styles")
         if styles:
@@ -122,12 +138,12 @@ class FashionAssistant:
                 collection_name="fashion_styles",
                 ids=[item.id for item in styles],
                 documents=[item.content for item in styles],
-                metadatas=[{
+                metadatas=[_sanitize_metadata({
                     "name": item.name,
                     "category": item.category,
                     "tags": ", ".join(item.tags),
                     **item.metadata
-                } for item in styles]
+                }) for item in styles]
             )
 
         # Seed Brands
@@ -137,12 +153,12 @@ class FashionAssistant:
                 collection_name="brand_knowledge",
                 ids=[item.id for item in brands],
                 documents=[item.content for item in brands],
-                metadatas=[{
+                metadatas=[_sanitize_metadata({
                     "brand": item.name,
                     "category": item.category,
                     "tags": ", ".join(item.tags),
                     **item.metadata
-                } for item in brands]
+                }) for item in brands]
             )
 
         # Seed Trends
@@ -152,13 +168,13 @@ class FashionAssistant:
                 collection_name="trends",
                 ids=[item.id for item in trends],
                 documents=[item.description for item in trends],
-                metadatas=[{
+                metadatas=[_sanitize_metadata({
                     "name": item.name,
                     "category": item.category,
                     "popularity_score": item.popularity_score,
                     "growth_rate": item.growth_rate,
                     **item.metadata
-                } for item in trends]
+                }) for item in trends]
             )
         logger.info("ChromaDB collections synchronized successfully.")
 

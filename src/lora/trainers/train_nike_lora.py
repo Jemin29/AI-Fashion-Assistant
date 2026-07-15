@@ -71,7 +71,13 @@ def run_nike_training(
     # 2. Automated Preprocessing & Mock Ingestion
     # If in dry-run or testing mode and no dataset exists, populate mock raw files
     raw_nike_dir = ds_root / "raw_nike"
-    if not ds_root.joinpath("nike_manifest.json").exists() and dry_run:
+    has_real_files = False
+    if raw_nike_dir.exists():
+        real_files = [p for p in raw_nike_dir.glob("*") if p.suffix.lower() in {".png", ".jpg", ".jpeg", ".webp"}]
+        if len(real_files) >= 30:
+            has_real_files = True
+
+    if not ds_root.joinpath("nike_manifest.json").exists() and dry_run and not has_real_files:
         logger.info(f"Populating mock raw Nike dataset for automated preprocessing at: {raw_nike_dir}")
         raw_nike_dir.mkdir(parents=True, exist_ok=True)
         for i in range(3):
@@ -101,7 +107,8 @@ def run_nike_training(
                         logger.warning(f"Skipping ingestion for raw file {img_file.name}: {err}")
 
     # 3. Setup Custom Configurations
-    cfg = get_default_config()
+    from src.utils.config_manager import Week4Config
+    cfg = Week4Config()
     cfg.trainer.num_epochs = epochs
     cfg.trainer.batch_size = batch_size
     cfg.trainer.learning_rate = learning_rate

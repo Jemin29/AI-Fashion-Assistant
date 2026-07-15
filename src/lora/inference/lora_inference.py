@@ -128,7 +128,13 @@ class LoraInferenceSystem:
         prompt: str,
         brand: str,
         scale: float = 1.0,
-        seed: Optional[int] = None
+        seed: Optional[int] = None,
+        *,
+        lora_scale: Optional[float] = None,
+        num_inference_steps: Optional[int] = None,
+        guidance_scale: Optional[float] = None,
+        negative_prompt: str = "",
+        **kwargs: Any
     ) -> Dict[str, Any]:
         """
         Switch style, preprocess prompts, generate image, and serialize sidecar metadata.
@@ -143,18 +149,22 @@ class LoraInferenceSystem:
             LoRA adapter weight scale (0.0 to 2.0).
         seed : int, optional
             Deterministic seed.
-
-        Returns
-        -------
-        dict
-            Inference status detailing outputs and prompt conditions.
         """
-        brand_key = brand.lower().strip()
         if self.pipeline is None:
             self.load_pipeline()
 
+        # Check for prompt-token-based style switching
+        cleaned_prompt, token_brand = self.switcher.parse_style_tokens(prompt)
+        if token_brand:
+            brand_key = token_brand
+            prompt = cleaned_prompt
+        else:
+            brand_key = brand.lower().strip()
+
+        active_scale = lora_scale if lora_scale is not None else scale
+
         # 1. Trigger style switcher weights loading & prompt updates
-        self.switcher.switch_style(brand_key, scale=scale)
+        self.switcher.switch_style(brand_key, scale=active_scale)
         enriched_prompt = self.switcher.preprocess_prompt(prompt, brand_key)
 
         timestamp = int(time.time())
@@ -167,19 +177,27 @@ class LoraInferenceSystem:
         if self.dry_run:
             logger.info("Simulating style inference design generation...")
             # Use switcher dry_run drawer
-            res = self.switcher.generate_styled_design(prompt, brand_key, scale=scale, dry_run=True)
+            res = self.switcher.generate_styled_design(prompt, brand_key, scale=active_scale, dry_run=True)
             shutil_src = Path(res["image_path"])
             if shutil_src.exists():
-                shutil_src.replace(image_path)
+                image_path.parent.mkdir(parents=True, exist_ok=True)
+                import shutil
+                shutil.copy2(shutil_src, image_path)
+            img = Image.open(image_path)
         else:
             logger.info("Running real SDXL pipeline style generation...")
             import torch
             generator = torch.Generator(device=self.device).manual_seed(seed) if seed is not None else None
+            
+            steps = num_inference_steps if num_inference_steps is not None else getattr(self.config.inference, "num_inference_steps", 30)
+            guidance = guidance_scale if guidance_scale is not None else getattr(self.config.inference, "guidance_scale", 7.5)
+            
             out = self.pipeline(
                 prompt=enriched_prompt,
+                negative_prompt=negative_prompt,
                 generator=generator,
-                num_inference_steps=self.config.inference.num_inference_steps,
-                guidance_scale=self.config.inference.guidance_scale
+                num_inference_steps=steps,
+                guidance_scale=guidance
             )
             img = out.images[0]
             img.save(image_path)
@@ -189,7 +207,7 @@ class LoraInferenceSystem:
             "prompt": prompt,
             "enriched_prompt": enriched_prompt,
             "brand": brand_key,
-            "scale": scale,
+            "scale": active_scale,
             "seed": seed,
             "device": self.device,
             "timestamp": timestamp,
@@ -205,10 +223,11 @@ class LoraInferenceSystem:
             "success": True,
             "prompt": enriched_prompt,
             "brand": brand_key,
-            "scale": scale,
+            "scale": active_scale,
             "image_path": str(image_path.as_posix()),
             "metadata_path": str(metadata_path.as_posix()),
-            "dry_run": self.dry_run
+            "dry_run": self.dry_run,
+            "image": img
         }
 
     def generate_batch(
@@ -262,3 +281,8 @@ class LoraInferenceSystem:
 
         logger.success(f"Batch generation completed | processed_count={len(results)}")
         return results
+
+
+# Alias for backward compatibility with week6 services
+LoRAInference = LoraInferenceSystem
+

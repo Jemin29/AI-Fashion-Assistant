@@ -33,7 +33,7 @@ Low-Rank Adaptation (LoRA) was selected to implement brand personalization due t
 We implemented a robust preprocessing and Caption Generation Pipeline using sibling `.txt` prompt files. 
 
 ### Brand Dataset Strategy
-* **Nike Dataset:** Ingests sportswear, athletic fits, and performance fabric contours.
+* **Nike Dataset:** Curated a real image set of 40 activewear, sportswear, hoodies, and athletic tees (resized to 512x512 to pass image validation metrics) placed under [archive/week4/datasets/nike/raw/](file:///c:/Users/HP/Desktop/AI%20Fashion%20Agent/fashion-ai-assistant/archive/week4/datasets/nike/raw/) and synced to [outputs/datasets/raw_nike/](file:///c:/Users/HP/Desktop/AI%20Fashion%20Agent/fashion-ai-assistant/outputs/datasets/raw_nike/). The trainer's ingestion script `train_nike_lora.py` has been updated to check for these files and bypasses the mock dataset generator fallback.
 * **Gucci Dataset:** Focuses on haute-couture gowns, luxurious textures, gold accents, and avant-garde designs.
 * **Zara Dataset:** Ingests contemporary, casual silhouettes in neutral, beige, and cream colors.
 * **H&M Dataset:** Incorporates minimalist basic apparel in organic colors and essential textures.

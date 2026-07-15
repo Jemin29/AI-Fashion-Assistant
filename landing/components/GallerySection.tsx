@@ -23,7 +23,7 @@ export default function GallerySection() {
     : GALLERY_ITEMS.filter((i) => i.style === activeFilter);
 
   return (
-    <section id="gallery" className="py-32 relative overflow-hidden scroll-mt-20">
+    <section id="gallery" className="py-32 relative overflow-hidden scroll-mt-24">
       <div className="absolute inset-0 bg-gradient-to-b from-[hsl(225,25%,6%)] via-[hsl(225,20%,8%)] to-[hsl(225,25%,6%)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
@@ -50,7 +50,7 @@ export default function GallerySection() {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex items-center gap-3 mb-10 flex-wrap"
+          className="flex items-center gap-3 mb-10 flex-wrap justify-center sm:justify-start"
         >
           <Filter className="w-4 h-4 text-slate-500" />
           {FILTERS.map((f) => (
@@ -69,7 +69,7 @@ export default function GallerySection() {
         </motion.div>
 
         {/* Gallery grid */}
-        <motion.div layout className="grid grid-cols-2 md:grid-cols-3 gap-6">
+        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
           <AnimatePresence>
             {filtered.map((item, i) => (
               <motion.div

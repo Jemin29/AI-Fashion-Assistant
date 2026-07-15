@@ -99,4 +99,4 @@ test_rag.log
 comparison_report.json
 *.log
 .cache/
-
+weights/

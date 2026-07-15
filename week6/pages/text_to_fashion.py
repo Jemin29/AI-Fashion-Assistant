@@ -154,7 +154,7 @@ def build_text_to_fashion_page(gen_service: Any) -> None:
             )
             if not result.success:
                 raise gr.Error(result.message)
-            img = result.data
+            img = result.data.get("image") if result.data else None
             meta = result.metadata
             if img is not None:
                 images.append(img)

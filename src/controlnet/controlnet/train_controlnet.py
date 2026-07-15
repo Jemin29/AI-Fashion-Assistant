@@ -71,28 +71,29 @@ def main() -> int:
         logger.warning(f"Could not load CentralizedConfig: {err}. Proceeding with default arguments.")
         cfg = None
         
-    # Check if manifest exists unless dry_run is set
+    # Check if manifest exists unless dry_run is set or design_dir is provided
     manifest = Path(args.manifest_path)
-    if not manifest.exists() and not args.dry_run:
+    if not manifest.exists() and not args.dry_run and not args.design_dir:
         logger.error(f"Manifest file not found at: {manifest}. Check path or run with --dry-run for testing.")
         return 1
         
     # Load training and validation datasets
-    if args.dry_run:
+    if args.dry_run and not args.design_dir:
         logger.info("Using DummyDatasets for dry-run training mode.")
         train_ds = DummyDataset(size=10)
         val_ds = DummyDataset(size=4)
     else:
         try:
             logger.info("Loading training and validation datasets...")
+            manifest_val = None if args.manifest_path in ("None", "") or not Path(args.manifest_path).exists() else args.manifest_path
             train_ds = FashionSketchDataset(
-                manifest_path=args.manifest_path,
+                manifest_path=manifest_val,
                 design_dir=args.design_dir,
                 split="train",
                 augment=True
             )
             val_ds = FashionSketchDataset(
-                manifest_path=args.manifest_path,
+                manifest_path=manifest_val,
                 design_dir=args.design_dir,
                 split="val",
                 augment=False
@@ -100,6 +101,7 @@ def main() -> int:
         except Exception as err:
             logger.exception(f"Dataset loading failed: {err}")
             return 2
+
 
     # Initialize trainer
     try:

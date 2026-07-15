@@ -294,3 +294,33 @@ class StyleMixer:
                     "weights": normalized_weights,
                     "dry_run": False
                 }
+
+    def mix(
+        self,
+        prompt: str,
+        brand_weights: Dict[str, float],
+        seed: Optional[int] = None,
+        num_inference_steps: Optional[int] = None,
+        guidance_scale: Optional[float] = None,
+        **kwargs: Any
+    ) -> Dict[str, Any]:
+        """
+        Service-compatible style mixing method.
+        """
+        dry_run = True
+        if self.inference_pipeline is not None:
+            class_name = self.inference_pipeline.__class__.__name__
+            if "Mock" not in class_name:
+                dry_run = False
+
+        res = self.generate_mixed_design(prompt, brand_weights, dry_run=dry_run)
+
+        # Ensure a PIL Image is returned in the result dictionary
+        if res.get("success") and "image_path" in res:
+            try:
+                res["image"] = Image.open(res["image_path"])
+            except Exception as exc:
+                logger.warning(f"StyleMixer.mix failed to load generated image: {exc}")
+
+        return res
+

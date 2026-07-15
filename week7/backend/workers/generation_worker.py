@@ -30,8 +30,8 @@ def generate_image_task(
             cfg=cfg,
             resolution=resolution
         )
-        tracker.complete_task(task_id, res)
-        return res
+        tracker.complete_task(task_id, res.data)
+        return res.data
     except Exception as exc:
         from week7.backend.logging_config import log_celery_failure
         log_celery_failure("tasks.generate_image_task", task_id, str(exc))

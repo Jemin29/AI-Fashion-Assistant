@@ -334,6 +334,10 @@ class KohyaPipeline:
             try:
                 result = subprocess.run(cmd, check=True, capture_output=True, text=True)
                 logger.success(f"Kohya_SS training subprocess completed successfully.")
+                if not output_model_file.exists():
+                    raise FileNotFoundError(
+                        f"Kohya_SS training completed but expected output weights file is missing: {output_model_file}"
+                    )
                 return {
                     "success": True,
                     "command": cmd,
@@ -342,13 +346,8 @@ class KohyaPipeline:
                     "stderr": result.stderr,
                     "dry_run": False
                 }
-            except subprocess.CalledProcessError as err:
-                logger.error(f"Kohya_SS training subprocess failed: {err.stderr}")
-                return {
-                    "success": False,
-                    "command": cmd,
-                    "error": str(err),
-                    "stdout": err.stdout,
-                    "stderr": err.stderr,
-                    "dry_run": False
-                }
+            except (subprocess.CalledProcessError, FileNotFoundError, Exception) as err:
+                logger.error(f"Kohya_SS training subprocess failed: {err}")
+                raise RuntimeError(
+                    f"Real Kohya training run requested but execution failed: {err}"
+                ) from err

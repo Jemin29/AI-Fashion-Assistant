@@ -243,7 +243,124 @@ class FashionControlNetEngine:
             gc.collect()
             logger.debug("Diffusion pipeline memory reclaimed.")
 
+    # ── Public APIs: Unified Entry Points ───────────────────────────────────────
+
+    def generate(
+        self,
+        prompt: str,
+        control_image: Image.Image,
+        mode: str = "canny",
+        conditioning_scale: Optional[float] = None,
+        seed: int = -1,
+        num_inference_steps: int = 30,
+        guidance_scale: float = 7.5,
+        negative_prompt: str = "",
+        **kwargs
+    ) -> Dict[str, Any]:
+        """
+        Unified entrypoint to generate conditioned image.
+        Maps modes: canny, sketch, pose, depth, normal, lineart to underlying ControlNets.
+        """
+        mapped_mode = mode.lower().strip()
+        if mapped_mode == "lineart":
+            mapped_mode = "sketch"
+        elif mapped_mode == "normal":
+            mapped_mode = "depth"
+        elif mapped_mode not in self.MODEL_MAPPINGS:
+            logger.warning("Unsupported mode '{}' in engine. Defaulting to 'canny'.", mode)
+            mapped_mode = "canny"
+
+        logger.info("Unified generate called | mode: {} (mapped: {}) | scale: {}", mode, mapped_mode, conditioning_scale)
+
+        output = self._generate(
+            prompt=prompt,
+            control_image=control_image,
+            control_type=mapped_mode,
+            negative_prompt=negative_prompt,
+            conditioning_scale=conditioning_scale,
+            seed=seed,
+            num_inference_steps=num_inference_steps,
+            guidance_scale=guidance_scale,
+            **kwargs
+        )
+
+        if output.success and output.images:
+            return {
+                "image": output.images[0],
+                "success": True,
+                "output": output,
+                "metadata": output.metadata
+            }
+        else:
+            err_msg = output.error or "Generation failed"
+            logger.error("Generation failed: {}", err_msg)
+            raise RuntimeError(err_msg)
+
+    def preprocess(
+        self,
+        image: Image.Image,
+        mode: str = "canny"
+    ) -> Image.Image:
+        """
+        Preprocess control image for the target ControlNet mode.
+        If mock mode is active, uses fast fallbacks. Otherwise attempts real models.
+        """
+        mode = mode.lower().strip()
+        logger.info("Preprocessing image via engine | mode: {} | mock: {}", mode, self.mock)
+
+        if self.mock:
+            return self._pil_preprocess(image, mode)
+
+        try:
+            if mode == "canny":
+                import cv2
+                import numpy as np
+                gray = np.array(image.convert("L"))
+                edges = cv2.Canny(gray, 100, 200)
+                return Image.fromarray(edges).convert("RGB")
+            elif mode == "sketch":
+                from controlnet_aux import HEDdetector
+                hed = HEDdetector.from_pretrained("lllyasviel/Annotators")
+                return hed(image).convert("RGB")
+            elif mode == "lineart":
+                from controlnet_aux import LineartDetector
+                lineart = LineartDetector.from_pretrained("lllyasviel/Annotators")
+                return lineart(image).convert("RGB")
+            elif mode == "pose":
+                from controlnet_aux import OpenposeDetector
+                openpose = OpenposeDetector.from_pretrained("lllyasviel/Annotators")
+                return openpose(image).convert("RGB")
+            elif mode == "depth":
+                from controlnet_aux import MidasDetector
+                midas = MidasDetector.from_pretrained("lllyasviel/Annotators")
+                return midas(image).convert("RGB")
+            elif mode == "normal":
+                from controlnet_aux import NormalBaeDetector
+                normalbae = NormalBaeDetector.from_pretrained("lllyasviel/Annotators")
+                return normalbae(image).convert("RGB")
+        except Exception as exc:
+            logger.warning("Failed to use real preprocessor for {} ({}). Using PIL fallback.", mode, exc)
+        
+        return self._pil_preprocess(image, mode)
+
+    def _pil_preprocess(self, image: Image.Image, mode: str) -> Image.Image:
+        """Simple fallback PIL preprocessing."""
+        from PIL import ImageFilter, ImageOps
+        if mode in ("canny", "lineart"):
+            gray = image.convert("L")
+            edges = gray.filter(ImageFilter.FIND_EDGES)
+            return ImageOps.invert(edges).convert("RGB")
+        elif mode == "depth":
+            return ImageOps.grayscale(image).convert("RGB")
+        elif mode == "sketch":
+            gray = image.convert("L")
+            return ImageOps.autocontrast(gray).convert("RGB")
+        elif mode in ("pose", "normal"):
+            return image.convert("L").convert("RGB")
+        return image.convert("RGB")
+
     # ── Public APIs: Generation Methods ───────────────────────────────────────
+
 
     def generate_from_sketch(
         self,

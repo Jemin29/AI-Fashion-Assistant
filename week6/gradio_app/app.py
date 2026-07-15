@@ -68,7 +68,22 @@ def create_studio_app() -> gr.Blocks:
     css_content = ""
     css_path = Path(cfg.paths.assets_dir) / "css" / "studio.css"
     if css_path.exists():
-        css_content = css_path.read_text(encoding="utf-8")
+        try:
+            css_content = css_path.read_text(encoding="utf-8")
+            assets_abs = Path(cfg.paths.assets_dir).resolve().as_posix()
+            gradio_major = int(gr.__version__.split(".")[0])
+            file_prefix = "/gradio_api/file=" if gradio_major >= 6 else "/file="
+            css_content = css_content.replace("__ASSETS_DIR__", f"{file_prefix}{assets_abs}")
+            logger.info("Custom global CSS stylesheet loaded successfully")
+        except Exception as e:
+            logger.error(f"Failed to read studio.css: {e}")
+            if not global_mock:
+                raise RuntimeError(f"Failed to read custom CSS stylesheet at {css_path}: {e}") from e
+    else:
+        msg = f"Custom CSS stylesheet not found at: {css_path}"
+        logger.warning(msg)
+        if not global_mock:
+            raise FileNotFoundError(msg)
 
     theme = FashionTheme()
 
@@ -85,7 +100,7 @@ def create_studio_app() -> gr.Blocks:
         "⚙️ Settings",
     ]
 
-    with gr.Blocks(theme=theme, css=css_content, title=cfg.name) as app:
+    with gr.Blocks(title=cfg.name) as app:
         # Header banner html
         gr.HTML(f"""
         <div style="background: linear-gradient(135deg, #1e1e2f 0%, #0f0f15 100%); border-bottom: 2px solid #ff9f43; padding: 1.5rem; text-align: center; border-radius: 8px 8px 0 0; margin-bottom: 1.5rem;">
@@ -193,5 +208,22 @@ def create_studio_app() -> gr.Blocks:
         )
 
 
+
+    original_launch = app.launch
+    def custom_launch(*args, **kwargs):
+        kwargs.setdefault("theme", theme)
+        kwargs.setdefault("css", css_content)
+        
+        allowed = list(kwargs.get("allowed_paths", []))
+        assets_dir_str = str(Path(cfg.paths.assets_dir).resolve())
+        if assets_dir_str not in allowed:
+            allowed.append(assets_dir_str)
+        kwargs["allowed_paths"] = allowed
+        
+        return original_launch(*args, **kwargs)
+    app.launch = custom_launch
+    
+    app.theme = theme
+    app.css = css_content
 
     return app

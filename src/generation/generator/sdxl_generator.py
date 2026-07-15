@@ -268,6 +268,7 @@ class FashionSDXLGenerator:
         refiner_id:     str            = "stabilityai/stable-diffusion-xl-refiner-1.0",
         scheduler:      str            = "euler",
         hf_token:       Optional[str]  = None,
+        global_mock:    Optional[bool] = None,
     ) -> None:
         # ── Store config ──────────────────────────────────────────────────
         self.model_id       = model_id
@@ -278,6 +279,19 @@ class FashionSDXLGenerator:
         self.scheduler_name = scheduler
         self.output_dir     = Path(output_dir)
         self.hf_token       = hf_token or os.environ.get("HF_TOKEN")
+
+        # ── Global mock mode ──────────────────────────────────────────────
+        if global_mock is not None:
+            self.global_mock = global_mock
+        else:
+            is_test_env = "pytest" in sys.modules or "unittest" in sys.modules or "py.test" in sys.argv[0]
+            if is_test_env:
+                self.global_mock = False
+            else:
+                self.global_mock = (
+                    os.environ.get("GLOBAL_MOCK", "true").lower() == "true" or
+                    os.environ.get("MODEL__GLOBAL_MOCK", "true").lower() == "true"
+                )
 
         # ── Runtime state ─────────────────────────────────────────────────
         self._pipe          = None       # StableDiffusionXLPipeline
@@ -294,8 +308,8 @@ class FashionSDXLGenerator:
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
         logger.info(
-            "FashionSDXLGenerator initialised | model={} | device={} | dtype={}",
-            model_id, self._device, torch_dtype,
+            "FashionSDXLGenerator initialised | model={} | device={} | dtype={} | mock={}",
+            model_id, self._device, torch_dtype, self.global_mock,
         )
 
     # =========================================================================
@@ -339,6 +353,11 @@ class FashionSDXLGenerator:
         if force_reload and self._is_loaded:
             logger.info("Force reloading model…")
             self.unload_model()
+
+        if self.global_mock:
+            logger.info("Running in mock mode. Real SDXL weights will not be loaded.")
+            self._is_loaded = True
+            return self
 
         logger.info("Loading SDXL model | repo={}", self.model_id)
         t_start = time.perf_counter()
@@ -430,6 +449,55 @@ class FashionSDXLGenerator:
             raise RuntimeError(f"Failed to load SDXL model: {e}") from e
 
         return self
+
+    def _generate_mock_image(
+        self,
+        prompt: str,
+        width: int,
+        height: int,
+        seed: int,
+        num_images: int,
+    ) -> List[Any]:
+        """Generate a mock image for testing/development when GLOBAL_MOCK=True."""
+        try:
+            from PIL import Image as PILImage, ImageDraw
+        except ImportError:
+            # Degrade gracefully to dummy object if Pillow not installed (though it should be)
+            logger.warning("Pillow not installed — returning raw pixel array wrappers instead.")
+            class DummyImage:
+                def __init__(self, w, h):
+                    self.width = w
+                    self.height = h
+                def save(self, *args, **kwargs):
+                    pass
+            return [DummyImage(width, height) for _ in range(num_images)]
+
+        import random
+        images = []
+        for i in range(num_images):
+            # Seed random generator for reproducibility based on seed + index
+            r_seed = seed + i if seed != -1 else random.randint(0, 1000000)
+            random.seed(r_seed)
+            
+            # Create dark fashion-themed background
+            bg_color = (random.randint(20, 50), random.randint(20, 50), random.randint(20, 60))
+            img = PILImage.new("RGB", (width, height), color=bg_color)
+            draw = ImageDraw.Draw(img)
+            
+            # Draw some abstract geometric silhouettes
+            for _ in range(5):
+                x1, y1 = random.randint(0, width), random.randint(0, height)
+                x2, y2 = random.randint(0, width), random.randint(0, height)
+                shape_color = (random.randint(60, 255), random.randint(60, 255), random.randint(60, 255))
+                draw.rectangle([min(x1, x2), min(y1, y2), max(x1, x2), max(y1, y2)], fill=shape_color, outline=None)
+            
+            # Text label
+            draw.text((10, 10), "SDXL Generation (Mock Mode)", fill=(255, 255, 255))
+            draw.text((10, 30), f"Prompt: {prompt[:50]}...", fill=(200, 200, 200))
+            draw.text((10, 50), f"Seed: {r_seed}", fill=(180, 180, 180))
+            
+            images.append(img)
+        return images
 
     # =========================================================================
     # ── 2. generate_image()
@@ -526,6 +594,47 @@ class FashionSDXLGenerator:
 
         # ── Resolve seed ──────────────────────────────────────────────────
         resolved_seed = self._resolve_seed(seed)
+
+        # ── Mock mode check ───────────────────────────────────────────────
+        if self.global_mock:
+            logger.info("Mock generating image | prompt={!r:.80} | seed={}", prompt, resolved_seed)
+            images = self._generate_mock_image(prompt, width, height, resolved_seed, num_images)
+            image_ids = [self._new_image_id() for _ in images]
+            gen_time = time.perf_counter() - t_total
+            metadata = self._build_metadata(
+                image_ids         = image_ids,
+                prompt            = prompt,
+                negative_prompt   = negative_prompt,
+                width             = width,
+                height            = height,
+                steps             = num_inference_steps,
+                guidance_scale    = guidance_scale,
+                scheduler         = scheduler or self.scheduler_name,
+                seed              = resolved_seed,
+                generation_time_s = gen_time,
+                device            = self._device,
+                model_id          = self.model_id,
+                use_refiner       = False,
+                refiner_strength  = 0.0,
+            )
+            return GenerationOutput(
+                images            = images,
+                image_ids         = image_ids,
+                metadata          = metadata,
+                prompt            = prompt,
+                negative_prompt   = negative_prompt,
+                seed              = resolved_seed,
+                width             = width,
+                height            = height,
+                steps             = num_inference_steps,
+                guidance_scale    = guidance_scale,
+                scheduler         = scheduler or self.scheduler_name,
+                generation_time_s = gen_time,
+                total_time_s      = gen_time,
+                success           = True,
+                device_used       = self._device,
+                model_id          = self.model_id,
+            )
 
         # ── Apply scheduler override ──────────────────────────────────────
         if scheduler and scheduler != self.scheduler_name:

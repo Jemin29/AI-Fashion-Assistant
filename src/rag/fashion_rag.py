@@ -17,7 +17,6 @@ from src.utils.config_manager import Week5Config, get_default_config
 from src.rag.embeddings.embeddings_generator import EmbeddingsGenerator
 from src.data.knowledge_base.fashion_knowledge_base import FashionKnowledgeBase, KnowledgeItem
 from src.data.knowledge_base.trend_dataset_builder import TrendDatasetBuilder, TrendItem
-from src.recommendations.recommendation_engine import RecommendationEngine
 from src.rag.retrieval.hybrid_retriever import HybridRetriever
 from src.trends.trend_analyzer import TrendAnalyzer
 from src.rag.vector_db.vector_indexer import VectorIndexer
@@ -91,13 +90,14 @@ class FashionRAG:
                     self.trend_analyzer.add_mention(val)
 
 
+        from src.recommendations.recommendation_engine import RecommendationEngine
         self.recommendation_engine = RecommendationEngine(
             retriever=self.retriever,
             embedder=self.embedder,
             config=self.config.recommendations
         )
 
-        logger.success("Fashion RAG Pipeline Coordinator fully initialized.")
+        logger.success("Fashion RAG Coordinator fully initialized.")
 
     def augment_prompt(
         self,

@@ -101,7 +101,8 @@ def run_gucci_training(
                         logger.warning(f"Skipping ingestion for raw file {img_file.name}: {err}")
 
     # 3. Setup Custom Configurations
-    cfg = get_default_config()
+    from src.utils.config_manager import Week4Config
+    cfg = Week4Config()
     cfg.trainer.num_epochs = epochs
     cfg.trainer.batch_size = batch_size
     cfg.trainer.learning_rate = learning_rate

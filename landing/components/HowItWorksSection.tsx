@@ -47,7 +47,7 @@ const STEPS = [
 
 export default function HowItWorksSection() {
   return (
-    <section id="how-it-works" className="py-32 relative overflow-hidden scroll-mt-20">
+    <section id="how-it-works" className="py-32 relative overflow-hidden scroll-mt-24">
       {/* Vertical line background */}
       <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-indigo-500/20 to-transparent hidden lg:block" />
 
@@ -59,14 +59,14 @@ export default function HowItWorksSection() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold text-violet-300 border border-violet-500/30 bg-violet-500/10 mb-4">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-widest text-violet-300 border border-violet-500/30 bg-violet-500/10 mb-5">
             HOW IT WORKS
           </span>
-          <h2 className="text-5xl md:text-6xl font-black text-white mb-4">
+          <h2 className="text-5xl md:text-6xl font-black text-white mb-4 tracking-tight leading-tight">
             From idea to{" "}
             <span className="gradient-text">editorial in seconds</span>
           </h2>
-          <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto">
             Four steps. Zero design experience needed. Professional-grade results every time.
           </p>
         </motion.div>
@@ -92,8 +92,8 @@ export default function HowItWorksSection() {
                       {step.number}
                     </span>
                   </div>
-                  <h3 className="text-3xl font-black text-white mb-3">{step.title}</h3>
-                  <p className="text-lg text-slate-400 leading-relaxed mb-4">{step.description}</p>
+                  <h3 className="text-2xl md:text-3xl font-black text-white mb-3 tracking-tight">{step.title}</h3>
+                  <p className="text-base text-slate-400 leading-relaxed mb-4">{step.description}</p>
                   <div className="glass rounded-xl px-5 py-3 border border-white/5 text-sm text-slate-500 font-mono">
                     {step.detail}
                   </div>

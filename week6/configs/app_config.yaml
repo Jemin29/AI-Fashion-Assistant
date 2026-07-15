@@ -30,6 +30,7 @@ features:
   trend_explorer: true
   recommend_hub: true
   eval_dashboard: true
+  wardrobe_gen: true
   show_api_docs: false
 
 # ── Mock mode — disable to use real GPU models ───────────────────────────────

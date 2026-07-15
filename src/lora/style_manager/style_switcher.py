@@ -8,6 +8,7 @@ and styled design output generations.
 
 from __future__ import annotations
 
+import re
 import time
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Union
@@ -152,6 +153,24 @@ class StyleSwitcher:
             
         return f"{prompt}, {tokens}"
 
+    def parse_style_tokens(self, prompt: str) -> Tuple[str, str]:
+        """
+        Check if the prompt contains a brand token like <nike>, <gucci>, <zara>, <h&m>, <hm>.
+        Returns (cleaned_prompt, brand_key). If no token is found, returns (prompt, '').
+        """
+        pattern = r"<(nike|gucci|zara|h&m|hm)>"
+        match = re.search(pattern, prompt, re.IGNORECASE)
+        if match:
+            token = match.group(0)
+            brand_key = match.group(1).lower()
+            if brand_key == "hm":
+                brand_key = "h&m"
+            # Strip token from prompt and clean whitespace
+            cleaned_prompt = prompt.replace(token, "").strip()
+            cleaned_prompt = re.sub(r"\s+", " ", cleaned_prompt)
+            return cleaned_prompt, brand_key
+        return prompt, ""
+
     def generate_styled_design(
         self,
         prompt: str,
@@ -178,7 +197,13 @@ class StyleSwitcher:
         dict
             Status logs and output paths.
         """
-        brand_key = brand.lower().strip()
+        # Dynamic prompt-token-based style switching
+        cleaned_prompt, token_brand = self.parse_style_tokens(prompt)
+        if token_brand:
+            brand_key = token_brand
+            prompt = cleaned_prompt
+        else:
+            brand_key = brand.lower().strip()
         
         # 1. Switch Style
         self.switch_style(brand_key, scale)

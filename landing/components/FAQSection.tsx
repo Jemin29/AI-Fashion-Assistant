@@ -42,7 +42,7 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="py-32 relative overflow-hidden scroll-mt-20">
+    <section id="faq" className="py-32 relative overflow-hidden scroll-mt-24">
       <div className="absolute inset-0 grid-bg opacity-20" />
 
       <div className="relative z-10 max-w-3xl mx-auto px-6">
@@ -53,16 +53,16 @@ export default function FAQSection() {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold text-indigo-300 border border-indigo-500/30 bg-indigo-500/10 mb-4">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-widest text-indigo-300 border border-indigo-500/30 bg-indigo-500/10 mb-5">
             FAQ
           </span>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-3">
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight leading-tight">
             Everything you{" "}
             <span className="gradient-text">need to know</span>
           </h2>
-          <p className="text-lg text-slate-400">
+          <p className="text-base md:text-lg text-slate-400">
             Can't find your answer?{" "}
-            <a href={process.env.NEXT_PUBLIC_STUDIO_URL || "http://127.0.0.1:7860"} target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:underline">
+            <a href={process.env.NEXT_PUBLIC_STUDIO_URL || "http://127.0.0.1:7860"} target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 underline underline-offset-2 transition-colors">
               Ask the Fashion Assistant
             </a>
             .

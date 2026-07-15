@@ -61,7 +61,7 @@ const TESTIMONIALS = [
 
 export default function TestimonialsSection() {
   return (
-    <section id="testimonials" className="py-32 relative overflow-hidden scroll-mt-20">
+    <section id="testimonials" className="py-32 relative overflow-hidden scroll-mt-24">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_100%,rgba(99,102,241,0.08),transparent)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
@@ -71,20 +71,20 @@ export default function TestimonialsSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold text-yellow-300 border border-yellow-500/30 bg-yellow-500/10 mb-4">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-widest text-yellow-300 border border-yellow-500/30 bg-yellow-500/10 mb-5">
             TESTIMONIALS
           </span>
-          <h2 className="text-5xl md:text-6xl font-black text-white mb-4">
+          <h2 className="text-5xl md:text-6xl font-black text-white mb-4 tracking-tight leading-tight">
             Loved by{" "}
-            <span className="gradient-text">designers & developers</span>
+            <span className="gradient-text">designers &amp; developers</span>
           </h2>
-          <p className="text-xl text-slate-400 max-w-xl mx-auto">
+          <p className="text-lg md:text-xl text-slate-400 max-w-xl mx-auto">
             From fashion houses to independent creators — real feedback from real users.
           </p>
         </motion.div>
 
-        {/* Masonry-style testimonials */}
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-6">
+        {/* Grid testimonials */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           {TESTIMONIALS.map((t, i) => (
             <motion.div
               key={t.name}
@@ -93,7 +93,7 @@ export default function TestimonialsSection() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
               whileHover={{ y: -4 }}
-              className="break-inside-avoid glass rounded-2xl p-6 border border-white/5 hover:border-indigo-500/30 transition-all duration-300 mb-6"
+              className="h-full flex flex-col glass rounded-2xl p-6 border border-white/5 hover:border-indigo-500/30 transition-all duration-300"
             >
               {/* Quote icon */}
               <Quote className="w-6 h-6 text-indigo-400/40 mb-4" />
@@ -106,21 +106,21 @@ export default function TestimonialsSection() {
               </div>
 
               {/* Highlight badge */}
-              <span className="inline-block px-3 py-1 rounded-full bg-indigo-600/20 text-indigo-300 text-xs font-semibold border border-indigo-500/20 mb-3">
-                "{t.highlight}"
+              <span className="self-start inline-block px-3 py-1 rounded-full bg-indigo-600/20 text-indigo-300 text-xs font-semibold border border-indigo-500/20 mb-3">
+                {t.highlight}
               </span>
 
               {/* Quote text */}
-              <p className="text-slate-300 text-sm leading-relaxed mb-5">{t.quote}</p>
+              <p className="flex-1 text-slate-300 text-[0.925rem] leading-relaxed mb-5">{t.quote}</p>
 
               {/* Author */}
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full glass border border-white/10 flex items-center justify-center text-xl">
+              <div className="mt-auto flex items-center gap-3">
+                <div className="shrink-0 w-10 h-10 rounded-full glass border border-white/10 flex items-center justify-center text-xl">
                   {t.avatar}
                 </div>
                 <div>
-                  <div className="text-white font-semibold text-sm">{t.name}</div>
-                  <div className="text-slate-500 text-xs">{t.role}</div>
+                  <div className="text-white font-semibold text-[0.9rem]">{t.name}</div>
+                  <div className="text-slate-500 text-xs leading-snug">{t.role}</div>
                 </div>
               </div>
             </motion.div>

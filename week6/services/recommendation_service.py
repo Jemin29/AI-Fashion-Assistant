@@ -204,12 +204,11 @@ class RecommendationService(BaseService):
 
         if not mock_mode:
             try:
-                from src.recommendations.style_recommender import StyleRecommender
-                from src.recommendations.brand_recommender import BrandRecommender
-                from src.recommendations.user_profile_manager import UserProfileManager
-                self._style_rec   = StyleRecommender()
-                self._brand_rec   = BrandRecommender()
-                self._profile_mgr = UserProfileManager()
+                from src.rag.fashion_assistant import FashionAssistant
+                self._assistant = FashionAssistant(force_mock_embeddings=False)
+                self._style_rec   = self._assistant.style_recommender
+                self._brand_rec   = self._assistant.brand_recommender
+                self._profile_mgr = self._assistant.user_profile_manager
                 self.mock_mode    = False
                 logger.info("RecommendationService: real recommenders loaded")
             except Exception as exc:

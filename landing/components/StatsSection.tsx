@@ -75,7 +75,7 @@ const STATS = [
 
 export default function StatsSection() {
   return (
-    <section id="stats" className="py-32 relative overflow-hidden">
+    <section id="stats" className="py-32 relative overflow-hidden scroll-mt-24">
       {/* Radial gradient */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_50%,rgba(99,102,241,0.08),transparent)]" />
       <div className="absolute inset-0 grid-bg opacity-40" />
@@ -88,13 +88,13 @@ export default function StatsSection() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold text-teal-300 border border-teal-500/30 bg-teal-500/10 mb-4">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-widest text-teal-300 border border-teal-500/30 bg-teal-500/10 mb-5">
             BY THE NUMBERS
           </span>
-          <h2 className="text-5xl md:text-6xl font-black text-white mb-4">
+          <h2 className="text-5xl md:text-6xl font-black text-white mb-5 tracking-tight leading-tight">
             Built for <span className="gradient-text">scale and precision</span>
           </h2>
-          <p className="text-xl text-slate-400 max-w-xl mx-auto">
+          <p className="text-lg md:text-xl text-slate-400 max-w-xl mx-auto">
             Real metrics from a production AI pipeline — not marketing numbers.
           </p>
         </motion.div>
@@ -109,18 +109,18 @@ export default function StatsSection() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
               whileHover={{ scale: 1.03, y: -4 }}
-              className="relative glass rounded-2xl p-6 border border-white/5 overflow-hidden group cursor-default flex flex-col h-full"
+              className="relative glass rounded-2xl p-7 border border-white/5 overflow-hidden group cursor-default flex flex-col h-full hover:border-white/10 transition-all duration-300"
             >
               {/* Gradient blob */}
               <div className={`absolute -top-8 -right-8 w-32 h-32 rounded-full bg-gradient-to-br ${stat.color} opacity-10 blur-2xl group-hover:opacity-20 transition-opacity`} />
 
               <div className="relative z-10 flex flex-col h-full">
-                <div className="text-3xl mb-3">{stat.icon}</div>
-                <div className={`text-5xl font-black mb-1 bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}>
+                <div className="text-4xl mb-4">{stat.icon}</div>
+                <div className={`text-4xl md:text-5xl font-black mb-2 bg-gradient-to-r ${stat.color} bg-clip-text text-transparent tracking-tight`}>
                   <CountUp end={stat.value} suffix={stat.suffix} />
                 </div>
-                <div className="text-lg font-bold text-white mb-1">{stat.label}</div>
-                <div className="text-sm text-slate-500 mt-auto">{stat.sub}</div>
+                <div className="text-base font-bold text-white mb-1">{stat.label}</div>
+                <div className="text-sm text-slate-500 mt-auto leading-relaxed">{stat.sub}</div>
               </div>
 
               {/* Bottom accent line */}

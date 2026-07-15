@@ -20,6 +20,21 @@ def build_sketch_to_design_page(cn_service: Any) -> None:
         elem_classes="studio-subtitle",
     )
 
+    # Status indicator banner based on service mode
+    is_mock = cn_service.mock_mode
+    if is_mock:
+        gr.HTML(
+            "<div style='background-color: rgba(255, 193, 7, 0.15); border-left: 4px solid #ffc107; padding: 12px; margin-bottom: 20px; border-radius: 4px;'>"
+            "<strong>⚠️ Mock Mode Active:</strong> The ControlNet backend is running in mock simulation. "
+            "To enable real inference, set <code>GLOBAL_MOCK=False</code> in your environment or <code>.env</code> file.</div>"
+        )
+    else:
+        gr.HTML(
+            "<div style='background-color: rgba(40, 167, 69, 0.15); border-left: 4px solid #28a745; padding: 12px; margin-bottom: 20px; border-radius: 4px;'>"
+            "<strong>✅ Real ControlNet Mode Active:</strong> Running via real diffusers and PyTorch weights on "
+            f"device: <code>{getattr(cn_service._engine, 'device', 'cpu')}</code>. (Note: CPU inference may take several minutes)</div>"
+        )
+
     # Instantiate preprocessor
     processor = SketchProcessor()
 
@@ -53,6 +68,12 @@ def build_sketch_to_design_page(cn_service: Any) -> None:
             )
 
             with gr.Accordion("⚙️ Parameters", open=False):
+                negative_prompt = gr.Textbox(
+                    label="Negative Prompt",
+                    placeholder="blurry, low quality, distorted, extra limbs, bad fabric details",
+                    value="blurry, low quality, distorted",
+                    lines=2,
+                )
                 steps = gr.Slider(10, 50, value=30, step=1, label="Inference Steps")
                 cfg = gr.Slider(1.0, 15.0, value=7.5, step=0.5, label="Guidance Scale")
                 seed = gr.Number(label="Seed (-1 = random)", value=-1, precision=0)
@@ -94,6 +115,7 @@ def build_sketch_to_design_page(cn_service: Any) -> None:
     def on_generate(
         img: Optional[Image.Image],
         prompt_text: str,
+        neg_prompt_text: str,
         method: str,
         cond_scale: float,
         steps_val: int,
@@ -124,6 +146,8 @@ def build_sketch_to_design_page(cn_service: Any) -> None:
             conditioning_scale=float(cond_scale),
             num_inference_steps=int(steps_val),
             guidance_scale=float(cfg_val),
+            negative_prompt=neg_prompt_text,
+            seed=resolved_seed,
         )
         if not result.success:
             raise gr.Error(result.message)
@@ -137,9 +161,11 @@ def build_sketch_to_design_page(cn_service: Any) -> None:
             if "generation" in meta:
                 meta["generation"]["seed"] = resolved_seed
                 meta["generation"]["preprocessor_method"] = method
+                meta["generation"]["negative_prompt"] = neg_prompt_text
             else:
                 meta["seed"] = resolved_seed
                 meta["preprocessor_method"] = method
+                meta["negative_prompt"] = neg_prompt_text
 
         return res_image, meta, preprocessed
 
@@ -151,6 +177,7 @@ def build_sketch_to_design_page(cn_service: Any) -> None:
 
     generate_btn.click(
         on_generate,
-        inputs=[sketch_input, prompt, detector, conditioning_scale, steps, cfg, seed],
+        inputs=[sketch_input, prompt, negative_prompt, detector, conditioning_scale, steps, cfg, seed],
         outputs=[output_image, output_meta, preview_output]
     )
+

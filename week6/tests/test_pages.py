@@ -22,6 +22,7 @@ from week6.pages import (
     build_recommendations_page,
     build_gallery_page,
     build_eval_dashboard_page,
+    build_wardrobe_gen_page,
 )
 
 
@@ -62,6 +63,8 @@ def test_pages_render(
         build_recommend_hub_page(rec_service)
         # Recommendations
         build_recommendations_page(rec_service, trend_service)
+        # Wardrobe Generator
+        build_wardrobe_gen_page(rec_service, gen_service)
         # Gallery
         build_gallery_page()
         # Eval Dashboard

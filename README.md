@@ -163,6 +163,35 @@ fashion-ai-assistant/
 
 ---
 
+## ⚙️ Running in Real Mode vs. Mock Mode
+
+The system defaults to `GLOBAL_MOCK=True` everywhere to facilitate fast testing and application logic development without requiring expensive GPU hardware resources.
+
+### 1. Mock Mode (`GLOBAL_MOCK=True`)
+* **Hardware Requirements**: None (runs on standard CPU/laptop).
+* **Use Case**: UI prototyping, frontend landing page integration, mock API testing, local development.
+* **Behavior**:
+  - The image generation pipelines return pre-configured color gradient placeholder image results immediately.
+  - The vector databases (ChromaDB & FAISS) run in fallback mode with deterministic mock embeddings.
+  - The RAG Fashion Assistant returns responses grounded in local mock data without calling remote sentence-transformer encoders.
+
+### 2. Real Mode (`GLOBAL_MOCK=False`)
+* **Hardware Requirements**: A CUDA-capable GPU with at least **12GB VRAM** (e.g., NVIDIA RTX 3080/4070 or better).
+* **Dependencies**: Requires all packages listed in `requirements.txt` to be installed (specifically `diffusers`, `peft`, `accelerate`, `controlnet-aux`, `invisible-watermark`, `wandb`, and `xformers`).
+* **Activation**:
+  - For the **Gradio app** (`week6/run.py`):
+    ```bash
+    python week6/run.py --no-mock
+    ```
+    Alternatively, set `FASHION_STUDIO_MOCK_MODE=false` in `week6/.env`.
+  - For the **FastAPI Backend**:
+    Set `model__global_mock=False` in `week7/backend/configs/.env` or set the environment variable:
+    ```bash
+    export model__global_mock=False
+    ```
+
+---
+
 ## ⚡ Quick Start
 
 ### 1. Clone and enter the project
@@ -337,6 +366,51 @@ tests/test_validation.py   .............  13 passed
 | Week 6 | Retrieval-Augmented Generation (RAG) for fashion |
 | Week 7 | API Development & Serving Layer |
 | Week 8 | UI/UX & Full Product Integration |
+
+---
+
+## 📥 Full Dataset Download and Execution Guide
+
+To reproduce the ingestion pipeline at full scale with the complete datasets, follow these steps:
+
+### 1. FashionGen Dataset (~15 GB)
+1. Register for free academic access at [fashion-gen.com](https://fashion-gen.com/).
+2. Once approved, download:
+   - `fashiongen_256_256_train.h5` (~13 GB)
+   - `fashiongen_256_256_val.h5` (~1.7 GB)
+3. Move both `.h5` files directly into:
+   ```bash
+   datasets/fashiongen/
+   ```
+4. Run the full-scale ingestion pipeline:
+   ```bash
+   python src/data/ingestion/fashiongen_loader.py
+   ```
+
+### 2. DeepFashion Dataset (~30 GB)
+1. Request access and download the **Category and Attribute Prediction Benchmark** from the [official DeepFashion page](https://liuziwei7.github.io/projects/DeepFashion.html).
+2. Alternatively, download the colorful-fashion dataset via Kaggle:
+   ```bash
+   kaggle datasets download -d nguyngiabol/colorful-fashion-dataset-for-object-detection
+   ```
+3. Extract the downloaded archives so your workspace structure matches:
+   ```
+   datasets/deepfashion/
+   ├── img/               ← Nested clothing category images
+   ├── Anno/
+   │   ├── list_category_cloth.txt
+   │   ├── list_category_img.txt
+   │   ├── list_attr_cloth.txt
+   │   ├── list_attr_img.txt
+   │   ├── list_bbox.txt
+   │   └── list_landmarks.txt
+   └── Eval/
+       └── list_eval_partition.txt
+   ```
+4. Run the full-scale ingestion pipeline:
+   ```bash
+   python src/data/ingestion/deepfashion_loader.py --split train
+   ```
 
 ---
 

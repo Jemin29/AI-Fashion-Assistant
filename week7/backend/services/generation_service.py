@@ -24,6 +24,7 @@ class GenerationService:
             self._generator = FashionSDXLGenerator(
                 model_id=self.settings.model.sdxl_model_id,
                 device="cpu" if self.settings.model.global_mock else "auto",
+                global_mock=self.settings.model.global_mock,
             )
         return self._generator
 
@@ -65,10 +66,6 @@ class GenerationService:
                 img.save(buffered, format="PNG")
                 img_b64 = base64.b64encode(buffered.getvalue()).decode("utf-8")
 
-                if any(w in prompt.lower() for w in ["unsafe", "nsfw", "nudity", "nude"]):
-                    img_b64 = "unsafe_mock_content_" + img_b64
-
-
                 meta = {
                     "prompt": prompt,
                     "negative_prompt": negative_prompt,
@@ -81,10 +78,13 @@ class GenerationService:
                     "run_mode": "mock",
                     "generation_time_s": latency_s
                 }
-                
+
                 # Apply transparent watermark
                 from week7.backend.api.dependencies import get_watermark_service
                 watermarked_b64 = get_watermark_service().apply_watermark_to_b64(img_b64)
+
+                if any(w in prompt.lower() for w in ["unsafe", "nsfw", "nudity", "nude"]):
+                    watermarked_b64 = "unsafe_mock_content_" + watermarked_b64
                 
                 return ServiceResult(success=True, data={"image": watermarked_b64, "metadata": meta, "generation_time": latency_s}, metadata=meta)
             else:

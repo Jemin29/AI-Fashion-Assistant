@@ -236,10 +236,10 @@ class FashionControlNetTrainer:
             for step, batch in enumerate(train_dataloader):
                 with acc.accumulate(controlnet):
                     if self.dry_run:
-                        # Dummy training logic
-                        noisy_latents = torch.randn((self.batch_size, 3, 64, 64), device=acc.device)
-                        timesteps = torch.zeros(self.batch_size, device=acc.device).long()
                         sketch = batch["conditioning_pixel_values"].to(acc.device)
+                        B, C, H, W = sketch.shape
+                        noisy_latents = torch.randn((B, 3, H, W), device=acc.device)
+                        timesteps = torch.zeros(B, device=acc.device).long()
                         
                         down_res, mid_res = controlnet(
                             noisy_latents=noisy_latents,

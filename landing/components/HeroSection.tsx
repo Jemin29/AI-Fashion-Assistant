@@ -36,7 +36,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6 leading-none"
+          className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6 leading-[1.05]"
         >
           <span className="block text-white">The AI that</span>
           <span className="block gradient-text py-2">Designs Fashion</span>
@@ -48,7 +48,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed font-light"
+          className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed font-light"
         >
           Generate haute couture looks, apply brand aesthetics with LoRA, sketch-to-design with ControlNet, and get personalized styling — all in one studio.
         </motion.p>

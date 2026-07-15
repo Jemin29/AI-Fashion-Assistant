@@ -36,6 +36,7 @@ Error codes
 """
 from __future__ import annotations
 
+import json
 import random
 import sys
 import time
@@ -176,7 +177,9 @@ class GenerationService(BaseService):
         if not mock_mode:
             try:
                 from src.generation.generator.sdxl_generator import SDXLGenerator
-                self._generator = SDXLGenerator()
+                from src.utils.config_manager import get_config as get_backend_config
+                cfg = get_backend_config()
+                self._generator = SDXLGenerator(config=cfg)
                 self.mock_mode  = False
                 logger.info("GenerationService: real SDXLGenerator loaded")
             except Exception as exc:
@@ -229,6 +232,20 @@ class GenerationService(BaseService):
             self._error_count += 1
             return ServiceResult.validation_fail("prompt", e.reason)
 
+        # ── Prompt token style switching ──────────────────────────────────────
+        import re
+        pattern = r"<(nike|gucci|zara|h&m|hm)>"
+        match = re.search(pattern, prompt, re.IGNORECASE)
+        if match:
+            token = match.group(0)
+            token_brand = match.group(1).lower()
+            if token_brand == "hm":
+                token_brand = "h&m"
+            prompt = prompt.replace(token, "").strip()
+            prompt = re.sub(r"\s+", " ", prompt)
+            style_preset = f"LoRA [{token_brand.upper()}] (Mock)"
+            style_label = style_preset
+
         try:
             num_inference_steps = int(self._validate_range(num_inference_steps, "steps", lo=1, hi=150))
         except ValidationError as e:
@@ -248,7 +265,7 @@ class GenerationService(BaseService):
             warnings.append(f"Resolution adjusted to {width}×{height}")
 
         # Apply style preset trigger words
-        if style_preset:
+        if style_preset and not style_preset.startswith("LoRA ["):
             preset_data = next(
                 (p for p in STYLE_PRESETS if p["name"].lower() == style_preset.lower()), None
             )
@@ -275,7 +292,7 @@ class GenerationService(BaseService):
                         height=height,
                         seed=seed,
                     )
-                    img  = raw.get("image") or raw.get("images", [None])[0]
+                    img  = raw.first_image
                     mode = "real"
                     model_name = "SDXL v1.0"
             except Exception as exc:
@@ -353,6 +370,7 @@ class GenerationService(BaseService):
             "cfg":        guidance_scale,
             "size":       f"{width}×{height}",
             "seed":       seed,
+            "style_preset": style_preset,
             "latency_ms": round(latency, 1),
             "timestamp":  time.strftime("%Y-%m-%d %H:%M:%S"),
         }

@@ -15,6 +15,7 @@ from week6.pages.recommendations import build_recommendations_page
 from week6.pages.gallery import build_gallery_page
 from week6.pages.eval_dashboard import build_eval_dashboard_page
 from week6.pages.settings import build_settings_page
+from week6.pages.wardrobe_gen import build_wardrobe_gen_page
 
 __all__ = [
     "build_home_page",
@@ -33,4 +34,5 @@ __all__ = [
     "build_gallery_page",
     "build_eval_dashboard_page",
     "build_settings_page",
+    "build_wardrobe_gen_page",
 ]

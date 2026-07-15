@@ -31,7 +31,7 @@ export default function BrandsAndTechSection() {
   return (
     <>
       {/* Brand Logos */}
-      <section id="brands" className="py-24 relative overflow-hidden">
+      <section id="brands" className="py-24 relative overflow-hidden scroll-mt-24">
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-indigo-500/5 to-transparent" />
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <motion.div
@@ -40,10 +40,10 @@ export default function BrandsAndTechSection() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold text-amber-300 border border-amber-500/30 bg-amber-500/10 mb-4">
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-widest text-amber-300 border border-amber-500/30 bg-amber-500/10 mb-5">
               BRAND AESTHETICS
             </span>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-3">
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight leading-tight">
               Powered by <span className="gradient-text">iconic brand DNA</span>
             </h2>
             <p className="text-lg text-slate-400 max-w-xl mx-auto">
@@ -73,7 +73,7 @@ export default function BrandsAndTechSection() {
       </section>
 
       {/* Tech Stack */}
-      <section id="tech" className="py-24 relative overflow-hidden">
+      <section id="tech" className="py-24 relative overflow-hidden scroll-mt-24">
         <div className="absolute inset-0 grid-bg opacity-30" />
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <motion.div
@@ -82,10 +82,10 @@ export default function BrandsAndTechSection() {
             viewport={{ once: true }}
             className="text-center mb-14"
           >
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold text-cyan-300 border border-cyan-500/30 bg-cyan-500/10 mb-4">
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-widest text-cyan-300 border border-cyan-500/30 bg-cyan-500/10 mb-5">
               TECHNOLOGY STACK
             </span>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-3">
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight leading-tight">
               Built on <span className="gradient-text">state-of-the-art AI</span>
             </h2>
             <p className="text-lg text-slate-400 max-w-xl mx-auto">
@@ -93,7 +93,7 @@ export default function BrandsAndTechSection() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {TECH_STACK.map((tech, i) => (
               <motion.div
                 key={tech.name}

@@ -80,4 +80,14 @@ def get_settings() -> Settings:
     global _settings
     if _settings is None:
         _settings = Settings()
+        if _settings.model.global_mock:
+            from loguru import logger
+            banner = (
+                "\n" + "═" * 60 + "\n"
+                "⚠️  RUNNING IN MOCK MODE (GLOBAL_MOCK=True)  ⚠️\n"
+                "This backend run is in Mock Mode. No GPU or real weights will be loaded.\n"
+                "To run in Real GPU Mode, set model__global_mock=False in backend config/.env.\n"
+                + "═" * 60
+            )
+            logger.warning(banner)
     return _settings

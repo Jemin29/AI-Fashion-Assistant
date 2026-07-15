@@ -1,9 +1,9 @@
 {
   "pipeline_version": "1.0.0",
-  "run_id": "20260708T102232Z",
-  "started_at": "2026-07-08T10:22:32.428466+00:00",
-  "completed_at": "2026-07-08T10:22:32.451993+00:00",
-  "total_elapsed_s": 0.022,
+  "run_id": "20260711T195447Z",
+  "started_at": "2026-07-11T19:54:47.819042+00:00",
+  "completed_at": "2026-07-11T19:54:47.844024+00:00",
+  "total_elapsed_s": 0.024,
   "status": "success",
   "record_counts": {
     "fashiongen_raw": 0,
@@ -36,19 +36,19 @@
     },
     {
       "stage": "3 - Metadata Generator",
-      "elapsed_s": 0.013,
+      "elapsed_s": 0.012,
       "status": "ok",
       "error": null
     },
     {
       "stage": "4 - Preprocessing Pipeline",
-      "elapsed_s": 0.006,
+      "elapsed_s": 0.007,
       "status": "ok",
       "error": null
     },
     {
       "stage": "5 - Validation Framework",
-      "elapsed_s": 0.003,
+      "elapsed_s": 0.004,
       "status": "ok",
       "error": null
     },
@@ -60,8 +60,8 @@
     }
   ],
   "output_paths": {
-    "clean_dataset": "C:\\Users\\HP\\AppData\\Local\\Temp\\pytest-of-HP\\pytest-252\\test_validation_report_json_wr0\\processed\\clean_dataset.json",
-    "validation_report": "C:\\Users\\HP\\AppData\\Local\\Temp\\pytest-of-HP\\pytest-252\\test_validation_report_json_wr0\\processed\\validation_report.json",
+    "clean_dataset": "C:\\Users\\HP\\AppData\\Local\\Temp\\pytest-of-HP\\pytest-258\\test_validation_report_json_wr0\\processed\\clean_dataset.json",
+    "validation_report": "C:\\Users\\HP\\AppData\\Local\\Temp\\pytest-of-HP\\pytest-258\\test_validation_report_json_wr0\\processed\\validation_report.json",
     "final_dataset": "C:\\Users\\HP\\Desktop\\AI Fashion Agent\\fashion-ai-assistant\\scripts\\datasets\\processed\\final_fashion_dataset.json"
   },
   "errors": [],

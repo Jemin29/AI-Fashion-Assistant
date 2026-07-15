@@ -105,7 +105,15 @@ class ControlNetService(BaseService):
 
     _SERVICE_NAME = "ControlNetService"
 
-    def __init__(self, mock_mode: bool = True) -> None:
+    def __init__(self, mock_mode: Optional[bool] = None) -> None:
+        if mock_mode is None:
+            try:
+                from week6.gradio_app.config import get_config
+                cfg = get_config()
+                mock_mode = cfg.mock.global_mock or cfg.mock.controlnet
+            except Exception:
+                mock_mode = True
+
         super().__init__(mock_mode)
         self._engine: Optional[Any] = None
         self.history_manager = HistoryManager()
@@ -119,8 +127,9 @@ class ControlNetService(BaseService):
             except Exception as exc:
                 logger.warning("ControlNetService: real engine unavailable — %s", exc)
                 self.mock_mode = True
-        else:
-            # Try to load mock engine for better preprocessing
+        
+        # If we are in mock mode (either requested or fell back)
+        if self.mock_mode:
             try:
                 from src.controlnet.controlnet.controlnet_engine import FashionControlNetEngine
                 self._engine = FashionControlNetEngine(mock=True)
@@ -128,6 +137,7 @@ class ControlNetService(BaseService):
             except Exception:
                 self._engine = None
                 logger.info("ControlNetService: pure mock mode (no engine)")
+
 
     # ── Primary API ────────────────────────────────────────────────────────────
 
@@ -227,7 +237,7 @@ class ControlNetService(BaseService):
                         negative_prompt=negative_prompt,
                         seed=seed,
                     )
-                    img        = raw.get("image")
+                    img        = raw.images[0] if (raw and raw.images) else None
                     model_name = f"ControlNet {mode_info['name']}"
                     run_mode   = "real"
             except Exception as exc:

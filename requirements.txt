@@ -45,6 +45,13 @@ transformers==4.41.1          # HuggingFace: CLIP, BLIP, text encoders
 sentence-transformers==3.0.1  # Sentence-level semantic embeddings
 clip-interrogator==0.6.0      # CLIP-based image captioning for metadata gen
 open-clip-torch==2.24.0       # OpenCLIP for fashion image feature extraction
+diffusers>=0.27.0             # State-of-the-art diffusion models for image generation
+peft>=0.11.0                  # Parameter-Efficient Fine-Tuning (LoRA adapters)
+accelerate>=0.30.0            # High-performance PyTorch models loading and device runner
+controlnet-aux>=0.0.7         # Preprocessors for ControlNet conditioning maps (Canny, pose, etc.)
+invisible-watermark>=0.2.0    # Watermarking utilities for generated outputs protection
+wandb>=0.17.0                 # Weights & Biases experiment tracking and logging
+# xformers                    # Optional optimization library (requires compatible CUDA build)
 
 # ─── Data Validation & Quality ───────────────────────────────────────────────
 great-expectations==0.18.15   # Dataset contract validation & quality suites

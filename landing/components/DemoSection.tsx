@@ -47,7 +47,7 @@ export default function DemoSection() {
   const output = DEMO_OUTPUTS[outputIndex];
 
   return (
-    <section id="demo" className="py-32 relative overflow-hidden scroll-mt-20">
+    <section id="demo" className="py-32 relative overflow-hidden scroll-mt-24">
       {/* Radial glow background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_100%,rgba(99,102,241,0.12),transparent)]" />
 
@@ -59,14 +59,14 @@ export default function DemoSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold text-orange-300 border border-orange-500/30 bg-orange-500/10 mb-4">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-widest text-orange-300 border border-orange-500/30 bg-orange-500/10 mb-5">
             LIVE DEMO
           </span>
-          <h2 className="text-5xl md:text-6xl font-black text-white mb-4">
+          <h2 className="text-5xl md:text-6xl font-black text-white mb-4 tracking-tight leading-tight">
             Try it{" "}
             <span className="gradient-text">right now</span>
           </h2>
-          <p className="text-xl text-slate-400">
+          <p className="text-lg md:text-xl text-slate-400">
             Experience AI fashion generation — describe any look and watch it come to life.
           </p>
         </motion.div>

@@ -25,7 +25,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 import yaml
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 try:
@@ -74,16 +74,30 @@ class FeatureConfig(BaseModel):
     trend_explorer: bool = True
     recommend_hub: bool = True
     eval_dashboard: bool = True
+    wardrobe_gen: bool = True
 
 
 class PathsConfig(BaseModel):
     project_root: str = ".."
     outputs_dir: str = "week6/outputs"
     logs_dir: str = "week6/logs"
-    assets_dir: str = "week6/assets"
+    assets_dir: str = str(_WEEK6_ROOT / "assets")
     generated_images: str = "week6/outputs/generated"
     sketch_outputs: str = "week6/outputs/sketches"
     reports: str = "week6/outputs/reports"
+
+    @field_validator("assets_dir", mode="before")
+    @classmethod
+    def resolve_assets_dir(cls, v: Any) -> str:
+        if isinstance(v, str):
+            path = Path(v)
+            if not path.is_absolute():
+                parts = path.parts
+                if parts and parts[0] == "week6":
+                    return str((_WEEK6_ROOT.parent / path).resolve())
+                else:
+                    return str((_WEEK6_ROOT / path).resolve())
+        return v
 
 
 class UIConfig(BaseModel):
@@ -246,7 +260,18 @@ def get_config() -> AppConfig:
         app_meta = raw.pop("app")
         raw.update(app_meta)
     raw = _apply_env_overrides(raw)
-    return AppConfig.model_validate(raw)
+    cfg = AppConfig.model_validate(raw)
+    if cfg.mock.global_mock:
+        from loguru import logger
+        banner = (
+            "\n" + "═" * 60 + "\n"
+            "⚠️  RUNNING IN MOCK MODE (GLOBAL_MOCK=True)  ⚠️\n"
+            "This run is in Mock Mode. No GPU or real weights will be loaded.\n"
+            "To run in Real GPU Mode, use --no-mock or configure .env file.\n"
+            + "═" * 60
+        )
+        logger.warning(banner)
+    return cfg
 
 
 @lru_cache(maxsize=1)
