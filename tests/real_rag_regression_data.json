@@ -1,0 +1,50 @@
+[
+  {
+    "query": "Explain the augmented wearable projections trend forecast",
+    "response": "### Future Trend Forecasts for Summer\n- **Patterned Silk Minimalism** (Confidence: 0.83)\n  *Reasoning*: Strong luxury trend towards printed silk blazers and custom embroidery in warm-weather separates. (Forecast confidence adjusted based on: aligned with target season).\n- **Organic Linen Loungewear** (Confidence: 0.81)\n  *Reasoning*: Minimalist wardrobe shift prioritizing lightweight flax fabrics and breathable lounge cuts. (Forecast confidence adjusted based on: aligned with target season).\n- **Cyber Utility Wear** (Confidence: 0.77)\n  *Reasoning*: High demand for utility cargo pockets and windbreaker layering coupled with cold-weather insulation needs. (Forecast confidence adjusted based on: out-of-season penalty applied).",
+    "retrieved_items": [
+      {
+        "id": null,
+        "name": null
+      },
+      {
+        "id": null,
+        "name": null
+      },
+      {
+        "id": null,
+        "name": null
+      }
+    ]
+  },
+  {
+    "query": "I need streetwear style recommendations in black color",
+    "response": "### Style Aesthetic: Streetwear\nA style of casual clothing which became global in the 1990s. Influenced by hip-hop, skate culture, sportswear, and contemporary haute couture. Characters are oversized cuts, graphical screen prints, drawstring hoodies, sneaker matching, and utility elements.\n\n- **Fit**: oversized\n- **Key Items**: hoodie, sneakers, graphic_tee",
+    "retrieved_items": []
+  },
+  {
+    "query": "Recommend brand profiles for a luxury wardrobe",
+    "response": "Based on the **luxury** style profile, I recommend the following brands: **Gucci, Prada, Louis Vuitton**.",
+    "retrieved_items": []
+  },
+  {
+    "query": "What is linen fabric?",
+    "response": "### Fabric Explanation: Linen\nA woven textile made from the fibers of the flax plant. Exceptional breathability, quick-drying, and crisp textured weave. Ideal for warm weather, despite being prone to wrinkling.\n\n- **Durability**: medium\n- **Breathability**: extreme\n- **Weight**: light",
+    "retrieved_items": []
+  },
+  {
+    "query": "Describe the minimalist style",
+    "response": "### Style Aesthetic: Minimalist\nFocuses on simple silhouettes, clean lines, organic textures, and neutral palettes. Avoids excessive ornamentations, printing, or branding, relying instead on high-quality fabrics and wardrobe essentials.\n\n- **Fit**: regular\n- **Key Items**: cotton_tshirt, linen_pant",
+    "retrieved_items": []
+  },
+  {
+    "query": "What is silk fabric?",
+    "response": "### Fabric Explanation: Silk\nA luxury natural protein fiber produced by silkworms. Possesses high sheen, exceptionally soft texture, and fluid drape. Ideal for high-end luxury gowns and blouses.\n\n- **Durability**: low\n- **Breathability**: high\n- **Weight**: light",
+    "retrieved_items": []
+  },
+  {
+    "query": "Recommend brands for streetwear style",
+    "response": "### Style Aesthetic: Streetwear\nA style of casual clothing which became global in the 1990s. Influenced by hip-hop, skate culture, sportswear, and contemporary haute couture. Characters are oversized cuts, graphical screen prints, drawstring hoodies, sneaker matching, and utility elements.\n\n- **Fit**: oversized\n- **Key Items**: hoodie, sneakers, graphic_tee",
+    "retrieved_items": []
+  }
+]

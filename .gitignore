@@ -100,3 +100,15 @@ comparison_report.json
 *.log
 .cache/
 weights/
+
+# ─── Custom Ignores ───────────────────────────────────────────────────────────
+datasets/
+.gemini/
+frontend/.next/
+frontend/node_modules/
+frontend/tsconfig.tsbuildinfo
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+

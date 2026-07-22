@@ -45,19 +45,18 @@ validating data quality, and generating rich embeddings-based metadata.
 
 The AI-Powered Fashion Design Assistant uses a modular multi-tier architecture separating core generative models, data structures, and the service routing layer:
 
-1. **Next.js Landing Page**: The main public portal of the application, serving as the visual gate. It routes users dynamically to either the local/staging backend API or the interactive **Open Studio** UI, based on environment configuration (`NEXT_PUBLIC_STUDIO_URL`).
-2. **Gradio Creative Studio (Open Studio UI)**: Located in [`apps/gradio_app/app.py`](file:///c:/Users/HP/Desktop/AI%20Fashion%20Agent/fashion-ai-assistant/apps/gradio_app/app.py), this is the front-facing UI that serves as the creative design board (sketch control, LoRA style mixing, multi-stage prompts).
-3. **FastAPI Serving Backend**: Located in [`week7/backend/main.py`](file:///c:/Users/HP/Desktop/AI%20Fashion%20Agent/fashion-ai-assistant/week7/backend/main.py), it exposes production-ready REST endpoints, API routes, security middleware, and task queues.
-4. **Celery Task Queue & Redis Cache**: Coordinates long-running generative model tasks asynchronously (background jobs) to keep the REST API responsive.
-5. **ChromaDB & Vector Search Layer**: Handles multi-modal search querying (using CLIP embeddings) to support retrieval-augmented generation (RAG) and fashion design recommendations.
-6. **Core Engines (Canonical Packages)**: Located under [`src/`](file:///c:/Users/HP/Desktop/AI%20Fashion%20Agent/fashion-ai-assistant/src/), it houses the core algorithmic code:
+1. **Next.js AI Creative Studio & Landing Page**: The unified front-facing creative board and landing portal. Integrated with custom workspaces, Q&A assistants, sketch canvases, brand LoRA adapters, search, recommendations, and analytics grids.
+2. **FastAPI Serving Backend**: Located in [`week7/backend/main.py`](file:///c:/Users/HP/Desktop/AI%20Fashion%20Agent/fashion-ai-assistant/week7/backend/main.py), it exposes production-ready REST endpoints, API routes, security middleware, and task queues.
+3. **Celery Task Queue & Redis Cache**: Coordinates long-running generative model tasks asynchronously (background jobs) to keep the REST API responsive.
+4. **ChromaDB & Vector Search Layer**: Handles multi-modal search querying (using CLIP embeddings) to support retrieval-augmented generation (RAG) and fashion design recommendations.
+5. **Core Engines (Canonical Packages)**: Located under [`src/`](file:///c:/Users/HP/Desktop/AI%20Fashion%20Agent/fashion-ai-assistant/src/), it houses the core algorithmic code:
    - `src/generation/`: SDXL diffusion generator engine.
    - `src/lora/`: Style registries, mixing, and parameter-efficient adapters.
    - `src/controlnet/`: Preprocessing and conditioning models.
    - `src/rag/`: Retrieval-augmented semantic agent.
    - `src/recommendations/`: Collaborative recommendation logic.
    - `src/trends/`: Trend metrics analysis.
-7. **Versioned Milestone Iterations**:
+6. **Versioned Milestone Iterations**:
    - `week6/services/`: Hosts the core service logic wrappers and adapter layers actively utilized by the `week7` FastAPI router.
    - `week2/` and `week3/`: Expose utility configuration parsing schemas and sketch preprocessing hooks utilized dynamically by the `src/` modules.
    - `week8/`: Exposes DevOps and containerization configurations (`docker-compose`, Dockerfiles).
@@ -102,9 +101,10 @@ kaggle datasets download -d nguyngiabol/colorful-fashion-dataset-for-object-dete
 ```
 fashion-ai-assistant/
 │
+├── frontend/                         # Next.js 15 Creative Dashboard Frontend Application
+│
 ├── apps/                             # Interactive creative UI apps
-│   └── gradio_app/                   # Gradio Open Studio UI front-facing portal
-│       └── app.py                    # Main Gradio application runner
+│   └── api/                          # FastAPI REST backend service
 │
 ├── src/                              # Core canonical package modules
 │   ├── data/                         # Data ingestion and verification pipelines
@@ -304,7 +304,6 @@ All parameters are controlled via **three sources** (env file overrides YAML / N
 | CLIP model | `pipeline.metadata_generation.clip_model` | `CLIP_MODEL_NAME` | Model naming tag |
 | Batch size | `pipeline.metadata_generation.batch_size` | `EMBED_BATCH_SIZE` | Embedding batch slice size |
 | Log level | `logging.level` | `LOG_LEVEL` | App logger console verbosity |
-| Gradio Studio URL | - | `NEXT_PUBLIC_STUDIO_URL` | Gradio server URL (`http://127.0.0.1:7860`) |
 
 ---
 

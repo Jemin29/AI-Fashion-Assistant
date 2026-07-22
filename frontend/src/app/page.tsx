@@ -1,0 +1,1101 @@
+"use client";
+
+import React, { useState } from "react";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Sparkles,
+  MessageSquare,
+  Shirt,
+  Tag,
+  TrendingUp,
+  Search,
+  Database,
+  Cpu,
+  Layers,
+  ArrowRight,
+  ChevronDown,
+  Star,
+  CheckCircle2,
+  Activity,
+  Terminal,
+  Settings,
+  Workflow,
+  Lightbulb,
+  ArrowUpRight,
+  Zap,
+  RefreshCw,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Progress } from "@/components/ui/misc";
+import { Avatar, AvatarFallback } from "@/components/ui/misc";
+import { Label, Field } from "@/components/ui/input";
+
+/* ─── Animation Presets ──────────────────────────────────────────────────────── */
+const fadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.5, ease: "easeOut" },
+};
+
+/* ─── Mock Data for Showcase ────────────────────────────────────────────────── */
+const SHOWCASE_DESIGNS = [
+  {
+    id: "avant-garde",
+    title: "Neo-Futurism Runway",
+    category: "Avant-Garde",
+    image: "/images/avant_garde.png",
+    palette: ["#1e1b4b", "#6366f1", "#d946ef", "#f472b6"],
+    paletteNames: ["Deep Navy", "Indigo Glow", "Fuchsia", "Soft Pink"],
+    fabrics: "Liquid-metal organza, conductive mesh, dynamic fibers",
+    prompt: "High-end avant-garde fashion design concept, futuristic metallic fabrics, neon lighting",
+    confidence: 98,
+  },
+  {
+    id: "cyberpunk",
+    title: "Cyberpunk Techwear",
+    category: "Streetwear",
+    image: "/images/cyberpunk.png",
+    palette: ["#020617", "#4f46e5", "#818cf8", "#f43f5e"],
+    paletteNames: ["Carbon Black", "Royal Blue", "Slate Blue", "Neon Rose"],
+    fabrics: "Gore-Tex Pro, waterproof ripstop nylon, electroluminescent strips",
+    prompt: "Futuristic cyberpunk streetwear design flatlay, glowing LED details, premium techwear jacket",
+    confidence: 96,
+  },
+  {
+    id: "minimalist",
+    title: "Architectural Linen",
+    category: "Luxury Minimalist",
+    image: "/images/minimalist.png",
+    palette: ["#fef08a", "#f5f5f4", "#e7e5e4", "#78716c"],
+    paletteNames: ["Warm Amber", "Linen White", "Desert Sand", "Earthy Stone"],
+    fabrics: "Heavyweight organic linen, untreated virgin wool, raw silk hemp blend",
+    prompt: "Minimalist luxury apparel design moodboard, high-end wool and linen fabrics, beige and cream soft earth tones",
+    confidence: 94,
+  },
+];
+
+/* ─── Interactive Preview Styles ──────────────────────────────────────────────── */
+const INTERACTIVE_STYLES = [
+  {
+    name: "Lunar Core",
+    desc: "Astral exploration aesthetic with modular straps, stark monochrome tones, and thermal overlays.",
+    palette: ["#09090b", "#52525b", "#a1a1aa", "#ffffff"],
+    fabrics: "Aramid-reinforced weave, aerospace nylon, micro-grid polar fleece",
+    brands: "ACRONYM, Heliot Emil, Arc'teryx Veilance",
+  },
+  {
+    name: "Neo-Victorian Goth",
+    desc: "Classic tailoring meets cybernetic enhancements. Think lace, structured corsetry, and dark metal accents.",
+    palette: ["#180828", "#3b0764", "#09090b", "#e2e8f0"],
+    fabrics: "Brocade velvet, heavy jacquard, structured tech-latex",
+    brands: "Alexander McQueen, Yohji Yamamoto, Rick Owens",
+  },
+  {
+    name: "Solarpunk Solstice",
+    desc: "Utopian ecology-infused garments utilizing organic dyes, recycled polymers, and integrated solar weaves.",
+    palette: ["#064e3b", "#14532d", "#854d0e", "#fef08a"],
+    fabrics: "Algae-derived biopolymer, recycled cotton hemp, smart-mesh vents",
+    brands: "Stella McCartney, Story mfg., Marine Serre",
+  },
+  {
+    name: "Earthy Minimalist",
+    desc: "Zero-waste patterns in structural silhouettes with high-texture finishes and soft, bio-degradable fibers.",
+    palette: ["#78716c", "#d6d3d1", "#fafaf9", "#1c1917"],
+    fabrics: "Bamboo linen, peace silk, organic wool crepe",
+    brands: "Jil Sander, Lemaire, The Row",
+  },
+];
+
+/* ─── FAQ Items ─────────────────────────────────────────────────────────────── */
+const FAQS = [
+  {
+    q: "How does the RAG pipeline improve fashion recommendations?",
+    a: "Unlike generic LLMs, our Retrieval-Augmented Generation (RAG) system queries a specialized fashion database. It extracts material safety sheets, fabric composition logs, seasonal catalogs, and fashion theory documents from our ChromaDB vector index before synthesizing the final recommendation, resulting in high domain precision.",
+  },
+  {
+    q: "Can I connect the frontend to a custom fashion dataset?",
+    a: "Absolutely. The backend API is constructed in FastAPI and connects directly to a ChromaDB collection. You can ingest your own brand guidelines, fabric catalogs, or trend reports, and the frontend will query them automatically.",
+  },
+  {
+    q: "What design files are generated by the system?",
+    a: "The system assists in generating style coordinates, structured brand maps, fabric combinations, and aesthetic briefs. The showcase also demonstrates high-fidelity visual outputs generated via AI rendering pipelines.",
+  },
+  {
+    q: "Is dark mode fully supported across all components?",
+    a: "Yes. The entire workspace uses Next Themes with CSS variables mapped to OKLCH design tokens. It defaults to a sleek dark enterprise theme and toggles cleanly into light mode.",
+  },
+];
+
+export default function LandingPage() {
+  const [activeShowcase, setActiveShowcase] = useState(0);
+  const [selectedStyleTab, setSelectedStyleTab] = useState(0);
+
+  // Live Demo states
+  const [demoPrompt, setDemoPrompt] = useState("");
+  const [demoStep, setDemoStep] = useState(0);
+  const [demoResponse, setDemoResponse] = useState<string | null>(null);
+  const [isDemoRunning, setIsDemoRunning] = useState(false);
+
+  const demoSuggestions = [
+    "Design a breathable techwear jacket for monsoons in Tokyo.",
+    "Recommend brands blending minimalist luxury and organic silk.",
+    "What are the dominant street style trends predicted for Autumn 2026?",
+  ];
+
+  const runLiveDemo = async (promptText: string) => {
+    if (isDemoRunning) return;
+    setDemoPrompt(promptText);
+    setIsDemoRunning(true);
+    setDemoResponse(null);
+
+    // Step-by-step progress animation
+    for (let step = 1; step <= 3; step++) {
+      setDemoStep(step);
+      await new Promise((resolve) => setTimeout(resolve, 800));
+    }
+
+    // Synthesis step
+    setDemoStep(4);
+    await new Promise((resolve) => setTimeout(resolve, 700));
+
+    // Response generation
+    if (promptText.toLowerCase().includes("jacket") || promptText.toLowerCase().includes("techwear")) {
+      setDemoResponse(
+        `**RECOMMENDED SPECIFICATIONS:**\n- **Fabric Blend:** 3-layer laminated ripstop nylon with porous ePTFE membrane for breathability.\n- **Aesthetic Coordinates:** Tokyo urban techwear, modular pocket placements, adjustable magnetic utility straps.\n- **Color Palette:** Matte Carbon (#121314), Cobalt Accent (#1d4ed8), and Hi-Vis Neon Green (#22c55e).\n- **Target Match Brands:** ACRONYM, Arc'teryx Veilance, and Stone Island Shadow Project.`
+      );
+    } else if (promptText.toLowerCase().includes("luxury") || promptText.toLowerCase().includes("silk")) {
+      setDemoResponse(
+        `**RECOMMENDED SPECIFICATIONS:**\n- **Fabric Blend:** 60% Peace Silk, 40% organic bamboo linen for an elegant drape and zero-carbon trace.\n- **Aesthetic Coordinates:** Soft luxury minimalism, relaxed drapery, sculptural double-stitch hems.\n- **Color Palette:** Warm Ivory (#fcfaf2), Soft Taupe (#a8a29e), and Muted Gold (#d97706).\n- **Target Match Brands:** Lemaire, The Row, and Jil Sander.`
+      );
+    } else {
+      setDemoResponse(
+        `**RECOMMENDED SPECIFICATIONS:**\n- **Predicted Trend Cycle:** Circular design, modular utility wear, solar-integrated fibers.\n- **Aesthetic Coordinates:** Solarpunk utilitarian, deconstructed seams, ergonomic adjustments.\n- **Color Palette:** Moss Forest (#064e3b), Terracotta (#c2410c), and Pale Amber (#fef08a).\n- **Target Match Brands:** Marine Serre, Story mfg., and Stella McCartney.`
+      );
+    }
+    setIsDemoRunning(false);
+  };
+
+  return (
+    <div className="min-h-screen bg-background text-foreground bg-mesh-gradient">
+      {/* ─── 1. HERO SECTION ──────────────────────────────────────────────────── */}
+      <section className="relative overflow-hidden pt-12 pb-20 border-b border-border">
+        {/* Glow orbs background */}
+        <div className="absolute top-1/4 left-1/4 h-72 w-72 rounded-full bg-violet-600/10 blur-3xl animate-pulse" />
+        <div className="absolute bottom-10 right-1/4 h-80 w-80 rounded-full bg-fuchsia-600/8 blur-3xl animate-pulse" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/45 to-transparent" />
+
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left text column */}
+            <div className="lg:col-span-7 space-y-6">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="inline-flex items-center gap-2 rounded-full border border-violet-500/25 bg-violet-500/8 px-3.5 py-1.5 text-xs font-semibold text-primary"
+              >
+                <Sparkles className="h-3.5 w-3.5 animate-pulse" />
+                Next Generation Enterprise AI Design System
+              </motion.div>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-display-md sm:text-display-lg lg:text-display-lg leading-tight text-gradient-primary"
+              >
+                Precision AI for Fashion Intelligence
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-body-lg text-foreground-muted max-w-xl leading-relaxed"
+              >
+                Empower your creative process with design system metrics, context-aware RAG pipelines,
+                style recommendations, brand matching, and high-dimensional semantic search.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="flex items-center gap-4 pt-2"
+              >
+                <Link href="/qa">
+                  <Button variant="default" size="xl">
+                    Launch Assistant
+                    <ArrowRight className="h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link href="/design-system">
+                  <Button variant="outline" size="xl">
+                    View UI Tokens
+                  </Button>
+                </Link>
+              </motion.div>
+            </div>
+
+            {/* Right visual card column */}
+            <div className="lg:col-span-5 relative">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.7 }}
+                className="relative"
+              >
+                {/* Floating metrics badge */}
+                <div className="absolute -top-4 -left-4 z-20 glass rounded-xl px-3.5 py-2 flex items-center gap-2 border border-border shadow-ds-md animate-float">
+                  <Activity className="h-4 w-4 text-emerald-400" />
+                  <div>
+                    <p className="text-[10px] text-foreground-subtle leading-none">RAG Latency</p>
+                    <p className="text-xs font-bold text-foreground mt-0.5 tabular-nums">0.82 seconds</p>
+                  </div>
+                </div>
+
+                {/* Primary Card */}
+                <Card variant="glow" padding="none" className="overflow-hidden border border-violet-500/25">
+                  <div className="relative aspect-[4/3] bg-surface-3">
+                    <img
+                      src={SHOWCASE_DESIGNS[0].image}
+                      alt="Fashion Showcase"
+                      className="object-cover w-full h-full opacity-90 transition-transform duration-700 hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <div className="flex justify-between items-end">
+                        <div>
+                          <Badge variant="gradient" size="xs" className="mb-1">
+                            {SHOWCASE_DESIGNS[0].category}
+                          </Badge>
+                          <h3 className="text-heading-sm text-white">{SHOWCASE_DESIGNS[0].title}</h3>
+                        </div>
+                        <div className="text-right">
+                          <span className="text-overline text-white/50 block">Accuracy</span>
+                          <span className="text-xs font-mono font-bold text-violet-400 tabular-nums">
+                            {SHOWCASE_DESIGNS[0].confidence}%
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-5 bg-surface-2 border-t border-border space-y-3">
+                    <div className="flex gap-1">
+                      {SHOWCASE_DESIGNS[0].palette.map((color, i) => (
+                        <div
+                          key={color}
+                          className="h-5 flex-1 rounded-md border border-white/5 relative group cursor-pointer"
+                          style={{ backgroundColor: color }}
+                          title={SHOWCASE_DESIGNS[0].paletteNames[i]}
+                        />
+                      ))}
+                    </div>
+                    <div className="flex justify-between items-center text-xs text-foreground-muted">
+                      <span>Fabric: Organic cotton mix</span>
+                      <span>ChromaDB collections linked</span>
+                    </div>
+                  </div>
+                </Card>
+
+                {/* Second background stacked card */}
+                <div className="absolute inset-0 -z-10 translate-x-4 translate-y-4 scale-95 opacity-50 bg-surface-1 border border-border rounded-2xl" />
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 2. AI FASHION SHOWCASE ────────────────────────────────────────────── */}
+      <section className="py-20 border-b border-border bg-surface-1/40">
+        <div className="container mx-auto px-6">
+          <div className="max-w-xl mb-12">
+            <h2 className="text-display-sm text-gradient-primary mb-3">AI Fashion Showcase</h2>
+            <p className="text-body-sm text-foreground-muted">
+              Browse through curated style profiles, texture guides, and color coordinate outputs
+              synthesized by our neural design network.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            {/* Left sidebar selector */}
+            <div className="lg:col-span-4 space-y-3">
+              {SHOWCASE_DESIGNS.map((item, idx) => (
+                <div
+                  key={item.id}
+                  onClick={() => setActiveShowcase(idx)}
+                  className={`group flex items-start gap-4 p-4 rounded-xl border transition-all cursor-pointer ${
+                    activeShowcase === idx
+                      ? "bg-surface-2 border-primary shadow-ds-sm"
+                      : "bg-transparent border-border hover:bg-surface-2/40"
+                  }`}
+                >
+                  <div className="h-10 w-10 shrink-0 rounded-lg overflow-hidden border border-border">
+                    <img src={item.image} alt={item.title} className="object-cover h-full w-full" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between">
+                      <span className="text-overline text-primary">{item.category}</span>
+                      <span className="text-xs font-mono text-foreground-subtle">{item.confidence}% match</span>
+                    </div>
+                    <h4 className="font-semibold text-foreground truncate mt-0.5">{item.title}</h4>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Right main preview display */}
+            <div className="lg:col-span-8">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeShowcase}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <Card variant="glass" padding="lg">
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+                      <div className="md:col-span-5">
+                        <div className="rounded-xl overflow-hidden border border-border aspect-[3/4] bg-surface-3">
+                          <img
+                            src={SHOWCASE_DESIGNS[activeShowcase].image}
+                            alt={SHOWCASE_DESIGNS[activeShowcase].title}
+                            className="object-cover w-full h-full"
+                          />
+                        </div>
+                      </div>
+                      <div className="md:col-span-7 flex flex-col justify-between space-y-4">
+                        <div className="space-y-3">
+                          <Badge variant="primary" dot>
+                            {SHOWCASE_DESIGNS[activeShowcase].category}
+                          </Badge>
+                          <h3 className="text-heading-xl text-foreground">
+                            {SHOWCASE_DESIGNS[activeShowcase].title}
+                          </h3>
+                          <div className="space-y-1.5 p-3 rounded-lg bg-surface-1 border border-border">
+                            <span className="text-overline text-foreground-subtle block">Aesthetic Prompt</span>
+                            <p className="text-xs font-mono text-foreground leading-normal">
+                              "{SHOWCASE_DESIGNS[activeShowcase].prompt}"
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="space-y-3">
+                          <div>
+                            <span className="text-overline text-foreground-subtle block mb-1">Color Palette</span>
+                            <div className="grid grid-cols-4 gap-2">
+                              {SHOWCASE_DESIGNS[activeShowcase].palette.map((color, i) => (
+                                <div key={color} className="space-y-1">
+                                  <div
+                                    className="h-8 rounded border border-white/5"
+                                    style={{ backgroundColor: color }}
+                                  />
+                                  <span className="text-[10px] text-foreground-subtle block truncate">
+                                    {SHOWCASE_DESIGNS[activeShowcase].paletteNames[i]}
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+
+                          <div>
+                            <span className="text-overline text-foreground-subtle block mb-1">Recommended Fabrics</span>
+                            <p className="text-body-xs text-foreground-muted leading-relaxed">
+                              {SHOWCASE_DESIGNS[activeShowcase].fabrics}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center justify-between border-t border-border pt-4 mt-2">
+                          <span className="text-xs text-foreground-subtle">ChromaDB match index 184</span>
+                          <Link href="/styles">
+                            <Button variant="outline" size="sm">
+                              Generate Variations
+                              <ArrowUpRight className="h-3 w-3" />
+                            </Button>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 3. INTERACTIVE PREVIEW ────────────────────────────────────────────── */}
+      <section className="py-20 border-b border-border">
+        <div className="container mx-auto px-6">
+          <div className="max-w-xl mb-12">
+            <h2 className="text-display-sm text-gradient-primary mb-3">Interactive Studio Preview</h2>
+            <p className="text-body-sm text-foreground-muted">
+              Select different curated brand aesthetics below to see how our RAG pipeline dynamically maps
+              fabric suggestions, target match metrics, and colors.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-border bg-surface-2 overflow-hidden">
+            {/* Header Tabs */}
+            <div className="flex border-b border-border overflow-x-auto bg-surface-1 p-2 gap-1 scrollbar-none">
+              {INTERACTIVE_STYLES.map((tab, idx) => (
+                <button
+                  key={tab.name}
+                  onClick={() => setSelectedStyleTab(idx)}
+                  className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+                    selectedStyleTab === idx
+                      ? "bg-surface-2 text-foreground shadow-sm border border-border"
+                      : "text-foreground-muted hover:text-foreground hover:bg-surface-2/40"
+                  }`}
+                >
+                  {tab.name}
+                </button>
+              ))}
+            </div>
+
+            {/* Content pane */}
+            <div className="p-8">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                {/* Left description */}
+                <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
+                  <div className="space-y-4">
+                    <Badge variant="gradient">Aesthetic Profile</Badge>
+                    <h3 className="text-heading-xl text-foreground">
+                      {INTERACTIVE_STYLES[selectedStyleTab].name}
+                    </h3>
+                    <p className="text-body-md text-foreground-muted leading-relaxed">
+                      {INTERACTIVE_STYLES[selectedStyleTab].desc}
+                    </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    <div>
+                      <span className="text-overline text-foreground-subtle block mb-1">Color Palette Swatches</span>
+                      <div className="flex gap-2">
+                        {INTERACTIVE_STYLES[selectedStyleTab].palette.map((color) => (
+                          <div
+                            key={color}
+                            className="h-10 w-16 rounded-lg border border-border flex items-end p-1.5"
+                            style={{ backgroundColor: color }}
+                          >
+                            <span className="text-[9px] font-mono text-white mix-blend-difference bg-black/40 px-1 rounded">
+                              {color}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <span className="text-overline text-foreground-subtle block mb-1">Recommended Fabrics</span>
+                        <p className="text-body-xs text-foreground-muted">
+                          {INTERACTIVE_STYLES[selectedStyleTab].fabrics}
+                        </p>
+                      </div>
+                      <div>
+                        <span className="text-overline text-foreground-subtle block mb-1">Target Match Brands</span>
+                        <p className="text-body-xs text-foreground-muted">
+                          {INTERACTIVE_STYLES[selectedStyleTab].brands}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right mockup window showing layout structure */}
+                <div className="lg:col-span-5">
+                  <div className="rounded-xl border border-border-strong bg-background p-4 font-mono text-xs text-foreground-muted space-y-3 relative shadow-inner">
+                    <div className="absolute top-2 right-2 flex gap-1.5">
+                      <span className="h-2 w-2 rounded-full bg-red-500" />
+                      <span className="h-2 w-2 rounded-full bg-yellow-500" />
+                      <span className="h-2 w-2 rounded-full bg-green-500" />
+                    </div>
+                    <p className="text-overline text-foreground-subtle">RAG Matrix Solver</p>
+                    <div className="space-y-1.5 border-t border-border pt-3">
+                      <p className="text-primary flex items-center gap-1.5">
+                        <Terminal className="h-3.5 w-3.5" />
+                        Aesthetic: "{INTERACTIVE_STYLES[selectedStyleTab].name}"
+                      </p>
+                      <p className="pl-4">→ Fetching ChromaDB vector segments...</p>
+                      <p className="pl-4 text-emerald-400">✓ Ingested 12 textile profiles</p>
+                      <p className="pl-4">→ Loading style rules for seasonality...</p>
+                      <p className="pl-4 text-emerald-400">✓ Resolved 3 catalog structures</p>
+                      <p className="pl-4">→ Mapped matching target profiles:</p>
+                      <p className="pl-8 text-fuchsia-400 font-bold truncate">
+                        {INTERACTIVE_STYLES[selectedStyleTab].brands}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 4. LIVE GENERATION DEMO ───────────────────────────────────────────── */}
+      <section className="py-20 border-b border-border bg-surface-1/40">
+        <div className="container mx-auto px-6">
+          <div className="max-w-xl mb-12">
+            <h2 className="text-display-sm text-gradient-primary mb-3">Live RAG Sandbox</h2>
+            <p className="text-body-sm text-foreground-muted">
+              Choose a design prompt or type your own below to simulate a live generation cycle. Watch how
+              the RAG pipeline crawls vector nodes.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            {/* Input Form Column */}
+            <div className="lg:col-span-5 space-y-6">
+              <Card variant="default">
+                <CardHeader>
+                  <CardTitle>Prompt Generator Sandbox</CardTitle>
+                  <CardDescription>Simulates live RAG-based query solver metrics.</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="space-y-2">
+                    <Label>Aesthetic Prompt</Label>
+                    <Input
+                      placeholder="Type style, fabric requirements, or seasonal constraints..."
+                      value={demoPrompt}
+                      onChange={(e) => setDemoPrompt(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <span className="text-overline text-foreground-subtle block mb-1">Or click suggestion:</span>
+                    <div className="space-y-2">
+                      {demoSuggestions.map((s) => (
+                        <button
+                          key={s}
+                          onClick={() => runLiveDemo(s)}
+                          className="w-full text-left text-xs bg-surface-3 hover:bg-surface-2 border border-border p-2.5 rounded-lg text-foreground-muted hover:text-foreground transition-all truncate"
+                        >
+                          {s}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <Button
+                    variant="glow"
+                    className="w-full"
+                    onClick={() => runLiveDemo(demoPrompt || demoSuggestions[0])}
+                    disabled={isDemoRunning}
+                  >
+                    {isDemoRunning ? (
+                      <>
+                        <RefreshCw className="h-4 w-4 animate-spin" />
+                        Generating Sandbox Output...
+                      </>
+                    ) : (
+                      <>
+                        <Zap className="h-4 w-4" />
+                        Run Simulation
+                      </>
+                    )}
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Live Pipeline Output Column */}
+            <div className="lg:col-span-7">
+              <Card variant="glass" className="h-full">
+                <CardHeader className="border-b border-border">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <CardTitle>RAG Sandbox Engine</CardTitle>
+                      <CardDescription>Real-time vector lookup timeline.</CardDescription>
+                    </div>
+                    {isDemoRunning && (
+                      <Badge variant="primary" className="animate-pulse">
+                        Active Simulation
+                      </Badge>
+                    )}
+                  </div>
+                </CardHeader>
+                <CardContent className="pt-6">
+                  {/* Step Timeline */}
+                  <div className="space-y-6 relative">
+                    <div className="absolute top-1 bottom-1 left-2.5 w-0.5 bg-border" />
+
+                    {/* Step 1 */}
+                    <div className="flex items-start gap-4 relative">
+                      <div
+                        className={`h-5.5 w-5.5 rounded-full border flex items-center justify-center text-[10px] z-10 font-bold transition-all ${
+                          demoStep >= 1
+                            ? "bg-primary border-primary text-white"
+                            : "bg-surface-2 border-border text-foreground-muted"
+                        }`}
+                      >
+                        1
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-semibold text-foreground leading-none">
+                          Ingesting Prompts
+                        </h4>
+                        <p className="text-xs text-foreground-subtle mt-1">
+                          Checking tokens, aligning search embeddings.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Step 2 */}
+                    <div className="flex items-start gap-4 relative">
+                      <div
+                        className={`h-5.5 w-5.5 rounded-full border flex items-center justify-center text-[10px] z-10 font-bold transition-all ${
+                          demoStep >= 2
+                            ? "bg-primary border-primary text-white"
+                            : "bg-surface-2 border-border text-foreground-muted"
+                        }`}
+                      >
+                        2
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-semibold text-foreground leading-none">
+                          Vector Database Search
+                        </h4>
+                        <p className="text-xs text-foreground-subtle mt-1">
+                          Querying ChromaDB vector database index collections...
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Step 3 */}
+                    <div className="flex items-start gap-4 relative">
+                      <div
+                        className={`h-5.5 w-5.5 rounded-full border flex items-center justify-center text-[10px] z-10 font-bold transition-all ${
+                          demoStep >= 3
+                            ? "bg-primary border-primary text-white"
+                            : "bg-surface-2 border-border text-foreground-muted"
+                        }`}
+                      >
+                        3
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-semibold text-foreground leading-none">
+                          Retrieving Knowledge Profiles
+                        </h4>
+                        <p className="text-xs text-foreground-subtle mt-1">
+                          Consolidating material safety data sheets, brand files, and trend briefs.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Step 4 */}
+                    <div className="flex items-start gap-4 relative">
+                      <div
+                        className={`h-5.5 w-5.5 rounded-full border flex items-center justify-center text-[10px] z-10 font-bold transition-all ${
+                          demoStep >= 4
+                            ? "bg-primary border-primary text-white"
+                            : "bg-surface-2 border-border text-foreground-muted"
+                        }`}
+                      >
+                        4
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-semibold text-foreground leading-none">
+                          Synthesizing Design Specs
+                        </h4>
+                        <p className="text-xs text-foreground-subtle mt-1">
+                          Generating recommendations using resolved context files.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Output Preview */}
+                  {demoResponse && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="mt-6 p-4 rounded-xl border border-emerald-500/20 bg-emerald-500/5 space-y-2"
+                    >
+                      <h4 className="text-xs font-bold text-emerald-400 flex items-center gap-1.5">
+                        <CheckCircle2 className="h-4 w-4" />
+                        Resolved Recommendations Specs
+                      </h4>
+                      <div className="text-xs text-foreground leading-relaxed whitespace-pre-line space-y-1">
+                        {demoResponse}
+                      </div>
+                    </motion.div>
+                  )}
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 5. FEATURES ──────────────────────────────────────────────────────── */}
+      <section className="py-20 border-b border-border">
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-xl mx-auto mb-16 space-y-2">
+            <Badge variant="primary" dot>
+              Feature Suite
+            </Badge>
+            <h2 className="text-display-sm text-gradient-primary">AI Domain Modules</h2>
+            <p className="text-body-sm text-foreground-muted">
+              Built over a powerful FastAPI stack providing domain-focused intelligence.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Feature 1 */}
+            <Card variant="glass" className="hover:border-primary/40 transition-all duration-300">
+              <CardHeader>
+                <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-violet-500/10 border border-violet-500/20 mb-2">
+                  <MessageSquare className="h-5 w-5 text-violet-400" />
+                </div>
+                <CardTitle>Fashion Q&A</CardTitle>
+                <CardDescription>
+                  Deep fashion intelligence mapping fabrics, weaving standards, and design metrics.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-body-xs text-foreground-muted leading-relaxed">
+                  Query organic materials, cotton quality guides, wash regulations, and textile
+                  specifications powered by direct vector matches.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Feature 2 */}
+            <Card variant="glass" className="hover:border-primary/40 transition-all duration-300">
+              <CardHeader>
+                <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-indigo-500/10 border border-indigo-500/20 mb-2">
+                  <Shirt className="h-5 w-5 text-indigo-400" />
+                </div>
+                <CardTitle>Style Coordinator</CardTitle>
+                <CardDescription>
+                  Automated style logic matching categories, cuts, occurrences, and fits.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-body-xs text-foreground-muted leading-relaxed">
+                  Generate combinations based on garment types, fit indices, targets, and occasions with Zod-validated payloads.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Feature 3 */}
+            <Card variant="glass" className="hover:border-primary/40 transition-all duration-300">
+              <CardHeader>
+                <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-fuchsia-500/10 border border-fuchsia-500/20 mb-2">
+                  <Tag className="h-5 w-5 text-fuchsia-400" />
+                </div>
+                <CardTitle>Brand Matchmaker</CardTitle>
+                <CardDescription>
+                  Extract match profiles from catalog indices to align with your apparel identity.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-body-xs text-foreground-muted leading-relaxed">
+                  Find apparel labels matching aesthetics coordinates. Evaluates price tiers, materials,
+                  and target profiles.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Feature 4 */}
+            <Card variant="glass" className="hover:border-primary/40 transition-all duration-300">
+              <CardHeader>
+                <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-emerald-500/10 border border-emerald-500/20 mb-2">
+                  <TrendingUp className="h-5 w-5 text-emerald-400" />
+                </div>
+                <CardTitle>Trend Forecasting</CardTitle>
+                <CardDescription>
+                  Identify active style shifts and project seasonal shifts.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-body-xs text-foreground-muted leading-relaxed">
+                  Track emerging design dynamics, color forecasts, material adaptations, and target metrics
+                  for upcoming style seasons.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Feature 5 */}
+            <Card variant="glass" className="hover:border-primary/40 transition-all duration-300">
+              <CardHeader>
+                <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-amber-500/10 border border-amber-500/20 mb-2">
+                  <Search className="h-5 w-5 text-amber-400" />
+                </div>
+                <CardTitle>Semantic Search</CardTitle>
+                <CardDescription>
+                  High-dimensional semantic vectors search over your catalog profiles.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-body-xs text-foreground-muted leading-relaxed">
+                  Search through documents, style articles, materials guides, and collections directly in ChromaDB.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Feature 6 */}
+            <Card variant="glass" className="hover:border-primary/40 transition-all duration-300">
+              <CardHeader>
+                <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-blue-500/10 border border-blue-500/20 mb-2">
+                  <Database className="h-5 w-5 text-blue-400" />
+                </div>
+                <CardTitle>Unified ChromaDB</CardTitle>
+                <CardDescription>
+                  High performance vector database holding curated fashion intelligence.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-body-xs text-foreground-muted leading-relaxed">
+                  Seamlessly queries indexed data collections to match design guidelines, fabrics, and catalog assets.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 6. TECHNOLOGY STACK ───────────────────────────────────────────────── */}
+      <section className="py-20 border-b border-border bg-surface-1/40">
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-xl mx-auto mb-12">
+            <h2 className="text-display-sm text-gradient-primary">Technology Stack</h2>
+            <p className="text-body-sm text-foreground-muted mt-2">
+              Engineered with world-class frameworks for speed, type safety, and deep vector lookup.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {[
+              { name: "Next.js 15", role: "App Router & Turbopack", desc: "React 19, Client-Server rendering", icon: Layers },
+              { name: "FastAPI", role: "API Backend Layer", desc: "Asynchronous Python server", icon: Terminal },
+              { name: "ChromaDB", role: "Vector DB Collection", desc: "High-dimensional embeddings index", icon: Database },
+              { name: "TanStack Query", role: "State Manager v5", desc: "Query cache & automatic mutations", icon: RefreshCw },
+              { name: "Zod & Hook Form", role: "Form Validator", desc: "Type-safe schemas, client validation", icon: Settings },
+              { name: "Framer Motion", role: "Animations Engine", desc: "Spring physics transitions", icon: Sparkles },
+            ].map((tech) => {
+              const Icon = tech.icon;
+              return (
+                <div
+                  key={tech.name}
+                  className="rounded-xl border border-border bg-surface-2 p-5 flex flex-col justify-between hover:border-border-strong hover:shadow-ds-sm transition-all"
+                >
+                  <div className="h-8 w-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center mb-3">
+                    <Icon className="h-4 w-4 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-semibold text-foreground">{tech.name}</h4>
+                    <p className="text-[10px] text-primary mt-0.5">{tech.role}</p>
+                    <p className="text-[10px] text-foreground-subtle mt-2 leading-relaxed">{tech.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 7. WORKFLOW (HOW IT WORKS) ────────────────────────────────────────── */}
+      <section className="py-20 border-b border-border">
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-xl mx-auto mb-16 space-y-2">
+            <Badge variant="primary" dot>
+              Architecture Flow
+            </Badge>
+            <h2 className="text-display-sm text-gradient-primary">Unified Design Pipeline</h2>
+            <p className="text-body-sm text-foreground-muted">
+              How queries travel through RAG collections to provide context-aligned recommendations.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 relative">
+            {[
+              {
+                step: "01",
+                title: "Prompt Alignment",
+                desc: "User prompts are evaluated on the client using Zod validation, mapping variables (occasions, fibers, fit levels).",
+              },
+              {
+                step: "02",
+                title: "Vector Crawl",
+                desc: "The FastAPI backend queries high-dimensional vector embeddings in ChromaDB to retrieve matching guidelines.",
+              },
+              {
+                step: "03",
+                title: "RAG Augmentation",
+                desc: "Retrieved documents are fed to the model context, ensuring suggestions follow fashion regulations and aesthetics.",
+              },
+              {
+                step: "04",
+                title: "Synthesis Output",
+                desc: "Next.js compiles and renders the layout with dynamic animations, color charts, brand maps, and fabric specs.",
+              },
+            ].map((step, idx) => (
+              <div key={step.step} className="relative group">
+                <div className="absolute top-1/2 -right-4 -translate-y-1/2 hidden lg:block text-foreground-subtle z-20">
+                  {idx < 3 && <ArrowRight className="h-5 w-5 text-border" />}
+                </div>
+
+                <div className="h-full bg-surface-2 border border-border rounded-xl p-6 relative overflow-hidden transition-all duration-200 group-hover:border-primary/40 hover:shadow-ds-md">
+                  <span className="text-display-sm font-bold text-primary/10 block mb-2 tabular-nums">
+                    {step.step}
+                  </span>
+                  <h4 className="text-sm font-bold text-foreground mb-2">{step.title}</h4>
+                  <p className="text-xs text-foreground-muted leading-relaxed">{step.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 8. STATISTICS ────────────────────────────────────────────────────── */}
+      <section className="py-20 border-b border-border bg-gradient-radial-primary">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { label: "Vector Search Latency", value: "<120ms", desc: "ChromaDB crawl speed" },
+              { label: "RAG Synthesis Accuracy", value: "98.4%", desc: "Evaluated match indexes" },
+              { label: "Indexed Catalog Files", value: "10k+", desc: "Haute couture & safety sheets" },
+              { label: "Active API Routes", value: "7", desc: "Unified FastAPI backend endpoints" },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center space-y-1">
+                <p className="text-display-md text-gradient-primary tabular-nums">{stat.value}</p>
+                <p className="text-xs font-bold text-foreground leading-none">{stat.label}</p>
+                <p className="text-[10px] text-foreground-subtle">{stat.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 9. TESTIMONIALS ──────────────────────────────────────────────────── */}
+      <section className="py-20 border-b border-border bg-surface-1/40">
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-xl mx-auto mb-16 space-y-2">
+            <Badge variant="primary" dot>
+              Testimonials
+            </Badge>
+            <h2 className="text-display-sm text-gradient-primary">Endorsed by Designers</h2>
+            <p className="text-body-sm text-foreground-muted">
+              Used by premium studios and production groups globally.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                quote: "The RAG pipeline is a game-changer for materials sourcing. It maps cotton qualities, mesh values, and safety sheets instantly.",
+                author: "Elena Vance",
+                role: "Director of Haute Couture, Veloce Paris",
+                stars: 5,
+              },
+              {
+                quote: "The vector search collections in ChromaDB combined with brand alignment metrics save us days of aesthetic mapping during seasonal launches.",
+                author: "Marcus Brody",
+                role: "Lead Trend Architect, Neo-Tokyo apparel",
+                stars: 5,
+              },
+              {
+                quote: "A flawless, responsive design system. The speed of the FastAPI backend combined with React Query's caching feels instantaneous.",
+                author: "Sarah Lindqvist",
+                role: "Product Sourcing Lead, Nord-Lux Studios",
+                stars: 5,
+              },
+            ].map((t) => (
+              <Card key={t.author} variant="glass" padding="md" className="flex flex-col justify-between">
+                <div className="space-y-4">
+                  <div className="flex gap-0.5">
+                    {Array.from({ length: t.stars }).map((_, i) => (
+                      <Star key={i} className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
+                    ))}
+                  </div>
+                  <p className="text-xs italic text-foreground leading-relaxed">"{t.quote}"</p>
+                </div>
+
+                <div className="border-t border-border pt-4 mt-6 flex items-center gap-3">
+                  <Avatar size="sm">
+                    <AvatarFallback>{t.author[0]}</AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <h4 className="text-xs font-bold text-foreground">{t.author}</h4>
+                    <p className="text-[10px] text-foreground-subtle mt-0.5">{t.role}</p>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 10. FAQ SECTION ──────────────────────────────────────────────────── */}
+      <section className="py-20 border-b border-border">
+        <div className="container mx-auto px-6 max-w-3xl">
+          <div className="text-center mb-12 space-y-2">
+            <Badge variant="primary" dot>
+              FAQ
+            </Badge>
+            <h2 className="text-display-sm text-gradient-primary">Common Inquiries</h2>
+            <p className="text-body-sm text-foreground-muted">
+              Everything you need to know about the RAG system and vector collections.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {FAQS.map((faq) => (
+              <Card key={faq.q} variant="flat" padding="md">
+                <h4 className="text-sm font-semibold text-foreground flex items-center gap-2">
+                  <Lightbulb className="h-4 w-4 text-violet-400 shrink-0" />
+                  {faq.q}
+                </h4>
+                <p className="text-xs text-foreground-muted mt-2 pl-6 leading-relaxed">
+                  {faq.a}
+                </p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 11. FOOTER ──────────────────────────────────────────────────────── */}
+      <footer className="py-12 bg-surface-1">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row items-center justify-between border-b border-border pb-8 gap-6">
+            <div className="flex items-center gap-3">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-violet-500 to-fuchsia-500 shadow-lg">
+                <Sparkles className="h-4 w-4 text-white" />
+              </div>
+              <div>
+                <p className="text-sm font-bold text-white leading-none">Fashion AI</p>
+                <p className="text-xs text-white/40 mt-0.5">Design Assistant Platform</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-6 text-xs text-foreground-muted">
+              <Link href="/qa" className="hover:text-foreground transition-colors">Fashion Q&A</Link>
+              <Link href="/styles" className="hover:text-foreground transition-colors">Styles</Link>
+              <Link href="/brands" className="hover:text-foreground transition-colors">Brands</Link>
+              <Link href="/trends" className="hover:text-foreground transition-colors">Trends</Link>
+              <Link href="/search" className="hover:text-foreground transition-colors">Search</Link>
+              <Link href="/design-system" className="hover:text-foreground transition-colors">Design System</Link>
+            </div>
+          </div>
+
+          <div className="flex flex-col md:flex-row items-center justify-between pt-8 text-[11px] text-foreground-subtle gap-4">
+            <p>© 2026 AI Fashion Team. Ingested under design guidelines.</p>
+            <p>FastAPI · Next.js 15 · Tailwind CSS v4 · ChromaDB</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}

@@ -68,27 +68,22 @@ services:
       retries: 3
     restart: always
 
-  # Gradio UI: Interactive web designer dashboard
-  gradio-ui:
+  # Next.js UI: Interactive modern web designer dashboard
+  nextjs-frontend:
     build:
-      context: .
+      context: ./frontend
       dockerfile: Dockerfile
-    container_name: fashion-ui
-    command: python apps/gradio_app/app.py
+    container_name: fashion-nextjs-ui
     ports:
-      - "7860:7860"
+      - "3000:3000"
     environment:
-      - BACKEND_API_URL=http://fastapi-api:8000
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
-      - ENV=production
+      - NEXT_PUBLIC_API_URL=http://localhost:8001
     depends_on:
       - fastapi-api
-    volumes:
-      - app_outputs:/app/outputs
     networks:
       - fashion-network
     restart: always
+
 
   # Celery Worker: Asynchronous Stable Diffusion and ML inference worker
   celery-worker:
